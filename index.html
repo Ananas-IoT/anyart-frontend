@@ -18,7 +18,6 @@
 
 
 	<link href="https://fonts.googleapis.com/css?family=Acme|Gamja+Flower|Lobster|Slabo+27px" rel="stylesheet">
-
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -41,40 +40,39 @@
 <!--<button class="main_mnu_button hidden-md hidden-lg"><i class="fa fa-bars"></i></button>-->
 
 
-<!--<header>-->
-	<!--<div class="container-fluid">-->
-		<!--<div class="row">-->
-			<!--<div class="col-lg-12">-->
-				<!--<nav>-->
-					<!--<div class="row">-->
-						<!--<div class="col-lg-4"><a href="">Main</a></div>-->
-							<!--<div class="col-lg-4">-->
-								<!--<div class="logo">-->
-								<!--<a href="">AnyArt</a>-->
-							<!--</div>-->
-						<!--</div>-->
-						<!--<div class="col-lg-4"><a href="">Map</a></div>-->
-					<!--</div>-->
-				<!--</nav>-->
-			<!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
-<!--</header>-->
+<header>
+	<div class="header-bg"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-3">
+				<a data-scroll-to="#main" class="logo">
+					<img src="img/logo_small_white.png" alt="">
+					<img src="img/logo_small.png" alt="">
+				</a>
+			</div>
+			<div class="col-lg-9">
+				<nav>
+					<ul>
+						<li><a href="index.html">Головна</a></li>
+						<li><a data-scroll-to="#how-to">Як це працює?</a></li>
+						<li><a data-scroll-to="#about">Про нас</a></li>
+						<li><a data-scroll-to="#gallery">Галерея</a></li>
+						<li><a href="">Контакти</a></li>
+						<li><a href="maps.html">Карта</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
 
-<nav>
-	<ul class="menu">
-		<li class="opened"><a href="index.html"><span>Main</span><span></span></a></li>
-		<li><div class="logo">AnyArt</div></li>
-		<li><a href="maps.html"><span>Map</span><span></span></a></li>
-	</ul>
-</nav>
 
-<section class="main">
+<section id="main" class="main">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="wrap">
-					<h1>AnyArt</h1>
+					<h1><b>Any</b>Art</h1>
 					<p>Color your city!</p>
 				</div>
 			</div>
@@ -82,43 +80,19 @@
 	</div>
 </section>
 
-<section class="about">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="pic"><img src="img/about_photo.jpg" alt=""></div>
-			</div>
-
-			<div class="col-lg-6">
-				<div class="wrap">
-					<h2>About us:</h2>
-					<p>We are the team of enthusiasts from Lviv Polytechnic who
-					are exited to help our city become a better place!</p>
-					<p>We are happy to welcome you at our website! There you can
-					report about non-estethic places in Lviv, offer your help
-					with solving it and vote for better solutions. Our dream
-					is to make Lviv better for all of us: citizens and tourists both!</p>
-
-					<button class="btn">Learn more!</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="how-to">
+<section id="how-to" class="how-to">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2>How is this working?</h2>
-				<p>Principles of work is simple. You just need to follow a few steps: </p>
+				<h2>Як це працює?</h2>
+				<p>Правила дуже прості. Просто виконайте декілька простих кроків: </p>
 				<ul>
-					<li>Report the problem on the map and add a comment to it</li>
-					<li>Vote for best artist' solutions</li>
-					<li>.. Enjoy! :)</li>
+					<li>Виберіть місце на карті, завантажте фото та опишіть проблему</li>
+					<li>Голосуйте за найкращі скетчі</li>
+					<li>.. Насолоджуйтесь :)</li>
 				</ul>
 
-				<button class="btn">goto map!</button>
+				<button class="btn">Перейти до карти!</button>
 
 				<div class="workflow">
 					<div class="item">
@@ -168,11 +142,54 @@
 	</div>
 </section>
 
-<section class="gallery">
+<section id="about" class="about">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2>Gallery:</h2>
+				<h2>А тепер трохи про нас:</h2>
+				<p>Ми — команда ентузіастів з Львівської Політехніки, що бажають допомогти нашому місту стати
+				кращим для всіх нас!</p>
+				<p>Ми раді вітати вас на нашому веб-сайті! Тут ви зможете повідомити про неестетичні місця
+				міста Львова, запропонувати свою допомогу з вирішенням цього та проголосувати за найкращі
+				рішення. Наша мрія — зробити Львів краще для всіх нас: жителів міста та туристів!</p>
+			</div>
+			<div class="col-lg-4">
+				<div class="item">
+					<div class="pic"><img src="img/about_photo1.jpg" alt=""></div>
+					<div class="txt">
+						<h3>Манько Анна</h3>
+						<p>Исключительно хороший человек</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="item">
+					<div class="pic"><img src="img/about_photo1.jpg" alt=""></div>
+					<div class="txt">
+						<h3>Логвінов Данііл</h3>
+						<p>Исключительно хороший человек</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="item">
+					<div class="pic"><img src="img/about_photo1.jpg" alt=""></div>
+					<div class="txt">
+						<h3>Гурський Михайло</h3>
+						<p>Исключительно хороший человек</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="gallery" class="gallery">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2>Галерея:</h2>
+				<p>Це лише деякі приклади робіт, з часом їх ставатиме ще більше!</p>
 				<div class="row">
 					<div class="col-lg-3">
 						<div class="pic"><img src="img/g1.jpg" alt=""></div>

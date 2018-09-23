@@ -206,6 +206,24 @@ $(function() {
 });
 
 
+
+//nav changes color while scrolling
+let header = document.getElementsByTagName('header')[0];
+function navColorChanger () {
+    if (window.pageYOffset != 0 ) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+}
+navColorChanger();
+
+//scroll menu
+$('header a').click(function () {
+    $('html, body').animate({scrollTop:$($(this).attr('data-scroll-to')).offset().top}, 1000)
+});
+
+
 let footerWrap = document.getElementsByClassName('footer-wrap')[0];
 function getElementTopHeight(elem) {
     let box = elem.getBoundingClientRect();
@@ -224,4 +242,4 @@ function fadeInCurrent() {
     }
 }
 fadeInCurrent();
-window.onscroll = function () {fadeInCurrent()};
+window.onscroll = function () {fadeInCurrent(), navColorChanger()};

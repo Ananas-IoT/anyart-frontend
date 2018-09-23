@@ -68,14 +68,13 @@ html.js .loader_inner {
 }
 
 body {
-	font-family: sans-serif;
-	font-size: 16px;
 	min-width: 320px;
 	position: relative;
 	line-height: 1.6;
-	font-family: 'Slabo 27px', serif;
-	font-size: 125%;
+	font-family: 'PT Sans Regular', serif;
+	/*font-size: 125%;*/
 	overflow-x: hidden;
+    margin: 0;
 }
 .hidden {
 	display: none;
@@ -87,6 +86,7 @@ h1,h2,h3,h4, b, strong {
 }
 
 a,a:hover {
+    color: #000;
 	-webkit-transition: all .3s;
 	-o-transition: all .3s;
 	transition: all .3s;
@@ -262,12 +262,12 @@ ul,li {
 
 
 section {
-	padding: 60px 0;
+	padding: 90px 0;
 }
 h2 {
 	text-align: center;
-	margin: 10px 0;
-	font: 36px "Gamja Flower";
+	margin: 0 0 30px;
+	font: 48px "PT Sans Bold";
 	color: #000;
 }
 img {
@@ -276,12 +276,13 @@ img {
 .btn {
 	width: 200px;
 	display: block;
-	padding: 7px 0;
+	padding: 15px 0;
 	margin: 20px auto;
 	color: #61afe4;
+    font-size: 16px;
 	background: #fff;
 	border: none;
-	border: 2px solid #61afe4;
+	border: 2px solid #770d85;
 	cursor: pointer;
 	transition: 0.3s;
 }
@@ -291,77 +292,119 @@ img {
 	transform: rotate(-2deg);
 }
 
-/*header {*/
-	/*height: 60px;*/
-	/*background: #61afe4;*/
-/*}*/
-
-/*header nav {*/
-	/*text-align: center;*/
-/*}*/
-/*header nav a {*/
-	/*display: block;*/
-	/*margin-top: 10px;*/
-	/*font-size: 24px;*/
-	/*color: #fff;*/
-/*}*/
-/*header nav a {*/
-	/*display: block;*/
-	/*margin-top: 10px;*/
-	/*font-size: 24px;*/
-	/*color: #fff;*/
-/*}*/
-/*header nav a:hover {*/
-	/*color: #86bc42;*/
-/*}*/
-
-nav {
-	position: fixed; top: 50%; right: 0;
-	transform: translateY(-50%);
-	z-index: 100;
+header {
+    height: 70px;
+    position: fixed; top: 0; left: 0; right: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    box-shadow: rgba(0,0,0,0.3) 3px 0 15px;
+    z-index: 100;
 }
-nav .menu {
-	text-align: right;
-	padding: 20px;
-	background: rgba(255, 255, 255, 0.3);
-	border-radius: 3px;
+header .header-bg {
+    height: 70px;
+    position: absolute; top: 0; left: 0; right: 0;
+    transform: translateY(-100%);
+    background: #fff;
+    transition: 0.3s;
 }
-nav .menu li {
-	margin: 10px;
-	padding: 0 15px 0 0;
-	border-right: 1px solid #f1c100;
-	cursor: pointer;
+header.scrolled .header-bg {
+    transform: translateY(0);
 }
-nav .menu a span:nth-child(1) {
-	text-transform: uppercase;
-	font-size: 14px;
-	transition: 0.3s;
+header .logo {
+    display: block;
+	width: 200px;
+	margin-top: 10px;
+    margin-left: 10px;
+    position: relative;
+    cursor: pointer;
+}
+header .logo img {
+    transition: 0.3s;
+}
+header .logo img:nth-child(2) {
+    position: absolute; top: 0;
+    opacity: 0;
+}
+header.scrolled .logo img:nth-child(1) {
 	opacity: 0;
 }
-nav .menu li a span:nth-child(2) {
-	display: inline-block;
-	width: 5px; height: 10px;
-	margin-left: 10px;
-	background: #f1c100;
-	transition: 0.3s;
+header.scrolled .logo img:nth-child(2) {
+    opacity: 1;
 }
-nav .menu li.opened a span:nth-child(1), .menu li:hover a span:nth-child(1) {
-	opacity: 1;
+header nav {
+	text-align: center;
 }
-nav .menu li.opened span:nth-child(2), nav .menu li:hover span:nth-child(2) {
-	width: 40px;
+header nav li {
+    display: inline-block;
 }
-nav .logo {
-	font: 28px "Acme";
-	color: #61afe4;
+header nav a {
+	display: block;
+    width: 120px;
+    padding: 20px 0 23px;
+	font-size: 17px;
+	color: #fff;
+    transition: 0.3s;
+    position: relative;
+    cursor: pointer;
+}
+header nav a:before {
+    content: '';
+    position: absolute; bottom: 0; right: 0; left: 0;
+    height: 3px;
+    transform: scaleX(0);
+    transition: 0.3s;
+}
+header nav a:before {
+    content: '';
+    position: absolute; bottom: 0; right: 0; left: 0;
+    height: 3px;
+    transform: scaleX(0);
+    transition: 0.3s;
 }
 
+
+header nav a:before {
+    content: '';
+    position: absolute; bottom: 0; right: 0; left: 0;
+    height: 3px;
+    background: #770d85;
+    transform: scaleX(0);
+    transition: 0.3s;
+}
+header nav ul li:nth-child(2) a:before {
+    background: #7d42b9;
+}
+header nav ul li:nth-child(3) a:before {
+    background: #1ea3a4;
+}
+header nav ul li:nth-child(4) a:before {
+    background: #27b46b;
+}
+header nav ul li:nth-child(5) a:before {
+    background: #80b317;
+}
+header nav ul li:nth-child(6) a:before {
+    background: #ac3f3d;
+}
+
+
+header.scrolled nav a, header.scrolled nav a:hover {
+    color: #000;
+}
+header nav a:hover {
+    color: #fff;
+    box-shadow: rgba(0,0,0,0.3) 0 0 15px;
+}
+header nav a:hover:before {
+    transform: scaleX(1);
+}
 
 
 .main {
-	height: 600px;
-	background: url("../img/main_bg.jpg") top center fixed no-repeat;
-	background-size: 100%;
+	/*height: 700px;*/
+	height: 100vh;
+	background: url("../img/main_bg1.jpg") top center fixed no-repeat;
+	/*background-size: 100%;*/
+    background-size: cover;
 	position: relative;
 }
 .main:before {
@@ -373,169 +416,236 @@ nav .logo {
 	width: fit-content;
 	padding: 20px 40px;
 	margin: 100px auto 0;
-	/*background: rgba(255, 255, 255, 0.6);*/
 	border-radius: 5px;
 	user-select: none;
 }
 .main h1 {
 	width: fit-content;
-	font: 160px "Acme";
+	font: 160px "Helvetica ultralight";
 	margin: auto;
-	color: #f1c100;
-	-webkit-text-stroke: 0.5px #000;
-	/*letter-spacing: 7px;*/
-	font-weight: bolder;
-	text-transform: uppercase;
+	color: #fff;
+}
+.main h1 b {
+    font-family: "PT Sans Bold", sans-serif;
 }
 .main p {
 	width: fit-content;
 	margin: auto;
 	font-size: 48px;
-	color: #f1c100;
-	-webkit-text-stroke: 0.5px #000;
-	/*-webkit-text-stroke: 1px #61afe4;*/
-}
-
-
-.about {
-	border-top: 3px solid #61afe4;
-	padding-top: 120px;
-	background: #fafafa;
-}
-.about .wrap {
-	padding-right: 30px;
-}
-.about .pic {
-	width: 100%;
-	border: 2px solid #f1c100;
-	border-radius: 5px;
-	transform: rotate(1deg);
-}
-.about h2 {
-	margin: 10px 0;
+	color: #fff;
 }
 
 
 .how-to p {
-	text-align: center;
-	width: 70%;
-	margin: 20px auto;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    font-size: 24px;
 }
 .how-to ul {
-	margin: 30px 20px 30px 15%;
+    margin: 30px 20px 30px 15%;
 }
 .how-to ul li {
-	padding-left: 40px;
-	margin-top: 10px;
-	position: relative;
+    padding-left: 40px;
+    margin-top: 10px;
+    font-size: 20px;
+    position: relative;
 }
 .how-to ul li:before {
-	content: '';
-	width: 24px; height: 24px;
-	position: absolute; left: 0; top: 3px;
-	background: url("../img/how-to-first.png");
-	background-size: contain;
+    content: '';
+    width: 24px; height: 24px;
+    position: absolute; left: 0; top: 3px;
+    background: url("../img/how-to-first.png");
+    background-size: contain;
 }
 .how-to ul li:nth-child(2):before {
-	background: url("../img/how-to-second.png");
-	background-size: contain;
+    background: url("../img/how-to-second.png");
+    background-size: contain;
 }
 .how-to ul li:nth-child(3):before {
-	background: url("../img/how-to-done.png");
-	background-size: contain;
+    background: url("../img/how-to-done.png");
+    background-size: contain;
+}
+.how-to .btn {
+    color: #7d42b9;
+}
+.how-to .btn:hover {
+    background: #7d42b9;
+    color: #fff;
 }
 .workflow {
-	margin-top: 100px;
-	position: relative;
+    margin-top: 100px;
+    position: relative;
 }
 .workflow .item {
-	width: 80%; height: 300px;
-	/*padding: 0 20px;*/
-	margin: auto;
-	border-bottom: 2px dashed #e0e0e0;
-	position: relative;
+    width: 80%; height: 300px;
+    margin: auto;
+    border-bottom: 2px dashed #e0e0e0;
+    position: relative;
 }
 .workflow .item:before {
-	content: '';
-	width: 130px; height: 300px;
-	position: absolute; top: 50%; right: -160px;
-	background: url("../img/workflow-next.png") no-repeat;
-	background-size: contain;
-	transform: rotate(180deg);
+    content: '';
+    width: 130px; height: 300px;
+    position: absolute; top: 50%; right: -160px;
+    background: url("../img/workflow-next.png") no-repeat;
+    background-size: contain;
+    transform: rotate(180deg);
 }
 .workflow .item:nth-child(2n):before {
-	right: auto; left: -160px;
-	transform: rotate(0);
+    right: auto; left: -160px;
+    transform: rotate(0);
 }
 .workflow .item:nth-child(5):before {
-	display: none;
+    display: none;
 }
 .workflow .item:nth-child(1) {
-	border-top: 2px dashed #e0e0e0;
+    border-top: 2px dashed #e0e0e0;
 }
 .workflow .circle {
-	display: inline-block;
-	width: 240px; height: 240px;
-	margin-top: 30px;
-	background: #61afe4;
-	border-radius: 50%;
-	position: relative;
+    display: inline-block;
+    width: 240px; height: 240px;
+    margin-top: 30px;
+    /*background: #61afe4;*/
+    background: #770d85;
+    border-radius: 50%;
+    position: relative;
 }
+.workflow .item:nth-child(2) .circle {
+    background: #7d42b9;
+}
+.workflow .item:nth-child(3) .circle {
+    background: #27b46b;
+}
+.workflow .item:nth-child(4) .circle {
+    background: #80b317;
+}
+.workflow .item:nth-child(5) .circle {
+    background: #1ea3a4;
+}
+
+
 .workflow .add-circle {
-	content: '';
-	width: 220px; height: 220px;
-	position: absolute; top: 50%; left: 50%;
-	transform: translate(-50%, -50%);
-	background: #eee;
-	border-radius: 50%;
+    content: '';
+    width: 220px; height: 220px;
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #eee;
+    border-radius: 50%;
 }
 .workflow .circle p {
-	text-align: center;
-	width: 160px;
-	margin: 20% auto 0;
-	font: 42px "Gamja Flower";
+    text-align: center;
+    width: 160px;
+    margin: 20% auto 0;
+    font: 42px "Gamja Flower";
 }
 .workflow .circle-right {
-	float: right;
+    float: right;
 }
 .workflow .pic {
-	display: inline-block;
-	width: 600px; height: 80%;
-	background: url("../img/workflow_1.jpg") center center no-repeat;
-	background-size: cover;
-	margin-left: 40px;
-	border: 1px solid #61afe4;
+    display: inline-block;
+    width: 60%; height: 80%;
+    background: url("../img/workflow_1.jpg") center center no-repeat;
+    background-size: cover;
+    margin-left: 40px;
+    border: 1px solid #770d85;
 }
 .workflow .item:nth-child(2n) .pic {
-	margin: 30px 40px 0 0;
+    margin: 30px 40px 0 0;
 }
 .workflow .item:nth-child(2) .pic {
-	background-image: url("../img/workflow_2.jpg");
+    background-image: url("../img/workflow_2.jpg");
+    border-color: #7d42b9;
 }
 .workflow .item:nth-child(3) .pic {
-	width: 400px; height: 80%;
-	background-image: url("../img/workflow_3.jpg");
-	background-size: contain;
+    width: 400px; height: 80%;
+    background-image: url("../img/workflow_3.jpg");
+    background-size: contain;
+    border-color: #27b46b;
 }
 .workflow .item:nth-child(4) .pic {
-	background-image: url("../img/workflow_2.jpg");
+    background-image: url("../img/workflow_2.jpg");
+    border-color: #80b317;
 }
 .workflow .item:nth-child(5) .pic {
-	background-image: url("../img/main_1.jpg");
+    background-image: url("../img/main_1.jpg");
+    border-color: #1ea3a4;
 }
 .workflow .item:nth-child(1) p, .workflow .item:nth-child(4) p {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 .workflow .item:nth-child(2) p {
-	font-size: 28px;
+    font-size: 28px;
 }
 
 
+
+
+
+.about {
+	background: #fafafa;
+}
+.about h2 {
+    margin: 10px 0 40px;
+}
+.about p {
+    text-align: center;
+    width: 75%;
+    margin: 10px auto;
+}
+.about .item {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.about .item:hover {
+    /*background: rgba(30, 163, 164, 0.4);*/
+}
+.about .pic {
+	width: 80%;
+    margin: auto;
+	border: 2px solid #1ea3a4;
+	border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+.about .row .col-lg-4:nth-child(3) .pic {
+	border-color:  #7d42b9;
+}
+.about .row .col-lg-4:nth-child(4) .pic {
+	border-color:  #80b317;
+}
+
+.about .pic:before {
+    content: '';
+	width: 300px; height: 300px;
+    position: absolute; top: 0; left: 0;
+    background: rgba(0,0,0,0.5);
+	border-radius: 50%;
+}
+.about .txt {
+    margin-top: 20px;
+}
+.about .txt h3 {
+    font:24px "PT Sans Bold";
+    margin: 0;
+}
+.about .txt p {
+    font-size: 18px;
+    margin: 5px auto 10px;
+}
 
 
 
 .gallery {
 	background: #fafafa;
+}
+.gallery p {
+    text-align: center;
+    font-size: 20px;
+    color: #757575;
 }
 .gallery .pic {
 	width: 100%;
