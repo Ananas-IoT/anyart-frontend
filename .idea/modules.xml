@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AnyArt-web.iml" filepath="$PROJECT_DIR$/.idea/AnyArt-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AnyArt-Web.iml" filepath="$PROJECT_DIR$/.idea/AnyArt-Web.iml" />
     </modules>
   </component>
 </project>

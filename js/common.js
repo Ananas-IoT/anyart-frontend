@@ -86,78 +86,7 @@ $(function() {
 		});
 
 
-	//Каруселька
-	//Документация: http://owlgraphic.com/owlcarousel/
-	$('.owl-carousel').owlCarousel({
-	    loop:true,
-	    margin:10,
-	    autoplay:true,
-	    nav:true,
-	    navText:['<span><i class="fa fa-angle-left" aria-hidden="true"></i></span>','<span><i class="fa fa-angle-right" aria-hidden="true"></i></span>'],
-	    autoplayTimeout:6000,
-	    animateOut: 'fadeOut',
-	    pagination: true,
-	    responsive:{
-	        0:{
-	            items:1
-	        },
-	        600:{
-	            items:1
-	        },
-	        1000:{
-	            items:1
-	        }
-	    }
-	})
 
-	//Каруселька
-	//Документация: http://owlgraphic.com/owlcarousel/
-	$('.owl-carousel2').owlCarousel({
-	    loop:true,
-	    margin:10,
-	    autoplay:true,
-	    nav:true,
-	    navText:['<span><i class="fa fa-angle-left" aria-hidden="true"></i></span>','<span><i class="fa fa-angle-right" aria-hidden="true"></i></span>'],
-	    autoplayTimeout:6000,
-	    animateOut: 'fadeOut',
-	    pagination: true,
-	    responsive:{
-	        0:{
-	            items:1
-	        },
-	        600:{
-	            items:1
-	        },
-	        1000:{
-	            items:1
-	        }
-	    }
-	})
-
-	//Каруселька
-	//Документация: http://owlgraphic.com/owlcarousel/
-	$('.owl-carousel3').owlCarousel({
-	    loop:true,
-	    margin:10,
-	    autoplay:true,
-	    nav:true,
-	    navText:['<span><i class="fa fa-angle-left" aria-hidden="true"></i></span>','<span><i class="fa fa-angle-right" aria-hidden="true"></i></span>'],
-	    autoplayTimeout:6000,
-	    animateOut: 'fadeOut',
-	    pagination: true,
-	    responsive:{
-	        0:{
-	            items:1
-	        },
-	        600:{
-	            items:1
-	        },
-	        1000:{
-	            items:1
-	        }
-	    }
-	})
-	
 	//Кнопка "Наверх"
 	//Документация:
 	//http://api.jquery.com/scrolltop/
@@ -207,6 +136,14 @@ $(function() {
 
 
 
+
+//slick partners
+$('.partners .carousel').slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1
+});
+
 //nav changes color while scrolling
 let header = document.getElementsByTagName('header')[0];
 function navColorChanger () {
@@ -217,29 +154,20 @@ function navColorChanger () {
     }
 }
 navColorChanger();
-
 //scroll menu
 $('header a').click(function () {
     $('html, body').animate({scrollTop:$($(this).attr('data-scroll-to')).offset().top}, 1000)
 });
 
+// function getElementTopHeight(elem) {
+//     let box = elem.getBoundingClientRect();
+//     return box.top + pageYOffset;
+// }
+// function getElementBottomHeight(elem) {
+//     return getElementTopHeight(elem) + elem.offsetHeight;
+// }
+// function isInViewport(elem) {
+//     return pageYOffset+(document.documentElement.clientHeight*0.9) >= getElementTopHeight(elem);
+// }
 
-let footerWrap = document.getElementsByClassName('footer-wrap')[0];
-function getElementTopHeight(elem) {
-    let box = elem.getBoundingClientRect();
-    return box.top + pageYOffset;
-}
-function getElementBottomHeight(elem) {
-    return getElementTopHeight(elem) + elem.offsetHeight;
-}
-function isInViewport(elem) {
-    return pageYOffset+(document.documentElement.clientHeight*0.9) >= getElementTopHeight(elem);
-}
-
-function fadeInCurrent() {
-    if(isInViewport(footerWrap)) {
-        footerWrap.classList.add('in-bottom');
-    }
-}
-fadeInCurrent();
-window.onscroll = function () {fadeInCurrent(), navColorChanger()};
+window.onscroll = function () {navColorChanger()};
