@@ -7,7 +7,7 @@ const state = {
 };
 
 const getters = {
-  getCurrentUser(state) {
+  getUser(state) {
     return state.user
   },
   isAuthenticated(state) {
@@ -23,7 +23,7 @@ const actions = {
 
 const mutations = {
   addUser: function (state, newUser) {
-    state.user = newUser
+    state.user = newUser;
     //send new user to database
   }
 };

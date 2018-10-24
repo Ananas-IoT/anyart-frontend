@@ -11,6 +11,14 @@
       name: "login",
       components: {
         'signup': Signup
+      },
+      data() {
+        return {
+
+        }
+      },
+      methods: {
+
       }
     }
 </script>
