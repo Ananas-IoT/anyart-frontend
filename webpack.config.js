@@ -2,6 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
+  // mode: "development",
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -32,11 +33,33 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[hash]'
+        use:{
+          loader: 'file-loader'
+        },
+        // options: {
+          // name: '[name].[ext]?[hash]'
+        // }
+      },
+      {
+        test: /\.(html)$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: "html-loader"
+        },
+        // options: {
+        //   loader: 'file-loader?name=[path][name].[ext]!extract-loader!html-loader'
+        // }
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        use: {
+          loader: 'url-loader'
         }
-      }
+      },
     ]
   },
   resolve: {

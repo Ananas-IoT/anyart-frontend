@@ -1,9 +1,9 @@
 
 
 const state = {
-  errors:[],
+  // errors:[],
   user: {},
-  isAuthenticated: null
+  isAuthenticated: false
 };
 
 const getters = {
@@ -16,15 +16,23 @@ const getters = {
 };
 
 const actions = {
-  addUser: function (context, newUser) {
-    context.commit('addUser', newUser)
+  addNewUser: function (context, newUser) {
+    context.commit('addNewUser', newUser)
   },
+  setUser: function (context, user) {
+    context.commit('setUser', user);
+  }
 };
 
 const mutations = {
-  addUser: function (state, newUser) {
+  addNewUser: function (state, newUser) {
     state.user = newUser;
-    //send new user to database
+    //send new user to backend
+    state.isAuthenticated = true;
+  },
+  setUser: function (state, user) {
+    state.user = user;
+    state.isAuthenticated = true;
   }
 };
 

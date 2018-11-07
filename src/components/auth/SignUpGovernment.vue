@@ -64,44 +64,13 @@
         return true;
       },
 
-      addUser: function () {
-        this.$store.dispatch('addUser', this.user);
+      addNewUser: function () {
+        this.$store.dispatch('addNewUser', this.user);
       },
     }
   }
 </script>
 
 <style scoped>
-  .body {
-    text-align: center;
-    width: 40%;
-    padding: 30px;
-    margin: 40px auto 0;
-    background: #eee;
-    border-radius: 5px;
-  }
-  h2 {
-    text-align: center;
-  }
 
-  .body input {
-    display: block;
-    width: 300px;
-    padding: 10px 15px;
-    margin: 10px auto;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-  }
-
-  .body button {
-    display: block;
-    width: 320px;
-    height: 30px;
-    margin: auto;
-  }
-
-  .invalid {
-    border: 2px solid #ff0000 !important;
-  }
 </style>
