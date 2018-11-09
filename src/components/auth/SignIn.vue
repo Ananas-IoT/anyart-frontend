@@ -55,7 +55,7 @@
       setUser: function (user) {
         this.$store.dispatch('setUser', user);
         var token  = "1";//get token from api
-        localStorage.setItem('token', token);
+        localStorage.setItem('user-token', token);
       },
     }
   }

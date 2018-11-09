@@ -236,6 +236,7 @@
 </template>
 
 <script>
+  import {getUserByToken} from '../api/auth'
   import jQuery from 'jquery'
   import slick from '../assets/landing/libs/slick/slick.min'
 
@@ -251,6 +252,17 @@
       }
     },
     created() {
+
+      const token = localStorage.getItem('user-token');
+      if (token) {
+        // token = JSON.parse(token);
+        this.user = getUserByToken(token);
+        this.$store.dispatch('setUser', this.user);
+
+        // this.$router.push('/');
+      }
+
+
       this.isAuth = this.$store.getters.isAuthenticated;
       if (this.isAuth) {
         this.user = this.$store.getters.getUser;

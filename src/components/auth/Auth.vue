@@ -22,7 +22,7 @@
       methods: {
           logOut: function () {
             this.$store.dispatch('clearUser');
-            localStorage.removeItem('token')
+            localStorage.removeItem('user-token')
           }
       },
       computed: {

@@ -94,7 +94,7 @@
       addNewUser: function () {
         this.$store.dispatch('addNewUser', this.user);
         var token  = "1";//get token from api
-        localStorage.setItem('token', token);
+        localStorage.setItem('user-token', token);
         this.$router.push("/");
       },
     }
