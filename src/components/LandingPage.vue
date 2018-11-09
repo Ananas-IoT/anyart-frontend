@@ -11,8 +11,8 @@
       <div class="row">
         <div class="col-lg-3">
           <a data-scroll-to="#main" class="logo">
-            <img src="./img/logo_small_white.png" alt="">
-            <img src="./img/logo_small.png" alt="">
+            <img src="../assets/landing/img/logo_small_white.png" alt="">
+            <img src="../assets/landing/img/logo_small.png" alt="">
           </a>
         </div>
         <div class="col-lg-9">
@@ -116,34 +116,34 @@
         </div>
         <div class="col-lg-4">
           <div class="item">
-            <div class="pic"><img src="./img/about_photo1.jpg" alt=""></div>
+            <div class="pic"><img src="../assets/landing/img/about_photo1.jpg" alt=""></div>
             <div class="txt">
               <h3>Манько Анна</h3>
               <p>Product Owner, Back-End Developer</p>
-              <a href=""><img src="./img/telegram_icon.png" alt="">Telegram</a>
-              <a href="mailto:"><img src="./img/gmail_icon.png" alt="">Mail</a>
+              <a href=""><img src="../assets/landing/img/telegram_icon.png" alt="">Telegram</a>
+              <a href="mailto:"><img src="../assets/landing/img/gmail_icon.png" alt="">Mail</a>
             </div>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="item">
-            <div class="pic"><img src="./img/about_photo1.jpg" alt=""></div>
+            <div class="pic"><img src="../assets/landing/img/about_photo1.jpg" alt=""></div>
             <div class="txt">
               <h3>Логвінов Данііл</h3>
               <p>UX-designer, Front-End developer</p>
-              <a href=""><img src="./img/telegram_icon.png" alt="">Telegram</a>
-              <a href="mailto:"><img src="./img/gmail_icon.png" alt="">Mail</a>
+              <a href=""><img src="../assets/landing/img/telegram_icon.png" alt="">Telegram</a>
+              <a href="mailto:"><img src="../assets/landing/img/gmail_icon.png" alt="">Mail</a>
             </div>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="item">
-            <div class="pic"><img src="./img/about_photo1.jpg" alt=""></div>
+            <div class="pic"><img src="../assets/landing/img/about_photo1.jpg" alt=""></div>
             <div class="txt">
               <h3>Гурський Михайло</h3>
               <p>Architect</p>
-              <a href=""><img src="./img/telegram_icon.png" alt="">Telegram</a>
-              <a href="mailto:"><img src="./img/gmail_icon.png" alt="">Mail</a>
+              <a href=""><img src="../assets/landing/img/telegram_icon.png" alt="">Telegram</a>
+              <a href="mailto:"><img src="../assets/landing/img/gmail_icon.png" alt="">Mail</a>
             </div>
           </div>
         </div>
@@ -159,20 +159,20 @@
           <p>Це лише деякі приклади робіт, з часом їх ставатиме ще більше!</p>
           <div class="row">
             <div class="col-lg-3">
-              <div class="pic"><a href="">click for more!</a><img src="./img/g1.jpg" alt=""></div>
-              <div class="pic"><a href="">click for more!</a><img src="./img/g5.jpg" alt=""></div>
+              <div class="pic"><a href="">click for more!</a><img src="../assets/landing/img/g1.jpg" alt=""></div>
+              <div class="pic"><a href="">click for more!</a><img src="../assets/landing/img/g5.jpg" alt=""></div>
             </div>
             <div class="col-lg-3">
-              <div class="pic"><a href="">click for more!</a><img src="./img/g2.jpg" alt=""></div>
-              <div class="pic"><a href="">click for more!</a><img src="./img/g6.jpg" alt=""></div>
+              <div class="pic"><a href="">click for more!</a><img src="../assets/landing/img/g2.jpg" alt=""></div>
+              <div class="pic"><a href="">click for more!</a><img src="../assets/landing/img/g6.jpg" alt=""></div>
             </div>
             <div class="col-lg-3">
-              <div class="pic"><a href="">click for more!</a><img src="./img/g3.jpg" alt=""></div>
-              <div class="pic"><a href="">click for more!</a><img src="./img/g7.jpg" alt=""></div>
+              <div class="pic"><a href="">click for more!</a><img src="../assets/landing/img/g3.jpg" alt=""></div>
+              <div class="pic"><a href="">click for more!</a><img src="../assets/landing/img/g7.jpg" alt=""></div>
             </div>
             <div class="col-lg-3">
-              <div class="pic"><a href="">click for more!</a><img src="./img/g4.jpg" alt=""></div>
-              <div class="pic"><a href="">click for more!</a><img src="./img/g8.jpg" alt=""></div>
+              <div class="pic"><a href="">click for more!</a><img src="../assets/landing/img/g4.jpg" alt=""></div>
+              <div class="pic"><a href="">click for more!</a><img src="../assets/landing/img/g8.jpg" alt=""></div>
             </div>
           </div>
         </div>
@@ -207,14 +207,14 @@
         <div class="col-lg-12">
           <h2>Наші партнери:</h2>
           <div class="carousel">
-            <div class="item"><img src="./img/partners/lcc.png" alt=""></div>
-            <div class="item"><img src="./img/partners/lcc.png" alt=""></div>
-            <div class="item"><img src="./img/partners/lcc.png" alt=""></div>
-            <div class="item"><img src="./img/partners/lcc.png" alt=""></div>
-            <div class="item"><img src="./img/partners/lcc.png" alt=""></div>
-            <div class="item"><img src="./img/partners/lcc.png" alt=""></div>
-            <div class="item"><img src="./img/partners/lcc.png" alt=""></div>
-            <div class="item"><img src="./img/partners/lcc.png" alt=""></div>
+            <div class="item"><img src="../assets/landing/img/partners/lcc.png" alt=""></div>
+            <div class="item"><img src="../assets/landing/img/partners/lcc.png" alt=""></div>
+            <div class="item"><img src="../assets/landing/img/partners/lcc.png" alt=""></div>
+            <div class="item"><img src="../assets/landing/img/partners/lcc.png" alt=""></div>
+            <div class="item"><img src="../assets/landing/img/partners/lcc.png" alt=""></div>
+            <div class="item"><img src="../assets/landing/img/partners/lcc.png" alt=""></div>
+            <div class="item"><img src="../assets/landing/img/partners/lcc.png" alt=""></div>
+            <div class="item"><img src="../assets/landing/img/partners/lcc.png" alt=""></div>
           </div>
         </div>
       </div>
@@ -225,7 +225,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <div class="logo"><img src="./img/logo_large_white.png" alt=""></div>
+          <div class="logo"><img src="../assets/landing/img/logo_large_white.png" alt=""></div>
           <div class="copyright">Copyright(c) Ананас</div>
         </div>
         <div class="col-lg-6">
@@ -269,11 +269,11 @@
 
 <script>
   import jQuery from 'jquery'
-  import slick from './libs/slick/slick.min'
+  import slick from '../assets/landing/libs/slick/slick.min'
 
   import { library } from '@fortawesome/fontawesome-svg-core'
-  import {  } from '@fortawesome/free-solid-svg-icons'
-  library.add(faUserSecret);
+  // import {  } from '@fortawesome/free-solid-svg-icons'
+  // library.add(faUserSecret);
 
     export default {
         name: "landingPage",
@@ -312,10 +312,10 @@
 </script>
 
 <style scoped>
-   @import '../../../node_modules/bootstrap/dist/css/bootstrap-grid.css';
-   @import './libs/slick/slick.css';
-   @import './libs/slick/slick-theme.css';
-   @import "css/main.css";
-   @import "css/fonts.css";
-   @import "css/media.css";
+   @import '../../node_modules/bootstrap/dist/css/bootstrap-grid.css';
+   @import '../assets/landing/libs/slick/slick.css';
+   @import '../assets/landing/libs/slick/slick-theme.css';
+   @import "../assets/landing/css/main.css";
+   @import "../assets/landing/css/fonts.css";
+   @import "../assets/landing/css/media.css";
 </style>

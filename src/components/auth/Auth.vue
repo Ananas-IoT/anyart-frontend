@@ -5,10 +5,9 @@
     <router-view v-if="!isAuth"></router-view>
     <div class="authenticated" v-else>
       <h3>Sorry, but you are registered</h3>
-      <button>back to main page</button>
+      <router-link to="/">back to main page</router-link>
     </div>
   </div>
-
 </template>
 
 <script>

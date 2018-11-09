@@ -53,7 +53,7 @@
           this.fieldValidation.email = false;
         }
         if (this.isAllTrue(this.fieldValidation)) {
-
+            this.addNewUser().then(this.$router.push("/"))
         }
       },
 
@@ -66,6 +66,8 @@
 
       addNewUser: function () {
         this.$store.dispatch('addNewUser', this.user);
+        var token  = "1";//get token from api
+        localStorage.setItem('token', token);
       },
     }
   }

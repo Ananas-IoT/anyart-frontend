@@ -41,7 +41,7 @@
           this.fieldValidation.password = false;
         }
         if (this.isAllTrue(this.fieldValidation)) {
-
+          this.setUser(this.user).then(this.$router.push("/"));
         }
       },
 
@@ -52,8 +52,10 @@
         return true;
       },
 
-      addNewUser: function () {
-        this.$store.dispatch('addNewUser', this.user);
+      setUser: function (user) {
+        this.$store.dispatch('setUser', user);
+        var token  = "1";//get token from api
+        localStorage.setItem('token', token);
       },
     }
   }
