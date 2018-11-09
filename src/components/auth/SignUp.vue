@@ -20,8 +20,8 @@
       <div v-if="user.role === 'basic'">
         <button @click="becomeArtist">I want to be an Artist!</button>
         <p>{{descriptionList.artist}}</p>
-        <button @click="addNewUser">Submit</button>
       </div>
+      <button @click="addNewUser">Submit</button>
     </div>
   </div>
 

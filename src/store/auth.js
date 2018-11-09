@@ -21,6 +21,9 @@ const actions = {
   },
   setUser: function (context, user) {
     context.commit('setUser', user);
+  },
+  clearUser: function (context) {
+    context.commit('clearUser');
   }
 };
 
@@ -33,6 +36,10 @@ const mutations = {
   setUser: function (state, user) {
     state.user = user;
     state.isAuthenticated = true;
+  },
+  clearUser: function (state) {
+    state.user = {};
+    state.isAuthenticated = false;
   }
 };
 

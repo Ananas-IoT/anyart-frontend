@@ -4,7 +4,6 @@
   <body>
   <!--<button class="main_mnu_button hidden-md hidden-lg"><i class="fa fa-bars"></i></button>-->
 
-
   <header>
     <div class="header-bg"></div>
     <div class="container-fluid">
@@ -15,7 +14,7 @@
             <img src="../assets/landing/img/logo_small.png" alt="">
           </a>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-7">
           <nav>
             <ul>
               <li><a>Головна</a></li>
@@ -26,6 +25,18 @@
               <li><a>Карта</a></li>
             </ul>
           </nav>
+        </div>
+        <div class="col-lg-2">
+          <div class="user-block">
+            <div v-if="this.isAuth" class="user-info">
+              <router-link to="/auth/signup">{{user.surname}}</router-link>
+              <div>{{user.role}}</div>
+            </div>
+            <div v-else class="registration">
+              <router-link to="/auth/signup">Register</router-link>
+              <router-link to="/auth/signin">or Sign In</router-link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -180,27 +191,6 @@
     </div>
   </section>
 
-  <!--<section class="android"> <div class="bg-color"></div>-->
-  <!--<div class="container">-->
-  <!--<div class="row">-->
-  <!--<div class="col-lg-6">-->
-  <!--<div class="wrap">-->
-  <!--<h2>Тепер і на Android!</h2>-->
-  <!--<p>Тут ви зможете набагато зручніше завантажувати фото та комментувати їх!</p>-->
-  <!--<a href=""><img src="img/google_play.png" alt=""></a>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--<div class="col-lg-6">-->
-  <!--<div class="phone">-->
-  <!--<div class="phone-pic"></div>-->
-  <!--&lt;!&ndash;<img src="img/pixel.png" alt="">&ndash;&gt;-->
-  <!--<div class="logo"><img src="img/logo_large.png" alt=""></div>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--</section>-->
-
   <section class="partners">
     <div class="container">
       <div class="row">
@@ -240,28 +230,6 @@
     </div>
   </footer>
 
-
-  <!--&lt;!&ndash;[if lt IE 9]>-->
-  <!--<script src="libs/html5shiv/es5-shim.min.js"></script>-->
-  <!--<script src="libs/html5shiv/html5shiv.min.js"></script>-->
-  <!--<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>-->
-  <!--<script src="libs/respond/respond.min.js"></script>-->
-  <!--<![endif]&ndash;&gt;-->
-
-  <!--<script src="libs/jquery/jquery-1.11.2.min.js"></script>-->
-  <!--<script src="libs/waypoints/waypoints.min.js"></script>-->
-  <!--<script src="libs/animate/animate-css.js"></script>-->
-  <!--<script src="libs/plugins-scroll/plugins-scroll.js"></script>-->
-  <!--<script src="libs/magnific/jquery.magnific-popup.min.js"></script>-->
-  <!--<script src="libs/owl.carousel/owl.carousel.min.js"></script>-->
-  <!--<script src="libs/jVForms/jVForms.min.js"></script>-->
-  <!--<script src="libs/inputmask/jquery.inputmask.bundle.js"></script>-->
-  <!--<script src="libs/nice-select/jquery.nice-select.min.js"></script>-->
-  <!--<script src="libs/slick/slick.min.js"></script>-->
-
-
-  <!--<script src="js/common.js"></script>-->
-
   </body>
 
 
@@ -271,51 +239,59 @@
   import jQuery from 'jquery'
   import slick from '../assets/landing/libs/slick/slick.min'
 
-  import { library } from '@fortawesome/fontawesome-svg-core'
+  import {library} from '@fortawesome/fontawesome-svg-core'
   // import {  } from '@fortawesome/free-solid-svg-icons'
   // library.add(faUserSecret);
 
-    export default {
-        name: "landingPage",
-        mounted() {
+  export default {
+    name: "landingPage",
+    data() {
+      return {
+        user: {}
+      }
+    },
+    created() {
+      this.isAuth = this.$store.getters.isAuthenticated;
+      if (this.isAuth) {
+        this.user = this.$store.getters.getUser;
+      }
+    },
+    mounted() {
 
-          //nav changes color while scrolling
-          let header = document.getElementsByTagName('header')[0];
-          function navColorChanger () {
-            if (window.pageYOffset != 0 ) {
-              header.classList.add("scrolled");
-            } else {
-              header.classList.remove("scrolled");
-            }
-          }
-          window.addEventListener('scroll', navColorChanger);
-          navColorChanger();
+      //nav changes color while scrolling
+      let header = document.getElementsByTagName('header')[0];
 
-
-          //scroll menu
-          jQuery('header a').click(function () {
-            jQuery('html, body').animate({scrollTop:jQuery(jQuery(this).attr('data-scroll-to')).offset().top}, 1000)
-          });
-
-
-
-          //slick partners
-          jQuery('.partners .carousel').slick({
-            infinite: true,
-            slidesToShow: 4,
-            slidesToScroll: 1
-          });
-
-
+      function navColorChanger() {
+        if (window.pageYOffset != 0) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
         }
+      }
+
+      window.addEventListener('scroll', navColorChanger);
+      navColorChanger();
+
+      //scroll menu
+      jQuery('header a').click(function () {
+        jQuery('html, body').animate({scrollTop: jQuery(jQuery(this).attr('data-scroll-to')).offset().top}, 1000)
+      });
+
+      //slick partners
+      jQuery('.partners .carousel').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1
+      });
     }
+  }
 </script>
 
 <style scoped>
-   @import '../../node_modules/bootstrap/dist/css/bootstrap-grid.css';
-   @import '../assets/landing/libs/slick/slick.css';
-   @import '../assets/landing/libs/slick/slick-theme.css';
-   @import "../assets/landing/css/main.css";
-   @import "../assets/landing/css/fonts.css";
-   @import "../assets/landing/css/media.css";
+  @import '../../node_modules/bootstrap/dist/css/bootstrap-grid.css';
+  @import '../assets/landing/libs/slick/slick.css';
+  @import '../assets/landing/libs/slick/slick-theme.css';
+  @import "../assets/landing/css/main.css";
+  @import "../assets/landing/css/fonts.css";
+  @import "../assets/landing/css/media.css";
 </style>

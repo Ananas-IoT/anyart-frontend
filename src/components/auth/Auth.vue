@@ -5,6 +5,7 @@
     <router-view v-if="!isAuth"></router-view>
     <div class="authenticated" v-else>
       <h3>Sorry, but you are registered</h3>
+      <button @click="logOut">Log out</button>
       <router-link to="/">back to main page</router-link>
     </div>
   </div>
@@ -16,6 +17,12 @@
       data() {
           return {
 
+          }
+      },
+      methods: {
+          logOut: function () {
+            this.$store.dispatch('clearUser');
+            localStorage.removeItem('token')
           }
       },
       computed: {
@@ -66,5 +73,10 @@
   }
   .authenticated h3 {
     margin: 100px 0 20px;
+  }
+  .authenticated a {
+    display: inline-block;
+    font-size: 18px;
+    border-bottom: 1px #000 solid;
   }
 </style>
