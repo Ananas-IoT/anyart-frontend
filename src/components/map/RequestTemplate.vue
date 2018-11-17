@@ -26,16 +26,29 @@
           photo: null,
           description: '',
           address: '',
-          author: ''
+          author: '',
+          date: ''
         },
         type: "Request"
       }
     },
     methods: {
       processRequest: function () {
+
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth()+1;
+        let yyyy = today.getFullYear();
+        if(dd<10) {dd = '0'+dd}
+        if(mm<10) {mm = '0'+mm}
+        today = mm + '.' + dd + '.' + yyyy;
+
+        this.request.date = today;
         this.request.address = this.requestAddress.name;
         this.request.author = this.$store.getters.getUser.surname;
         console.log(this.request);
+
+        this.$store.dispatch('addRequest', this.request);
         this.$emit('addMarker');
       }
     }
