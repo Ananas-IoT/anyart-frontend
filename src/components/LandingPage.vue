@@ -22,7 +22,7 @@
               <li><a data-scroll-to="#about">Про нас</a></li>
               <li><a data-scroll-to="#gallery">Галерея</a></li>
               <li><a data-scroll-to="#footer">Контакти</a></li>
-              <li><a>Карта</a></li>
+              <li><router-link to="/map">Карта</router-link></li>
             </ul>
           </nav>
         </div>
@@ -303,7 +303,7 @@
   @import '../../node_modules/bootstrap/dist/css/bootstrap-grid.css';
   @import '../assets/landing/libs/slick/slick.css';
   @import '../assets/landing/libs/slick/slick-theme.css';
-  @import "../assets/landing/css/main.css";
+  @import "../assets/landing/css/main.css" scoped;
   @import "../assets/landing/css/fonts.css";
   @import "../assets/landing/css/media.css";
 </style>

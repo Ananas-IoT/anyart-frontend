@@ -1,12 +1,21 @@
 <template>
   <div>
+
+    <request-template
+      :requestAddress=this.currentPlace
+      v-on:addMarker="addMarker"
+      v-bind:class="{opened: openedRequest}"
+      class="request-template">
+
+    </request-template>
+    <div @click="openedRequest = !openedRequest" class="request-shadow"></div>
     <div>
       <h2>Search and add a pin</h2>
       <label>
         <gmap-autocomplete
           @place_changed="setPlace">
         </gmap-autocomplete>
-        <button @click="addMarker">Add</button>
+        <button @click="openedRequest = !openedRequest">Add</button>
       </label>
       <br/>
 
@@ -15,7 +24,7 @@
     <gmap-map
       :center="center"
       :zoom="12"
-      @click="addMarker"
+      @click="openedRequest = !openedRequest"
       style="width:100%;  height: 480px;"
     >
       <gmap-marker
@@ -29,15 +38,21 @@
 </template>
 
 <script>
+  import RequestTemplate from './map/RequestTemplate'
+
 
   export default {
     name: "Map",
+    components: {
+      "request-template": RequestTemplate
+    },
     data() {
       return {
         center: {lat: 49.85, lng: 24.0166666667},
         markers: [],
         // places: [],
-        currentPlace: null
+        currentPlace: null,
+        openedRequest: false
       };
     },
 
@@ -52,6 +67,8 @@
         this.currentPlace = place;
       },
       addMarker(event) {
+        this.openedRequest = false;
+
         let marker;
         if (this.currentPlace) {
           marker = {
@@ -59,7 +76,7 @@
             lng: this.currentPlace.geometry.location.lng()
           };
         } else {
-         marker = {
+          marker = {
             lat: event.latLng.lat(),
             lng: event.latLng.lng()
           };
@@ -68,7 +85,8 @@
         // this.places.push(this.currentPlace);
         // this.center = marker;
         this.currentPlace = null;
-      },
+      }
+      ,
       geolocate: function () {
         navigator.geolocation.getCurrentPosition(position => {
           this.center = {
@@ -76,11 +94,42 @@
             lng: position.coords.longitude
           };
         });
-      },
+      }
     }
   }
 </script>
 
-<style scoped>
+<style>
+
+  .request-template {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50vh);
+    transition: 0.3s;
+    opacity: 0;
+    z-index: 100;
+  }
+
+  .request-shadow {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 90;
+  }
+
+  .request-template.opened {
+    transform: translate(-50%, 10vh);
+    opacity: 1;
+  }
+
+  .request-template.opened + .request-shadow {
+    pointer-events: auto;
+    opacity: 1;
+  }
 
 </style>
