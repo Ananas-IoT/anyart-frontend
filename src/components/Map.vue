@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <router-link to="/">GOTO MAIN</router-link>
+  <div class="body">
+    <user-header></user-header>
+
     <request-template
       :requestAddress=this.currentPlace
       v-on:addMarker="addMarker"
       v-bind:class="{opened: openedRequest}"
       class="request-template">
-
     </request-template>
+
     <div @click="openedRequest = !openedRequest" class="request-shadow"></div>
-    <div>
-      <h2>Search and add a pin</h2>
+    <div class="search-form">
       <label>
         <gmap-autocomplete
           @place_changed="setPlace">
@@ -25,7 +25,7 @@
       :center="center"
       :zoom="12"
       @click="openedRequest = !openedRequest"
-      style="width:100%;  height: 80vh;"
+      style="width:100%;  height: 85vh;"
     >
       <gmap-marker
         :key="index"
@@ -39,11 +39,13 @@
 
 <script>
   import RequestTemplate from './map/RequestTemplate'
+  import Header from './Header'
 
 
   export default {
     name: "Map",
     components: {
+      "user-header": Header,
       "request-template": RequestTemplate
     },
     data() {
@@ -115,6 +117,10 @@
 
 <style>
 
+  .body {
+    padding-top: 45px;
+  }
+
   .request-template {
     position: absolute;
     left: 50%;
@@ -144,6 +150,25 @@
   .request-template.opened + .request-shadow {
     pointer-events: auto;
     opacity: 1;
+  }
+
+  .search-form {
+    position: absolute; top: 100px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+  }
+  .search-form input {
+    width: 400px;
+    padding: 10px 25px;
+    border: none;
+    border: 1px solid #000;
+    border-radius: 3px;
+  }
+  .search-form button {
+    width: 58px; height: 38px;
+    margin-left: -2px;
+    border: 1px solid #000;
+    border-radius: 3px;
   }
 
 </style>

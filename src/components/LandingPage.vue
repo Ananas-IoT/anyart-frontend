@@ -4,43 +4,7 @@
   <body>
   <!--<button class="main_mnu_button hidden-md hidden-lg"><i class="fa fa-bars"></i></button>-->
 
-  <header>
-    <div class="header-bg"></div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-3">
-          <a data-scroll-to="#main" class="logo">
-            <img src="../assets/landing/img/logo_small_white.png" alt="">
-            <img src="../assets/landing/img/logo_small.png" alt="">
-          </a>
-        </div>
-        <div class="col-lg-7">
-          <nav>
-            <ul>
-              <li><a>Головна</a></li>
-              <li><a data-scroll-to="#how-to">Як це працює?</a></li>
-              <li><a data-scroll-to="#about">Про нас</a></li>
-              <li><a data-scroll-to="#gallery">Галерея</a></li>
-              <li><a data-scroll-to="#footer">Контакти</a></li>
-              <li><router-link to="/map">Карта</router-link></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="col-lg-2">
-          <div class="user-block">
-            <div v-if="this.isAuth" class="user-info">
-              <router-link to="/auth/signup">{{user.surname}}</router-link>
-              <div>{{user.role}}</div>
-            </div>
-            <div v-else class="registration">
-              <router-link to="/auth/signup">Register</router-link>
-              <router-link to="/auth/signin">or Sign In</router-link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+  <user-header></user-header>
 
   <section id="main" class="main">
     <div class="container-fluid">
@@ -238,6 +202,7 @@
 <script>
   import {getUserByToken} from '../api/auth'
   import jQuery from 'jquery'
+  import Header from './Header'
   import slick from '../assets/landing/libs/slick/slick.min'
 
   import {library} from '@fortawesome/fontawesome-svg-core'
@@ -246,6 +211,9 @@
 
   export default {
     name: "landingPage",
+    components: {
+      "user-header": Header
+    },
     data() {
       return {
         user: {}
@@ -303,7 +271,7 @@
   @import '../../node_modules/bootstrap/dist/css/bootstrap-grid.css';
   @import '../assets/landing/libs/slick/slick.css';
   @import '../assets/landing/libs/slick/slick-theme.css';
-  @import "../assets/landing/css/main.css" scoped;
-  @import "../assets/landing/css/fonts.css";
+  /*@import "../assets/landing/css/main.css";*/
+  /*@import "../assets/landing/css/fonts.css";*/
   @import "../assets/landing/css/media.css";
 </style>
