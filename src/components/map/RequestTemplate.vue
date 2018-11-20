@@ -25,7 +25,7 @@
         request: {
           photo: null,
           description: '',
-          address: '',
+          address: {},
           author: '',
           date: ''
         },
@@ -44,7 +44,7 @@
         today = mm + '.' + dd + '.' + yyyy;
 
         this.request.date = today;
-        this.request.address = this.requestAddress.name;
+        this.request.address = this.requestAddress;
         this.request.author = this.$store.getters.getUser.surname;
         console.log(this.request);
 

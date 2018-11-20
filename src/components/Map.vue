@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <router-link to="/">GOTO MAIN</router-link>
     <request-template
       :requestAddress=this.currentPlace
       v-on:addMarker="addMarker"
@@ -25,7 +25,7 @@
       :center="center"
       :zoom="12"
       @click="openedRequest = !openedRequest"
-      style="width:100%;  height: 480px;"
+      style="width:100%;  height: 80vh;"
     >
       <gmap-marker
         :key="index"
@@ -49,6 +49,7 @@
     data() {
       return {
         center: {lat: 49.85, lng: 24.0166666667},
+        requests: [],
         markers: [],
         // places: [],
         currentPlace: null,
@@ -57,8 +58,12 @@
     },
 
     mounted() {
+      this.showMarkers();
       // this.geolocate();
 
+    },
+    created() {
+      this.requests = this.$store.getters.getAllRequests;
     },
 
     methods: {
@@ -85,8 +90,17 @@
         // this.places.push(this.currentPlace);
         // this.center = marker;
         this.currentPlace = null;
-      }
-      ,
+      },
+      showMarkers() {
+        for (var i = 0; i < this.requests.length; i++) {
+          let request = this.requests[i];
+          var marker = {
+            lat: request.address.geometry.location.lat(),
+            lng: request.address.geometry.location.lng()
+          };
+          this.markers.push({position: marker});
+        }
+      },
       geolocate: function () {
         navigator.geolocation.getCurrentPosition(position => {
           this.center = {
