@@ -4,7 +4,7 @@
     <form>
       <input type="file"/>
       <textarea v-model="request.description" placeholder="description" required></textarea>
-      <div>{{requestAddress.name}}</div>
+      <div v-if="requestAddress">{{requestAddress.name}}</div>
       <button @click="processRequest" type="button">Submit and Send</button>
     </form>
   </div>
@@ -15,9 +15,8 @@
     name: "RequestTemplate",
     props: {
       requestAddress: {
-        default: {
-          name: ''
-        }
+        default: {name: ''},
+        type: Object
       }
     },
     data() {

@@ -216,7 +216,7 @@
     },
     data() {
       return {
-        user: {}
+
       }
     },
     created() {
@@ -228,12 +228,6 @@
         this.$store.dispatch('setUser', this.user);
 
         // this.$router.push('/');
-      }
-
-
-      this.isAuth = this.$store.getters.isAuthenticated;
-      if (this.isAuth) {
-        this.user = this.$store.getters.getUser;
       }
     },
     mounted() {

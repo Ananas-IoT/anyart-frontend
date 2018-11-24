@@ -12,12 +12,16 @@
         <div class="col-lg-7">
           <nav>
             <ul>
-              <li><router-link to="/">Головна</router-link></li>
+              <li>
+                <router-link to="/">Головна</router-link>
+              </li>
               <li><a data-scroll-to="#how-to">Як це працює?</a></li>
               <li><a data-scroll-to="#about">Про нас</a></li>
               <li><a data-scroll-to="#gallery">Галерея</a></li>
               <li><a data-scroll-to="#footer">Контакти</a></li>
-              <li><router-link to="/map">Карта</router-link></li>
+              <li>
+                <router-link to="/map">Карта</router-link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -39,9 +43,20 @@
 </template>
 
 <script>
-    export default {
-        name: "Header"
-    }
+  export default {
+    name: "Header",
+    data() {
+      return {
+        user: {}
+      }
+    },
+    created() {
+      this.isAuth = this.$store.getters.isAuthenticated;
+      if (this.isAuth) {
+        this.user = this.$store.getters.getUser;
+      }
+    },
+  }
 </script>
 
 <style scoped>
