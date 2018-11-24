@@ -26,6 +26,7 @@
           photo: null,
           description: '',
           address: {},
+          position: {},
           author: '',
           date: ''
         },
@@ -34,7 +35,21 @@
     },
     methods: {
       processRequest: function () {
+        this.request.date = this.getCurDate();
+        this.request.address = this.requestAddress;
 
+        this.request.position = {
+          lat: this.requestAddress.geometry.location.lat(),
+          lng: this.requestAddress.geometry.location.lng()
+        };
+
+        this.request.author = this.$store.getters.getUser.surname;
+        // console.log(this.request);
+
+        this.$store.dispatch('addRequest', this.request);
+        this.$emit('addMarker', this.request);
+      },
+      getCurDate() {
         let today = new Date();
         let dd = today.getDate();
         let mm = today.getMonth()+1;
@@ -42,14 +57,7 @@
         if(dd<10) {dd = '0'+dd}
         if(mm<10) {mm = '0'+mm}
         today = mm + '.' + dd + '.' + yyyy;
-
-        this.request.date = today;
-        this.request.address = this.requestAddress;
-        this.request.author = this.$store.getters.getUser.surname;
-        console.log(this.request);
-
-        this.$store.dispatch('addRequest', this.request);
-        this.$emit('addMarker');
+        return today;
       }
     }
   }

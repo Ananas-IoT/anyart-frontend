@@ -24,12 +24,11 @@
     <gmap-map
       :center="center"
       :zoom="12"
-      @click="openedRequest = !openedRequest"
       style="width:100%;  height: 85vh;"
     >
       <gmap-marker
         :key="index"
-        v-for="(m, index) in markers"
+        v-for="(m, index) in requests"
         :position="m.position"
         @click="center=m.position"
       ></gmap-marker>
@@ -60,7 +59,6 @@
     },
 
     mounted() {
-      this.showMarkers();
       // this.geolocate();
 
     },
@@ -73,35 +71,9 @@
       setPlace(place) {
         this.currentPlace = place;
       },
-      addMarker(event) {
+      addMarker(reqToAdd) {
         this.openedRequest = false;
-
-        let marker;
-        if (this.currentPlace) {
-          marker = {
-            lat: this.currentPlace.geometry.location.lat(),
-            lng: this.currentPlace.geometry.location.lng()
-          };
-        } else {
-          marker = {
-            lat: event.latLng.lat(),
-            lng: event.latLng.lng()
-          };
-        }
-        this.markers.push({position: marker});
-        // this.places.push(this.currentPlace);
-        // this.center = marker;
-        this.currentPlace = null;
-      },
-      showMarkers() {
-        for (var i = 0; i < this.requests.length; i++) {
-          let request = this.requests[i];
-          var marker = {
-            lat: request.address.geometry.location.lat(),
-            lng: request.address.geometry.location.lng()
-          };
-          this.markers.push({position: marker});
-        }
+        this.requests.push(reqToAdd);
       },
       geolocate: function () {
         navigator.geolocation.getCurrentPosition(position => {
