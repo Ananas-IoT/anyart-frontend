@@ -2,7 +2,8 @@
   <div class="body">
     <h3>Please, complete the {{type}} form</h3>
     <form>
-      <input type="file"/>
+      <img ref="photoPreview" src="" alt="photo preview..">
+      <input ref="photoUpload" @change="processPhoto()" type="file"/>
       <textarea v-model="request.description" placeholder="description" required></textarea>
       <div v-if="requestAddress">{{requestAddress.name}}</div>
       <button @click="processRequest" type="button">Submit and Send</button>
@@ -34,6 +35,7 @@
     },
     methods: {
       processRequest: function () {
+
         this.request.date = this.getCurDate();
         this.request.address = this.requestAddress;
 
@@ -48,7 +50,23 @@
         this.$store.dispatch('addRequest', this.request);
         this.$emit('addMarker', this.request);
       },
-      getCurDate() {
+      processPhoto: function() {
+        var preview = this.$refs.photoPreview;
+        var file    = this.$refs.photoUpload.files[0];
+        var reader  = new FileReader();
+
+        reader.onloadend = function () {
+          preview.src = reader.result;
+        };
+
+        if (file) {
+          reader.readAsDataURL(file);
+          this.request.photo = file;
+        } else {
+          preview.src = '';
+        }
+      },
+      getCurDate: function() {
         let today = new Date();
         let dd = today.getDate();
         let mm = today.getMonth()+1;
