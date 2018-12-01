@@ -1,19 +1,23 @@
 <template>
   <div>
     <h2>Here goes Request List!</h2>
-    <div class="request" v-for="request in requestList">
-      <h4>{{request.address.name}}</h4>
-      <p>{{request.description}}</p>
-      <span>{{request.date}}</span>
-      <!--<img class="photo-preview" src="" alt="">-->
-      <img class="photo-preview" v-bind:src="showPhoto(request.photo)" src="" alt="">
-    </div>
+    <request-item class="request"
+                  v-for="(loopedRequest, index) in requestList"
+                  :request = loopedRequest
+                  :index = index
+    >
+    </request-item>
   </div>
 </template>
 
 <script>
+  import RequestItem from './RequestItem'
+
   export default {
     name: "RequestList",
+    components: {
+      "request-item": RequestItem
+    },
     props: {
       requestList: {
         type: Array
@@ -39,20 +43,8 @@
     //   }
     // },
     methods: {
-      showPhoto: function (file) {
-        function f(file) {
-          var preview = 'empty';
-          var reader = new FileReader();
-          reader.onloadend = function () {
-            preview = reader.result;
-          };
-          if (file) {
-            reader.readAsDataURL(file);
-          } else {
-            preview = '';
-          }
-        }
-      }
+
+
       // showPhoto: function (file, preview) {
       //   var reader = new FileReader();
       //   reader.onloadend = function () {

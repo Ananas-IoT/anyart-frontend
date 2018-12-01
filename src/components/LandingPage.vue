@@ -185,9 +185,9 @@
         <div class="col-lg-6">
           <h3>Слідкуйте за нашими новинами:</h3>
           <ul class="wrap">
-            <li><a href=""><span><font-awesome-icon icon="user-secret"/></span></a></li>
-            <li><a href=""><span><font-awesome-icon icon="coffee"/></span></a></li>
-            <li><a href=""><span><font-awesome-icon icon="coffee"/></span></a></li>
+            <!--<li><a href=""><span><font-awesome-icon icon="user-secret"/></span></a></li>-->
+            <!--<li><a href=""><span><font-awesome-icon icon="coffee"/></span></a></li>-->
+            <!--<li><a href=""><span><font-awesome-icon icon="coffee"/></span></a></li>-->
           </ul>
         </div>
       </div>
@@ -247,9 +247,9 @@
       navColorChanger();
 
       //scroll menu
-      jQuery('header a').click(function () {
-        jQuery('html, body').animate({scrollTop: jQuery(jQuery(this).attr('data-scroll-to')).offset().top}, 1000)
-      });
+      // jQuery('header a').click(function () {
+      //   jQuery('html, body').animate({scrollTop: jQuery(jQuery(this).attr('data-scroll-to')).offset().top}, 1000)
+      // });
 
       //slick partners
       jQuery('.partners .carousel').slick({
