@@ -66,7 +66,7 @@
 
       addNewUser: function () {
         this.$store.dispatch('addNewUser', this.user);
-        var token = "2";//get token from api
+        var token = "3";//get token from api
         localStorage.setItem('user-token', token);
       },
     }
@@ -74,6 +74,7 @@
 </script>
 
 <style scoped>
+  @import '../../assets/landing/css/auth.css';
   .body h2 {
     font-size: 24px;
   }

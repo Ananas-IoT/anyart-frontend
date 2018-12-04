@@ -1,13 +1,18 @@
 <template>
   <div class="body">
     <h3>Please, complete the {{type}} form</h3>
-    <form>
-      <img ref="photoPreview" src="" alt="photo preview..">
-      <input ref="photoUpload" @change="processPhoto()" type="file"/>
-      <textarea v-model="request.description" placeholder="description" required></textarea>
-      <div v-if="requestAddress">{{requestAddress.name}}</div>
-      <button @click="processRequest" type="button">Submit and Send</button>
-    </form>
+   <div class="request-wrap">
+     <form>
+       <textarea v-model="request.description" placeholder="description" required></textarea>
+       <div v-if="requestAddress">{{requestAddress.name}}</div>
+     </form>
+   </div>
+   <div class="img-preview">
+     <img ref="photoPreview" src="" alt="photo preview..">
+     <label for="files" class="img-input">Select Image</label>
+     <input id="files" ref="photoUpload" @change="processPhoto()" type="file">
+   </div>
+    <button class="btn" @click="processRequest" type="button">Submit and Send</button>
   </div>
 </template>
 
@@ -83,35 +88,59 @@
 <style scoped>
   .body {
     text-align: center;
-    width: 330px;
-    padding: 30px 20px;
-    margin: 40px auto;
+    width: 50%;
+    padding: 0 10px 30px;
+    margin: 20px 0 40px;
     background: #eee;
+    border: 1px solid #7d42b9;
     border-radius: 10px;
   }
-
-  form input[type='file'] {
+  .request-wrap {
+    text-align: center;
+    vertical-align: top;
+    width: 50%;
+    display: inline-block;
+  }
+  .img-preview {
+    text-align: center;
+    width: 49%;
+    display: inline-block;
+  }
+  .img-preview img {
+    display: block;
+    width: 180px; height: 180px;
+    margin: 0 auto 15px;
+  }
+  .img-preview input[type='file'] {
+    display: none;
     color: transparent;
+  }
+  .img-preview .img-input {
+    display: inline-block;
+    margin: auto;
+    cursor: pointer;
+    border-bottom: 1px solid #000;
   }
 
   form div {
     display: block;
     width: 80%;
     padding: 5px 10px;
-    margin: 20px auto;
+    margin: 5px auto 20px;
   }
 
   form textarea {
     display: block;
     width: 80%;
+    height: 120px;
     padding: 5px 10px;
-    margin: 20px auto;
+    margin: 20px auto 5px;
   }
 
-  form button {
+  .body button {
     display: block;
-    width: 320px;
-    padding: 10px 15px;
-    margin: auto;
+    width: 200px;
+    padding: 8px 15px;
+    margin: 15px auto 0;
   }
 </style>

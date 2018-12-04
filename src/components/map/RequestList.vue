@@ -5,6 +5,7 @@
                   v-for="(loopedRequest, index) in requestList"
                   :request = loopedRequest
                   :index = index
+                  :userRole = user.role
     >
     </request-item>
   </div>
@@ -25,8 +26,11 @@
     },
     data() {
       return {
-
+        user: null
       }
+    },
+    created() {
+      this.user = this.$store.getters.getUser;
     },
     methods: {
 

@@ -63,5 +63,5 @@
 </script>
 
 <style scoped>
-
+  @import '../../assets/landing/css/auth.css';
 </style>

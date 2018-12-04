@@ -6,6 +6,7 @@
       <span class="date">{{this.request.date}}</span>
     </div>
     <img class="photo-preview" src="" alt="">
+    <button class="btn" v-if="isArtist" type="button">Upload sketch</button>
   </div>
 </template>
 
@@ -14,15 +15,18 @@
     name: "RequestItem",
     props: {
       request: {},
-      index: {}
+      index: {},
+      userRole: {}
     },
     data() {
-      return {}
+      return {
+        isArtist: false
+      }
     },
     created() {
-
     },
     mounted() {
+      if(this.userRole === 'artist') {this.isArtist = true}
       const file = this.request.photo;
       this.showPhoto(file);
     },
@@ -59,5 +63,14 @@
     float: right;
     border: 1px solid #770d85;
     border-radius: 2px;
+  }
+
+  .btn {
+    width: 140px;
+    padding: 5px;
+    font-family: "PT Sans Regular";
+  }
+  .btn:hover {
+    font-family: "PT Sans Regular";
   }
 </style>

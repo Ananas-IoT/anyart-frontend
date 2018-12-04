@@ -8,6 +8,12 @@ export function getUserByToken(token) {
   }
   if (token === '2') {
     return {
+      surname: "Artist Common",
+      role: "artist"
+    }
+  }
+  if (token === '3') {
+    return {
       surname: "Vasyl Vasyl",
       role: "government"
     }

@@ -93,7 +93,12 @@
 
       addNewUser: function () {
         this.$store.dispatch('addNewUser', this.user);
-        var token = "1";//get token from api
+        var token;
+        if (this.user.role === 'artist') {
+          token = "2";
+        } else {
+          token = "1";//get token from api
+        }
         localStorage.setItem('user-token', token);
         this.$router.push("/");
       },
@@ -102,6 +107,7 @@
 </script>
 
 <style scoped>
+  @import '../../assets/landing/css/auth.css';
 
   .body .wrap {
     width: auto;
