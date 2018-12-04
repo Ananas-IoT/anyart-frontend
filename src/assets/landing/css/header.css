@@ -158,3 +158,6 @@ header .user-block a:hover {
 header.scrolled .user-block a {
   color: #000;
 }
+header.scrolled .user-block div {
+  color: #000;
+}

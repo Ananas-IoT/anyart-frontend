@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h4>{{this.request.address.name}}</h4>
-    <p>{{this.request.description}}</p>
-    <span>{{this.request.date}}</span>
+    <div class="txt">
+      <h4>{{this.request.address.name}}</h4>
+      <p>{{this.request.description}}</p>
+      <span class="date">{{this.request.date}}</span>
+    </div>
     <img class="photo-preview" src="" alt="">
   </div>
 </template>
@@ -23,7 +25,6 @@
     mounted() {
       const file = this.request.photo;
       this.showPhoto(file);
-      // console.log(this.request.address.name, this.request.photo.name);
     },
     methods: {
       showPhoto: function (file) {
@@ -33,13 +34,30 @@
           preview.src = reader.result;
         };
         reader.readAsDataURL(file);
-        // console.log(this.request.address.name, this.request.photo.name);
-        // console.log(this.request.address.name, file.name);
       }
     }
   }
 </script>
 
 <style scoped>
-
+  .txt {
+    display: inline-block;
+  }
+  .txt h4 {
+    margin: 10px 0;
+    font-family: "PT Sans Bold";
+  }
+  .txt .date {
+    font-size: 14px;
+    border-bottom: 0.5px solid #000;
+  }
+  img {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    margin-top: 5px;
+    float: right;
+    border: 1px solid #770d85;
+    border-radius: 2px;
+  }
 </style>

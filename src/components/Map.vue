@@ -121,9 +121,9 @@
     position: absolute;
     top: 80px;
     left: 50%;
-    transform: translate(-50%, -100vh);
+    transform: translate(-50%, -150vh);
     transition: 0.3s;
-    /*opacity: 0;*/
+    opacity: 0;
     z-index: 100;
   }
 
@@ -169,6 +169,9 @@
     width: 58px;
     height: 38px;
     margin-left: -2px;
+    font-family: "PT Sans Bold";
+    text-transform: uppercase;
+    background: #efefef;
     border: 1px solid #000;
     border-radius: 3px;
   }

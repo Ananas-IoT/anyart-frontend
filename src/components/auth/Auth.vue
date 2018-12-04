@@ -35,14 +35,33 @@
 
 <style>
   .body {
+    position: relative;
+    height: 100vh;
+    padding-top: 100px;
+    background: url("../../assets/landing/img/main_bg1.jpg");
+  }
+  .body:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 0;
+  }
+  .body .wrap {
+    position: relative;
     text-align: center;
-    width: 40%;
+    width: 30%;
     padding: 30px;
-    margin: 100px auto 0;
-    background: #eee;
+    margin: 0 auto 0;
+    background: #fafafa;
     border-radius: 5px;
+    border: 1px solid #eee;
   }
   h2 {
+    font-size: 32px;
     text-align: center;
   }
 
@@ -53,14 +72,32 @@
     margin: 10px auto;
     border-radius: 5px;
     border: none;
+    border: 1px solid #e0e0e0;
     outline: none;
+  }
+  .body input:focus {
+    border: 1px solid #770d85;
   }
 
   .body button {
+    position: relative;
     display: block;
-    width: 320px;
-    height: 30px;
+    width: 200px;
+    padding: 5px 15px;
     margin: auto;
+    font-family: "PT Sans Bold";
+    font-size: 16px;
+    color: #770d85;
+    background: #fff;
+    border: 1px solid #770d85;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .body button:hover {
+    color: #fff;
+    background: #770d85;
   }
 
   .invalid {

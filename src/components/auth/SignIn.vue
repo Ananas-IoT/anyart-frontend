@@ -1,13 +1,14 @@
 <template>
   <div class="body">
-    <h2>This is login page:</h2>
-    <form>
-      <h2>Sign in:</h2>
-      <input type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
-             required>
-      <input type="password" placeholder="password" v-model="user.password" required>
-      <button @click="checkUser">Sign in</button>
-    </form>
+    <div class="wrap">
+      <form>
+        <h2>Sign in:</h2>
+        <input type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
+               required>
+        <input type="password" placeholder="password" v-model="user.password" required>
+        <button @click="checkUser">Sign in</button>
+      </form>
+    </div>
   </div>
 </template>
 

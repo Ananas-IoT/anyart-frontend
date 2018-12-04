@@ -1,27 +1,27 @@
 <template>
   <div class="body">
-    <h2>This is login page:</h2>
+    <div class="wrap">
+      <form v-bind:class="{validation: formValidation}" class="registration-form">
+        <h2>Create an account:</h2>
+        <input type="text" placeholder="nickname" v-model="user.username">
+        <input type="text" placeholder="name and surname" v-model="user.surname"
+               v-bind:class="{invalid: !fieldValidation.surname}" required>
+        <input type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
+               required>
+        <input type="password" placeholder="password" v-model="user.password" required>
+        <button @click="checkUser" type="button">Next</button>
+      </form>
 
-    <form v-if="!validation">
-      <h2>Sign up:</h2>
-      <input type="text" placeholder="nickname" v-model="user.username">
-      <input type="text" placeholder="name and surname" v-model="user.surname"
-             v-bind:class="{invalid: !fieldValidation.surname}" required>
-      <input type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
-             required>
-      <input type="password" placeholder="password" v-model="user.password" required>
-      <button @click="checkUser" type="button">next</button>
-    </form>
-
-    <div class="role" v-if="validation">
-      <h3>Wow! Such good!</h3>
-      <p>You was registered as {{user.role}} user!</p>
-      <p>{{roleDescription}}</p>
-      <div v-if="user.role === 'basic'">
-        <button @click="becomeArtist">I want to be an Artist!</button>
-        <p>{{descriptionList.artist}}</p>
+      <div class="role" v-bind:class="{validation: formValidation, 'in-left': formValidation}">
+        <h2>Create an account:</h2>
+        <p>You was registered as {{user.role}} user!</p>
+        <p>{{roleDescription}}</p>
+        <div v-if="user.role === 'basic'">
+          <div @click="becomeArtist" class="artist-button">I want to be an Artist!</div>
+          <p class="role-description">{{descriptionList.artist}}</p>
+        </div>
+        <button @click="addNewUser" type="button">Submit</button>
       </div>
-      <button @click="addNewUser">Submit</button>
     </div>
   </div>
 
@@ -44,7 +44,7 @@
           surname: true,
           email: true
         },
-        validation: false,
+        formValidation: false,
         descriptionList: {
           basic: 'As basic user, you will be able to upload photo with request and vote for artist sketches!',
           artist: 'You will have all basic user functions plus ability to upload your sketch'
@@ -76,7 +76,7 @@
           this.fieldValidation.email = false;
         }
         if (this.isAllTrue(this.fieldValidation)) {
-          this.validation = true
+          this.formValidation = true
         }
       },
 
@@ -93,7 +93,7 @@
 
       addNewUser: function () {
         this.$store.dispatch('addNewUser', this.user);
-        var token  = "1";//get token from api
+        var token = "1";//get token from api
         localStorage.setItem('user-token', token);
         this.$router.push("/");
       },
@@ -102,5 +102,136 @@
 </script>
 
 <style scoped>
+
+  .body .wrap {
+    width: auto;
+    background: transparent;
+    border: 1px solid transparent;
+  }
+
+  .registration-form, .role {
+    position: absolute;
+    left: 50%;
+    width: 30%;
+    padding: 30px;
+    margin: 0 auto 0;
+    background: #fafafa;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    transform: translateX(-50%);
+  }
+
+  .registration-form {
+    /*v-if="formValidation"*/
+    opacity: 1;
+    pointer-events: auto;
+    transition: 0.5s;
+  }
+
+  .registration-form.validation {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .role {
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+
+  .role.validation {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .role .artist-button {
+    width: fit-content;
+    width: -moz-fit-content;
+    margin: auto;
+    font-family: "PT Sans Bold";
+    color: #7d42b9;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    transition: 0.1s;
+  }
+
+  .role .artist-button:hover {
+    border-bottom: 1px solid #7d42b9;
+  }
+
+  .role .role-description {
+    margin: 5px 0 10px;
+    font-size: 12px;
+  }
+
+  @-webkit-keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      -webkit-transform: translateX(-10px);
+      -moz-transform: translateX(-10px);
+      -o-transform: translateX(-10px);
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateX(0);
+      -moz-transform: translateX(0);
+      -o-transform: translateX(0);
+      transform: translateX(0);
+    }
+  }
+
+  @-moz-keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      -webkit-transform: translateX(-10px);
+      -moz-transform: translateX(-10px);
+      -o-transform: translateX(-10px);
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateX(0);
+      -moz-transform: translateX(0);
+      -o-transform: translateX(0);
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      -webkit-transform: translateX(-500px);
+      -moz-transform: translateX(-500px);
+      -o-transform: translateX(-500px);
+      transform: translateX(-500px);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
+  }
+
+  .in-left {
+    -webkit-animation-name: fadeInLeft;
+    -moz-animation-name: fadeInLeft;
+    -o-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: .2s;
+    -moz-animation-delay: .2s;
+    -o-animation-duration: 1s;
+    animation-delay: .2s;
+  }
 
 </style>

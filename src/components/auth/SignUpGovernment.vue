@@ -1,18 +1,19 @@
 <template>
   <div class="body">
-    <h2>This is government login page:</h2>
 
-    <form>
-      <h2>Sign up:</h2>
-      <input type="text" placeholder="name of department" v-model="user.surname"
-             v-bind:class="{invalid: !fieldValidation.surname}" required>
-      <input type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
-             required>
-      <input type="password" placeholder="password" v-model="user.password" required>
-      <button @click="checkUser" type="button">Sign Up</button>
-    </form>
+    <div class="wrap">
+      <h2>Create government account:</h2>
+      <form>
+        <input type="text" placeholder="name of department" v-model="user.surname"
+               v-bind:class="{invalid: !fieldValidation.surname}" required>
+        <input type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
+               required>
+        <input type="password" placeholder="password" v-model="user.password" required>
+        <button @click="checkUser" type="button">Sign Up</button>
+      </form>
+    </div>
+
   </div>
-
 </template>
 
 <script>
@@ -73,5 +74,7 @@
 </script>
 
 <style scoped>
-
+  .body h2 {
+    font-size: 24px;
+  }
 </style>
