@@ -204,7 +204,6 @@
   import jQuery from 'jquery'
   import Header from './Header'
   import slick from '../assets/landing/libs/slick/slick.min'
-
   import {library} from '@fortawesome/fontawesome-svg-core'
   // import {  } from '@fortawesome/free-solid-svg-icons'
   // library.add(faUserSecret);
@@ -221,14 +220,6 @@
     },
     created() {
 
-      const token = localStorage.getItem('user-token');
-      if (token) {
-        // token = JSON.parse(token);
-        this.user = getUserByToken(token);
-        this.$store.dispatch('setUser', this.user);
-
-        // this.$router.push('/');
-      }
     },
     mounted() {
 
@@ -242,14 +233,13 @@
           header.classList.remove("scrolled");
         }
       }
-
       window.addEventListener('scroll', navColorChanger);
       navColorChanger();
 
       //scroll menu
-      // jQuery('header a').click(function () {
-      //   jQuery('html, body').animate({scrollTop: jQuery(jQuery(this).attr('data-scroll-to')).offset().top}, 1000)
-      // });
+      jQuery('header a').click(function () {
+        jQuery('html, body').animate({scrollTop: jQuery(jQuery(this).attr('data-scroll-to')).offset().top}, 1000)
+      });
 
       //slick partners
       jQuery('.partners .carousel').slick({
@@ -265,7 +255,5 @@
   @import '../../node_modules/bootstrap/dist/css/bootstrap-grid.css';
   @import '../assets/landing/libs/slick/slick.css';
   @import '../assets/landing/libs/slick/slick-theme.css';
-  /*@import "../assets/landing/css/main.css";*/
-  /*@import "../assets/landing/css/fonts.css";*/
   @import "../assets/landing/css/media.css";
 </style>

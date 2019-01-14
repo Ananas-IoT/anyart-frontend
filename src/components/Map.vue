@@ -2,6 +2,7 @@
   <div class="body">
 
     <request-template
+      v-if="currentPlace"
       :requestAddress=this.currentPlace
       v-on:addMarker="addMarker"
       v-bind:class="{opened: openedRequest}"

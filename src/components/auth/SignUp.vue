@@ -4,8 +4,10 @@
       <form v-bind:class="{validation: formValidation}" class="registration-form">
         <h2>Create an account:</h2>
         <input type="text" placeholder="nickname" v-model="user.username">
-        <input type="text" placeholder="name and surname" v-model="user.surname"
-               v-bind:class="{invalid: !fieldValidation.surname}" required>
+        <input type="text" placeholder="name" v-model="user.first_name"
+               v-bind:class="{invalid: !fieldValidation.first_name}" required>
+        <input type="text" placeholder="surname" v-model="user.last_name"
+               v-bind:class="{invalid: !fieldValidation.last_name}" required>
         <input type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
                required>
         <input type="password" placeholder="password" v-model="user.password" required>
@@ -29,19 +31,24 @@
 
 <script>
 
+
+  import axios from 'axios';
+
   export default {
     name: "singup",
     data() {
       return {
         user: {
+          fist_name: '',
+          last_name: '',
           username: '',
-          surname: '',
-          email: '',
           password: '',
+          email: '',
           role: 'basic'
         },
         fieldValidation: {
-          surname: true,
+          first_name: true,
+          last_name: true,
           email: true
         },
         formValidation: false,
@@ -69,7 +76,8 @@
         }
         if (false) {
           //check if surname exists
-          this.fieldValidation.surname = false;
+          this.fieldValidation.first_name = false;
+          this.fieldValidation.last_name = false;
         }
         if (false) {
           //check if email exists
@@ -92,6 +100,13 @@
       },
 
       addNewUser: function () {
+
+        this.user.rights = this.user.role;
+
+        // const API_URL = 'http://localhost:8000';
+        // const url = `${API_URL}/auth/registration/`;
+        // axios.post(url, this.user);
+
         this.$store.dispatch('addNewUser', this.user);
         var token;
         if (this.user.role === 'artist') {

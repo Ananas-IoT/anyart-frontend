@@ -28,7 +28,7 @@
         <div class="col-lg-2">
           <div class="user-block">
             <div v-if="this.isAuth" class="user-info">
-              <router-link to="/auth/signup">{{user.surname}}</router-link>
+              <router-link to="/auth/signup">{{userFullName}}</router-link>
               <div>{{user.role}}</div>
             </div>
             <div v-else class="registration">
@@ -47,7 +47,8 @@
     name: "Header",
     data() {
       return {
-        user: {}
+        user: {},
+        userFullName: ''
       }
     },
     created() {
@@ -55,6 +56,7 @@
       if (this.isAuth) {
         this.user = this.$store.getters.getUser;
       }
+      this.userFullName = this.user.first_name + ' ' + this.user.last_name;
     },
   }
 </script>

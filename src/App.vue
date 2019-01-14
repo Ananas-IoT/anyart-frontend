@@ -5,23 +5,21 @@
 </template>
 
 <script>
-  import './api/auth'
+  import {getUserByToken} from './api/auth'
+  // import axios from 'axios'
 
   export default {
     name: 'app',
     data() {
       return {}
     },
-    // created: function () {
-    //   const token = localStorage.getItem('user-token');
-    //   if (token) {
-    //     // token = JSON.parse(token);
-    //     this.user = getUserByToken(token);
-    //     this.$store.dispatch('setUser', this.user);
-    //
-    //     this.$router.push('/');
-    //   }
-    // }
+    created: function () {
+      const token = localStorage.getItem('user-token');
+      if (token) {
+        this.user = getUserByToken(token);
+        this.$store.dispatch('setUser', this.user);
+      }
+    }
   }
 </script>
 

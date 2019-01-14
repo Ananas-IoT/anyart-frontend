@@ -54,6 +54,7 @@
 
         this.$store.dispatch('addRequest', this.request);
         this.$emit('addMarker', this.request);
+
       },
       processPhoto: function() {
         var preview = this.$refs.photoPreview;

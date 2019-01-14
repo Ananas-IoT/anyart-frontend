@@ -2,19 +2,22 @@
 export function getUserByToken(token) {
   if (token === '1') {
     return {
-      surname: "Daniil Lohvinov",
+      first_name: "Daniil",
+      last_name: "Lohvinov",
       role: "basic"
     }
   }
   if (token === '2') {
     return {
-      surname: "Artist Common",
+      first_name: "Artist",
+      last_name: "Artist",
       role: "artist"
     }
   }
   if (token === '3') {
     return {
-      surname: "Vasyl Vasyl",
+      first_name: "Vasyl",
+      last_name: "Vasyl",
       role: "government"
     }
   }
