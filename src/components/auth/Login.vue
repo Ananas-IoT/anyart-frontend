@@ -1,21 +1,28 @@
 <template>
-  <div class="body">
-    <div class="wrap">
+  <div class="login">
+    <div class="form-wrap">
       <form>
-        <h2>Sign in:</h2>
-        <input type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
+        <h2 class="form__title">Sign in:</h2>
+        <input class="form__input" type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
                required>
-        <input type="password" placeholder="password" v-model="user.password" required>
-        <button @click="checkUser">Sign in</button>
+        <input class="form__input" type="password" placeholder="password" v-model="user.password" required>
+        <form-button
+          :text = "'Submit'"
+          @click="checkUser">
+        </form-button>
       </form>
     </div>
   </div>
 </template>
 
 <script>
+  import FormButton from '../formComponents/FormButton';
 
   export default {
-    name: "singip",
+    name: "login",
+    components: {
+      'form-button': FormButton
+    },
     data() {
       return {
         user: {
@@ -62,6 +69,6 @@
   }
 </script>
 
-<style scoped src="">
-  @import '../../assets/landing/css/auth.css';
+<style scoped>
+
 </style>

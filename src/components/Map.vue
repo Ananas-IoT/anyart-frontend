@@ -58,13 +58,13 @@
 <script>
   import RequestTemplate from './map/RequestTemplate'
   import RequestList from './map/RequestList'
-  import Header from './AppHeader'
+  import AppHeader from './AppHeader'
 
 
   export default {
     name: "Map",
     components: {
-      "user-header": Header,
+      "user-header": AppHeader,
       "request-template": RequestTemplate,
       "request-list": RequestList
     },

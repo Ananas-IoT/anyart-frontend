@@ -3,8 +3,7 @@
 
   <body>
   <!--<button class="main_mnu_button hidden-md hidden-lg"><i class="fa fa-bars"></i></button>-->
-
-  <user-header></user-header>
+  <app-header></app-header>
 
   <section id="main" class="main">
     <div class="container-fluid">
@@ -211,7 +210,7 @@
   export default {
     name: "landingPage",
     components: {
-      "user-header": Header
+      "app-header": Header
     },
     data() {
       return {

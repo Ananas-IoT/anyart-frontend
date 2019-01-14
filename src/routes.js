@@ -2,22 +2,22 @@
 import LandingPage from './components/LandingPage'
 import Map from './components/Map'
 import Auth from './components/auth/Auth'
-import SignUp from './components/auth/SignUp'
-import SignUpGovernment from './components/auth/SignUpGovernment'
-import SignIn from './components/auth/SignIn'
+import Register from './components/auth/Register'
+import RegisterGovernment from './components/auth/RegisterGovernment'
+import Login from './components/auth/Login'
 
 export default [
   {path:'/', component: LandingPage},
   {path:'/map', component: Map},
   {path:'/auth', component: Auth, children: [
       {
-        path: 'signup', component: SignUp
+        path: 'register', component: Register
       },
       {
-        path: 'signin', component: SignIn
+        path: 'login', component: Login
       },
       {
-        path: 'government', component: SignUpGovernment
+        path: 'government', component: RegisterGovernment
       }
     ]}
 ]

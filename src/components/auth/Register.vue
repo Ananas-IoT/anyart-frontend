@@ -1,28 +1,67 @@
 <template>
-  <div class="body">
-    <div class="wrap">
-      <form v-bind:class="{validation: formValidation}" class="registration-form">
-        <h2>Create an account:</h2>
-        <input type="text" placeholder="nickname" v-model="user.username">
-        <input type="text" placeholder="name" v-model="user.first_name"
-               v-bind:class="{invalid: !fieldValidation.first_name}" required>
-        <input type="text" placeholder="surname" v-model="user.last_name"
-               v-bind:class="{invalid: !fieldValidation.last_name}" required>
-        <input type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
-               required>
-        <input type="password" placeholder="password" v-model="user.password" required>
-        <button @click="checkUser" type="button">Next</button>
+  <div class="register">
+    <div class="form-wrap"  v-bind:class="{'form-wrap__valid': formValidation}">
+      <form class="register__form">
+        <h2 class="form__title">Create an account:</h2>
+
+        <input
+          class="form__input"
+          type="text"
+          placeholder="nickname"
+          v-model="user.username">
+
+        <input
+          class="form__input"
+          type="text"
+          placeholder="name"
+          v-model="user.first_name"
+          v-bind:class="{form__input__invalid: !fieldValidation.first_name}"
+          required>
+
+        <input
+          class="form__input"
+          type="text"
+          placeholder="surname"
+          v-model="user.last_name"
+          v-bind:class="{form__input__invalid: !fieldValidation.last_name}"
+          required>
+
+        <input
+          class="form__input"
+          type="text"
+          placeholder="email"
+          v-model="user.email"
+          v-bind:class="{invalid: !fieldValidation.email}"
+          required>
+
+        <input
+          class="form__input"
+          type="password"
+          placeholder="password"
+          v-model="user.password"
+          required>
+
+        <form-button
+          :text = "'Next'"
+          @click.native="checkUser">
+        </form-button>
       </form>
 
-      <div class="role" v-bind:class="{validation: formValidation, 'in-left': formValidation}">
-        <h2>Create an account:</h2>
+      <div
+        class="register__role"
+        v-bind:class="{'in-left': formValidation}">
+
+        <h2 class="form__title">Create an account:</h2>
         <p>You was registered as {{user.role}} user!</p>
         <p>{{roleDescription}}</p>
         <div v-if="user.role === 'basic'">
-          <div @click="becomeArtist" class="artist-button">I want to be an Artist!</div>
-          <p class="role-description">{{descriptionList.artist}}</p>
+          <div @click="becomeArtist" class="register__become-artist-button">I want to be an Artist!</div>
+          <p class="register__role-description">{{descriptionList.artist}}</p>
         </div>
-        <button @click="addNewUser" type="button">Submit</button>
+        <form-button
+          :text = "'Submit'"
+          @click.native="addNewUser">
+        </form-button>
       </div>
     </div>
   </div>
@@ -30,12 +69,14 @@
 </template>
 
 <script>
-
-
+  import FormButton from '../formComponents/FormButton';
   import axios from 'axios';
 
   export default {
     name: "singup",
+    components: {
+      'form-button': FormButton
+    },
     data() {
       return {
         user: {
@@ -122,15 +163,14 @@
 </script>
 
 <style scoped>
-  @import '../../assets/landing/css/auth.css';
 
-  .body .wrap {
+  .form-wrap {
     width: auto;
     background: transparent;
     border: 1px solid transparent;
   }
 
-  .registration-form, .role {
+  .register__form, .register__role {
     position: absolute;
     left: 50%;
     width: 30%;
@@ -142,30 +182,30 @@
     transform: translateX(-50%);
   }
 
-  .registration-form {
+  .register__form {
     /*v-if="formValidation"*/
     opacity: 1;
     pointer-events: auto;
-    transition: 0.5s;
+    transition: 0.3s;
   }
 
-  .registration-form.validation {
+  .form-wrap__valid .register__form {
     opacity: 0;
     pointer-events: none;
   }
 
-  .role {
+  .register__role {
     opacity: 0;
     pointer-events: none;
-    transition: 0.5s;
+    transition: 0.3s;
   }
 
-  .role.validation {
+  .form-wrap__valid .register__role {
     opacity: 1;
     pointer-events: auto;
   }
 
-  .role .artist-button {
+  .register__become-artist-button {
     width: fit-content;
     width: -moz-fit-content;
     margin: auto;
@@ -176,11 +216,11 @@
     transition: 0.1s;
   }
 
-  .role .artist-button:hover {
+  .register__become-artist-button:hover {
     border-bottom: 1px solid #7d42b9;
   }
 
-  .role .role-description {
+  .register__role-description {
     margin: 5px 0 10px;
     font-size: 12px;
   }

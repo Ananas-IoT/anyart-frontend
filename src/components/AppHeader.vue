@@ -28,12 +28,12 @@
         <div class="col-lg-2">
           <div class="user-block">
             <div v-if="this.isAuth" class="user-block__info">
-              <router-link to="/auth/signup">{{userFullName}}</router-link>
+              <router-link to="/auth/register">{{userFullName}}</router-link>
               <div>{{user.role}}</div>
             </div>
             <div v-else class="user-block__registration">
-              <router-link to="/auth/signup">Register</router-link>
-              <router-link to="/auth/signin">or Sign In</router-link>
+              <router-link to="/auth/register">Register</router-link>
+              <router-link to="/auth/login">or Login</router-link>
             </div>
           </div>
         </div>
