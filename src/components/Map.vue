@@ -5,6 +5,7 @@
       v-if="currentPlace"
       :requestAddress=this.currentPlace
       v-on:addMarker="addMarker"
+      v-on:clearPosition = "clearPosition"
       v-bind:class="{opened: openedRequest}"
       class="request-template">
     </request-template>
@@ -91,23 +92,32 @@
       setPlace(place) {
         this.currentPlace = place;
       },
+
+      //gets location from RequestTemplate, draws marker there
       addMarker(reqToAdd) {
         this.openedRequest = false;
         // this.requests.push(reqToAdd);
       },
-      geolocate: function () {
+
+      //get user location
+      geolocate() {
         navigator.geolocation.getCurrentPosition(position => {
           this.center = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
         });
+      },
+
+      //clears current place field, when request is completed (to destroy ReqTemplate component)
+      clearPosition() {
+        this.currentPlace = false;
       }
     }
   }
 </script>
 
-<style>
+<style scoped>
 
   .body {
     padding-top: 45px;
