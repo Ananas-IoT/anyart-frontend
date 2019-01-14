@@ -802,7 +802,7 @@ footer {
   position: relative;
 }
 
-footer .logo {
+footer .header__logo {
   width: 200px;
   margin: 0 auto;
 }

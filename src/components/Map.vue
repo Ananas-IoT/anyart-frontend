@@ -58,7 +58,7 @@
 <script>
   import RequestTemplate from './map/RequestTemplate'
   import RequestList from './map/RequestList'
-  import Header from './Header'
+  import Header from './AppHeader'
 
 
   export default {

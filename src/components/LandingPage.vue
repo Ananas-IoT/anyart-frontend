@@ -179,7 +179,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <div class="logo"><img src="../assets/landing/img/logo_large_white.png" alt=""></div>
+          <div class="header__logo"><img src="../assets/landing/img/logo_large_white.png" alt=""></div>
           <div class="copyright">Copyright(c) Ананас</div>
         </div>
         <div class="col-lg-6">
@@ -202,7 +202,7 @@
 <script>
   import {getUserByToken} from '../api/auth'
   import jQuery from 'jquery'
-  import Header from './Header'
+  import Header from './AppHeader'
   import slick from '../assets/landing/libs/slick/slick.min'
   import {library} from '@fortawesome/fontawesome-svg-core'
   // import {  } from '@fortawesome/free-solid-svg-icons'
@@ -225,12 +225,11 @@
 
       //nav changes color while scrolling
       let header = document.getElementsByTagName('header')[0];
-
       function navColorChanger() {
         if (window.pageYOffset != 0) {
-          header.classList.add("scrolled");
+          header.classList.add("header__scrolled");
         } else {
-          header.classList.remove("scrolled");
+          header.classList.remove("header__scrolled");
         }
       }
       window.addEventListener('scroll', navColorChanger);
