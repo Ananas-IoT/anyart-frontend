@@ -25,6 +25,6 @@
 
 <style>
   @import './../node_modules/bootstrap/dist/css/bootstrap-grid.css';
-  @import "./assets/landing/css/fonts.css";
-  @import "./assets/landing/css/main.css";
+  @import "./assets/css/fonts.css";
+  @import "./assets/css/main.css";
 </style>

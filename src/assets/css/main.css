@@ -267,350 +267,10 @@ img {
   height: 100%;
 }
 
-.btn {
-  width: 200px;
-  display: block;
-  padding: 15px 0;
-  margin: 20px auto;
-  color: #7d42b9;
-  font-size: 16px;
-  background: transparent;
-  border: none;
-  border: 2px solid #770d85;
-  cursor: pointer;
-  transition: 0.3s;
-  overflow: hidden;
-  position: relative;
-}
 
-.btn:hover {
-  color: #fff;
-  font-weight: bold;
-}
 
-.btn:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 300%;
-  transform: translateY(-100%);
-  background: #9f4ea9 linear-gradient(to bottom, #9f4ea9 33.3%, #1ea3a4 33.3%, #1ea3a4 66.6%, #67ec02 66.6%);
-  transition: 0.3s ease-in-out;
-  pointer-events: none;
-  z-index: -1;
-}
 
-.btn:hover:before {
-  transform: translateY(0);
-}
 
-.main {
-  /*height: 700px;*/
-  height: 100vh;
-  background: url("../img/main_bg1.jpg") top center fixed no-repeat;
-  /*background-size: 100%;*/
-  background-size: cover;
-  position: relative;
-}
-
-.main:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.main .wrap {
-  width: fit-content;
-  padding: 20px 40px;
-  margin: 100px auto 0;
-  border-radius: 5px;
-  user-select: none;
-}
-
-.main h1 {
-  width: fit-content;
-  font: 160px "Helvetica ultralight";
-  margin: auto;
-  color: #fff;
-}
-
-.main h1 b {
-  font-family: "PT Sans Bold", sans-serif;
-}
-
-.main p {
-  width: fit-content;
-  margin: auto;
-  font-size: 48px;
-  color: #fff;
-}
-
-.how-to {
-
-}
-
-.how-to p {
-  text-align: center;
-  width: 70%;
-  margin: auto;
-  font-size: 24px;
-}
-
-.how-to ul {
-  margin: 30px 20px 30px 15%;
-}
-
-.how-to ul li {
-  padding-left: 40px;
-  margin-top: 10px;
-  font-size: 20px;
-  position: relative;
-}
-
-.how-to ul li:before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  left: 0;
-  top: 3px;
-  background: url("../img/how-to-first.png");
-  background-size: contain;
-}
-
-.how-to ul li:nth-child(2):before {
-  background: url("../img/how-to-second.png");
-  background-size: contain;
-}
-
-.how-to ul li:nth-child(3):before {
-  background: url("../img/how-to-done.png");
-  background-size: contain;
-}
-
-.workflow {
-  margin-top: 100px;
-  position: relative;
-}
-
-.workflow .item {
-  width: 80%;
-  height: 300px;
-  margin: auto;
-  border-bottom: 2px dashed #e0e0e0;
-  position: relative;
-}
-
-.workflow .item:before {
-  content: '';
-  width: 130px;
-  height: 300px;
-  position: absolute;
-  top: 50%;
-  right: -160px;
-  background: url("../img/workflow-next.png") no-repeat;
-  background-size: contain;
-  transform: rotate(180deg);
-}
-
-.workflow .item:nth-child(2n):before {
-  right: auto;
-  left: -160px;
-  transform: rotate(0);
-}
-
-.workflow .item:nth-child(5):before {
-  display: none;
-}
-
-.workflow .item:nth-child(1) {
-  border-top: 2px dashed #e0e0e0;
-}
-
-.workflow .circle {
-  display: inline-block;
-  width: 240px;
-  height: 240px;
-  margin-top: 30px;
-  /*background: #61afe4;*/
-  background: #770d85;
-  border-radius: 50%;
-  position: relative;
-}
-
-.workflow .item:nth-child(2) .circle {
-  background: #7d42b9;
-}
-
-.workflow .item:nth-child(3) .circle {
-  background: #27b46b;
-}
-
-.workflow .item:nth-child(4) .circle {
-  background: #80b317;
-}
-
-.workflow .item:nth-child(5) .circle {
-  background: #1ea3a4;
-}
-
-.workflow .add-circle {
-  content: '';
-  width: 220px;
-  height: 220px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #eee;
-  border-radius: 50%;
-}
-
-.workflow .circle p {
-  text-align: center;
-  width: 160px;
-  margin: 20% auto 0;
-  font: 42px "Gamja Flower";
-}
-
-.workflow .circle-right {
-  float: right;
-}
-
-.workflow .pic {
-  display: inline-block;
-  width: 60%;
-  height: 80%;
-  background: url("../img/workflow_1.jpg") center center no-repeat;
-  background-size: cover;
-  margin-left: 40px;
-  border: 1px solid #770d85;
-}
-
-.workflow .item:nth-child(2n) .pic {
-  margin: 30px 40px 0 0;
-}
-
-.workflow .item:nth-child(2) .pic {
-  background-image: url("../img/workflow_2.jpg");
-  border-color: #7d42b9;
-}
-
-.workflow .item:nth-child(3) .pic {
-  width: 400px;
-  height: 80%;
-  background-image: url("../img/workflow_3.jpg");
-  background-size: contain;
-  border-color: #27b46b;
-}
-
-.workflow .item:nth-child(4) .pic {
-  background-image: url("../img/workflow_2.jpg");
-  border-color: #80b317;
-}
-
-.workflow .item:nth-child(5) .pic {
-  background-image: url("../img/main_1.jpg");
-  border-color: #1ea3a4;
-}
-
-.workflow .item:nth-child(1) p, .workflow .item:nth-child(4) p {
-  margin-top: 20px;
-}
-
-.workflow .item:nth-child(2) p {
-  font-size: 28px;
-}
-
-.about {
-  background: #eee;
-}
-
-.about h2 {
-  margin: 10px 0 40px;
-}
-
-.about p {
-  text-align: center;
-  width: 75%;
-  margin: 10px auto;
-}
-
-.about .item {
-  text-align: center;
-  height: 460px;
-  padding: 20px;
-  margin-top: 40px;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.about .item:hover {
-  /*background: rgba(30, 163, 164, 0.4);*/
-}
-
-.about .pic {
-  width: 80%;
-  margin: auto;
-  border: 2px solid #1ea3a4;
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
-}
-
-.about .row .col-lg-4:nth-child(3) .pic {
-  border-color: #7d42b9;
-}
-
-.about .row .col-lg-4:nth-child(4) .pic {
-  border-color: #80b317;
-}
-
-.about .pic:before {
-  content: '';
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-}
-
-.about .txt {
-  margin-top: 20px;
-}
-
-.about .txt h3 {
-  font: 24px "PT Sans Bold";
-  margin: 0;
-}
-
-.about .txt p {
-  font-size: 16px;
-  margin: 5px auto 10px;
-}
-
-.about .txt a {
-  display: block;
-  width: fit-content;
-  margin: 5px auto 0;
-  font-size: 14px;
-}
-
-.about .txt img {
-  vertical-align: -3px;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
 
 .gallery {
 
@@ -758,7 +418,7 @@ img {
   background: #eee;
 }
 
-.partners .item {
+.partners .how-to-section__workflow-item {
   width: 300px;
   padding: 20px;
   margin: 0 20px;
@@ -813,11 +473,11 @@ footer h3 {
   font: 20px "PT Sans Bold";
 }
 
-footer .wrap {
+footer .main-section__wrap {
   margin: auto;
 }
 
-footer .wrap li {
+footer .main-section__wrap li {
   display: inline-block;
   width: 40px;
   margin: 20px 5px;
@@ -828,16 +488,16 @@ footer .wrap li {
   position: relative;
 }
 
-footer .wrap font-awesome-icon {
+footer .main-section__wrap font-awesome-icon {
   color: #fff !important;
 }
 
-footer .wrap li span {
+footer .main-section__wrap li span {
   position: relative;
 
 }
 
-footer .wrap li:before {
+footer .main-section__wrap li:before {
   content: '';
   width: 40px;
   height: 40px;
@@ -850,15 +510,15 @@ footer .wrap li:before {
   z-index: 0;
 }
 
-footer .wrap li:hover:before {
+footer .main-section__wrap li:hover:before {
   transform: scale(1.2, 1.2);
 }
 
-footer .wrap a {
+footer .main-section__wrap a {
   color: #000;
 }
 
-footer .wrap i {
+footer .main-section__wrap i {
   position: absolute;
   top: -1px;
   left: 0;

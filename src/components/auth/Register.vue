@@ -58,7 +58,7 @@
           <div @click="becomeArtist" class="register__become-artist-button">I want to be an Artist!</div>
           <p class="register__role-description">{{descriptionList.artist}}</p>
         </div>
-        <form-button
+        <form-button class="form__button"
           :text = "'Submit'"
           @click.native="addNewUser">
         </form-button>
@@ -73,7 +73,7 @@
   import axios from 'axios';
 
   export default {
-    name: "singup",
+    name: "register",
     components: {
       'form-button': FormButton
     },
@@ -224,6 +224,7 @@
     margin: 5px 0 10px;
     font-size: 12px;
   }
+
 
   @-webkit-keyframes fadeInLeft {
     from {

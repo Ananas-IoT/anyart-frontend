@@ -54,7 +54,7 @@
     height: 100vh;
     padding-top: 100px;
     font-size: 18px;
-    background: url("../../assets/landing/img/main_bg1.jpg");
+    background: url("../../assets/img/main_bg1.jpg");
   }
 
   >>> .register:before, .login:before, .government:before {

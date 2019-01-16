@@ -56,9 +56,9 @@
 </template>
 
 <script>
-  import RequestTemplate from './map/RequestTemplate'
-  import RequestList from './map/RequestList'
-  import AppHeader from './AppHeader'
+  import RequestTemplate from './RequestTemplate'
+  import RequestList from './RequestList'
+  import AppHeader from '../AppHeader'
 
 
   export default {

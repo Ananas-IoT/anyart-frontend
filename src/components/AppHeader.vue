@@ -5,8 +5,8 @@
       <div class="row">
         <div class="col-lg-3">
           <a data-scroll-to="#main" class="header__logo">
-            <img class="header__logo__white" src="../assets/landing/img/logo_small_white.png" alt="">
-            <img class="header__logo__black" src="../assets/landing/img/logo_small.png" alt="">
+            <img class="header__logo__white" src="../assets/img/logo_small_white.png" alt="">
+            <img class="header__logo__black" src="../assets/img/logo_small.png" alt="">
           </a>
         </div>
         <div class="col-lg-7">
