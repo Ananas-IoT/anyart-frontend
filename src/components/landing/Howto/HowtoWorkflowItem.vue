@@ -32,7 +32,7 @@
     position: absolute;
     top: 50%;
     right: -160px;
-    background: url("../../../assets/img/workflow-next.png") no-repeat;
+    background: url("../../../assets/img/how-to-section/how-to-workflow/workflow-next.png") no-repeat;
     background-size: contain;
     transform: rotate(180deg);
   }
@@ -81,7 +81,7 @@
     display: inline-block;
     width: 60%;
     height: 80%;
-    background: url("../../../assets/img/workflow_1.jpg") center center no-repeat;
+    background: url("../../../assets/img/how-to-section/how-to-workflow/workflow_1.jpg") center center no-repeat;
     background-size: cover;
     margin-left: 40px;
     border: 1px solid #770d85;
@@ -131,7 +131,7 @@
 
   .how-to-section__workflow-item:nth-child(2)
   .how-to-section__workflow-item-pic {
-    background-image: url("../../../assets/img/workflow_2.jpg");
+    background-image: url("../../../assets/img/how-to-section/how-to-workflow/workflow_2.jpg");
     border-color: #7d42b9;
   }
 
@@ -139,14 +139,14 @@
   .how-to-section__workflow-item-pic {
     width: 400px;
     height: 80%;
-    background-image: url("../../../assets/img/workflow_3.jpg");
+    background-image: url("../../../assets/img/how-to-section/how-to-workflow/workflow_3.jpg");
     background-size: contain;
     border-color: #27b46b;
   }
 
   .how-to-section__workflow-item:nth-child(4)
   .how-to-section__workflow-item-pic {
-    background-image: url("../../../assets/img/workflow_2.jpg");
+    background-image: url("../../../assets/img/how-to-section/how-to-workflow/workflow_2.jpg");
     border-color: #80b317;
   }
 

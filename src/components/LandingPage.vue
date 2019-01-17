@@ -22,15 +22,15 @@
 </template>
 
 <script>
-  import {getUserByToken} from '../../api/auth'
+  import {getUserByToken} from '../api/auth'
   import jQuery from 'jquery'
-  import Header from '../AppHeader'
-  import MainSection from './MainSection'
-  import HowtoSection from './HowtoSection'
-  import AboutSection from './AboutSection'
-  import GallerySection from './GallerySection'
-  import PartnersSection from './PartnersSection'
-  import FooterSection from './Footer'
+  import Header from './AppHeader'
+  import MainSection from './landing/MainSection'
+  import HowtoSection from './landing/HowtoSection'
+  import AboutSection from './landing/AboutSection'
+  import GallerySection from './landing/GallerySection'
+  import PartnersSection from './landing/PartnersSection'
+  import FooterSection from './landing/Footer'
 
   export default {
     name: "landingPage",
@@ -81,6 +81,6 @@
 </script>
 
 <style>
-  @import '../../../node_modules/bootstrap/dist/css/bootstrap-grid.css';
-  @import "../../assets/css/media.css";
+  @import '../../node_modules/bootstrap/dist/css/bootstrap-grid.css';
+  @import "../assets/css/media.css";
 </style>

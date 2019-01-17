@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h2>Here goes Request List!</h2>
-    <request-item class="request"
+  <div class="request-list">
+    <h2 class="request-list__title">Here goes Request List!</h2>
+    <request-item class="request-list__request-item"
                   v-for="(loopedRequest, index) in requestList"
                   :request = loopedRequest
                   :index = index
@@ -39,13 +39,13 @@
 </script>
 
 <style scoped>
-  h2 {
+  .request-list__title {
     margin-top: 60px;
     font-size: 24px;
     /*color: #7d42b9;*/
   }
 
-  .request {
+  .request-list__request-item {
     padding: 5px 20px;
     font-size: 18px;
     border-top: 2px solid #000;

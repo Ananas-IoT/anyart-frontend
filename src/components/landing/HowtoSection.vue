@@ -68,17 +68,17 @@
     position: absolute;
     left: 0;
     top: 3px;
-    background: url("../../assets/img/how-to-first.png");
+    background: url("../../assets/img/how-to-section/how-to-first.png");
     background-size: contain;
   }
 
   .how-to-section__item:nth-child(2):before {
-    background: url("../../assets/img/how-to-second.png");
+    background: url("../../assets/img/how-to-section/how-to-second.png");
     background-size: contain;
   }
 
   .how-to-section__item:nth-child(3):before {
-    background: url("../../assets/img/how-to-done.png");
+    background: url("../../assets/img/how-to-section/how-to-done.png");
     background-size: contain;
   }
 </style>

@@ -1,38 +1,44 @@
 <template>
-  <div class="body">
+  <div class="map-body">
 
-    <request-template
+    <request-form
+      class="map__request-form"
       v-if="currentPlace"
       :requestAddress=this.currentPlace
       v-on:addMarker="addMarker"
-      v-on:clearPosition = "clearPosition"
-      v-bind:class="{opened: openedRequest}"
-      class="request-template">
-    </request-template>
-    <div @click="openedRequest = !openedRequest" class="request-shadow"></div>
+      v-on:clearPosition="clearPosition"
+      v-bind:class="{opened: openedRequest}">
+    </request-form>
+    <div @click="openedRequest = !openedRequest" class="map__request-form__shadow"></div>
 
     <div class="container-fluid">
       <div class="row no-gutters">
 
         <user-header></user-header>
+
         <div class="col-12">
           <div class="row no-gutters">
             <div class="col-lg-8">
-              <div class="search-form">
+              <div class="map__search-form">
                 <label>
+                  <!-- it's map search form-->
                   <gmap-autocomplete
+                    class="map__search-form-input"
                     @place_changed="setPlace">
                   </gmap-autocomplete>
-                  <button @click="openedRequest = !openedRequest">Add</button>
+                  <button class="map__search-form-button" @click="openedRequest = !openedRequest">Add</button>
                 </label>
                 <br/>
               </div>
               <br>
+
+              <!--it's map-->
               <gmap-map
+                class="map__map"
                 :center="center"
                 :zoom="12"
-                style="width: 100%; height: calc(100vh - 78px); display: inline-block;"
               >
+                <!--it's markers-->
                 <gmap-marker
                   :key="index"
                   v-for="(m, index) in requests"
@@ -40,10 +46,10 @@
                   @click="center=m.position"
                 ></gmap-marker>
               </gmap-map>
-
             </div>
+
             <div class="col-lg-4">
-              <request-list class="request-list"
+              <request-list class="map__request-list"
                             :requestList=this.requests
               ></request-list>
             </div>
@@ -56,16 +62,16 @@
 </template>
 
 <script>
-  import RequestTemplate from './RequestTemplate'
-  import RequestList from './RequestList'
-  import AppHeader from '../AppHeader'
+  import RequestTemplate from './map/RequestForm'
+  import RequestList from './map/RequestList'
+  import AppHeader from './AppHeader'
 
 
   export default {
     name: "Map",
     components: {
       "user-header": AppHeader,
-      "request-template": RequestTemplate,
+      "request-form": RequestTemplate,
       "request-list": RequestList
     },
     data() {
@@ -119,16 +125,21 @@
 
 <style scoped>
 
-  .body {
+  .map-body {
     padding-top: 45px;
-    /*font-size: 0;*/
   }
 
   .container-fluid {
     padding: 0;
   }
 
-  .request-template {
+  .map__map {
+    width: 100%;
+    height: calc(100vh - 78px);
+    display: inline-block;
+  }
+
+  .map__request-form {
     position: absolute;
     top: 80px;
     left: 50%;
@@ -138,7 +149,7 @@
     z-index: 100;
   }
 
-  .request-shadow {
+  .map__request-form__shadow {
     position: fixed;
     top: 0;
     right: 0;
@@ -150,17 +161,17 @@
     z-index: 90;
   }
 
-  .request-template.opened {
+  .map__request-form.opened {
     transform: translate(-50%, 10vh);
     opacity: 1;
   }
 
-  .request-template.opened + .request-shadow {
+  .request-template.opened + .map__request-form__shadow {
     pointer-events: auto;
     opacity: 1;
   }
 
-  .search-form {
+  .map__search-form {
     position: absolute;
     top: 37px;
     left: 30%;
@@ -168,7 +179,7 @@
     z-index: 50;
   }
 
-  .search-form input {
+  .map__search-form-input {
     width: 400px;
     padding: 10px 25px;
     border: none;
@@ -176,7 +187,7 @@
     border-radius: 3px;
   }
 
-  .search-form button {
+  .map__search-form-button {
     width: 58px;
     height: 38px;
     margin-left: -2px;
@@ -185,9 +196,10 @@
     background: #efefef;
     border: 1px solid #000;
     border-radius: 3px;
+    cursor: pointer;
   }
 
-  .request-list {
+  .map__request-list {
     display: inline-block;
     vertical-align: top;
     width: 100%;

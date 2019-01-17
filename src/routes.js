@@ -1,6 +1,6 @@
 
-import LandingPage from './components/landing/LandingPage'
-import Map from './components/map/Map'
+import LandingPage from './components/LandingPage'
+import Map from './components/Map'
 import Auth from './components/auth/Auth'
 import Register from './components/auth/Register'
 import RegisterGovernment from './components/auth/RegisterGovernment'
