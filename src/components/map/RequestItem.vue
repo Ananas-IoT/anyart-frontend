@@ -6,11 +6,13 @@
       <span class="request-item__text-date">{{this.request.date}}</span>
     </div>
     <img class="request-item__photo-preview" src="" alt="">
-    <button class="" v-if="isArtist" type="button">Upload sketch</button>
+    <button class="" v-if="isArtist" type="button" @click="uploadSketch">Upload sketch</button>
   </div>
 </template>
 
 <script>
+  import eventBus from '../../eventBus'
+
   export default {
     name: "RequestItem",
     props: {
@@ -31,13 +33,17 @@
       this.showPhoto(file);
     },
     methods: {
-      showPhoto: function (file) {
-        let preview = document.getElementsByClassName('photo-preview')[this.index];
+      showPhoto (file) {
+        let preview = document.getElementsByClassName('request-item__photo-preview')[this.index];
         let reader = new FileReader();
         reader.onloadend = function () {
           preview.src = reader.result;
         };
         reader.readAsDataURL(file);
+      },
+      //trigger request-form on Map component
+      uploadSketch() {
+        eventBus.$emit('uploadSketch');
       }
     }
   }
@@ -46,6 +52,7 @@
 <style scoped>
   .request-item__text {
     display: inline-block;
+    width: calc(100% - 150px);
   }
   .request-item__text-title {
     margin: 10px 0;

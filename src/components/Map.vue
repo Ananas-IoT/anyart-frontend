@@ -1,5 +1,5 @@
 <template>
-  <div class="map-body">
+  <div class="map-body" ref="containerTest">
 
     <request-form
       class="map__request-form"
@@ -9,6 +9,7 @@
       v-on:clearPosition="clearPosition"
       v-bind:class="{opened: openedRequest}">
     </request-form>
+
     <div @click="openedRequest = !openedRequest" class="map__request-form__shadow"></div>
 
     <div class="container-fluid">
@@ -62,6 +63,7 @@
 </template>
 
 <script>
+  import eventBus from '../eventBus'
   import RequestTemplate from './map/RequestForm'
   import RequestList from './map/RequestList'
   import AppHeader from './AppHeader'
@@ -91,6 +93,9 @@
     },
     created() {
       this.requests = this.$store.getters.getAllRequests;
+      eventBus.$on('uploadSketch', () => {
+
+      });
     },
 
     methods: {
