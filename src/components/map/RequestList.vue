@@ -6,13 +6,16 @@
                   :request = loopedRequest
                   :index = index
                   :userRole = user.role
+                  @click.native="openRequest"
     >
+      <span>{{getRequestIndex(index)}}</span>
     </request-item>
   </div>
 </template>
 
 <script>
-  import RequestItem from './RequestItem'
+  import RequestItem from './RequestListItem'
+  import eventBus from '../../eventBus'
 
   export default {
     name: "RequestList",
@@ -26,14 +29,20 @@
     },
     data() {
       return {
-        user: null
+        user: null,
+        requestIndex: null
       }
     },
     created() {
       this.user = this.$store.getters.getUser;
     },
     methods: {
-
+      openRequest() {
+        eventBus.$emit('openRequest', this.requestIndex)
+      },
+      getRequestIndex(idx) {
+        this.requestIndex = idx;
+      }
     }
   }
 </script>

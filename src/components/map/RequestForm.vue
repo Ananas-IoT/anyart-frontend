@@ -1,21 +1,39 @@
 <template>
   <div class="request-form">
-    <h3 class="request-form__title">Please, complete the {{type}} form</h3>
-    <div class="request-from__wrap">
+    <h3 class="request-form__title">Please, complete the {{this.type}} form</h3>
+
+    <div class="request-form__wrap">
       <form>
-        <textarea class="request-form__request-description" v-model="request.description" placeholder="description"
+        <textarea
+          class="request-form__request-description"
+          v-if="this.type === 'request'"
+          v-model="request.description"
+          placeholder="description"
+                  required></textarea>
+        <textarea
+          class="request-form__request-description"
+          v-if="this.type === 'sketch'"
+          v-model="sketch.description"
+          placeholder="description"
                   required></textarea>
         <div class="request-form__request-address" v-if="requestAddress">{{requestAddress.name}}</div>
       </form>
     </div>
+
     <div class="request-form__img-preview-wrap">
       <img class="request-form__img-preview" ref="photoPreview" src="" alt="photo preview..">
       <label class="request-form__img-preview-label" for="files">Select Image</label>
-      <input class="request-form__img-preview-input" id="files" ref="photoUpload" @change="processPhoto()" type="file">
+      <input
+        class="request-form__img-preview-input"
+        id="files"
+        ref="photoUpload"
+        @change="processPhoto()"
+        type="file">
     </div>
+
     <form-button
       :text="'Submit and Send'"
-      @click.native="processRequest">
+      @click.native="chooseProcess">
     </form-button>
   </div>
 </template>
@@ -24,19 +42,26 @@
   import FormButton from '../formComponents/FormButton'
 
   export default {
-    name: "RequestTemplate",
+    name: "RequestForm",
     components: {
       'form-button': FormButton
     },
     props: {
+      type: {
+        type: String,
+        // required: true
+      },
       requestAddress: {
-        default: {name: ''},
+        default: () => ({
+          name: '',
+        }),
         type: Object
       }
     },
     data() {
       return {
         request: {
+          id: 1,
           photo: null,
           description: '',
           address: {},
@@ -44,12 +69,28 @@
           author: '',
           date: ''
         },
-        type: "Request"
+        sketch: {
+          requestId: 1,
+          photo: null,
+          description: '',
+          author: '',
+          date: ''
+        }
       }
     },
+    // created() {
+    //   this.type = 'request'
+    // },
     methods: {
-      processRequest: function () {
+      chooseProcess() {
+        if(this.type === 'request') {
+          this.processRequest();
+        } else if (this.type === 'sketch') {
+          this.processSketch();
+        }
+      },
 
+      processRequest () {
         this.request.date = this.getCurDate();
         this.request.address = this.requestAddress;
 
@@ -65,6 +106,15 @@
         this.$emit('addMarker', this.request);
         this.$emit('clearPosition');
       },
+
+      processSketch() {
+        this.sketch.date = this.getCurDate();
+        this.sketch.author = this.$store.getters.getUser.surname;
+
+        this.$store.dispatch('addSketch', this.sketch);
+        this.$emit('clearPosition');
+      },
+
       processPhoto: function () {
         var preview = this.$refs.photoPreview;
         var file = this.$refs.photoUpload.files[0];
@@ -76,11 +126,16 @@
 
         if (file) {
           reader.readAsDataURL(file);
-          this.request.photo = file;
+          if(this.type === 'request') {
+            this.request.photo = file;
+          } else if(this.type === 'sketch') {
+            this.sketch.photo = file;
+          }
         } else {
           preview.src = '';
         }
       },
+
       getCurDate: function () {
         let today = new Date();
         let dd = today.getDate();
@@ -110,7 +165,7 @@
     border-radius: 10px;
   }
 
-  .request-from__wrap {
+  .request-form__wrap {
     text-align: center;
     vertical-align: top;
     width: 50%;

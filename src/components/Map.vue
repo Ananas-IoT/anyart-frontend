@@ -1,14 +1,26 @@
 <template>
-  <div class="map-body" ref="containerTest">
+  <div class="map-body">
 
-    <request-form
+    <!--<request-form-->
+    <!--class="map__request-form"-->
+    <!--v-if="currentPlace"-->
+    <!--:type = this.currentType-->
+    <!--:requestAddress=this.currentPlace-->
+    <!--v-on:addMarker="addMarker"-->
+    <!--v-on:clearPosition="clearPosition"-->
+    <!--v-bind:class="{opened: openedRequest}">-->
+    <!--</request-form>-->
+
+
+    <component
       class="map__request-form"
-      v-if="currentPlace"
+      v-bind:is="this.isRequestForm"
+      :type='this.currentType'
       :requestAddress=this.currentPlace
       v-on:addMarker="addMarker"
       v-on:clearPosition="clearPosition"
       v-bind:class="{opened: openedRequest}">
-    </request-form>
+    </component>
 
     <div @click="openedRequest = !openedRequest" class="map__request-form__shadow"></div>
 
@@ -27,7 +39,7 @@
                     class="map__search-form-input"
                     @place_changed="setPlace">
                   </gmap-autocomplete>
-                  <button class="map__search-form-button" @click="openedRequest = !openedRequest">Add</button>
+                  <button class="map__search-form-button" @click="createForm">Add</button>
                 </label>
                 <br/>
               </div>
@@ -83,7 +95,9 @@
         markers: [],
         // places: [],
         currentPlace: null,
-        openedRequest: false
+        openedRequest: false,
+        currentType: 'request',
+        isRequestForm: null
       };
     },
 
@@ -93,12 +107,25 @@
     },
     created() {
       this.requests = this.$store.getters.getAllRequests;
-      eventBus.$on('uploadSketch', () => {
 
+      eventBus.$on('uploadSketch', () => {
+        this.isRequestForm = 'request-form';
+        this.currentType = 'sketch';
+        this.openedRequest = !this.openedRequest;
+      });
+
+      eventBus.$on('openRequest', (index) => {
+        alert('request nomer: ' + index);
       });
     },
 
     methods: {
+      createForm() {
+        this.isRequestForm = 'request-form';
+        //"opened" animation doesnt works :c
+        this.openedRequest = !this.openedRequest;
+      },
+
       // receives a place object via the autocomplete component
       setPlace(place) {
         this.currentPlace = place;
@@ -123,6 +150,7 @@
       //clears current place field, when request is completed (to destroy ReqTemplate component)
       clearPosition() {
         this.currentPlace = false;
+        this.isRequestForm = null;
       }
     }
   }
@@ -171,7 +199,7 @@
     opacity: 1;
   }
 
-  .request-template.opened + .map__request-form__shadow {
+  .map__request-form.opened + .map__request-form__shadow {
     pointer-events: auto;
     opacity: 1;
   }

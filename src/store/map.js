@@ -1,5 +1,6 @@
 const state = {
-  requestList: []
+  requestList: [],
+  sketchList: []
 };
 
 const getters = {
@@ -11,12 +12,18 @@ const getters = {
 const actions = {
   addRequest: function (context, newRequest) {
     context.commit("addRequest", newRequest);
+  },
+  addSketch: function (context, newRequest) {
+    context.commit("addSketch", newRequest);
   }
 };
 
 const mutations = {
   addRequest: function (state, newRequest) {
     state.requestList.push(newRequest);
+  },
+  addSketch: function (state, newRequest) {
+    state.sketchList.push(newRequest);
   }
 };
 
