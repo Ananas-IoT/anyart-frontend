@@ -6,10 +6,15 @@
       :index = index
       :userRole = "'artist'"
       ></request-item>
-      <!--<h2>INDEX IS : {{this.index}}</h2>-->
     </div>
     <div class="request-opened__sketch-list">
-
+      <sketch-item
+        class="request-opened__sketch-item"
+        v-for="(loopedSketch, index) in sketchList"
+        :sketch = loopedSketch
+        :index = index
+      >
+      </sketch-item>
     </div>
   </div>
 </template>
@@ -17,11 +22,13 @@
 <script>
   import eventBus from '../../eventBus'
   import RequestItem from './RequestItem'
+  import SketchItem from './SketchItem'
 
   export default {
     name: "RequestOpened",
     components: {
-      'request-item': RequestItem
+      'request-item': RequestItem,
+      'sketch-item': SketchItem
     },
     props: {
       index: Number
