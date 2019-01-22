@@ -61,7 +61,7 @@
     data() {
       return {
         request: {
-          id: 1,
+          id: 0,
           photo: null,
           description: '',
           address: {},
@@ -70,7 +70,7 @@
           date: ''
         },
         sketch: {
-          requestId: 1,
+          requestId: 0,
           photo: null,
           description: '',
           author: '',

@@ -38,7 +38,7 @@
     },
     methods: {
       openRequest() {
-        eventBus.$emit('openRequest', this.requestIndex)
+        eventBus.$emit('openRequest', this.requestIndex);
       },
       getRequestIndex(idx) {
         this.requestIndex = idx;
@@ -58,5 +58,6 @@
     padding: 5px 20px;
     font-size: 18px;
     border-top: 2px solid #000;
+    cursor: pointer;
   }
 </style>

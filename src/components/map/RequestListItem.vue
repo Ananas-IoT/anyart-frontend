@@ -6,7 +6,7 @@
       <span class="request-list-item__text-date">{{this.request.date}}</span>
     </div>
     <img class="request-list-item__photo-preview" src="" alt="">
-    <button class="" v-if="isArtist" type="button" @click="uploadSketch">Upload sketch</button>
+    <button class="" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch</button>
   </div>
 </template>
 

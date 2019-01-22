@@ -22,6 +22,7 @@
       v-bind:class="{opened: openedRequest}">
     </component>
 
+
     <div @click="openedRequest = !openedRequest" class="map__request-form__shadow"></div>
 
     <div class="container-fluid">
@@ -44,6 +45,15 @@
                 <br/>
               </div>
               <br>
+
+
+              <request-opened
+                class="map__request-open"
+                v-if="this.openRequest"
+                :index = "indexToOpenedReq"
+                @click.native = "openedRequest = false"
+              >
+              </request-opened>
 
               <!--it's map-->
               <gmap-map
@@ -75,10 +85,11 @@
 </template>
 
 <script>
+  import AppHeader from './AppHeader'
   import eventBus from '../eventBus'
   import RequestTemplate from './map/RequestForm'
   import RequestList from './map/RequestList'
-  import AppHeader from './AppHeader'
+  import RequestOpened from './map/RequestOpened'
 
 
   export default {
@@ -86,7 +97,8 @@
     components: {
       "user-header": AppHeader,
       "request-form": RequestTemplate,
-      "request-list": RequestList
+      "request-list": RequestList,
+      "request-opened": RequestOpened
     },
     data() {
       return {
@@ -97,13 +109,14 @@
         currentPlace: null,
         openedRequest: false,
         currentType: 'request',
-        isRequestForm: null
+        isRequestForm: null,
+        openRequest: false,
+        indexToOpenedReq: null
       };
     },
 
     mounted() {
       // this.geolocate();
-
     },
     created() {
       this.requests = this.$store.getters.getAllRequests;
@@ -115,7 +128,8 @@
       });
 
       eventBus.$on('openRequest', (index) => {
-        alert('request nomer: ' + index);
+        this.indexToOpenedReq = index;
+        this.openRequest = !this.openRequest;
       });
     },
 
@@ -238,6 +252,16 @@
     width: 100%;
     height: 92vh;
     overflow-y: scroll;
+  }
+
+  .map__request-open {
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    right: 10px;
+    bottom: 15px;
+    /*background: #000;*/
+    z-index: 80;
   }
 
 </style>
