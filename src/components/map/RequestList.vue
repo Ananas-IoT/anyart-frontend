@@ -7,6 +7,7 @@
                   :index = index
                   :userRole = user.role
                   @click.native="openRequest"
+
     >
       <span>{{getRequestIndex(index)}}</span>
     </request-item>

@@ -51,6 +51,7 @@
                 class="map__request-open"
                 v-if="this.openRequest"
                 :index = "indexToOpenedReq"
+                v-on:closeRequest = "openRequest = false"
                 @click.native = "openedRequest = false"
               >
               </request-opened>
@@ -165,7 +166,7 @@
       clearPosition() {
         this.currentPlace = false;
         this.isRequestForm = null;
-      }
+      },
     }
   }
 </script>

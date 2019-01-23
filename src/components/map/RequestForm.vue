@@ -74,7 +74,8 @@
           photo: null,
           description: '',
           author: '',
-          date: ''
+          date: '',
+          likeCounter: 0
         }
       }
     },

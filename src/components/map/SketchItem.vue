@@ -22,6 +22,7 @@
       }
     },
     created() {
+
     },
     mounted() {
       if (this.userRole === 'artist') {

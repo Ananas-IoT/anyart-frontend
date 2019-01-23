@@ -1,5 +1,10 @@
 <template>
   <div class="request-opened">
+    <div class="request-opened__close">
+      <img class="request-opened__close-img"
+           @click="closeRequest"
+           src="../../assets/img/close.png" alt="">
+    </div>
     <div class="request-opened__request">
       <request-item
       :request = request
@@ -53,7 +58,9 @@
       }
     },
     methods: {
-
+      closeRequest() {
+        this.$emit('closeRequest');
+      }
     }
   }
 </script>
@@ -62,8 +69,19 @@
   .request-opened {
     padding: 40px;
     background: #fff;
+    box-shadow: rgba(0,0,0,0.3) 3px 3px 8px;
   }
+
   .request-opened h2 {
     margin-top: 300px;
+  }
+
+  .request-opened__close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
   }
 </style>
