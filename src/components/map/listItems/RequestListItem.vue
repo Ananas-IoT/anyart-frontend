@@ -11,13 +11,13 @@
 </template>
 
 <script>
-  import eventBus from '../../eventBus'
+  import eventBus from '../../../eventBus'
 
   export default {
     name: "RequestListItem",
     props: {
       request: {},
-      index: {},
+      index: Number,
       userRole: {}
     },
     data() {
@@ -25,12 +25,13 @@
         isArtist: false
       }
     },
-    created() {
-    },
     mounted() {
       if(this.userRole === 'artist') {this.isArtist = true}
       const file = this.request.photo;
       this.showPhoto(file);
+    },
+    created() {
+
     },
     methods: {
       showPhoto (file) {
@@ -41,7 +42,7 @@
         };
         reader.readAsDataURL(file);
       },
-      //trigger request-form on Map component
+      //trigger common-form on Map component
       uploadSketch() {
         eventBus.$emit('uploadSketch');
       }

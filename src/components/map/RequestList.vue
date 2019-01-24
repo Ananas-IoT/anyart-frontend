@@ -6,16 +6,17 @@
                   :request = loopedRequest
                   :index = index
                   :userRole = user.role
-                  @click.native="openRequest"
+                  @click.native="openRequestTab"
 
     >
+      <!--span is used to send index of current loopedReqest-->
       <span>{{getRequestIndex(index)}}</span>
     </request-item>
   </div>
 </template>
 
 <script>
-  import RequestItem from './RequestListItem'
+  import RequestItem from './listItems/RequestListItem'
   import eventBus from '../../eventBus'
 
   export default {
@@ -38,9 +39,12 @@
       this.user = this.$store.getters.getUser;
     },
     methods: {
-      openRequest() {
-        eventBus.$emit('openRequest', this.requestIndex);
+      //to map component
+      openRequestTab() {
+        eventBus.$emit('openRequestTab', this.requestIndex);
       },
+
+      //gets request index from html template
       getRequestIndex(idx) {
         this.requestIndex = idx;
       }

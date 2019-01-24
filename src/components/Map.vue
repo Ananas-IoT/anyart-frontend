@@ -1,29 +1,19 @@
 <template>
   <div class="map-body">
 
-    <!--<request-form-->
-    <!--class="map__request-form"-->
-    <!--v-if="currentPlace"-->
-    <!--:type = this.currentType-->
-    <!--:requestAddress=this.currentPlace-->
-    <!--v-on:addMarker="addMarker"-->
-    <!--v-on:clearPosition="clearPosition"-->
-    <!--v-bind:class="{opened: openedRequest}">-->
-    <!--</request-form>-->
-
-
-    <component
-      class="map__request-form"
-      v-bind:is="this.isRequestForm"
-      :type='this.currentType'
+    <common-form
+      class="map__common-form"
+      v-if="!this.destroyFormComponent"
+      :type='this.currentFormType'
       :requestAddress=this.currentPlace
       v-on:addMarker="addMarker"
       v-on:clearPosition="clearPosition"
-      v-bind:class="{opened: openedRequest}">
-    </component>
+      v-bind:class="{opened: openedFormClassTrigger}">
+    </common-form>
 
-
-    <div @click="openedRequest = !openedRequest" class="map__request-form__shadow"></div>
+    <div
+      class="map__form__shadow"
+      @click="openedFormClassTrigger = !openedFormClassTrigger"></div>
 
     <div class="container-fluid">
       <div class="row no-gutters">
@@ -47,34 +37,34 @@
               <br>
 
 
-              <request-opened
+              <request-tab
                 class="map__request-open"
-                v-if="this.openRequest"
-                :index = "indexToOpenedReq"
-                v-on:closeRequest = "openRequest = false"
-                @click.native = "openedRequest = false"
+                v-if="this.openRequestTab"
+                :index="indexToOpenedReq"
+                v-on:closeRequest="openRequestTab = false"
+                @click.native="openedFormClassTrigger = false"
               >
-              </request-opened>
+              </request-tab>
 
               <!--it's map-->
               <gmap-map
                 class="map__map"
-                :center="center"
+                :center="mapCenter"
                 :zoom="12"
               >
-                <!--it's markers-->
+                <!--it's markerList-->
                 <gmap-marker
                   :key="index"
-                  v-for="(m, index) in requests"
+                  v-for="(m, index) in requestList"
                   :position="m.position"
-                  @click="center=m.position"
+                  @click="mapCenter=m.position"
                 ></gmap-marker>
               </gmap-map>
             </div>
 
             <div class="col-lg-4">
               <request-list class="map__request-list"
-                            :requestList=this.requests
+                            :requestList=this.requestList
               ></request-list>
             </div>
 
@@ -88,57 +78,62 @@
 <script>
   import AppHeader from './AppHeader'
   import eventBus from '../eventBus'
-  import RequestTemplate from './map/RequestForm'
+  import RequestTemplate from './map/CommonForm'
   import RequestList from './map/RequestList'
-  import RequestOpened from './map/RequestOpened'
+  import RequestOpened from './map/RequestTab'
 
 
   export default {
     name: "Map",
     components: {
       "user-header": AppHeader,
-      "request-form": RequestTemplate,
+      "common-form": RequestTemplate,
       "request-list": RequestList,
-      "request-opened": RequestOpened
+      "request-tab": RequestOpened
     },
     data() {
       return {
-        center: {lat: 49.85, lng: 24.0166666667},
-        requests: [],
-        markers: [],
+        mapCenter: {lat: 49.85, lng: 24.0166666667},
+        requestList: [],
+        markerList: [],
         // places: [],
+
+        //place on map search form
         currentPlace: null,
-        openedRequest: false,
-        currentType: 'request',
-        isRequestForm: null,
-        openRequest: false,
+
+        openedFormClassTrigger: false,
+        currentFormType: 'request',
+        destroyFormComponent: true,
+        openRequestTab: false,
+
+        //sends item index in request list
         indexToOpenedReq: null
       };
     },
 
-    mounted() {
-      // this.geolocate();
-    },
     created() {
-      this.requests = this.$store.getters.getAllRequests;
+      this.requestList = this.$store.getters.getAllRequests;
 
+      //from RequestListItem
       eventBus.$on('uploadSketch', () => {
-        this.isRequestForm = 'request-form';
-        this.currentType = 'sketch';
-        this.openedRequest = !this.openedRequest;
+        this.destroyFormComponent = false;
+        this.currentFormType = 'sketch';
+        this.openedFormClassTrigger = true;
       });
 
-      eventBus.$on('openRequest', (index) => {
+      //from RequestList
+      eventBus.$on('openRequestTab', (index) => {
         this.indexToOpenedReq = index;
-        this.openRequest = !this.openRequest;
+        this.openRequestTab = !this.openRequestTab;
       });
     },
 
     methods: {
+      //creates common-form component
       createForm() {
-        this.isRequestForm = 'request-form';
+        this.destroyFormComponent = false;
         //"opened" animation doesnt works :c
-        this.openedRequest = !this.openedRequest;
+        this.openedFormClassTrigger = !this.openedFormClassTrigger;
       },
 
       // receives a place object via the autocomplete component
@@ -148,14 +143,14 @@
 
       //gets location from RequestTemplate, draws marker there
       addMarker(reqToAdd) {
-        this.openedRequest = false;
+        this.openedFormClassTrigger = true;
         // this.requests.push(reqToAdd);
       },
 
       //get user location
       geolocate() {
         navigator.geolocation.getCurrentPosition(position => {
-          this.center = {
+          this.mapCenter = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
@@ -165,7 +160,7 @@
       //clears current place field, when request is completed (to destroy ReqTemplate component)
       clearPosition() {
         this.currentPlace = false;
-        this.isRequestForm = null;
+        this.destroyFormComponent = true;
       },
     }
   }
@@ -187,7 +182,7 @@
     display: inline-block;
   }
 
-  .map__request-form {
+  .map__common-form {
     position: absolute;
     top: 80px;
     left: 50%;
@@ -197,7 +192,7 @@
     z-index: 100;
   }
 
-  .map__request-form__shadow {
+  .map__form__shadow {
     position: fixed;
     top: 0;
     right: 0;
@@ -209,12 +204,12 @@
     z-index: 90;
   }
 
-  .map__request-form.opened {
+  .map__common-form.opened {
     transform: translate(-50%, 10vh);
     opacity: 1;
   }
 
-  .map__request-form.opened + .map__request-form__shadow {
+  .map__common-form.opened + .map__form__shadow {
     pointer-events: auto;
     opacity: 1;
   }

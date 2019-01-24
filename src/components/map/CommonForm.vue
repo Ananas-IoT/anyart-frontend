@@ -1,30 +1,30 @@
 <template>
-  <div class="request-form">
-    <h3 class="request-form__title">Please, complete the {{this.type}} form</h3>
+  <div class="common-form">
+    <h3 class="common-form__title">Please, complete the {{this.type}} form</h3>
 
-    <div class="request-form__wrap">
+    <div class="common-form__wrap">
       <form>
         <textarea
-          class="request-form__request-description"
+          class="common-form__request-description"
           v-if="this.type === 'request'"
           v-model="request.description"
           placeholder="description"
                   required></textarea>
         <textarea
-          class="request-form__request-description"
+          class="common-form__request-description"
           v-if="this.type === 'sketch'"
           v-model="sketch.description"
           placeholder="description"
                   required></textarea>
-        <div class="request-form__request-address" v-if="requestAddress">{{requestAddress.name}}</div>
+        <div class="common-form__request-address" v-if="requestAddress !== ''">{{requestAddress.name}}</div>
       </form>
     </div>
 
-    <div class="request-form__img-preview-wrap">
-      <img class="request-form__img-preview" ref="photoPreview" src="" alt="photo preview..">
-      <label class="request-form__img-preview-label" for="files">Select Image</label>
+    <div class="common-form__img-preview-wrap">
+      <img class="common-form__img-preview" ref="photoPreview" src="" alt="photo preview..">
+      <label class="common-form__img-preview-label" for="files">Select Image</label>
       <input
-        class="request-form__img-preview-input"
+        class="common-form__img-preview-input"
         id="files"
         ref="photoUpload"
         @change="processPhoto()"
@@ -42,20 +42,19 @@
   import FormButton from '../formComponents/FormButton'
 
   export default {
-    name: "RequestForm",
+    name: "CommonForm",
     components: {
       'form-button': FormButton
     },
     props: {
       type: {
         type: String,
-        // required: true
+        required: true
       },
       requestAddress: {
         default: () => ({
           name: '',
-        }),
-        type: Object
+        })
       }
     },
     data() {
@@ -156,7 +155,7 @@
 </script>
 
 <style scoped>
-  .request-form {
+  .common-form {
     text-align: center;
     width: 50%;
     padding: 0 10px 30px;
@@ -166,39 +165,39 @@
     border-radius: 10px;
   }
 
-  .request-form__wrap {
+  .common-form__wrap {
     text-align: center;
     vertical-align: top;
     width: 50%;
     display: inline-block;
   }
 
-  .request-form__img-preview-wrap {
+  .common-form__img-preview-wrap {
     text-align: center;
     width: 49%;
     display: inline-block;
   }
 
-  .request-form__img-preview {
+  .common-form__img-preview {
     display: block;
     width: 180px;
     height: 180px;
     margin: 0 auto 15px;
   }
 
-  .request-form__img-preview-input {
+  .common-form__img-preview-input {
     display: none;
     color: transparent;
   }
 
-  .request-form__img-preview-label {
+  .common-form__img-preview-label {
     display: inline-block;
     margin: auto;
     cursor: pointer;
     border-bottom: 1px solid #000;
   }
 
-  .request-form__request-description {
+  .common-form__request-description {
     display: block;
     width: 80%;
     height: 120px;
@@ -206,7 +205,7 @@
     margin: 20px auto 5px;
   }
 
-  .request-form__request-address {
+  .common-form__request-address {
     display: block;
     width: 80%;
     padding: 5px 10px;

@@ -1,18 +1,18 @@
 <template>
-  <div class="request-item">
-    <div class="request-item__text">
-      <h4 class="request-item__text-title">{{this.request.address.name}}</h4>
-      <p class="request-item__text-description">{{this.request.description}}</p>
-      <span class="request-item__text-date">{{this.request.date}}</span>
+  <div class="request-tab-item">
+    <div class="request-tab-item__text">
+      <h4 class="request-tab-item__text-title">{{this.request.address.name}}</h4>
+      <p class="request-tab-item__text-description">{{this.request.description}}</p>
+      <span class="request-tab-item__text-date">{{this.request.date}}</span>
     </div>
-    <img class="request-item__photo-preview" src="" alt="">
+    <img class="request-tab-item__photo-preview" src="" alt="">
     <button class="" v-if="isArtist" type="button" @click="uploadSketch">Upload sketch</button>
   </div>
 </template>
 
 <script>
   export default {
-    name: "RequestItem",
+    name: "RequestTabItem",
     props: {
       request: {},
       index: {},
@@ -23,8 +23,6 @@
         isArtist: false
       }
     },
-    created() {
-    },
     mounted() {
       if (this.userRole === 'artist') {
         this.isArtist = true
@@ -32,9 +30,12 @@
       const file = this.request.photo;
       this.showPhoto(file);
     },
+    created() {
+
+    },
     methods: {
       showPhoto(file) {
-        let preview = document.getElementsByClassName('request-item__photo-preview')[this.index];
+        let preview = document.getElementsByClassName('request-tab-item__photo-preview')[this.index];
         let reader = new FileReader();
         reader.onloadend = function () {
           preview.src = reader.result;
@@ -50,17 +51,17 @@
 </script>
 
 <style scoped>
-  .request-item {
+  .request-tab-item {
     padding-bottom: 30px;
     border-bottom: 1px solid #000;
   }
 
-  .request-item__text {
+  .request-tab-item__text {
     display: inline-block;
     width: calc(100% - 150px);
   }
 
-  .request-item__text-title {
+  .request-tab-item__text-title {
     margin: 10px 0;
     font-family: "PT Sans Bold";
   }
@@ -70,7 +71,7 @@
     border-bottom: 0.5px solid #000;
   }
 
-  .request-item__photo-preview {
+  .request-tab-item__photo-preview {
     display: inline-block;
     width: 120px;
     height: 120px;

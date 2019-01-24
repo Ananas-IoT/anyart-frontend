@@ -1,10 +1,13 @@
 <template>
   <div class="request-opened">
+    <!--close button-->
     <div class="request-opened__close">
       <img class="request-opened__close-img"
            @click="closeRequest"
            src="../../assets/img/close.png" alt="">
     </div>
+
+    <!--request itself-->
     <div class="request-opened__request">
       <request-item
       :request = request
@@ -12,6 +15,8 @@
       :userRole = "'artist'"
       ></request-item>
     </div>
+
+    <!--sketch list-->
     <div class="request-opened__sketch-list">
       <sketch-item
         class="request-opened__sketch-item"
@@ -26,11 +31,11 @@
 
 <script>
   import eventBus from '../../eventBus'
-  import RequestItem from './RequestItem'
-  import SketchItem from './SketchItem'
+  import RequestItem from './tabItems/RequestTabItem'
+  import SketchItem from './tabItems/SketchTabItem'
 
   export default {
-    name: "RequestOpened",
+    name: "RequestTab",
     components: {
       'request-item': RequestItem,
       'sketch-item': SketchItem
@@ -45,19 +50,22 @@
       }
     },
     created() {
+      //get all requests from store
       var requestList = this.$store.getters.getAllRequests;
+
+      //get current request from list
       this.request = requestList[this.index];
 
+      // gets all sketches and serches by request id
       var sketchList = this.$store.getters.getAllSketches;
       for(let i = 0; i < sketchList.length; i++) {
         if (sketchList[i].requestId === this.index) {
           this.sketchList.push(sketchList[i]);
         }
-        console.log(this.sketchList);
-
       }
     },
     methods: {
+      //to map component
       closeRequest() {
         this.$emit('closeRequest');
       }
