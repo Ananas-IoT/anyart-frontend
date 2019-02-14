@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <div class="form-wrap"  v-bind:class="{'form-wrap__valid': formValidation}">
+    <div class="form-wrap"  v-bind:class="{'form-wrap__valid': formIsValid}">
       <form class="register__form">
         <h2 class="form__title">Create an account:</h2>
 
@@ -15,7 +15,7 @@
           type="text"
           placeholder="name"
           v-model="user.first_name"
-          v-bind:class="{form__input__invalid: !fieldValidation.first_name}"
+          v-bind:class="{form__input__invalid: !validation.first_name}"
           required>
 
         <input
@@ -23,7 +23,7 @@
           type="text"
           placeholder="surname"
           v-model="user.last_name"
-          v-bind:class="{form__input__invalid: !fieldValidation.last_name}"
+          v-bind:class="{form__input__invalid: !validation.last_name}"
           required>
 
         <input
@@ -31,7 +31,7 @@
           type="text"
           placeholder="email"
           v-model="user.email"
-          v-bind:class="{invalid: !fieldValidation.email}"
+          v-bind:class="{invalid: !validation.email}"
           required>
 
         <input
@@ -49,7 +49,7 @@
 
       <div
         class="register__role"
-        v-bind:class="{'in-left': formValidation}">
+        v-bind:class="{'in-left': formIsValid}">
 
         <h2 class="form__title">Create an account:</h2>
         <p>You was registered as {{user.role}} user!</p>
@@ -87,12 +87,12 @@
           email: '',
           role: 'basic'
         },
-        fieldValidation: {
+        validation: {
           first_name: true,
           last_name: true,
           email: true
         },
-        formValidation: false,
+        formIsValid: false,
         descriptionList: {
           basic: 'As basic user, you will be able to upload photo with request and vote for artist sketches!',
           artist: 'You will have all basic user functions plus ability to upload your sketch'
@@ -110,22 +110,13 @@
     },
     methods: {
       checkUser: function () {
-        Object.keys(this.fieldValidation).forEach(v => this.fieldValidation[v] = true);
+        // Object.keys(this.validation).forEach(v => this.validation[v] = true);
         var re = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
         if (!(re.test(this.user.email.toLowerCase()))) {
-          this.fieldValidation.email = false;
+          this.validation.email = false;
         }
-        if (false) {
-          //check if surname exists
-          this.fieldValidation.first_name = false;
-          this.fieldValidation.last_name = false;
-        }
-        if (false) {
-          //check if email exists
-          this.fieldValidation.email = false;
-        }
-        if (this.isAllTrue(this.fieldValidation)) {
-          this.formValidation = true
+        if (this.isAllTrue(this.validation)) {
+          this.formIsValid = true
         }
       },
 
@@ -141,22 +132,30 @@
       },
 
       addNewUser: function () {
-
         this.user.rights = this.user.role;
 
-        // const API_URL = 'http://localhost:8000';
-        // const url = `${API_URL}/auth/registration/`;
-        // axios.post(url, this.user);
+        const config = {
+          headers: {'Origin': 'http://gurman.pythonanywhere.com'}
+        };
+        const API_URL = 'http://gurman.pythonanywhere.com';
+        const url = `${API_URL}/authorization/register/`;
 
-        this.$store.dispatch('addNewUser', this.user);
-        var token;
-        if (this.user.role === 'artist') {
-          token = "2";
-        } else {
-          token = "1";//get token from api
-        }
-        localStorage.setItem('user-token', token);
-        this.$router.push("/");
+        axios.post(url, this.user, config)
+          .then( response => {
+            console.log(response.data.access);
+            console.log(response.data.refresh);
+            this.$store.dispatch('setUser', this.user);
+
+            let token = response.data.access;
+            let refresh = response.data.refresh;
+
+            localStorage.setItem('user-token', token);
+            localStorage.setItem('token-refresh', refresh);
+            this.$router.push("/");
+          })
+          .catch(error => {
+            console.log(error);
+        })
       },
     }
   }
@@ -183,7 +182,7 @@
   }
 
   .register__form {
-    /*v-if="formValidation"*/
+    /*v-if="formIsValid"*/
     opacity: 1;
     pointer-events: auto;
     transition: 0.3s;

@@ -1,5 +1,5 @@
 
-export function getUserByToken(token) {
+export function getUserByToken(token, refresh) {
   if (token === '1') {
     return {
       first_name: "Daniil",

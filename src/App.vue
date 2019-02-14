@@ -15,8 +15,9 @@
     },
     created: function () {
       const token = localStorage.getItem('user-token');
+      const refresh = localStorage.getItem('token-refresh');
       if (token) {
-        this.user = getUserByToken(token);
+        this.user = getUserByToken(token, refresh);
         this.$store.dispatch('setUser', this.user);
       }
     }

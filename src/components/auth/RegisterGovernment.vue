@@ -34,7 +34,7 @@
           password: '',
           role: 'government'
         },
-        fieldValidation: {
+        validation: {
           surname: true,
           email: true
         }
@@ -42,21 +42,21 @@
     },
     computed: {},
     methods: {
-      checkUser: function () {
-        Object.keys(this.fieldValidation).forEach(v => this.fieldValidation[v] = true);
+      login: function () {
+        Object.keys(this.validation).forEach(v => this.validation[v] = true);
         var re = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
         if (!(re.test(this.user.email.toLowerCase()))) {
-          this.fieldValidation.email = false;
+          this.validation.email = false;
         }
         if (false) {
           //checking if surname exists
-          this.fieldValidation.surname = false;
+          this.validation.surname = false;
         }
         if (false) {
           //checking if email exists
-          this.fieldValidation.email = false;
+          this.validation.email = false;
         }
-        if (this.isAllTrue(this.fieldValidation)) {
+        if (this.isAllTrue(this.validation)) {
           this.addNewUser();
           this.$router.push("/");
         }

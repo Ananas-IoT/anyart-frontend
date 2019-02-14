@@ -3,12 +3,24 @@
     <div class="form-wrap">
       <form>
         <h2 class="form__title">Sign in:</h2>
-        <input class="form__input" type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
-               required>
-        <input class="form__input" type="password" placeholder="password" v-model="user.password" required>
+        <input
+          class="form__input"
+          type="text"
+          placeholder="email"
+          v-model="user.email"
+          v-bind:class="{invalid: !validation.email}"
+          required>
+
+        <input
+          class="form__input"
+          type="password"
+          placeholder="password"
+          v-model="user.password"
+          v-bind:class="{invalid: !validation.password}"
+          required>
         <form-button
-          :text = "'Submit'"
-          @click="checkUser">
+          :text="'Submit'"
+          @click.native="login">
         </form-button>
       </form>
     </div>
@@ -17,6 +29,7 @@
 
 <script>
   import FormButton from '../formComponents/FormButton';
+  import axios from 'axios';
 
   export default {
     name: "login",
@@ -29,28 +42,37 @@
           email: '',
           password: ''
         },
-        fieldValidation: {
+        validation: {
           surname: true,
           email: true
         }
       }
     },
-    computed: {
-
-    },
+    computed: {},
     methods: {
-      checkUser: function () {
-        if (false) {
-          //checking if email exists
-          this.fieldValidation.email = false;
-        }
-        if (false) {
-          //checking if password suits
-          this.fieldValidation.password = false;
-        }
-        if (this.isAllTrue(this.fieldValidation)) {
-          this.setUser(this.user).then(this.$router.push("/"));
-        }
+      login: function () {
+        this.user.username = this.user.email;
+        const config = {
+          headers: {'Origin': 'http://gurman.pythonanywhere.com'}
+        };
+        const API_URL = 'http://gurman.pythonanywhere.com';
+        const url = `${API_URL}/authorization/token/`;
+        axios.post(url, this.user, config)
+          .then(response => {
+            console.log(response);
+            this.$store.dispatch('setUser', this.user);
+
+            let token = response.data.access;
+            let refresh = response.data.refresh;
+
+            localStorage.setItem('user-token', token);
+            localStorage.setItem('token-refresh', refresh);
+
+            this.$router.push("/")
+          })
+          .catch(error => {
+          });
+
       },
 
       isAllTrue: function (obj) {
@@ -58,12 +80,6 @@
           if (obj[i] != true) return false;
         }
         return true;
-      },
-
-      setUser: function (user) {
-        this.$store.dispatch('setUser', user);
-        var token  = "1";//get token from api
-        localStorage.setItem('user-token', token);
       },
     }
   }
