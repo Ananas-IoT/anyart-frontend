@@ -135,7 +135,7 @@
         this.user.rights = this.user.role;
 
         const config = {
-          headers: {'Origin': 'http://gurman.pythonanywhere.com'}
+          headers: {'Origin': 'https://gurman.pythonanywhere.com'}
         };
         const API_URL = 'https://gurman.pythonanywhere.com';
         const url = `${API_URL}/authorization/register/`;
