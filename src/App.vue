@@ -69,7 +69,7 @@
 
   .app__small-resolution-text {
     text-align: center;
-    margin-top: 200px;
-    font-size: 24px;
+    margin-top: 220px;
+    padding: 10%;
   }
 </style>
