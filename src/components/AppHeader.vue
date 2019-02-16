@@ -43,20 +43,23 @@
 </template>
 
 <script>
+  import eventBus from '../eventBus'
+
   export default {
     name: "Header",
     data() {
       return {
         user: {},
-        userFullName: ''
+        userFullName: '',
+        isAuth: false
       }
     },
     created() {
-      this.isAuth = this.$store.getters.isAuthenticated;
-      if (this.isAuth) {
-        this.user = this.$store.getters.getUser;
-      }
-      this.userFullName = this.user.first_name + ' ' + this.user.last_name;
+      eventBus.$on('checkUser', (user) => {
+        this.isAuth = true;
+        this.user = user;
+        this.userFullName = this.user.first_name + ' ' + this.user.last_name;
+      });
     },
   }
 </script>
@@ -221,6 +224,7 @@
   .header__scrolled .user-block a {
     color: #000;
   }
+
   .header__scrolled .user-block div {
     color: #000;
   }

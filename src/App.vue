@@ -29,11 +29,12 @@
       }
     },
     created: function () {
-      const token = localStorage.getItem('user-token');
+      let token = localStorage.getItem('user-token');
       const refresh = localStorage.getItem('token-refresh');
       if (token) {
+        // token = '1';
         this.user = getUserByToken(token, refresh);
-        this.$store.dispatch('setUser', this.user);
+        // this.$store.dispatch('setUser', this.user);
       }
 
       //get resolution on start

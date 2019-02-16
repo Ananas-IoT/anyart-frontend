@@ -142,8 +142,7 @@
 
         axios.post(url, this.user, config)
           .then( response => {
-            console.log(response.data.access);
-            console.log(response.data.refresh);
+            console.log(response);
             this.$store.dispatch('setUser', this.user);
 
             let token = response.data.access;
