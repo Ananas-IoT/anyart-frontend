@@ -137,7 +137,7 @@
         const config = {
           headers: {'Origin': 'http://gurman.pythonanywhere.com'}
         };
-        const API_URL = 'http://gurman.pythonanywhere.com';
+        const API_URL = 'https://gurman.pythonanywhere.com';
         const url = `${API_URL}/authorization/register/`;
 
         axios.post(url, this.user, config)
