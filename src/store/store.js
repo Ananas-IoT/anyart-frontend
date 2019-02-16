@@ -5,7 +5,7 @@ import map from './map'
 
 Vue.use(Vuex);
 
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
   modules: {
       auth,
       map
