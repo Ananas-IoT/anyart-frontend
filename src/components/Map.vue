@@ -116,6 +116,7 @@
 
       //from RequestListItem
       eventBus.$on('uploadSketch', () => {
+        console.log('test');
         this.destroyFormComponent = false;
         this.currentFormType = 'sketch';
         this.openedFormClassTrigger = true;

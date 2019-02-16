@@ -1,6 +1,16 @@
 <template>
   <div>
-    <router-view></router-view>
+
+    <router-view v-if="window.width >= 1280"></router-view>
+
+    <div
+      class="app__small-resolution"
+      v-if="window.width < 1280">
+      <h2 class="app__small-resolution-text">
+        Unfortunately, adaptive version of website is in development now. <br> Try to use your desktop browser!
+      </h2>
+    </div>
+
   </div>
 </template>
 
@@ -11,7 +21,12 @@
   export default {
     name: 'app',
     data() {
-      return {}
+      return {
+        window: {
+          width: 0,
+          height: 0
+        }
+      }
     },
     created: function () {
       const token = localStorage.getItem('user-token');
@@ -20,7 +35,21 @@
         this.user = getUserByToken(token, refresh);
         this.$store.dispatch('setUser', this.user);
       }
+
+      //get resolution on start
+      window.addEventListener('resize', this.handleResize);
+      this.handleResize();
+    },
+    destroyed() {
+      window.removeEventListener('resize', this.handleResize);
+    },
+    methods: {
+      handleResize() {
+        this.window.width = window.innerWidth;
+        this.window.height = window.innerHeight;
+      }
     }
+
   }
 </script>
 
@@ -28,4 +57,19 @@
   @import './../node_modules/bootstrap/dist/css/bootstrap-grid.css';
   @import "./assets/css/fonts.css";
   @import "./assets/css/main.css";
+
+  .app__small-resolution {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #269abc;
+  }
+
+  .app__small-resolution-text {
+    text-align: center;
+    margin-top: 200px;
+    font-size: 24px;
+  }
 </style>
