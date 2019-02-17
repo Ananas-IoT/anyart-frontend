@@ -60,13 +60,13 @@
     data() {
       return {
         request: {
-          id: 0,
+          // id: 0,
           photo: null,
           description: '',
           address: {},
           position: {},
-          author: '',
-          date: ''
+          // author: '',
+          // date: ''
         },
         sketch: {
           requestId: 0,

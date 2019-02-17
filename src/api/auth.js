@@ -4,18 +4,22 @@ import eventBus from '../eventBus'
 
 export function getUserByToken(token, refresh) {
 
-  // const config = {
-  //   headers: {'Origin': 'http://gurman.pythonanywhere.com'}
-  // };
-  const API_URL = 'https://4c9a124f-18b2-4645-b302-bed12149859a.mock.pstmn.io';
-  const url = `${API_URL}/get_by_token`;
-  axios.get(url)
+  const config = {
+    headers: {'Origin': 'http://gurman.pythonanywhere.com',
+              'Authorization': 'Bearer ' + token}
+  };
+  // console.log(config);
+  // const API_URL = 'https://4c9a124f-18b2-4645-b302-bed12149859a.mock.pstmn.io';
+  const API_URL = 'https://gurman.pythonanywhere.com';
+  // const url = `${API_URL}/get_by_token`;
+  const url = `${API_URL}/authorization/profile/`;
+  axios.get(url, config)
     .then(response => {
-      console.log(response.data.user);
-      store.dispatch('setUser', response.data.user);
+      console.log(response);
+      // store.dispatch('setUser', response.data.user);
 
       //to AppHeader.vue
-      eventBus.$emit('checkUser', response.data.user);
+      // eventBus.$emit('checkUser', response.data.user);
     });
 
 
