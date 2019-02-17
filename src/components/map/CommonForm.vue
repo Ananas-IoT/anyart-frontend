@@ -40,6 +40,7 @@
 
 <script>
   import FormButton from '../formComponents/FormButton'
+  import axios from 'axios'
 
   export default {
     name: "CommonForm",
@@ -60,13 +61,13 @@
     data() {
       return {
         request: {
-          // id: 0,
+          id: 0,
           photo: null,
           description: '',
           address: {},
           position: {},
-          // author: '',
-          // date: ''
+          author: '',
+          date: ''
         },
         sketch: {
           requestId: 0,
@@ -91,16 +92,39 @@
       },
 
       processRequest () {
-        this.request.date = this.getCurDate();
-        this.request.address = this.requestAddress;
+        // this.request.date = this.getCurDate();
+        // this.request.address = this.requestAddress;
 
         this.request.position = {
           lat: this.requestAddress.geometry.location.lat(),
           lng: this.requestAddress.geometry.location.lng()
         };
 
-        this.request.author = this.$store.getters.getUser.surname;
+        // this.request.author = this.$store.getters.getUser.surname;
         // console.log(this.request);
+
+        let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2' +
+          'tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQ4NzE0NTQ3LCJqdGkiOiJlNTY' +
+          'yZDcyMDc0YTI0NDg0OTAzN2ZhZWFiM2NlMGFmMyIsInVzZXJfaWQiOjE5LCJyaWdodHM' +
+          'iOiJhcnRpc3QifQ.YrXHAlm0dtPYcYgIHE91PHr1nESFONU5IrZvQCui0u0';
+
+        const config = {
+          headers: {'Origin': 'http://gurman.pythonanywhere.com',
+            'Authorization': 'Bearer ' + token}
+        };
+        // console.log(config);
+        // const API_URL = 'https://4c9a124f-18b2-4645-b302-bed12149859a.mock.pstmn.io';
+        const API_URL = 'https://gurman.pythonanywhere.com';
+        // const url = `${API_URL}/get_by_token`;
+        const url = `${API_URL}/workload/wall_photo_wrappers/`;
+        axios.post(url, this.request, config)
+          .then(response => {
+            console.log(response);
+            // store.dispatch('setUser', response.data.user);
+
+            //to AppHeader.vue
+            // eventBus.$emit('checkUser', response.data.user);
+          });
 
         this.$store.dispatch('addRequest', this.request);
         this.$emit('addMarker', this.request);
