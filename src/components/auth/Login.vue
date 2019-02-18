@@ -29,6 +29,7 @@
 
 <script>
   import FormButton from '../formComponents/FormButton';
+  import {getUserByToken} from "../../api/auth";
   import axios from 'axios';
 
   export default {
@@ -60,10 +61,12 @@
         axios.post(url, this.user, config)
           .then(response => {
             console.log(response);
-            this.$store.dispatch('setUser', this.user);
+            // this.$store.dispatch('setUser', this.user);
 
             let token = response.data.access;
             let refresh = response.data.refresh;
+
+            getUserByToken(token, refresh);
 
             localStorage.setItem('user-token', token);
             localStorage.setItem('token-refresh', refresh);

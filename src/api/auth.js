@@ -2,47 +2,52 @@ import axios from 'axios';
 import store from '../store/store'
 import eventBus from '../eventBus'
 
+const API_URL = 'https://gurman.pythonanywhere.com';
+
 export function getUserByToken(token, refresh) {
 
   const config = {
-    headers: {'Origin': 'http://gurman.pythonanywhere.com',
+    headers: {'Origin': 'https://gurman.pythonanywhere.com',
               'Authorization': 'Bearer ' + token}
   };
-  // console.log(config);
+
   // const API_URL = 'https://4c9a124f-18b2-4645-b302-bed12149859a.mock.pstmn.io';
-  const API_URL = 'https://gurman.pythonanywhere.com';
   // const url = `${API_URL}/get_by_token`;
+
   const url = `${API_URL}/authorization/profile/`;
+
+  refreshToken(refresh);
+
   axios.get(url, config)
     .then(response => {
       console.log(response);
-      // store.dispatch('setUser', response.data.user);
 
-      //to AppHeader.vue
-      // eventBus.$emit('checkUser', response.data.user);
+      let user = response.data;
+      user.role = response.data.user_profile.rights;
+
+      store.dispatch('setUser', user);
+
+      // to AppHeader.vue
+      eventBus.$emit('checkUser', user);
+    })
+    .catch(err => {
+      console.log(err);
+      refreshToken(refresh);
     });
+  }
+}
 
+function refreshToken(refresh) {
 
-  // if (token === '1') {
-  //   console.log(token);
-  //   return {
-  //     first_name: "Daniil",
-  //     last_name: "Lohvinov",
-  //     role: "basic"
-  //   }
-  // }
-  // if (token === '2') {
-  //   return {
-  //     first_name: "Artist",
-  //     last_name: "Artist",
-  //     role: "artist"
-  //   }
-  // }
-  // if (token === '3') {
-  //   return {
-  //     first_name: "Vasyl",
-  //     last_name: "Vasyl",
-  //     role: "government"
-  //   }
-  // }
+  const config = {
+    headers: {'Origin': 'https://gurman.pythonanywhere.com'}
+  };
+
+  const url = `${API_URL}/authorization/token/refresh/`;
+
+  axios.post(url, {refresh}, config)
+    .then(response => {
+      console.log(response);
+      getUserByToken(response.data.access);
+    });
 }
