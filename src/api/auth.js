@@ -34,7 +34,6 @@ export function getUserByToken(token, refresh) {
       console.log(err);
       refreshToken(refresh);
     });
-  }
 }
 
 function refreshToken(refresh) {
