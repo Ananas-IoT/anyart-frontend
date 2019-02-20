@@ -56,7 +56,7 @@
         const config = {
           headers: {}
         };
-        const API_URL = 'https://gurman.pythonanywhere.com';
+        const API_URL = 'https://anyart.pythonanywhere.com';
         const url = `${API_URL}/authorization/token/`;
         axios.post(url, this.user, config)
           .then(response => {

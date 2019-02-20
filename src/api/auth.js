@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from '../store/store'
 import eventBus from '../eventBus'
 
-const API_URL = 'https://gurman.pythonanywhere.com';
+const API_URL = 'https://anyart.pythonanywhere.com';
 
 export function getUserByToken(token, refresh) {
 

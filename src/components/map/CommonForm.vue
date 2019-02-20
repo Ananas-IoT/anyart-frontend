@@ -112,7 +112,7 @@
           headers: {'Content-Type': 'multipart/form-data',
             'Authorization': 'Bearer ' + this.token}
         };
-        const API_URL = 'https://gurman.pythonanywhere.com';
+        const API_URL = 'https://anyart.pythonanywhere.com';
         const url = `${API_URL}/workload/wall_photo_wrappers/`;
         axios.post(url, this.request, config)
           .then(response => {
