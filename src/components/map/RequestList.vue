@@ -1,17 +1,17 @@
 <template>
   <div class="request-list">
     <h2 class="request-list__title">Here goes Request List!</h2>
-    <request-item class="request-list__request-item"
-                  v-for="(loopedRequest, index) in requestList"
-                  :request = loopedRequest
-                  :index = index
-                  :userRole = user.role
-                  @click.native="openRequestTab"
+    <!--<request-item class="request-list__request-item"-->
+                  <!--v-for="(loopedRequest, index) in requestList"-->
+                  <!--:request = loopedRequest-->
+                  <!--:index = index-->
+                  <!--:userRole = user.role-->
+                  <!--@click.native="openRequestTab"-->
 
-    >
-      <!--span is used to send index of current loopedReqest-->
-      <span>{{getRequestIndex(index)}}</span>
-    </request-item>
+    <!--&gt;-->
+      <!--&lt;!&ndash;span is used to send index of current loopedReqest&ndash;&gt;-->
+      <!--<span>{{getRequestIndex(index)}}</span>-->
+    <!--</request-item>-->
   </div>
 </template>
 

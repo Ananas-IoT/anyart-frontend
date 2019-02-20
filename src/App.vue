@@ -32,6 +32,8 @@
       let token = localStorage.getItem('user-token');
       const refresh = localStorage.getItem('token-refresh');
       if (token) {
+        this.$store.dispatch('setUserToken', token);
+        this.$store.dispatch('setRefreshToken', refresh);
         // token = '1';
         this.user = getUserByToken(token, refresh);
         // this.$store.dispatch('setUser', this.user);

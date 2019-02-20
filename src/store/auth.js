@@ -3,35 +3,55 @@
 const state = {
   // errors:[],
   user: {},
-  isAuthenticated: false
+  isAuthenticated: false,
+  userToken: '',
+  refreshToken: ''
 };
 
 const getters = {
   getUser(state) {
-    return state.user
+    return state.user;
   },
   isAuthenticated(state) {
     return state.isAuthenticated;
+  },
+  getUserToken(state) {
+    return state.userToken;
+  },
+  getRefreshToken(state) {
+    return state.refreshToken;
   }
 };
 
 const actions = {
-  setUser: function (context, user) {
+  setUser (context, user) {
     context.commit('setUser', user);
   },
-  clearUser: function (context) {
+  clearUser (context) {
     context.commit('clearUser');
+  },
+  setUserToken(context, token) {
+    context.commit('setUserToken', token);
+  },
+  setRefreshToken(context, refresh) {
+    context.commit('setRefreshToken', refresh);
   }
 };
 
 const mutations = {
-  setUser: function (state, user) {
+  setUser (state, user) {
     state.user = user;
     state.isAuthenticated = true;
   },
-  clearUser: function (state) {
+  clearUser (state) {
     state.user = {};
     state.isAuthenticated = false;
+  },
+  setUserToken(state, token) {
+    state.userToken = token;
+  },
+  setRefreshToken(state, refresh) {
+    state.refreshToken = refresh;
   }
 };
 

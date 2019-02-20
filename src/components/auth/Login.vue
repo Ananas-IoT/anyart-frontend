@@ -54,7 +54,7 @@
       login: function () {
         this.user.username = this.user.email;
         const config = {
-          headers: {'Origin': 'http://gurman.pythonanywhere.com'}
+          headers: {}
         };
         const API_URL = 'https://gurman.pythonanywhere.com';
         const url = `${API_URL}/authorization/token/`;
@@ -69,7 +69,10 @@
             getUserByToken(token, refresh);
 
             localStorage.setItem('user-token', token);
+            this.$store.dispatch('setUserToken', token);
+
             localStorage.setItem('token-refresh', refresh);
+            this.$store.dispatch('setRefreshToken', refresh);
 
             this.$router.push("/")
           })

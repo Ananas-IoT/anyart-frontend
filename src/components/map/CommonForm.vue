@@ -61,13 +61,14 @@
     data() {
       return {
         request: {
-          id: 0,
-          photo: null,
+          // 'workload[requirements]': '',
+          // id: 0,
+          // photo: null,
           description: '',
-          address: {},
+          // address: {},
           position: {},
-          author: '',
-          date: ''
+          // author: '',
+          // date: ''
         },
         sketch: {
           requestId: 0,
@@ -76,12 +77,14 @@
           author: '',
           date: '',
           likeCounter: 0
-        }
+        },
+        token: null
       }
     },
-    // created() {
-    //   this.type = 'request'
-    // },
+    created() {
+      // this.type = 'request'
+      this.token = this.$store.getters.getUserToken;
+    },
     methods: {
       chooseProcess() {
         if(this.type === 'request') {
@@ -99,33 +102,28 @@
           lat: this.requestAddress.geometry.location.lat(),
           lng: this.requestAddress.geometry.location.lng()
         };
+        this.request['location[lat]'] = this.request.position.lat;
+        this.request['location[lng]'] = this.request.position.lng;
 
         // this.request.author = this.$store.getters.getUser.surname;
         // console.log(this.request);
 
-        let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2' +
-          'tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTQ4NzE0NTQ3LCJqdGkiOiJlNTY' +
-          'yZDcyMDc0YTI0NDg0OTAzN2ZhZWFiM2NlMGFmMyIsInVzZXJfaWQiOjE5LCJyaWdodHM' +
-          'iOiJhcnRpc3QifQ.YrXHAlm0dtPYcYgIHE91PHr1nESFONU5IrZvQCui0u0';
-
         const config = {
-          headers: {'Origin': 'http://gurman.pythonanywhere.com',
-            'Authorization': 'Bearer ' + token}
+          headers: {'Content-Type': 'multipart/form-data',
+            'Authorization': 'Bearer ' + this.token}
         };
-        // console.log(config);
-        // const API_URL = 'https://4c9a124f-18b2-4645-b302-bed12149859a.mock.pstmn.io';
         const API_URL = 'https://gurman.pythonanywhere.com';
-        // const url = `${API_URL}/get_by_token`;
         const url = `${API_URL}/workload/wall_photo_wrappers/`;
         axios.post(url, this.request, config)
           .then(response => {
             console.log(response);
-            // store.dispatch('setUser', response.data.user);
-
-            //to AppHeader.vue
-            // eventBus.$emit('checkUser', response.data.user);
+          })
+          .catch(err => {
+            console.log(err);
           });
 
+
+        //----------------------------
         this.$store.dispatch('addRequest', this.request);
         this.$emit('addMarker', this.request);
         this.$emit('clearPosition');

@@ -7,16 +7,13 @@ const API_URL = 'https://gurman.pythonanywhere.com';
 export function getUserByToken(token, refresh) {
 
   const config = {
-    headers: {'Origin': 'https://gurman.pythonanywhere.com',
-              'Authorization': 'Bearer ' + token}
+    headers: {'Authorization': 'Bearer ' + token}
   };
 
   // const API_URL = 'https://4c9a124f-18b2-4645-b302-bed12149859a.mock.pstmn.io';
   // const url = `${API_URL}/get_by_token`;
 
   const url = `${API_URL}/authorization/profile/`;
-
-  refreshToken(refresh);
 
   axios.get(url, config)
     .then(response => {

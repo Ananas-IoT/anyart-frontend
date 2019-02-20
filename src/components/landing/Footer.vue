@@ -10,13 +10,19 @@
           <h3 class="footer__social-title">Слідкуйте за нашими новинами:</h3>
           <ul class="footer__social-list">
             <li class="footer__social-item">
-              <a class="footer__social-item-link" href=""><span><font-awesome-icon icon="user-secret"/></span></a>
+              <a class="footer__social-item-link" href=""><span>
+                <!--<font-awesome-icon icon="user-secret"/>-->
+              </span></a>
             </li>
             <li class="footer__social-item">
-              <a class="footer__social-item-link" href=""><span><font-awesome-icon icon="coffee"/></span></a>
+              <a class="footer__social-item-link" href=""><span>
+                <!--<font-awesome-icon icon="coffee"/>-->
+              </span></a>
             </li>
             <li class="footer__social-item">
-              <a class="footer__social-item-link" href=""><span><font-awesome-icon icon="coffee"/></span></a>
+              <a class="footer__social-item-link" href=""><span>
+                <!--<font-awesome-icon icon="coffee"/>-->
+              </span></a>
             </li>
           </ul>
         </div>
