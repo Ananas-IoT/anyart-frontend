@@ -18,6 +18,7 @@
 <script>
   import RequestItem from './listItems/RequestListItem'
   import eventBus from '../../eventBus'
+  import {getAllRequests} from '../../api/mapRequests'
   import axios from 'axios'
 
   export default {
@@ -37,20 +38,21 @@
       }
     },
     created() {
-      this.user = this.$store.getters.getUser;
-
-      const config = {
-        headers: {'Authorization': 'Bearer ' + this.token}
-      };
-      const API_URL = 'https://anyart.pythonanywhere.com';
-      const url = `${API_URL}/workload/wall_photo_wrappers/`;
-      axios.get(url, config)
-        .then(response => {
-          console.log(response);
-        })
-        .catch(err => {
-          console.log(err.data);
-        });
+      getAllRequests();
+      // this.user = this.$store.getters.getUser;
+      //
+      // const config = {
+      //   headers: {'Authorization': 'Bearer ' + this.token}
+      // };
+      // const API_URL = 'https://anyart.pythonanywhere.com';
+      // const url = `${API_URL}/workload/wall_photo_wrappers/`;
+      // axios.get(url, config)
+      //   .then(response => {
+      //     console.log(response);
+      //   })
+      //   .catch(err => {
+      //     console.log(err.data);
+      //   });
     },
     methods: {
       //to map component

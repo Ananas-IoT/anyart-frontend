@@ -15,7 +15,6 @@
           type="text"
           placeholder="name"
           v-model="user.first_name"
-          v-bind:class="{form__input__invalid: !validation.first_name}"
           required>
 
         <input
@@ -23,7 +22,6 @@
           type="text"
           placeholder="surname"
           v-model="user.last_name"
-          v-bind:class="{form__input__invalid: !validation.last_name}"
           required>
 
         <input
@@ -31,7 +29,7 @@
           type="text"
           placeholder="email"
           v-model="user.email"
-          v-bind:class="{invalid: !validation.email}"
+          v-bind:class="{form__input__invalid: !validation.email}"
           required>
 
         <input
@@ -140,6 +138,10 @@
 </script>
 
 <style scoped>
+  
+  .form__input.form__input__invalid {
+    border: 1px solid #ff0000;
+  }
 
   .form-wrap {
     width: auto;

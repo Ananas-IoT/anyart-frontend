@@ -40,6 +40,7 @@
 
 <script>
   import FormButton from '../formComponents/FormButton'
+  import {sendRequest} from "../../api/mapRequests";
   import axios from 'axios'
 
   export default {
@@ -61,14 +62,8 @@
     data() {
       return {
         request: {
-          // 'workload[requirements]': '',
-          // id: 0,
-          // photo: null,
           description: '',
-          // address: {},
           position: {},
-          // author: '',
-          // date: ''
         },
         sketch: {
           requestId: 0,
@@ -83,7 +78,7 @@
     },
     created() {
       // this.type = 'request'
-      this.token = this.$store.getters.getUserToken;
+      // this.token = this.$store.getters.getUserToken;
     },
     methods: {
       chooseProcess() {
@@ -103,36 +98,9 @@
           lng: this.requestAddress.geometry.location.lng()
         };
 
-        var bodyFormData = new FormData();
-        bodyFormData.set('description', 'test');
-        bodyFormData.set('location[lat]', '0');
-        bodyFormData.set('location[lng]', '0');
-        bodyFormData.set('workload[requirements]', 'test');
-        bodyFormData.append('wall_photo0', this.request.photo);
-
-        // this.request['location[lat]'] = this.request.position.lat;
-        // this.request['location[lng]'] = this.request.position.lng;
-
-        // this.request.author = this.$store.getters.getUser.surname;
-        // console.log(this.request);
-
-        const config = {
-          headers: {'Content-Type': 'multipart/form-data',
-            'Authorization': 'Bearer ' + this.token}
-        };
-        const API_URL = 'https://anyart.pythonanywhere.com';
-        const url = `${API_URL}/workload/wall_photo_wrappers/`;
-        axios.post(url, bodyFormData, config)
-          .then(response => {
-            console.log(response);
-          })
-          .catch(err => {
-            console.log(err.data);
-          });
-
-
+        sendRequest(this.request);
         //----------------------------
-        this.$store.dispatch('addRequest', this.request);
+        // this.$store.dispatch('addRequest', this.request);
         this.$emit('addMarker', this.request);
         this.$emit('clearPosition');
       },

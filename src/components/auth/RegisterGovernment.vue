@@ -3,15 +3,48 @@
     <div class="form-wrap">
       <form>
         <h2 class="form__title">Create government account:</h2>
-        <input class="form__input" type="text" placeholder="name of department" v-model="user.surname"
-               v-bind:class="{invalid: !fieldValidation.surname}" required>
-        <input class="form__input" type="text" placeholder="email" v-model="user.email" v-bind:class="{invalid: !fieldValidation.email}"
-               required>
-        <input class="form__input" type="password" placeholder="password" v-model="user.password" required>
+
+        <input
+          class="form__input"
+          type="text"
+          placeholder="name of department"
+          v-model="user.username"
+          required>
+
+        <input
+          class="form__input"
+          type="text"
+          placeholder="name"
+          v-model="user.first_name"
+          required>
+
+        <input
+          class="form__input"
+          type="text"
+          placeholder="surname"
+          v-model="user.last_name"
+          required>
+
+        <input
+          class="form__input"
+          type="text"
+          placeholder="email"
+          v-model="user.email"
+          v-bind:class="{form__input__invalid: !validation.email}"
+          required>
+
+        <input
+          class="form__input"
+          type="password"
+          placeholder="password"
+          v-model="user.password"
+          required>
+
         <form-button
           :text = "'Submit'"
-          @click="checkUser">
+          @click.native="register">
         </form-button>
+
       </form>
     </div>
   </div>
@@ -19,60 +52,46 @@
 
 <script>
   import FormButton from '../formComponents/FormButton';
+  import {registerUser} from "../../api/auth";
 
   export default {
-    name: "singupGovernment",
+    name: "registerGovernment",
     components: {
       'form-button': FormButton
     },
     data() {
       return {
         user: {
-          username: null,
-          surname: '',
-          email: '',
+          fist_name: '',
+          last_name: '',
+          username: '',
           password: '',
-          rights: 'government'
+          email: '',
+          rights: 'basic'
         },
         validation: {
-          surname: true,
           email: true
-        }
+        },
       }
     },
     computed: {},
     methods: {
-      login: function () {
+      register () {
         Object.keys(this.validation).forEach(v => this.validation[v] = true);
         var re = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
         if (!(re.test(this.user.email.toLowerCase()))) {
           this.validation.email = false;
         }
-        if (false) {
-          //checking if surname exists
-          this.validation.surname = false;
-        }
-        if (false) {
-          //checking if email exists
-          this.validation.email = false;
-        }
         if (this.isAllTrue(this.validation)) {
-          this.addNewUser();
-          this.$router.push("/");
+          registerUser(this.user);
         }
       },
 
       isAllTrue: function (obj) {
-        for (var i in obj) {
-          if (obj[i] != true) return false;
+        for (let i in obj) {
+          if (obj[i] !== true) return false;
         }
         return true;
-      },
-
-      addNewUser: function () {
-        this.$store.dispatch('addNewUser', this.user);
-        var token = "3";//get token from api
-        localStorage.setItem('user-token', token);
       },
     }
   }
@@ -82,5 +101,9 @@
 
   .form__title {
     font-size: 24px;
+  }
+
+  .form__input.form__input__invalid {
+    border: 1px solid #ff0000;
   }
 </style>

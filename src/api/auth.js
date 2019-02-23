@@ -92,7 +92,7 @@ export function loginUser(user) {
 function refreshToken(refresh) {
 
   const config = {
-    headers: {'Origin': 'https://gurman.pythonanywhere.com'}
+    headers: {}
   };
 
   const url = `${API_URL}/authorization/token/refresh/`;
