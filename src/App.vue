@@ -1,17 +1,15 @@
 <template>
   <div>
 
-    <router-view></router-view>
-    
-    <!--<router-view v-if="window.width >= 1280"></router-view>-->
+    <router-view v-if="window.width >= 1280"></router-view>
 
-    <!--<div-->
-      <!--class="app__small-resolution"-->
-      <!--v-if="window.width < 1280">-->
-      <!--<h2 class="app__small-resolution-text">-->
-        <!--Unfortunately, adaptive version of website is in development now. <br> Try to use your desktop browser!-->
-      <!--</h2>-->
-    <!--</div>-->
+    <div
+      class="app__small-resolution"
+      v-if="window.width < 1280">
+      <h2 class="app__small-resolution-text">
+        Unfortunately, adaptive version of website is in development now. <br> Try to use your desktop browser!
+      </h2>
+    </div>
 
   </div>
 </template>
