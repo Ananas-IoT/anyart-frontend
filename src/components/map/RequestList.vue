@@ -5,7 +5,7 @@
                   <!--v-for="(loopedRequest, index) in requestList"-->
                   <!--:request = loopedRequest-->
                   <!--:index = index-->
-                  <!--:userRole = user.role-->
+                  <!--:userRole = user.rights-->
                   <!--@click.native="openRequestTab"-->
 
     <!--&gt;-->
@@ -18,6 +18,7 @@
 <script>
   import RequestItem from './listItems/RequestListItem'
   import eventBus from '../../eventBus'
+  import axios from 'axios'
 
   export default {
     name: "RequestList",
@@ -37,6 +38,19 @@
     },
     created() {
       this.user = this.$store.getters.getUser;
+
+      const config = {
+        headers: {'Authorization': 'Bearer ' + this.token}
+      };
+      const API_URL = 'https://anyart.pythonanywhere.com';
+      const url = `${API_URL}/workload/wall_photo_wrappers/`;
+      axios.get(url, config)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(err => {
+          console.log(err.data);
+        });
     },
     methods: {
       //to map component

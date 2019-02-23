@@ -102,8 +102,16 @@
           lat: this.requestAddress.geometry.location.lat(),
           lng: this.requestAddress.geometry.location.lng()
         };
-        this.request['location[lat]'] = this.request.position.lat;
-        this.request['location[lng]'] = this.request.position.lng;
+
+        var bodyFormData = new FormData();
+        bodyFormData.set('description', 'test');
+        bodyFormData.set('location[lat]', '0');
+        bodyFormData.set('location[lng]', '0');
+        bodyFormData.set('workload[requirements]', 'test');
+        bodyFormData.append('wall_photo0', this.request.photo);
+
+        // this.request['location[lat]'] = this.request.position.lat;
+        // this.request['location[lng]'] = this.request.position.lng;
 
         // this.request.author = this.$store.getters.getUser.surname;
         // console.log(this.request);
@@ -114,12 +122,12 @@
         };
         const API_URL = 'https://anyart.pythonanywhere.com';
         const url = `${API_URL}/workload/wall_photo_wrappers/`;
-        axios.post(url, this.request, config)
+        axios.post(url, bodyFormData, config)
           .then(response => {
             console.log(response);
           })
           .catch(err => {
-            console.log(err);
+            console.log(err.data);
           });
 
 

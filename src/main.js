@@ -21,7 +21,7 @@ Vue.use(VueGoogleMaps, {
   }
 });
 
-const router = new VueRouter({
+export const router = new VueRouter({
   routes: Routes,
   mode: 'history'
 });

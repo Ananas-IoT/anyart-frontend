@@ -32,7 +32,7 @@
           surname: '',
           email: '',
           password: '',
-          role: 'government'
+          rights: 'government'
         },
         validation: {
           surname: true,

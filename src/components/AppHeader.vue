@@ -29,7 +29,7 @@
           <div class="user-block">
             <div v-if="this.isAuth" class="user-block__info">
               <router-link to="/auth/register">{{userFullName}}</router-link>
-              <div>{{user.role}}</div>
+              <div>{{user.rights}}</div>
             </div>
             <div v-else class="user-block__registration">
               <router-link to="/auth/register">Register</router-link>

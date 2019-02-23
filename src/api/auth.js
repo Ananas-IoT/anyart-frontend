@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from '../store/store'
+import {router} from '../main.js'
 import eventBus from '../eventBus'
 
 const API_URL = 'https://anyart.pythonanywhere.com';
@@ -10,9 +11,6 @@ export function getUserByToken(token, refresh) {
     headers: {'Authorization': 'Bearer ' + token}
   };
 
-  // const API_URL = 'https://4c9a124f-18b2-4645-b302-bed12149859a.mock.pstmn.io';
-  // const url = `${API_URL}/get_by_token`;
-
   const url = `${API_URL}/authorization/profile/`;
 
   axios.get(url, config)
@@ -20,7 +18,7 @@ export function getUserByToken(token, refresh) {
       console.log(response);
 
       let user = response.data;
-      user.role = response.data.user_profile.rights;
+      user.rights = response.data.user_profile.rights;
 
       store.dispatch('setUser', user);
 
@@ -31,6 +29,64 @@ export function getUserByToken(token, refresh) {
       console.log(err);
       refreshToken(refresh);
     });
+}
+
+export function registerUser(user) {
+
+  const config = {
+    headers: {}
+  };
+
+  const url = `${API_URL}/authorization/register/`;
+
+  axios.post(url, user, config)
+    .then(response => {
+      console.log(response);
+      store.dispatch('setUser', user);
+
+      let token = response.data.access;
+      let refresh = response.data.refresh;
+
+      localStorage.setItem('user-token', token);
+      store.dispatch('setUserToken', token);
+      localStorage.setItem('token-refresh', refresh);
+      store.dispatch('setRefreshToken', refresh);
+
+      router.push("/");
+    })
+    .catch(error => {
+      console.log(error);
+    })
+}
+
+export function loginUser(user) {
+
+  const config = {
+    headers: {}
+  };
+
+  const url = `${API_URL}/authorization/token/`;
+
+  axios.post(url, user, config)
+    .then(response => {
+      console.log(response);
+
+      let token = response.data.access;
+      let refresh = response.data.refresh;
+
+      getUserByToken(token, refresh);
+
+      localStorage.setItem('user-token', token);
+      store.dispatch('setUserToken', token);
+
+      localStorage.setItem('token-refresh', refresh);
+      store.dispatch('setRefreshToken', refresh);
+
+      router.push("/")
+    })
+    .catch(error => {
+    });
+
 }
 
 function refreshToken(refresh) {

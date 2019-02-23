@@ -29,7 +29,8 @@
 
 <script>
   import FormButton from '../formComponents/FormButton';
-  import {getUserByToken} from "../../api/auth";
+  import {loginUser} from "../../api/auth";
+  // import {getUserByToken} from "../../api/auth";
   import axios from 'axios';
 
   export default {
@@ -53,32 +54,8 @@
     methods: {
       login: function () {
         this.user.username = this.user.email;
-        const config = {
-          headers: {}
-        };
-        const API_URL = 'https://anyart.pythonanywhere.com';
-        const url = `${API_URL}/authorization/token/`;
-        axios.post(url, this.user, config)
-          .then(response => {
-            console.log(response);
-            // this.$store.dispatch('setUser', this.user);
 
-            let token = response.data.access;
-            let refresh = response.data.refresh;
-
-            getUserByToken(token, refresh);
-
-            localStorage.setItem('user-token', token);
-            this.$store.dispatch('setUserToken', token);
-
-            localStorage.setItem('token-refresh', refresh);
-            this.$store.dispatch('setRefreshToken', refresh);
-
-            this.$router.push("/")
-          })
-          .catch(error => {
-          });
-
+        loginUser(this.user);
       },
 
       isAllTrue: function (obj) {

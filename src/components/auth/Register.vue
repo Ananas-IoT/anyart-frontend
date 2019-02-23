@@ -52,9 +52,9 @@
         v-bind:class="{'in-left': formIsValid}">
 
         <h2 class="form__title">Create an account:</h2>
-        <p>You was registered as {{user.role}} user!</p>
+        <p>You was registered as {{user.rights}} user!</p>
         <p>{{roleDescription}}</p>
-        <div v-if="user.role === 'basic'">
+        <div v-if="user.rights === 'basic'">
           <div @click="becomeArtist" class="register__become-artist-button">I want to be an Artist!</div>
           <p class="register__role-description">{{descriptionList.artist}}</p>
         </div>
@@ -70,6 +70,7 @@
 
 <script>
   import FormButton from '../formComponents/FormButton';
+  import {registerUser} from "../../api/auth";
   import axios from 'axios';
 
   export default {
@@ -85,7 +86,7 @@
           username: '',
           password: '',
           email: '',
-          role: 'basic'
+          rights: 'basic'
         },
         validation: {
           first_name: true,
@@ -101,9 +102,9 @@
     },
     computed: {
       roleDescription: function () {
-        if (this.user.role === 'basic') {
+        if (this.user.rights === 'basic') {
           return this.descriptionList.basic;
-        } else if (this.user.role === 'artist') {
+        } else if (this.user.rights === 'artist') {
           return this.descriptionList.artist;
         }
       }
@@ -128,36 +129,11 @@
       },
 
       becomeArtist: function () {
-        this.user.role = 'artist';
+        this.user.rights = 'artist';
       },
 
       addNewUser: function () {
-        this.user.rights = this.user.role;
-
-        const config = {
-          headers: {}
-        };
-        const API_URL = 'https://anyart.pythonanywhere.com';
-        const url = `${API_URL}/authorization/register/`;
-
-        axios.post(url, this.user, config)
-          .then( response => {
-            console.log(response);
-            this.$store.dispatch('setUser', this.user);
-
-            let token = response.data.access;
-            let refresh = response.data.refresh;
-
-            localStorage.setItem('user-token', token);
-            this.$store.dispatch('setUserToken', token);
-            localStorage.setItem('token-refresh', refresh);
-            this.$store.dispatch('setRefreshToken', refresh);
-
-            this.$router.push("/");
-          })
-          .catch(error => {
-            console.log(error);
-        })
+        registerUser(this.user);
       },
     }
   }
