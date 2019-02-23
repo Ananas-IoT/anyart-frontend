@@ -138,7 +138,7 @@
 </script>
 
 <style scoped>
-  
+
   .form__input.form__input__invalid {
     border: 1px solid #ff0000;
   }
