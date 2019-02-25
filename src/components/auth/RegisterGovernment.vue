@@ -10,7 +10,8 @@
           <select
             name="Who you are?"
             class="form__input form__input__select"
-            v-model="posSelected">
+            v-model="posSelected"
+            required>
             <option name="Architect">Architect</option>
             <option name="OSBB">OSBB</option>
             <option name="Administration">Administration</option>

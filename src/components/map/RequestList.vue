@@ -1,17 +1,16 @@
 <template>
   <div class="request-list">
     <h2 class="request-list__title">Here goes Request List!</h2>
-    <!--<request-item class="request-list__request-item"-->
-                  <!--v-for="(loopedRequest, index) in requestList"-->
-                  <!--:request = loopedRequest-->
-                  <!--:index = index-->
-                  <!--:userRole = user.rights-->
-                  <!--@click.native="openRequestTab"-->
-
-    <!--&gt;-->
-      <!--&lt;!&ndash;span is used to send index of current loopedReqest&ndash;&gt;-->
+    <request-item class="request-list__request-item"
+                  v-for="(loopedRequest, index) in requestList"
+                  :request = loopedRequest
+                  :index = index
+                  :userRole = user.rights
+                  @click.native="openRequestTab(index)"
+    >
+      <!--span is used to send index of current loopedRequest-->
       <!--<span>{{getRequestIndex(index)}}</span>-->
-    <!--</request-item>-->
+    </request-item>
   </div>
 </template>
 
@@ -27,20 +26,25 @@
       "request-item": RequestItem
     },
     props: {
-      requestList: {
-        type: Array
-      }
+      // requestList: {
+      //   type: Array
+      // }
     },
     data() {
       return {
+        requestList: [],
         user: null,
         requestIndex: null
       }
     },
     created() {
-      getAllRequests();
-      // this.user = this.$store.getters.getUser;
-      //
+      this.user = this.$store.getters.getUser;
+      this.requestList = this.$store.getters.getAllRequests;
+      console.log(this.requestList.length);
+      if (this.requestList.length === 0) {
+        getAllRequests();
+      }
+
       // const config = {
       //   headers: {'Authorization': 'Bearer ' + this.token}
       // };
@@ -56,14 +60,16 @@
     },
     methods: {
       //to map component
-      openRequestTab() {
-        eventBus.$emit('openRequestTab', this.requestIndex);
+      openRequestTab(index) {
+        console.log(index);
+        eventBus.$emit('openRequestTab', index);
       },
 
       //gets request index from html template
-      getRequestIndex(idx) {
-        this.requestIndex = idx;
-      }
+      // getRequestIndex(idx) {
+      //   console.log(idx);
+      //   this.requestIndex = idx;
+      // }
     }
   }
 </script>

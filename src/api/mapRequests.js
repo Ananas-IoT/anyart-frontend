@@ -32,14 +32,19 @@ export function sendRequest(request) {
 }
 
 export function getAllRequests() {
+  console.log('getAllRequests started');
+
   const config = {
     headers: {}
   };
 
   const url = `${API_URL}/workload/wall_photo_wrappers/`;
-  axios.post(url, config)
+  axios.get(url, config)
     .then(response => {
       console.log(response);
+      for (let i = 0; i < response.data.count; i++) {
+        store.dispatch('addRequest', response.data.results[i]);
+      }
     })
     .catch(err => {
       console.log(err.data);
@@ -48,11 +53,14 @@ export function getAllRequests() {
 
 function getLastRequest(request_id) {
   console.log(request_id);
-  var lastReq = getRequestById(request_id);
-  console.log(lastReq);
+  getRequestById(request_id, callback);
+  function callback(lastRequest) {
+    // console.log(lastRequest);
+    store.dispatch('addRequest', lastRequest);
+  }
 }
 
-function getRequestById(request_id) {
+function getRequestById(request_id, callback) {
 
   const config = {
     headers: {}
@@ -62,6 +70,9 @@ function getRequestById(request_id) {
 
   axios.get(url, config)
     .then(response => {
-      return response.data;
+      // console.log(response.data);
+      // return response.data;
+      callback(response.data);
     });
 }
+

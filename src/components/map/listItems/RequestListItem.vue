@@ -1,9 +1,9 @@
 <template>
   <div class="request-list-item">
     <div class="request-list-item__text">
-      <h4 class="request-list-item__text-title">{{this.request.address.name}}</h4>
+      <h4 class="request-list-item__text-title">{{this.request.location.street_address}}</h4>
       <p class="request-list-item__text-description">{{this.request.description}}</p>
-      <span class="request-list-item__text-date">{{this.request.date}}</span>
+      <span class="request-list-item__text-date">{{this.request.workload.created_at}}</span>
     </div>
     <img class="request-list-item__photo-preview" src="" alt="">
     <button class="" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch</button>
@@ -12,6 +12,7 @@
 
 <script>
   import eventBus from '../../../eventBus'
+  // import {getImage} from "../../../api/mapRequests";
 
   export default {
     name: "RequestListItem",
@@ -27,21 +28,29 @@
     },
     mounted() {
       if(this.userRole === 'artist') {this.isArtist = true}
-      const file = this.request.photo;
-      this.showPhoto(file);
+      document.getElementsByClassName('request-list-item__photo-preview')[this.index]
+        .src = this.request.wall_photos[0].photo;
+
+      // let file = this.request.wall_photos[0].photo;
+
+      // console.log(file);
+      // let parsed_file = getImage(file);
+      // console.log(file);
+      // this.showPhoto(parsed_file);
     },
     created() {
 
     },
     methods: {
-      showPhoto (file) {
-        let preview = document.getElementsByClassName('request-list-item__photo-preview')[this.index];
-        let reader = new FileReader();
-        reader.onloadend = function () {
-          preview.src = reader.result;
-        };
-        reader.readAsDataURL(file);
-      },
+      // showPhoto (file) {
+      //   let preview = document.getElementsByClassName('request-list-item__photo-preview')[this.index];
+      //   let reader = new FileReader();
+      //   reader.onloadend = function () {
+      //     preview.src = reader.result;
+      //   };
+      //   reader.readAsDataURL(file);
+      // },
+
       //trigger common-form on Map component
       uploadSketch() {
         eventBus.$emit('uploadSketch');

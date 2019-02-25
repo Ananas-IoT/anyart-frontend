@@ -56,7 +56,7 @@
                 <gmap-marker
                   :key="index"
                   v-for="(m, index) in requestList"
-                  :position="m.position"
+                  :position="m.location"
                   @click="mapCenter=m.position"
                 ></gmap-marker>
               </gmap-map>

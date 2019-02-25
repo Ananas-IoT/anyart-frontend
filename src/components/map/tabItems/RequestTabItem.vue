@@ -1,12 +1,12 @@
 <template>
   <div class="request-tab-item">
     <div class="request-tab-item__text">
-      <h4 class="request-tab-item__text-title">{{this.request.address.name}}</h4>
+      <h4 class="request-tab-item__text-title">{{this.request.location.street_address}}</h4>
       <p class="request-tab-item__text-description">{{this.request.description}}</p>
-      <span class="request-tab-item__text-date">{{this.request.date}}</span>
+      <span class="request-tab-item__text-date">{{this.request.workload.created_at}}</span>
     </div>
     <img class="request-tab-item__photo-preview" src="" alt="">
-    <button class="" v-if="isArtist" type="button" @click="uploadSketch">Upload sketch</button>
+    <!--<button class="" v-if="isArtist" type="button" @click="uploadSketch">Upload sketch</button>-->
   </div>
 </template>
 
@@ -27,20 +27,22 @@
       if (this.userRole === 'artist') {
         this.isArtist = true
       }
-      const file = this.request.photo;
-      this.showPhoto(file);
+      document.getElementsByClassName('request-tab-item__photo-preview')[0]
+        .src = this.request.wall_photos[0].photo;
+      // const file = this.request.photo;
+      // this.showPhoto(file);
     },
     created() {
 
     },
     methods: {
       showPhoto(file) {
-        let preview = document.getElementsByClassName('request-tab-item__photo-preview')[this.index];
-        let reader = new FileReader();
-        reader.onloadend = function () {
-          preview.src = reader.result;
-        };
-        reader.readAsDataURL(file);
+        // let preview = document.getElementsByClassName('request-tab-item__photo-preview')[this.index];
+        // let reader = new FileReader();
+        // reader.onloadend = function () {
+        //   preview.src = reader.result;
+        // };
+        // reader.readAsDataURL(file);
       },
       //trigger request-form on Map component
       uploadSketch() {
