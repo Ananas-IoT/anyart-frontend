@@ -23,7 +23,7 @@
     },
     data() {
       return {
-        isArtist: false
+        isArtist: true
       }
     },
     mounted() {

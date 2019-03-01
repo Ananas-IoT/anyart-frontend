@@ -13,7 +13,7 @@
             v-model="posSelected"
             required>
             <option name="Architect">Architect</option>
-            <option name="OSBB">OSBB</option>
+            <option name="Art expert">Art expert</option>
             <option name="Administration">Administration</option>
           </select>
 
@@ -24,10 +24,10 @@
           </p>
 
           <input
-            class="form__input form__input__select__osbb"
+            class="form__input form__input__select__art-expert"
             type="text"
-            placeholder="Building address"
-            v-if="posSelected === 'OSBB'"
+            placeholder="Nickname"
+            v-if="posSelected === 'Art expert'"
             v-model="user.username"
             required>
 

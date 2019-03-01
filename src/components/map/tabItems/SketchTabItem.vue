@@ -6,6 +6,12 @@
       <span class="sketch-tab-item__text-date">{{this.sketch.date}}</span>
     </div>
     <img class="sketch-tab-item__photo-preview" src="" alt="">
+
+    <!--<div class="sketch-tab-item__approval-buttons">-->
+      <!--<button>Approve</button>-->
+      <!--<button>Disapprove</button>-->
+    <!--</div>-->
+
   </div>
 </template>
 

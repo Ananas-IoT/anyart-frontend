@@ -16,7 +16,7 @@
           v-model="sketch.description"
           placeholder="description"
                   required></textarea>
-        <div class="common-form__request-address" v-if="requestAddress !== ''">{{requestAddress.name}}</div>
+        <!--<div class="common-form__request-address" v-if="requestAddress !== ''">{{requestAddress.name}}</div>-->
       </form>
     </div>
 
@@ -41,6 +41,7 @@
 <script>
   import FormButton from '../formComponents/FormButton'
   import {sendRequest} from "../../api/mapRequests";
+  import {sendSketch} from '../../api/mapSketches';
   import axios from 'axios'
 
   export default {
@@ -69,9 +70,9 @@
           requestId: 0,
           photo: null,
           description: '',
-          author: '',
-          date: '',
-          likeCounter: 0
+          // author: '',
+          // date: '',
+          // likeCounter: 0
         },
         token: null
       }
@@ -106,10 +107,10 @@
       },
 
       processSketch() {
-        this.sketch.date = this.getCurDate();
-        this.sketch.author = this.$store.getters.getUser.surname;
-
-        this.$store.dispatch('addSketch', this.sketch);
+        // this.sketch.date = this.getCurDate();
+        // this.sketch.author = this.$store.getters.getUser.surname;
+        sendSketch(this.sketch);
+        // this.$store.dispatch('addSketch', this.sketch);
         this.$emit('clearPosition');
       },
 
