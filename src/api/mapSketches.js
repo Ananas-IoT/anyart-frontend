@@ -18,8 +18,10 @@ export function sendSketch(sketch) {
   bodyFormData.append('sketch_photo0', sketch.photo);
 
   const config = {
-    headers: {'Content-Type': 'multipart/form-data',
-      'Authorization': 'Bearer ' + token}
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Authorization': 'Bearer ' + token
+    }
   };
   // config['Content-Type'] = 'multipart/form-data';
 
@@ -39,6 +41,9 @@ export function getSkechesById(req_id) {
   axios.get(url, config)
     .then(response => {
       console.log('getSketchesById:' + response);
+      for (let i = 0; i < response.data.count; i++) {
+        // addProbes();
+      }
     })
     .catch(err => {
 
@@ -50,8 +55,19 @@ function getLastSketch(sketch_id) {
   axios.get(url, config)
     .then(response => {
       console.log('getLastSketch:' + response);
+      // addProbes()
     })
     .catch(err => {
 
     });
+}
+
+function addProbes(sketch) {
+  sketch.approvals = {
+    architect: false,
+    artExpert: false,
+    administration: false
+  };
+  sketch.votes = 100 * Math.random();
+  return sketch;
 }

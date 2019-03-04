@@ -4,14 +4,25 @@
       <h4 class="sketch-tab-item__text-title">Sketch {{this.index}}</h4>
       <p class="sketch-tab-item__text-description">{{this.sketch.description}}</p>
       <span class="sketch-tab-item__text-date">{{this.sketch.date}}</span>
+
+      <ul>
+        <li
+          class="sketch-tab-item__approval"
+          v-for="approve in sketch.approvals">
+          {{approve.property}}
+          <span class="sketch-tab-item__approval__indicator">0</span>
+        </li>
+      </ul>
+
+      <div
+        class="sketch-tab-item__approval-buttons"
+        v-if="user.rights === 'gov'">
+        <button>approve</button>
+        <button>disapprove</button>
+      </div>
+
     </div>
     <img class="sketch-tab-item__photo-preview" src="" alt="">
-
-    <!--<div class="sketch-tab-item__approval-buttons">-->
-      <!--<button>Approve</button>-->
-      <!--<button>Disapprove</button>-->
-    <!--</div>-->
-
   </div>
 </template>
 
@@ -24,13 +35,15 @@
     },
     data() {
       return {
-        isArtist: false
+        user: null
       }
     },
     mounted() {
-      if (this.userRole === 'artist') {
-        this.isArtist = true
-      }
+      // if (this.userRole === 'artist') {
+      //   this.isArtist = true
+      // }
+      this.user = this.$store.getters.getUser;
+
       const file = this.sketch.photo;
       this.showPhoto(file);
     },
