@@ -185,5 +185,9 @@
       height: 80%;
       margin: 0 auto;
     }
+
+    .gallery-selection__pic-link {
+      font-size: 14px;
+    }
   }
 </style>
