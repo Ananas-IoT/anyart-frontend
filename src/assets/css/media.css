@@ -19,7 +19,11 @@
 }
 
 /* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px) {
+@media only screen and (max-width : 567px) {
+  section {
+    padding: 40px 0;
+  }
+
   h2 {
     font-size: 32px;
   }

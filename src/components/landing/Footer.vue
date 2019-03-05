@@ -2,29 +2,31 @@
   <footer id="footer" class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-md-6 order-sm-1 order-1">
           <div class="footer__logo"><img src="../../assets/img/logo_large_white.png" alt=""></div>
           <div class="footer__copyright">Copyright(c) Ананас</div>
         </div>
-        <div class="col-lg-6">
-          <h3 class="footer__social-title">Слідкуйте за нашими новинами:</h3>
-          <ul class="footer__social-list">
-            <li class="footer__social-item">
-              <a class="footer__social-item-link" href=""><span>
-                <!--<font-awesome-icon icon="user-secret"/>-->
+        <div class="col-md-6 order-sm-0 order-0">
+          <div class="footer__social-wrap">
+            <h3 class="footer__social-title">Слідкуйте за нашими новинами:</h3>
+            <ul class="footer__social-list">
+              <li class="footer__social-item">
+                <a class="footer__social-item-link"><span>
+                <img class="footer__social-item-img" :src="contactImages.mail" alt="">
               </span></a>
-            </li>
-            <li class="footer__social-item">
-              <a class="footer__social-item-link" href=""><span>
-                <!--<font-awesome-icon icon="coffee"/>-->
+              </li>
+              <li class="footer__social-item">
+                <a class="footer__social-item-link"><span>
+                <img class="footer__social-item-img" :src="contactImages.facebook" alt="">
               </span></a>
-            </li>
-            <li class="footer__social-item">
-              <a class="footer__social-item-link" href=""><span>
-                <!--<font-awesome-icon icon="coffee"/>-->
+              </li>
+              <li class="footer__social-item">
+                <a class="footer__social-item-link"><span>
+                <img class="footer__social-item-img" :src="contactImages.instagram" alt="">
               </span></a>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -36,7 +38,16 @@
   // import {  } from '@fortawesome/free-solid-svg-icons'
   // library.add(faUserSecret);
   export default {
-    name: "Footer"
+    name: "Footer",
+    data() {
+      return {
+        contactImages: {
+          mail: require('../../assets/img/footer/footer-mail.png'),
+          facebook: require('../../assets/img/footer/footer-facebook.png'),
+          instagram: require('../../assets/img/footer/footer-instagram.png')
+        }
+      }
+    }
   }
 </script>
 
@@ -81,7 +92,12 @@
 
   .footer__social-item span {
     position: relative;
+  }
 
+  .footer__social-item-img {
+    margin-top: 2px;
+    width: 24px;
+    height: 24px;
   }
 
   .footer__social-item:before {
@@ -118,4 +134,21 @@
     color: #fff;
   }
 
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .footer__social-wrap {
+      margin-bottom: 40px;
+    }
+
+    .footer__social-title {
+      margin-top: 0;
+      font-family: "PT Sans Regular";
+    }
+
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 567px) {
+
+  }
 </style>

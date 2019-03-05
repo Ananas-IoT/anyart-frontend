@@ -173,4 +173,17 @@
   .gallery-section__pic {
     transform: scale(1.2, 1.2);
   }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 576px) {
+    .gallery-section {
+      padding-bottom: 30px;
+    }
+
+    .gallery-section__pic-wrap {
+      width: 80%;
+      height: 80%;
+      margin: 0 auto;
+    }
+  }
 </style>

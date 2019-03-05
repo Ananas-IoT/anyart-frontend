@@ -80,7 +80,22 @@
       jQuery('.partners-section .carousel').slick({
         infinite: true,
         slidesToShow: 4,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive:[
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 568,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+
+        ]
       });
     },
     destroyed() {
