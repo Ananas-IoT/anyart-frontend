@@ -79,7 +79,8 @@
   .about-section__item-pic {
     width: 80%;
     margin: auto;
-    border: 2px solid #1ea3a4;
+    /*border: 2px solid #1ea3a4;*/
+    border: 2px solid #572e81;
     border-radius: 50%;
     overflow: hidden;
     position: relative;
@@ -155,12 +156,12 @@
       height: 260px;
       width: 60%;
       padding-top: 80px;
-      margin: 200px auto 0;
+      margin: 140px auto 0;
     }
 
     .about-section__item-pic {
       position: absolute;
-      top: 80px;
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
       width: 200px;
@@ -169,7 +170,7 @@
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 567px) {
     .about-section__item {
       height: 185px;
       padding-top: 40px;

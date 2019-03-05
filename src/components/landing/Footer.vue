@@ -84,6 +84,7 @@
     cursor: pointer;
     transition: 0.3s;
     position: relative;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .footer__social-list font-awesome-icon {
