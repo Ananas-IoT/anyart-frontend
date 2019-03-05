@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Routes from './routes'
 import {store} from "./store/store"
 import * as VueGoogleMaps from 'vue2-google-maps'
+import Meta from 'vue-meta'
 
 import 'bootstrap'
 
@@ -13,6 +14,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
+Vue.use(Meta);
 
 Vue.use(VueGoogleMaps, {
   load: {

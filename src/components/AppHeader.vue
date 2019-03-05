@@ -8,10 +8,14 @@
             <img class="header__logo__white" src="../assets/img/logo_small_white.png" alt="">
             <img class="header__logo__black" src="../assets/img/logo_small.png" alt="">
           </a>
+          <a @click="navOpened = !navOpened" class="d-lg-none header__burger">
+            <img class="header__menu__white" src="../assets/img/burger-menu-white.png" alt="">
+            <img class="header__menu__black" src="../assets/img/burger-menu-black.png" alt="">
+          </a>
         </div>
-        <div class="col-lg-7">
-          <nav class="nav">
-            <ul>
+        <div class="col-lg-7 no-gutters">
+          <nav class="nav" v-bind:class="{nav__opened: navOpened}">
+            <ul class="nav__item-list">
               <li class="nav__item">
                 <router-link to="/">Головна</router-link>
               </li>
@@ -20,12 +24,12 @@
               <li class="nav__item"><a data-scroll-to="#gallery">Галерея</a></li>
               <li class="nav__item"><a data-scroll-to="#footer">Контакти</a></li>
               <li class="nav__item">
-                <router-link to="/map">Карта</router-link>
+                <router-link to="/map" v-if="window.width >= 1280">Карта</router-link>
               </li>
             </ul>
           </nav>
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-2 d-none d-lg-block">
           <div class="user-block">
             <div v-if="this.isAuth" class="user-block__info">
               <router-link to="/auth/register">{{userFullName}}</router-link>
@@ -51,7 +55,12 @@
       return {
         user: {},
         userFullName: '',
-        isAuth: false
+        isAuth: false,
+        window: {
+          width: 0,
+          height: 0
+        },
+        navOpened: false
       }
     },
     created() {
@@ -59,6 +68,13 @@
       eventBus.$on('checkUser', () => {
         this.checkUser();
       });
+
+      //get resolution on start
+      window.addEventListener('resize', this.handleResize);
+      this.handleResize();
+    },
+    destroyed() {
+      window.removeEventListener('resize', this.handleResize);
     },
     methods: {
       checkUser() {
@@ -67,6 +83,10 @@
           this.user = this.$store.getters.getUser;
         }
         this.userFullName = this.user.first_name + ' ' + this.user.last_name;
+      },
+      handleResize() {
+        this.window.width = window.innerWidth;
+        this.window.height = window.innerHeight;
       }
     }
   }
@@ -127,6 +147,29 @@
   }
 
   .header__scrolled .header__logo__black {
+    opacity: 1;
+  }
+
+
+  .header__burger {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .header__burger .header__menu__black {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+  }
+
+  .header__scrolled .header__menu__black {
+    opacity: 0;
+  }
+
+  .header__scrolled .header__menu__black {
     opacity: 1;
   }
 
@@ -232,8 +275,68 @@
   .header__scrolled .user-block a {
     color: #000;
   }
+
   .header__scrolled .user-block div {
     color: #000;
   }
 
+  /*==========  Desktop First Method  ==========*/
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width: 1200px) {
+    .nav__item a {
+      width: 103px;
+      font-size: 16px;
+    }
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width: 992px) {
+    .header__logo {
+      /*width: auto;*/
+      margin: 10px auto 0;
+    }
+
+    .nav {
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.2s;
+    }
+
+    .nav__opened {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav__item a, .nav__item a:hover {
+      color: #000;
+    }
+
+    .nav {
+      background: #fff;
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width: 768px) {
+    .nav {
+      box-shadow: rgba(0, 0, 0, 0.4) 0 4px 10px -2px;
+    }
+
+    .nav__item {
+      display: block;
+    }
+
+    .nav__item a {
+      text-align: left;
+      width: 100%;
+      padding: 8px 0 8px 15px;
+      font-size: 18px;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width: 480px) {
+
+  }
 </style>

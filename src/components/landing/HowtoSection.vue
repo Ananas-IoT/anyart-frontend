@@ -81,4 +81,58 @@
     background: url("../../assets/img/how-to-section/how-to-done.png");
     background-size: contain;
   }
+
+  /*==========  Desktop First Method  ==========*/
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width : 1200px) {
+
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width : 992px) {
+   .how-to-section__description {
+     width: 100%;
+   }
+
+    .how-to-section__list {
+      margin-left: 50px;
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .how-to-section {
+      padding-top: 60px;
+    }
+
+    .how-to-section__description {
+      font-size: 20px;
+    }
+
+    .how-to-section__item {
+      font-size: 18px;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 480px) {
+    .how-to-section__description {
+      font-size: 17px;
+    }
+
+    .how-to-section__item {
+      font-size: 16px;
+    }
+
+    .how-to-section__list {
+      width: 80%;
+      margin: 20px auto;
+    }
+  }
+
+  /* Custom, iPhone Retina */
+  @media only screen and (max-width : 320px) {
+
+  }
 </style>

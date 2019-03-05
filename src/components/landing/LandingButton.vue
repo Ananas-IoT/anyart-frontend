@@ -3,10 +3,10 @@
 </template>
 
 <script>
-    export default {
-        name: "LandingButton",
-        props: ["text"]
-    }
+  export default {
+    name: "LandingButton",
+    props: ["text"]
+  }
 </script>
 
 <style scoped>
@@ -48,4 +48,53 @@
   .landing__button:hover:before {
     transform: translateY(0);
   }
+
+  .landing__button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /*==========  Desktop First Method  ==========*/
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width: 1200px) {
+
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width: 992px) {
+    nav ul {
+      display: none;
+      width: 100%;
+    }
+
+    nav ul li {
+      display: block;
+      width: 100%;
+
+    }
+
+    nav ul li a, nav ul li span {
+      width: 100%;
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width: 768px) {
+    .landing__button {
+      padding: 10px 0;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width: 480px) {
+    .landing__button {
+
+    }
+  }
+
+  /* Custom, iPhone Retina */
+  @media only screen and (max-width: 320px) {
+
+  }
+
 </style>

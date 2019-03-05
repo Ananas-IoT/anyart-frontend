@@ -1,15 +1,15 @@
 <template>
   <div>
 
-    <router-view v-if="window.width >= 1280"></router-view>
+    <router-view></router-view>
 
-    <div
-      class="app__small-resolution"
-      v-if="window.width < 1280">
-      <h2 class="app__small-resolution-text">
-        Unfortunately, adaptive version of website is in development now. <br> Try to use your desktop browser!
-      </h2>
-    </div>
+    <!--<div-->
+      <!--class="app__small-resolution"-->
+      <!--v-if="window.width < 1280">-->
+      <!--<h2 class="app__small-resolution-text">-->
+        <!--Unfortunately, adaptive version of website is in development now. <br> Try to use your desktop browser!-->
+      <!--</h2>-->
+    <!--</div>-->
 
   </div>
 </template>
@@ -28,6 +28,15 @@
         }
       }
     },
+    metaInfo: {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: 'Default Title',
+      // all titles will be injected into this template
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' }
+      ]
+    },
     created: function () {
       let token = localStorage.getItem('user-token');
       const refresh = localStorage.getItem('token-refresh');
@@ -39,18 +48,18 @@
         // this.$store.dispatch('setUser', this.user);
       }
 
-      //get resolution on start
-      window.addEventListener('resize', this.handleResize);
-      this.handleResize();
+      // //get resolution on start
+      // window.addEventListener('resize', this.handleResize);
+      // this.handleResize();
     },
     destroyed() {
       window.removeEventListener('resize', this.handleResize);
     },
     methods: {
-      handleResize() {
-        this.window.width = window.innerWidth;
-        this.window.height = window.innerHeight;
-      }
+      // handleResize() {
+      //   this.window.width = window.innerWidth;
+      //   this.window.height = window.innerHeight;
+      // }
     }
 
   }

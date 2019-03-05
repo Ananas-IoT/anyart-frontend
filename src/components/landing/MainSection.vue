@@ -66,4 +66,49 @@
     color: #fff;
   }
 
+
+  /*==========  Desktop First Method  ==========*/
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width : 1200px) {
+
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width : 992px) {
+
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .main-section__wrap {
+      margin-top: 0;
+    }
+
+    .main-section__title {
+      font-size: 120px;
+    }
+
+    .main-section__subtitle {
+      font-size: 36px;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 480px) {
+
+    .main-section__title {
+      font-size: 80px;
+    }
+
+    .main-section__subtitle {
+      font-size: 24px;
+    }
+  }
+
+  /* Custom, iPhone Retina */
+  @media only screen and (max-width : 320px) {
+
+  }
+
 </style>
