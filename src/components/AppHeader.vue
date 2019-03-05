@@ -51,15 +51,12 @@
 
   export default {
     name: "Header",
+    props: ['window'],
     data() {
       return {
         user: {},
         userFullName: '',
         isAuth: false,
-        window: {
-          width: 0,
-          height: 0
-        },
         navOpened: false
       }
     },
@@ -68,13 +65,6 @@
       eventBus.$on('checkUser', () => {
         this.checkUser();
       });
-
-      //get resolution on start
-      window.addEventListener('resize', this.handleResize);
-      this.handleResize();
-    },
-    destroyed() {
-      window.removeEventListener('resize', this.handleResize);
     },
     methods: {
       checkUser() {
@@ -84,10 +74,6 @@
         }
         this.userFullName = this.user.first_name + ' ' + this.user.last_name;
       },
-      handleResize() {
-        this.window.width = window.innerWidth;
-        this.window.height = window.innerHeight;
-      }
     }
   }
 </script>
@@ -301,6 +287,7 @@
       opacity: 0;
       pointer-events: none;
       transition: 0.2s;
+      background: #fff;
     }
 
     .nav__opened {
@@ -308,12 +295,12 @@
       pointer-events: auto;
     }
 
-    .nav__item a, .nav__item a:hover {
-      color: #000;
+    .nav__item {
+      user-select: none;
     }
 
-    .nav {
-      background: #fff;
+    .nav__item a, .nav__item a:hover {
+      color: #000;
     }
   }
 

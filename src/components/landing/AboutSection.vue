@@ -8,21 +8,21 @@
             ентузіастів. Наша мрія — зробити Львів краще для всіх нас: жителів міста та туристів!</p>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-4">
           <about-item
           :name = "'Анна Манько'"
           :position = "'Product Owner, Back-End Developer'"
           ></about-item>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-4">
           <about-item
             :name = "'Данііл Логвінов'"
             :position = "'UX-designer, Front-End developer'"
           ></about-item>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-4">
           <about-item
             :name = "'Михайло Гурський'"
             :position = "'Architect'"
@@ -60,5 +60,14 @@
     margin: 10px auto;
   }
 
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .about-section__description {
+     width: auto;
+      font-size: 20px;
+    }
+
+  }
 
 </style>

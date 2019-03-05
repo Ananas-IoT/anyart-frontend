@@ -7,16 +7,20 @@
           <p class="how-to-section__description">Правила дуже прості. Просто виконайте декілька простих кроків: </p>
           <ul class="how-to-section__list">
             <li class="how-to-section__item">Виберіть місце на карті, завантажте фото та опишіть проблему</li>
-            <li class="how-to-section__item">Голосуйте за найкращі скетчі</li>
+            <li class="how-to-section__item">Художник може обрати вашу стіну і запропонувати свій скетч</li>
+            <li class="how-to-section__item">Ви голосуєте за найкращі скетчі</li>
+            <li class="how-to-section__item">Міська рада затверджує їх, після чого художник приступає до роботи</li>
             <li class="how-to-section__item">.. Насолоджуйтесь :)</li>
           </ul>
 
           <button-landing
             :text="'Перейти до карти!'"
+            @click="this.$router.push('/map')"
+            v-if="window.width >=1280"
           >
           </button-landing>
 
-          <howto-workflow></howto-workflow>
+          <!--<howto-workflow></howto-workflow>-->
 
         </div>
       </div>
@@ -33,7 +37,8 @@
     components: {
       'howto-workflow': Workflow,
       'button-landing': LandingButton
-    }
+    },
+    props: ['window']
   }
 </script>
 
@@ -78,6 +83,16 @@
   }
 
   .how-to-section__item:nth-child(3):before {
+    background: url("../../assets/img/how-to-section/how-to-third.png");
+    background-size: contain;
+  }
+
+  .how-to-section__item:nth-child(4):before {
+    background: url("../../assets/img/how-to-section/how-to-forth.png");
+    background-size: contain;
+  }
+
+  .how-to-section__item:nth-child(5):before {
     background: url("../../assets/img/how-to-section/how-to-done.png");
     background-size: contain;
   }
@@ -129,10 +144,5 @@
       width: 80%;
       margin: 20px auto;
     }
-  }
-
-  /* Custom, iPhone Retina */
-  @media only screen and (max-width : 320px) {
-
   }
 </style>

@@ -5,7 +5,7 @@
         <div class="col-lg-12">
           <div class="main-section__wrap">
             <h1 class="main-section__title"><b>Any</b>Art</h1>
-            <p class="main-section__subtitle">Color your city!</p>
+            <p class="main-section__subtitle">Colorize your routine!</p>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
   /* Small Devices, Tablets */
   @media only screen and (max-width : 768px) {
     .main-section__wrap {
-      margin-top: 0;
+      margin-top: 100px;
     }
 
     .main-section__title {
@@ -104,11 +104,6 @@
     .main-section__subtitle {
       font-size: 24px;
     }
-  }
-
-  /* Custom, iPhone Retina */
-  @media only screen and (max-width : 320px) {
-
   }
 
 </style>

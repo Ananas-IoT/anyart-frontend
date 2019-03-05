@@ -6,47 +6,65 @@
           <h2 class="gallery-section__title">Галерея:</h2>
           <p class="gallery-section__description">Це лише деякі приклади робіт, з часом їх ставатиме ще більше!</p>
           <div class="row">
-            <div class="col-lg-3">
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="">
+                <a class="gallery-section__pic-link">
                   click for more!</a>
                 <img class="gallery-section__pic" src="../../assets/img/gallery-section/g1.jpg" alt="">
               </div>
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="">
-                  click for more!</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g5.jpg" alt=""></div>
             </div>
-            <div class="col-lg-3">
+
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="gallery-section__pic-wrap">
+                  <a class="gallery-section__pic-link">
+                    click for more!</a>
+                  <img class="gallery-section__pic" src="../../assets/img/gallery-section/g5.jpg" alt=""></div>
+              </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="">
+                <a class="gallery-section__pic-link">
                   click for more!</a>
                 <img class="gallery-section__pic" src="../../assets/img/gallery-section/g2.jpg" alt=""></div>
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="">
-                  click for more!</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g6.jpg" alt=""></div>
             </div>
-            <div class="col-lg-3">
+
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="gallery-section__pic-wrap">
+                  <a class="gallery-section__pic-link">
+                    click for more!</a>
+                  <img class="gallery-section__pic" src="../../assets/img/gallery-section/g6.jpg" alt=""></div>
+              </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="">
+                <a class="gallery-section__pic-link">
                   click for more!</a>
                 <img class="gallery-section__pic" src="../../assets/img/gallery-section/g3.jpg" alt=""></div>
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="">
-                  click for more!</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g7.jpg" alt=""></div>
             </div>
-            <div class="col-lg-3">
+
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="gallery-section__pic-wrap">
+                  <a class="gallery-section__pic-link">
+                    click for more!</a>
+                  <img class="gallery-section__pic" src="../../assets/img/gallery-section/g7.jpg" alt=""></div>
+              </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="">
+                <a class="gallery-section__pic-link">
                   click for more!</a>
                 <img class="gallery-section__pic" src="../../assets/img/gallery-section/g4.jpg" alt=""></div>
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="">
-                  click for more!</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g8.jpg" alt=""></div>
             </div>
+
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="gallery-section__pic-wrap">
+                  <a class="gallery-section__pic-link">
+                    click for more!</a>
+                  <img class="gallery-section__pic" src="../../assets/img/gallery-section/g8.jpg" alt=""></div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -55,9 +73,9 @@
 </template>
 
 <script>
-    export default {
-        name: "GallerySection"
-    }
+  export default {
+    name: "GallerySection"
+  }
 </script>
 
 <style scoped>

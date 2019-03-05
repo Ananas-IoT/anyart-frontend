@@ -2,11 +2,11 @@
 
   <body>
   <!--<button class="main_mnu_button hidden-md hidden-lg"><i class="fa fa-bars"></i></button>-->
-  <app-header></app-header>
+  <app-header v-bind:window = window></app-header>
 
   <main-landing></main-landing>
 
-  <howto-landing></howto-landing>
+  <howto-landing v-bind:window = window></howto-landing>
 
   <about-landing></about-landing>
 
@@ -44,13 +44,19 @@
       "footer-landing": FooterSection
     },
     data() {
-      return {}
+      return {
+        window: {
+          width: 0,
+          height: 0
+        },
+      }
     },
     created() {
-
+      //get resolution on start
+      window.addEventListener('resize', this.handleResize);
+      this.handleResize();
     },
     mounted() {
-
       //nav changes color while scrolling
       let header = document.getElementsByTagName('header')[0];
 
@@ -76,6 +82,15 @@
         slidesToShow: 4,
         slidesToScroll: 1
       });
+    },
+    destroyed() {
+      window.removeEventListener('resize', this.handleResize);
+    },
+    methods: {
+      handleResize() {
+        this.window.width = window.innerWidth;
+        this.window.height = window.innerHeight;
+      }
     }
   }
 </script>
