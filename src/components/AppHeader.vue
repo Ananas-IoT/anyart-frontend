@@ -57,6 +57,9 @@
         this.user = this.$store.getters.getUser;
       }
       this.userFullName = this.user.first_name + ' ' + this.user.last_name;
+      if (this.user.role === 'government') {
+        this.userFullName = this.user.surname;
+      }
     },
   }
 </script>

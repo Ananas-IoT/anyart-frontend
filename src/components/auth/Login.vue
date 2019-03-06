@@ -11,6 +11,7 @@
           @click="checkUser">
         </form-button>
       </form>
+      <router-link to="/auth/government">goto govern</router-link>
     </div>
   </div>
 </template>

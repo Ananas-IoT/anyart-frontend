@@ -10,7 +10,7 @@
         <input class="form__input" type="password" placeholder="password" v-model="user.password" required>
         <form-button
           :text = "'Submit'"
-          @click="checkUser">
+          @click.native="checkUser">
         </form-button>
       </form>
     </div>

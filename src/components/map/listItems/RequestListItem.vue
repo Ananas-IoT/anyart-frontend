@@ -6,7 +6,8 @@
       <span class="request-list-item__text-date">{{this.request.date}}</span>
     </div>
     <img class="request-list-item__photo-preview" src="" alt="">
-    <button class="" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch</button>
+    <!--<button class="" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch</button>-->
+    <button class="" type="button" @click.stop="uploadSketch">Upload sketch</button>
   </div>
 </template>
 
@@ -22,11 +23,14 @@
     },
     data() {
       return {
-        isArtist: false
+        isArtist: false,
+        isGov: false
       }
     },
     mounted() {
-      if(this.userRole === 'artist') {this.isArtist = true}
+      if (this.userRole === 'artist') {
+        this.isArtist = true
+      }
       const file = this.request.photo;
       this.showPhoto(file);
     },
@@ -34,7 +38,7 @@
 
     },
     methods: {
-      showPhoto (file) {
+      showPhoto(file) {
         let preview = document.getElementsByClassName('request-list-item__photo-preview')[this.index];
         let reader = new FileReader();
         reader.onloadend = function () {
@@ -55,14 +59,17 @@
     display: inline-block;
     width: calc(100% - 150px);
   }
+
   .request-list-item__text-title {
     margin: 10px 0;
     font-family: "PT Sans Bold";
   }
+
   .request-list-item__text-date {
     font-size: 14px;
     border-bottom: 0.5px solid #000;
   }
+
   .request-list-item__photo-preview {
     display: inline-block;
     width: 120px;
@@ -74,11 +81,11 @@
   }
 
   /*.btn {*/
-    /*width: 140px;*/
-    /*padding: 5px;*/
-    /*font-family: "PT Sans Regular";*/
+  /*width: 140px;*/
+  /*padding: 5px;*/
+  /*font-family: "PT Sans Regular";*/
   /*}*/
   /*.btn:hover {*/
-    /*font-family: "PT Sans Regular";*/
+  /*font-family: "PT Sans Regular";*/
   /*}*/
 </style>
