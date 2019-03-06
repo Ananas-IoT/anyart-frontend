@@ -279,8 +279,8 @@
   /* Medium Devices, Desktops */
   @media only screen and (max-width: 992px) {
     .header__logo {
-      /*width: auto;*/
-      margin: 10px auto 0;
+      width: 120px;
+      margin: 20px auto 0;
     }
 
     .nav {
