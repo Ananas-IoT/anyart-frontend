@@ -300,5 +300,10 @@
       position: absolute;
       width: 100% !important;
     }
+
+    .how-to-section__workflow-item:nth-child(1)
+    .how-to-section__workflow-item-pic{
+      height: 90px;
+    }
   }
 </style>
