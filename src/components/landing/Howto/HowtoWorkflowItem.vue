@@ -296,5 +296,9 @@
   /* Extra Small Devices, Phones */
   @media only screen and (max-width : 567px) {
 
+    .how-to-section__workflow-item-pic {
+      position: absolute;
+      width: 100% !important;
+    }
   }
 </style>
