@@ -20,7 +20,7 @@
           >
           </button-landing>
 
-          <!--<howto-workflow></howto-workflow>-->
+          <howto-workflow></howto-workflow>
 
         </div>
       </div>

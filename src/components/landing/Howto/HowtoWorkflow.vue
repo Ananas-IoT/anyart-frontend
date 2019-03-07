@@ -2,25 +2,25 @@
   <div class="how-to-section__workflow">
 
     <howto-workflow-item
-    :text = "'choose the location'"
+    :text = "'Виберіть місце та завантажте фото'"
     ></howto-workflow-item>
 
     <howto-workflow-item
       class="how-to-section__workflow-item__right"
-      :text = "'take a photo or choose it from gallery and upload'"
+      :text = "'Художник запропонує свій скетч'"
     ></howto-workflow-item>
 
     <howto-workflow-item
-    :text = "'write a comment'"
+    :text = "'Голосуйте за найкращі з них'"
     ></howto-workflow-item>
 
     <howto-workflow-item
       class="how-to-section__workflow-item__right"
-      :text = "'submit and vote for best'"
+      :text = "'Після затвердження художник приступить до роботи'"
     ></howto-workflow-item>
 
     <howto-workflow-item
-    :text = "'engoy the result!'"
+    :text = "'Насолоджуйтесь!'"
     ></howto-workflow-item>
 
   </div>

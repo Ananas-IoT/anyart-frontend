@@ -35,7 +35,7 @@
           this.photo = require('../../../assets/img/about_photo1.jpg');
           break;
         case 'Михайло Гурський':
-          this.photo = require('../../../assets/img/about_photo2.jpg');
+          this.photo = require('../../../assets/img/about_photo3.jpg');
           break;
       }
       // this.computePhoto();
@@ -51,7 +51,7 @@
             this.photo = '../../../assets/img/about_photo1.jpg';
             break;
           case 'Михайло Гурський':
-            this.photo = '../../../assets/img/about_photo2.jpg';
+            this.photo = '../../../assets/img/about_photo3.jpg';
             break;
         }
       }
