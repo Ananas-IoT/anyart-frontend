@@ -292,6 +292,8 @@
     }
 
     .nav {
+      position: absolute;
+      width: 100%;
       opacity: 0;
       pointer-events: none;
       transition: 0.2s;
