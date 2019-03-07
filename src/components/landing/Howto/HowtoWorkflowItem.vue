@@ -303,7 +303,25 @@
 
     .how-to-section__workflow-item:nth-child(1)
     .how-to-section__workflow-item-pic{
-      height: 90px;
+      height: 60%;
     }
   }
+
+
+  @media only screen and (max-width : 400px) {
+
+    .how-to-section__workflow-item:nth-child(1)
+    .how-to-section__workflow-item-pic{
+      height: 50%;
+    }
+  }
+
+  @media only screen and (max-width : 370px) {
+
+    .how-to-section__workflow-item:nth-child(1)
+    .how-to-section__workflow-item-pic{
+      height: 40%;
+    }
+  }
+
 </style>
