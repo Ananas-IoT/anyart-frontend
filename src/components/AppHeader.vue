@@ -51,7 +51,15 @@
 
   export default {
     name: "Header",
-    props: ['window'],
+    props: {
+      window: {
+        type: Object,
+        default: {
+          width: 1920,
+          height:1080
+        }
+      }
+    },
     data() {
       return {
         user: {},
