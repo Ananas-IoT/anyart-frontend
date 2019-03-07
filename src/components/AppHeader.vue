@@ -17,12 +17,12 @@
           <nav class="nav" v-bind:class="{nav__opened: navOpened}">
             <ul class="nav__item-list">
               <li class="nav__item">
-                <router-link to="/">Головна</router-link>
+                <router-link to="/" data-scroll-to="#main" @click="navOpened = false">Головна</router-link>
               </li>
-              <li class="nav__item"><a data-scroll-to="#how-to">Як це працює?</a></li>
-              <li class="nav__item"><a data-scroll-to="#about">Про нас</a></li>
-              <li class="nav__item"><a data-scroll-to="#gallery">Галерея</a></li>
-              <li class="nav__item"><a data-scroll-to="#footer">Контакти</a></li>
+              <li class="nav__item"><a data-scroll-to="#how-to" @click="navOpened = false">Як це працює?</a></li>
+              <li class="nav__item"><a data-scroll-to="#about"  @click="navOpened = false">Про нас</a></li>
+              <li class="nav__item"><a data-scroll-to="#gallery" @click="navOpened = false">Галерея</a></li>
+              <li class="nav__item"><a data-scroll-to="#footer" @click="navOpened = false">Контакти</a></li>
               <li class="nav__item">
                 <router-link to="/map" v-if="window.width >= 1280">Карта</router-link>
               </li>

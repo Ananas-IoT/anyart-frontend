@@ -11,17 +11,17 @@
             <h3 class="footer__social-title">Слідкуйте за нашими новинами:</h3>
             <ul class="footer__social-list">
               <li class="footer__social-item">
-                <a class="footer__social-item-link"><span>
+                <a class="footer__social-item-link" href="https://gmail.com" target="_blank"><span>
                 <img class="footer__social-item-img" :src="contactImages.mail" alt="">
               </span></a>
               </li>
               <li class="footer__social-item">
-                <a class="footer__social-item-link"><span>
+                <a class="footer__social-item-link" href="https://facebook.com" target="_blank"><span>
                 <img class="footer__social-item-img" :src="contactImages.facebook" alt="">
               </span></a>
               </li>
               <li class="footer__social-item">
-                <a class="footer__social-item-link"><span>
+                <a class="footer__social-item-link" href="https://instagram.com" target="_blank"><span>
                 <img class="footer__social-item-img" :src="contactImages.instagram" alt="">
               </span></a>
               </li>

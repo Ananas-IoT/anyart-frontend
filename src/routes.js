@@ -8,16 +8,16 @@ import Login from './components/auth/Login'
 
 export default [
   {path:'/', component: LandingPage},
-  {path:'/map', component: Map},
-  {path:'/auth', component: Auth, children: [
-      {
-        path: 'register', component: Register
-      },
-      {
-        path: 'login', component: Login
-      },
-      {
-        path: 'government', component: RegisterGovernment
-      }
-    ]}
+  // {path:'/map', component: Map},
+  // {path:'/auth', component: Auth, children: [
+  //     {
+  //       path: 'register', component: Register
+  //     },
+  //     {
+  //       path: 'login', component: Login
+  //     },
+  //     {
+  //       path: 'government', component: RegisterGovernment
+  //     }
+  //   ]}
 ]
