@@ -33,7 +33,7 @@
           <div class="user-block">
             <div v-if="this.isAuth" class="user-block__info">
               <router-link to="/auth/register">{{userFullName}}</router-link>
-              <div>{{user.rights}}</div>
+              <div>{{user.rights}}<router-link to="/user">User Profile</router-link></div>
             </div>
             <div v-else class="user-block__registration">
               <router-link to="/auth/register">Register</router-link>
@@ -54,9 +54,11 @@
     props: {
       window: {
         type: Object,
-        default: {
-          width: 1920,
-          height:1080
+        default: function () {
+          return {
+            width: 1920,
+            height:1080
+          }
         }
       }
     },

@@ -52,29 +52,15 @@ export function getAllRequests() {
     });
 }
 
-function getLastRequest(url) {
-  console.log(url);
-  const config = {
-    headers: {}
-  };
 
-  axios.get(url, config)
-    .then(response => {
-      console.log(response);
-      // let lastRequest = response.data;
-      // store.dispatch('addRequest', lastRequest);
-    });
+function getLastRequest(request_id) {
+  console.log(request_id);
+  getRequestById(request_id, callback);
+  function callback(lastRequest) {
+    // console.log(lastRequest);
+    store.dispatch('addRequest', lastRequest);
+  }
 }
-
-//NOW RESPONSE SENDS ROUTE
-// function getLastRequest(request_id) {
-//   console.log(request_id);
-//   getRequestById(request_id, callback);
-//   function callback(lastRequest) {
-//     // console.log(lastRequest);
-//     store.dispatch('addRequest', lastRequest);
-//   }
-// }
 
 function getRequestById(request_id, callback) {
 

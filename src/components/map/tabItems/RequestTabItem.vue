@@ -3,7 +3,7 @@
     <div class="request-tab-item__text">
       <h4 class="request-tab-item__text-title">{{this.request.location.street_address}}</h4>
       <p class="request-tab-item__text-description">{{this.request.description}}</p>
-      <span class="request-tab-item__text-date">{{this.request.workload.created_at}}</span>
+      <span class="request-tab-item__text-date">{{this.request.created_at}}</span>
     </div>
     <img class="request-tab-item__photo-preview" src="" alt="">
     <!--<button class="" v-if="isArtist" type="button" @click="uploadSketch">Upload sketch</button>-->

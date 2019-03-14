@@ -3,7 +3,7 @@
     <div class="request-list-item__text">
       <h4 class="request-list-item__text-title">{{this.request.location.street_address}}</h4>
       <p class="request-list-item__text-description">{{this.request.description}}</p>
-      <span class="request-list-item__text-date">{{this.request.workload.created_at}}</span>
+      <span class="request-list-item__text-date">{{this.request.created_at}}</span>
     </div>
     <img class="request-list-item__photo-preview" src="" alt="">
     <button class="" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch</button>
