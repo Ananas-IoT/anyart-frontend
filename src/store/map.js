@@ -13,19 +13,19 @@ const getters = {
 };
 
 const actions = {
-  addRequest: function (context, newRequest) {
+  addRequest (context, newRequest) {
     context.commit("addRequest", newRequest);
   },
-  addSketch: function (context, newRequest) {
+  addSketch (context, newRequest) {
     context.commit("addSketch", newRequest);
   }
 };
 
 const mutations = {
-  addRequest: function (state, newRequest) {
+  addRequest (state, newRequest) {
     state.requestList.push(newRequest);
   },
-  addSketch: function (state, newRequest) {
+  addSketch (state, newRequest) {
     state.sketchList.push(newRequest);
   }
 };
