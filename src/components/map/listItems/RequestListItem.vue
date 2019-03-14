@@ -29,7 +29,7 @@
     mounted() {
       if(this.userRole === 'artist') {this.isArtist = true}
       document.getElementsByClassName('request-list-item__photo-preview')[this.index]
-        .src = this.request.wall_photos[0].photo;
+        .src = this.request.wall_photos[0];
 
       // let file = this.request.wall_photos[0].photo;
 
@@ -53,13 +53,17 @@
 
       //trigger common-form on Map component
       uploadSketch() {
-        eventBus.$emit('uploadSketch');
+        eventBus.$emit('uploadSketch', this.request.workload);
       }
     }
   }
 </script>
 
 <style scoped>
+  .request-list-item {
+    height: 145px;
+  }
+
   .request-list-item__text {
     display: inline-block;
     width: calc(100% - 150px);

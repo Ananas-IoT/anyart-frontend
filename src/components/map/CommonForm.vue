@@ -58,6 +58,9 @@
         default: () => ({
           name: '',
         })
+      },
+      workloadId: {
+        default: null
       }
     },
     data() {
@@ -67,7 +70,7 @@
           position: {},
         },
         sketch: {
-          requestId: 0,
+          // requestId: 0,
           photo: null,
           description: '',
           // author: '',
@@ -109,7 +112,7 @@
       processSketch() {
         // this.sketch.date = this.getCurDate();
         // this.sketch.author = this.$store.getters.getUser.surname;
-        sendSketch(this.sketch);
+        sendSketch(this.sketch, this.workloadId);
         // this.$store.dispatch('addSketch', this.sketch);
         this.$emit('clearPosition');
       },

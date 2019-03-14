@@ -54,7 +54,7 @@
     methods: {
       login: function () {
         this.user.username = this.user.email;
-
+        delete this.user.email;
         loginUser(this.user);
       },
 

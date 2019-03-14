@@ -9,10 +9,10 @@ export function sendRequest(request) {
   let token = store.getters.getUserToken;
 
   var bodyFormData = new FormData();
-  bodyFormData.set('workload[requirements]', 'test');
+  // bodyFormData.set('workload[requirements]', 'test');
   bodyFormData.set('description', request.description);
-  bodyFormData.set('location[lat]', "" + request.position.lat);
-  bodyFormData.set('location[lng]', "" + request.position.lng);
+  bodyFormData.set('lat', "" + request.position.lat);
+  bodyFormData.set('lng', "" + request.position.lng);
   bodyFormData.append('wall_photo0', request.photo);
 
   const config = {
@@ -20,11 +20,12 @@ export function sendRequest(request) {
       'Authorization': 'Bearer ' + token}
   };
 
-  const url = `${API_URL}/workload/wall_photo_wrappers/`;
+  // const url = `${API_URL}/workload/wall_photo_wrappers/`;
+  const url = `${API_URL}/workload/workloads/`;
   axios.post(url, bodyFormData, config)
     .then(response => {
       console.log(response);
-      getLastRequest(response.data.id);
+      getLastRequest(response.data.self);
     })
     .catch(err => {
       console.log(err.data);
@@ -51,14 +52,29 @@ export function getAllRequests() {
     });
 }
 
-function getLastRequest(request_id) {
-  console.log(request_id);
-  getRequestById(request_id, callback);
-  function callback(lastRequest) {
-    // console.log(lastRequest);
-    store.dispatch('addRequest', lastRequest);
-  }
+function getLastRequest(url) {
+  console.log(url);
+  const config = {
+    headers: {}
+  };
+
+  axios.get(url, config)
+    .then(response => {
+      console.log(response);
+      // let lastRequest = response.data;
+      // store.dispatch('addRequest', lastRequest);
+    });
 }
+
+//NOW RESPONSE SENDS ROUTE
+// function getLastRequest(request_id) {
+//   console.log(request_id);
+//   getRequestById(request_id, callback);
+//   function callback(lastRequest) {
+//     // console.log(lastRequest);
+//     store.dispatch('addRequest', lastRequest);
+//   }
+// }
 
 function getRequestById(request_id, callback) {
 

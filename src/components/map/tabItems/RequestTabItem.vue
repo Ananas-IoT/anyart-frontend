@@ -28,7 +28,7 @@
         this.isArtist = true
       }
       document.getElementsByClassName('request-tab-item__photo-preview')[0]
-        .src = this.request.wall_photos[0].photo;
+        .src = this.request.wall_photos[0];
       // const file = this.request.photo;
       // this.showPhoto(file);
     },
@@ -54,6 +54,7 @@
 
 <style scoped>
   .request-tab-item {
+    height: 160px;
     padding-bottom: 30px;
     border-bottom: 1px solid #000;
   }

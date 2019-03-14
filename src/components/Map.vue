@@ -6,6 +6,7 @@
       v-if="!this.destroyFormComponent"
       :type='this.currentFormType'
       :requestAddress=this.currentPlace
+      :workloadId=this.propWorkloadId
       v-on:addMarker="addMarker"
       v-on:clearPosition="clearPosition"
       v-bind:class="{opened: openedFormClassTrigger}">
@@ -105,6 +106,7 @@
         currentFormType: 'request',
         destroyFormComponent: true,
         openRequestTab: false,
+        propWorkloadId: null,
 
         //sends item index in request list
         indexToOpenedReq: null
@@ -115,10 +117,11 @@
       this.requestList = this.$store.getters.getAllRequests;
 
       //from RequestListItem
-      eventBus.$on('uploadSketch', () => {
+      eventBus.$on('uploadSketch', (workloadId) => {
         console.log('test');
         this.destroyFormComponent = false;
         this.currentFormType = 'sketch';
+        this.propWorkloadId = workloadId;
         this.openedFormClassTrigger = true;
       });
 

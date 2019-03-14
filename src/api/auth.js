@@ -18,7 +18,7 @@ export function getUserByToken(token, refresh) {
       console.log(response);
 
       let user = response.data;
-      user.rights = response.data.user_profile.rights;
+      // user.rights = response.data.rights;
 
       store.dispatch('setUser', user);
 

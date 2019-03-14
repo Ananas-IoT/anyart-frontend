@@ -11,10 +11,10 @@ var config = {
   headers: {'Authorization': 'Bearer ' + token}
 };
 
-export function sendSketch(sketch) {
-
+export function sendSketch(sketch, workloadUrl) {
+  console.log('sketch itself: ', sketch);
   var bodyFormData = new FormData();
-  bodyFormData.set('workload', '2');
+  bodyFormData.set('sketch_description', sketch.description);
   bodyFormData.append('sketch_photo0', sketch.photo);
 
   const config = {
@@ -23,13 +23,13 @@ export function sendSketch(sketch) {
       'Authorization': 'Bearer ' + token
     }
   };
-  // config['Content-Type'] = 'multipart/form-data';
 
-  const url = `${API_URL}/workload/sketches/`;
-  axios.post(url, bodyFormData, config)
+  workloadUrl = workloadUrl+'sketches';
+
+  axios.post(workloadUrl, bodyFormData, config)
     .then(response => {
-      console.log(response);
-      getLastSketch(response.data.id);
+      console.log('response', response);
+      // getLastSketch(response.data.id);
     })
     .catch(err => {
       console.log(err.data);
