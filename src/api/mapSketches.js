@@ -24,15 +24,15 @@ export function sendSketch(sketch, workloadUrl) {
     }
   };
 
-  workloadUrl = workloadUrl+'sketches';
-
+  workloadUrl = workloadUrl+'sketches/';
+  console.log('before post', workloadUrl);
   axios.post(workloadUrl, bodyFormData, config)
     .then(response => {
       console.log('response', response);
       // getLastSketch(response.data.id);
     })
     .catch(err => {
-      console.log(err.data);
+      console.log('post error: ', err.data);
     });
 }
 

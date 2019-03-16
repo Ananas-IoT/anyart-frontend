@@ -5,16 +5,20 @@ import Routes from './routes'
 import {store} from "./store/store"
 import * as VueGoogleMaps from 'vue2-google-maps'
 import Meta from 'vue-meta'
+import Vuetify from 'vuetify'
+// import 'vuetify/dist/vuetify.min.css'
 
 import 'bootstrap'
 
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 Vue.use(Meta);
+Vue.use(Vuetify, {
+  theme: {
+    primary: '#770d85'
+  }
+});
 
 Vue.use(VueGoogleMaps, {
   load: {

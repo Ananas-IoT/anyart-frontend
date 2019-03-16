@@ -80,7 +80,7 @@
   }
 
   >>> .form__title {
-    font-size: 32px;
+    font-size: 24px;
     text-align: center;
   }
 

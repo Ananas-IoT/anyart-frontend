@@ -41,7 +41,8 @@ export function registerUser(user) {
 
   axios.post(url, user, config)
     .then(response => {
-      console.log(response);
+      // console.log(response);
+      eventBus.$emit('registerResponse', response);
       store.dispatch('setUser', user);
 
       let token = response.data.access;
@@ -55,7 +56,8 @@ export function registerUser(user) {
       router.push("/");
     })
     .catch(error => {
-      console.log(error);
+      // console.log(error);
+      eventBus.$emit('registerError', error);
     })
 }
 
