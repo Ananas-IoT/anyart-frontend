@@ -10,18 +10,18 @@
 
         <v-alert
           class="register__alert"
-          :value="registerResponse.boolean"
+          v-if="registerResponse"
+          :value="true"
           type="success"
-          :transition="'1000'"
         >
           {{registerResponse.text}}
         </v-alert>
 
         <v-alert
           class="register__alert"
-          :value="registerError.boolean"
+          v-if="registerError"
+          :value="true"
           type="error"
-          :transition="'1000'"
         >
           {{registerError.text}}
         </v-alert>
@@ -162,8 +162,8 @@
         inputRules: [
           v => !!v || 'Field is required'
         ],
-        registerResponse: {boolean: true},
-        registerError: {boolean: false}
+        registerResponse: null,
+        registerError: null
       }
     },
     created() {
@@ -172,21 +172,25 @@
         this.registerResponse = {
           boolean: true,
           text: "success!",
-        }
+        };
+        setTimeout(() => {
+          this.registerResponse = null
+        }, 3000);
       });
-      setTimeout(this.registerResponse = null, 1000);
 
       eventBus.$on('registerError', (error) => {
         // alert(error);
         this.registerError = {
           boolean: true,
           text: "an error occured!",
-        }
+        };
+        setTimeout(() => {
+          this.registerError = null
+        }, 3000);
       });
-      setTimeout(this.registerError = null, 1000);
     },
     computed: {
-      roleDescription () {
+      roleDescription() {
         if (this.user.rights === 'basic') {
           return this.descriptionList.basic;
         } else if (this.user.rights === 'artist') {
