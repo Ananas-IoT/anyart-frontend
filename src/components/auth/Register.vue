@@ -9,12 +9,22 @@
 
 
         <v-alert
+          class="register__alert"
           :value="registerResponse.boolean"
-          type=registerResponse.type
+          type="success"
+          :transition="'1000'"
         >
           {{registerResponse.text}}
         </v-alert>
 
+        <v-alert
+          class="register__alert"
+          :value="registerError.boolean"
+          type="error"
+          :transition="'1000'"
+        >
+          {{registerError.text}}
+        </v-alert>
 
         <v-stepper-header
           class="register__stepper-header">
@@ -152,15 +162,28 @@
         inputRules: [
           v => !!v || 'Field is required'
         ],
+        registerResponse: {boolean: true},
+        registerError: {boolean: false}
       }
     },
     created() {
       eventBus.$on('registerResponse', (response) => {
-        alert(response);
+        // alert(response);
+        this.registerResponse = {
+          boolean: true,
+          text: "success!",
+        }
       });
+      setTimeout(this.registerResponse = null, 1000);
+
       eventBus.$on('registerError', (error) => {
-        alert(error);
+        // alert(error);
+        this.registerError = {
+          boolean: true,
+          text: "an error occured!",
+        }
       });
+      setTimeout(this.registerError = null, 1000);
     },
     computed: {
       roleDescription () {
@@ -192,6 +215,12 @@
 <style scoped>
   .register {
     position: relative;
+  }
+
+  .register__alert {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
   }
 
   .register__stepper {

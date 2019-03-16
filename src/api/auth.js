@@ -41,7 +41,7 @@ export function registerUser(user) {
 
   axios.post(url, user, config)
     .then(response => {
-      // console.log(response);
+      console.log('register response', response);
       eventBus.$emit('registerResponse', response);
       store.dispatch('setUser', user);
 
