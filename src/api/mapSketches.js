@@ -26,14 +26,25 @@ export function sendSketch(sketch, workloadUrl) {
 
   workloadUrl = workloadUrl+'sketches/';
   console.log('before post', workloadUrl);
-  axios.post(workloadUrl, bodyFormData, config)
-    .then(response => {
-      console.log('response', response);
-      // getLastSketch(response.data.id);
-    })
-    .catch(err => {
-      console.log('post error: ', err.data);
-    });
+  var http = new XMLHttpRequest();
+  http.open('POST', workloadUrl, true);
+  http.setRequestHeader('Content-Type', 'multipart/form-data');
+  http.setRequestHeader('Authorization', 'Bearer ' + token);
+
+  http.onreadystatechange = function() {//Call a function when the state changes.
+    if(http.readyState == 4 && http.status == 200) {
+      console.log(http.responseText);
+    }
+  }
+  http.send(sketch);
+  // axios.post(workloadUrl, bodyFormData, config)
+  //   .then(response => {
+  //     console.log('response', response);
+  //     // getLastSketch(response.data.id);
+  //   })
+  //   .catch(err => {
+  //     console.log('post error: ', err.data);
+  //   });
 }
 
 export function getSkechesById(req_id) {

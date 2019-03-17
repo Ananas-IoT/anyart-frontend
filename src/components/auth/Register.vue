@@ -1,7 +1,7 @@
 <template>
   <v-app>
-
     <div class="register">
+      <app-header></app-header>
       <v-stepper
         class="register__stepper"
         v-model="stepperCurrent"
@@ -141,12 +141,14 @@
 <script>
   import FormButton from '../formComponents/FormButton';
   import {registerUser} from "../../api/auth";
-  import eventBus from '../../eventBus'
+  import eventBus from '../../eventBus';
+  import AppHeader from '../AppHeader';
 
   export default {
     name: "register",
     components: {
-      'form-button': FormButton
+      'form-button': FormButton,
+      'app-header': AppHeader
     },
     data() {
       return {

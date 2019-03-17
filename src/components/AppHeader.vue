@@ -120,6 +120,7 @@
   }
 
   .header__logo {
+    text-align: left;
     display: block;
     width: 200px;
     margin-top: 10px;
@@ -182,6 +183,7 @@
     width: 110px;
     padding: 20px 0 23px;
     font-size: 17px;
+    font-family: "PT Sans";
     transition: 0.3s;
     position: relative;
     cursor: pointer;
@@ -261,6 +263,7 @@
   }
 
   .user-block__registration a {
+    font-size: 16px;
     display: block;
   }
 
