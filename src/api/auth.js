@@ -71,8 +71,8 @@ export function loginUser(user) {
 
   axios.post(url, user, config)
     .then(response => {
-      console.log(response);
-
+      // console.log(response);
+      eventBus.$emit('loginResponse', response);
       let token = response.data.access;
       let refresh = response.data.refresh;
 
@@ -87,6 +87,7 @@ export function loginUser(user) {
       router.push("/")
     })
     .catch(error => {
+      eventBus.$emit('loginError', error);
     });
 
 }

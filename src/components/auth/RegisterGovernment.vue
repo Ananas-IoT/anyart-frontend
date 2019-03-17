@@ -1,5 +1,5 @@
 <template>
-  <div class="government">
+  <div class="auth-wrap government">
     <div class="form-wrap">
       <form>
         <h2 class="form__title">Create government account:</h2>

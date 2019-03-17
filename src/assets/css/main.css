@@ -186,6 +186,10 @@ img {
   padding: 0;
 }
 
+.application {
+  font-family: "PT Sans";
+}
+
 /*carousel custom arrows*/
 .partners-section .slick-next:before,
 .partners-section .slick-prev:before {

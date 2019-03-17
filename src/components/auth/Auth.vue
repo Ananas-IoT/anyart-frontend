@@ -49,7 +49,7 @@
 
   /*  >>>  is for ingeritance of child components  */
 
-  >>> .register, .login, .government {
+  >>> .auth-wrap {
     position: relative;
     height: 100vh;
     padding-top: 100px;
@@ -57,7 +57,7 @@
     background: url("../../assets/img/main_bg1.jpg");
   }
 
-  >>> .register:before, .login:before, .government:before {
+  >>> .auth-wrap:before {
     content: '';
     position: absolute;
     top: 0;
@@ -68,39 +68,48 @@
     z-index: 0;
   }
 
-  >>> .form-wrap {
-    position: relative;
-    text-align: center;
-    width: 30%;
-    padding: 30px;
-    margin: 0 auto 0;
-    background: #fafafa;
-    border-radius: 5px;
-    border: 1px solid #eee;
+  >>> .alert {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
   }
+
+  /*>>> .form-wrap {*/
+  /*position: relative;*/
+  /*text-align: center;*/
+  /*width: 30%;*/
+  /*padding: 30px;*/
+  /*margin: 0 auto 0;*/
+  /*background: #fafafa;*/
+  /*border-radius: 5px;*/
+  /*border: 1px solid #eee;*/
+  /*}*/
 
   >>> .form__title {
-    font-size: 24px;
     text-align: center;
+    margin-bottom: 0;
+    font-size: 24px;
   }
 
-  >>> .form__input {
-    display: block;
-    width: 300px;
-    padding: 10px 15px;
-    margin: 10px auto;
-    border-radius: 5px;
-    border: none;
-    border: 1px solid #e0e0e0;
-    outline: none;
-  }
+  /*>>> .form__input {*/
+    /*display: block;*/
+    /*width: 300px;*/
+    /*padding: 10px 15px;*/
+    /*margin: 10px auto;*/
+    /*border-radius: 5px;*/
+    /*border: none;*/
+    /*border: 1px solid #e0e0e0;*/
+    /*outline: none;*/
+  /*}*/
 
-  >>> .form__input:focus {
-    border: 1px solid #770d85;
-  }
+  /*>>> .form__input:focus {*/
+    /*border: 1px solid #770d85;*/
+  /*}*/
 
-  >>> .form__input__invalid {
-    border: 2px solid #ff0000 !important;
-  }
+  /*>>> .form__input__invalid {*/
+    /*border: 2px solid #ff0000 !important;*/
+  /*}*/
 
 </style>

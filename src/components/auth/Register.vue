@@ -1,15 +1,15 @@
 <template>
   <v-app>
-    <div class="register">
+    <div class="auth-wrap register">
       <app-header></app-header>
       <v-stepper
-        class="register__stepper"
+        class="auth-stepper register__stepper"
         v-model="stepperCurrent"
         :alt-labels="true">
 
 
         <v-alert
-          class="register__alert"
+          class="alert register__alert"
           v-if="registerResponse"
           :value="true"
           type="success"
@@ -18,7 +18,7 @@
         </v-alert>
 
         <v-alert
-          class="register__alert"
+          class="alert register__alert"
           v-if="registerError"
           :value="true"
           type="error"
@@ -27,7 +27,7 @@
         </v-alert>
 
         <v-stepper-header
-          class="register__stepper-header">
+          class="auth-stepper-header register__stepper-header">
           <v-stepper-step class="register__stepper-step" :complete="stepperCurrent > 1" step="1" @click="backToStep(1)">
             Account setup
           </v-stepper-step>
@@ -219,15 +219,6 @@
 </script>
 
 <style scoped>
-  .register {
-    position: relative;
-  }
-
-  .register__alert {
-    position: absolute;
-    width: 100%;
-    z-index: 100;
-  }
 
   .register__stepper {
     width: 400px;
