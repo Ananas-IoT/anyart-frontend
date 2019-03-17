@@ -68,6 +68,21 @@
     z-index: 0;
   }
 
+  >>> .stepper {
+    width: 400px;
+    margin: auto;
+    border-radius: 3px;
+  }
+
+  >>> .stepper-step {
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  >>> .stepper-items__card {
+    box-shadow: none;
+  }
+
   >>> .alert {
     position: absolute;
     top: 0;

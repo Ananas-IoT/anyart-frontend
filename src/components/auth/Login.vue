@@ -3,14 +3,6 @@
     <div class="auth-wrap login">
       <app-header></app-header>
       <v-form class="form login__form" v-model="validation">
-        <v-alert
-          class="alert"
-          v-if="loginResponse"
-          :value="true"
-          type="success"
-        >
-          {{loginResponse.text}}
-        </v-alert>
 
         <v-alert
           class="alert"
@@ -73,22 +65,13 @@
       }
     },
     created() {
-      eventBus.$on('loginResponse', (response) => {
-        console.log(response);
-        this.loginResponse = {
-          boolean: true,
-          text: "success!",
-        };
-        setTimeout(() => {
-          this.loginResponse = null
-        }, 3000);
-      });
 
       eventBus.$on('loginError', (error) => {
-        console.log(error);
+        // console.log(error.response.data.non_field_errors[0]);
         this.loginError = {
           boolean: true,
-          text: "an error occured!",
+          // text: "an error occured!",
+          text: error.response.data.non_field_errors[0],
         };
         setTimeout(() => {
           this.loginError = null
