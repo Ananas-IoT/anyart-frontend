@@ -8,6 +8,7 @@ import Login from './components/auth/Login'
 import UserProfile from './components/userProfile/UserProfile'
 
 export default [
+
   {path:'/', component: LandingPage},
   {path:'/map', component: Map},
   {path: '/user', component: UserProfile},

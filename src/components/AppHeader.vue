@@ -19,10 +19,10 @@
               <li class="nav__item">
                 <router-link to="/" data-scroll-to="#main" @click="navOpened = false">Головна</router-link>
               </li>
-              <li class="nav__item"><a data-scroll-to="#how-to" @click="navOpened = false">Як це працює?</a></li>
-              <li class="nav__item"><a data-scroll-to="#about"  @click="navOpened = false">Про нас</a></li>
-              <li class="nav__item"><a data-scroll-to="#gallery" @click="navOpened = false">Галерея</a></li>
-              <li class="nav__item"><a data-scroll-to="#footer" @click="navOpened = false">Контакти</a></li>
+              <li class="nav__item"><router-link to="/#how-to" data-scroll-to="#how-to" @click="navOpened = false">Як це працює?</router-link></li>
+              <li class="nav__item"><router-link to="/#about" data-scroll-to="#about" @click="navOpened = false">Про нас</router-link></li>
+              <li class="nav__item"><router-link to="/#gallery" data-scroll-to="#gallery" @click="navOpened = false">Галерея</router-link></li>
+              <li class="nav__item"><router-link to="/#footer" data-scroll-to="#footer"@click="navOpened = false">Контакти</router-link></li>
               <li class="nav__item">
                 <router-link to="/map" v-if="window.width >= 1280">Карта</router-link>
               </li>
