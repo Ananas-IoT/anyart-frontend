@@ -201,7 +201,8 @@
 
       backToStep(stepToBack) {
         if (this.stepperCurrent > stepToBack) {
-          this.stepperCurrent = stepToBack
+          this.stepperCurrent = stepToBack;
+          this.validation = true;
         }
       }
     }

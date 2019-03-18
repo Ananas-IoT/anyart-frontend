@@ -30,9 +30,10 @@
 </template>
 
 <script>
-  import eventBus from '../../eventBus'
-  import RequestItem from './tabItems/RequestTabItem'
-  import SketchItem from './tabItems/SketchTabItem'
+  import eventBus from '../../eventBus';
+  import RequestItem from './tabItems/RequestTabItem';
+  import SketchItem from './tabItems/SketchTabItem';
+  import {getSketchesById} from "../../api/mapSketches";
 
   export default {
     name: "RequestTab",
@@ -55,13 +56,13 @@
 
       //get current request from list
       this.request = requestList[this.index];
-
-      // gets all sketches and serches by request id
-      var sketchList = this.$store.getters.getAllSketches;
-      for(let i = 0; i < sketchList.length; i++) {
-        if (sketchList[i].requestId === this.index) {
-          this.sketchList.push(sketchList[i]);
-        }
+      // gets all sketches
+      getSketchesById(this.request.id, callback);
+      var self = this;
+      function callback(sketchList) {
+        // console.log('not this', sketchList);
+        self.sketchList = sketchList;
+        // console.log('this', self.sketchList);
       }
     },
     methods: {

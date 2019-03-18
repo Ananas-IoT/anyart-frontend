@@ -20,15 +20,14 @@ export function sendRequest(request) {
       'Authorization': 'Bearer ' + token}
   };
 
-  // const url = `${API_URL}/workload/wall_photo_wrappers/`;
   const url = `${API_URL}/workload/workloads/`;
   axios.post(url, bodyFormData, config)
     .then(response => {
-      console.log(response);
-      getLastRequest(response.data.self);
+      console.log('send request: ', response);
+      // getLastRequest(response.data.self);
     })
     .catch(err => {
-      console.log(err.data);
+      console.log('send request error: ', err.response);
     });
 }
 
@@ -42,7 +41,7 @@ export function getAllRequests() {
   const url = `${API_URL}/workload/wall_photo_wrappers/`;
   axios.get(url, config)
     .then(response => {
-      console.log(response);
+      // console.log(response);
       for (let i = 0; i < response.data.count; i++) {
         store.dispatch('addRequest', response.data.results[i]);
       }
@@ -54,7 +53,7 @@ export function getAllRequests() {
 
 
 function getLastRequest(request_id) {
-  console.log(request_id);
+  // console.log(request_id);
   getRequestById(request_id, callback);
   function callback(lastRequest) {
     // console.log(lastRequest);

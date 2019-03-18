@@ -1,25 +1,25 @@
 <template>
   <div class="sketch-tab-item">
     <div class="sketch-tab-item__text">
-      <h4 class="sketch-tab-item__text-title">Sketch {{this.index}}</h4>
-      <p class="sketch-tab-item__text-description">{{this.sketch.description}}</p>
-      <span class="sketch-tab-item__text-date">{{this.sketch.date}}</span>
+      <h4 class="sketch-tab-item__text-title">Sketch Title</h4>
+      <p class="sketch-tab-item__text-description">{{this.sketch.sketch_description}}</p>
+      <span class="sketch-tab-item__text-date">this.sketch.date</span>
 
-      <ul>
-        <li
-          class="sketch-tab-item__approval"
-          v-for="approve in sketch.approvals">
-          {{approve.property}}
-          <span class="sketch-tab-item__approval__indicator">0</span>
-        </li>
-      </ul>
+      <!--<ul>-->
+        <!--<li-->
+          <!--class="sketch-tab-item__approval"-->
+          <!--v-for="approve in sketch.approvals">-->
+          <!--{{approve.property}}-->
+          <!--<span class="sketch-tab-item__approval__indicator">0</span>-->
+        <!--</li>-->
+      <!--</ul>-->
 
-      <div
-        class="sketch-tab-item__approval-buttons"
-        v-if="user.rights === 'gov'">
-        <button>approve</button>
-        <button>disapprove</button>
-      </div>
+      <!--<div-->
+        <!--class="sketch-tab-item__approval-buttons"-->
+        <!--v-if="user.rights === 'gov'">-->
+        <!--<button>approve</button>-->
+        <!--<button>disapprove</button>-->
+      <!--</div>-->
 
     </div>
     <img class="sketch-tab-item__photo-preview" src="" alt="">
@@ -42,29 +42,23 @@
       // if (this.userRole === 'artist') {
       //   this.isArtist = true
       // }
-      this.user = this.$store.getters.getUser;
+      // this.user = this.$store.getters.getUser;
+      document.getElementsByClassName('sketch-tab-item__photo-preview')[this.index]
+        .src = this.sketch.sketch_images[0];
 
-      const file = this.sketch.photo;
-      this.showPhoto(file);
     },
     created() {
 
     },
     methods: {
-      showPhoto(file) {
-        let preview = document.getElementsByClassName('sketch-tab-item__photo-preview')[this.index];
-        let reader = new FileReader();
-        reader.onloadend = function () {
-          preview.src = reader.result;
-        };
-        reader.readAsDataURL(file);
-      },
+
     }
   }
 </script>
 
 <style scoped>
   .sketch-tab-item {
+    height: 150px;
     padding-bottom: 30px;
     border-bottom: 1px solid #000;
   }

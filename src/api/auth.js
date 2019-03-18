@@ -15,18 +15,15 @@ export function getUserByToken(token, refresh) {
 
   axios.get(url, config)
     .then(response => {
-      console.log(response);
-
+      console.log('get user by token response:', response);
       let user = response.data;
-      // user.rights = response.data.rights;
-
       store.dispatch('setUser', user);
 
       // to AppHeader.vue
       eventBus.$emit('checkUser', user);
     })
     .catch(err => {
-      console.log(err);
+      console.log('get user by token ERROR', err.response);
       refreshToken(refresh);
     });
 }
@@ -97,7 +94,9 @@ function refreshToken(refresh) {
 
   axios.post(url, {refresh}, config)
     .then(response => {
-      console.log(response);
+      // console.log(response);
       getUserByToken(response.data.access);
-    });
+    }).catch(error => {
+      console.log('refresh token ERROR', error.response);
+  });
 }
