@@ -94,7 +94,7 @@ function refreshToken(refresh) {
 
   axios.post(url, {refresh}, config)
     .then(response => {
-      // console.log(response);
+      console.log('refresh token: ', response);
       getUserByToken(response.data.access);
     }).catch(error => {
       console.log('refresh token ERROR', error.response);

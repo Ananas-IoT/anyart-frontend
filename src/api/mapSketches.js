@@ -17,20 +17,20 @@ export function sendSketch(sketch, workloadUrl) {
   bodyFormData.set('sketch_description', sketch.description);
   bodyFormData.append('sketch_photo0', sketch.photo);
 
-  config['Content-Type'] = 'multipart/form-data';
+  // config['Content-Type'] = 'multipart/form-data';
 
-  // const config = {
-  //   headers: {
-  //     'Content-Type': 'multipart/form-data',
-  //     'Authorization': 'Bearer' + token
-  //   }
-  // };
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Authorization': 'Bearer' + token
+    }
+  };
   var url = workloadUrl+'sketches/';
   console.log('before post', url);
   axios.post(url, bodyFormData, config)
     .then(response => {
       console.log('response', response);
-      // getLastSketch(workloadUrl, response.data.id);
+      getLastSketch(url, response.data.id);
     })
     .catch(err => {
       console.log('post error: ', err.response);
@@ -54,9 +54,9 @@ function getLastSketch(workloadUrl, sketch_id) {
   var url = workloadUrl + sketch_id;
   axios.get(url, config)
     .then(response => {
-      console.log('getLastSketch:' + response);
+      console.log('getLastSketch:', response);
     })
     .catch(err => {
-
+      console.log('getLastSketch ERROR:' + err.response);
     });
 }
