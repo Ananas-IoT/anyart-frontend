@@ -22,7 +22,7 @@ Vue.use(Vuetify, {
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: "AIzaSyBQyAhqhl06fqpET264Nxhz8xb0ANRJvC4",
+    key: "AIzaSyCfINKJQdlE9pU6Rb0r99QNmeZ9CR_q1jY",
     libraries: "places"
   }
 });

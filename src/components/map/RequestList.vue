@@ -1,17 +1,21 @@
 <template>
-  <div class="request-list">
-    <h2 class="request-list__title">Here goes Request List!</h2>
-    <request-item class="request-list__request-item"
-                  v-for="(loopedRequest, index) in requestList"
-                  :request = loopedRequest
-                  :index = index
-                  :userRole = user.rights
-                  @click.native="openRequestTab(index)"
-    >
-      <!--span is used to send index of current loopedRequest-->
-      <!--<span>{{getRequestIndex(index)}}</span>-->
-    </request-item>
-  </div>
+  <v-app>
+
+    <div class="request-list">
+      <h2 class="request-list__title">Here goes Request List!</h2>
+      <request-item class="request-list__request-item"
+                    v-for="(loopedRequest, index) in requestList"
+                    :request = loopedRequest
+                    :index = index
+                    :userRole = user.rights
+                    @click.native="openRequestTab(index)"
+      >
+        <!--span is used to send index of current loopedRequest-->
+        <!--<span>{{getRequestIndex(index)}}</span>-->
+      </request-item>
+    </div>
+
+  </v-app>
 </template>
 
 <script>
@@ -82,9 +86,12 @@
   }
 
   .request-list__request-item {
+    width: 95%;
     padding: 5px 20px;
+    margin: auto;
     font-size: 18px;
-    border-top: 2px solid #000;
+    background: #ffffff;
+    border-top: 1px solid #efefef;
     cursor: pointer;
   }
 </style>
