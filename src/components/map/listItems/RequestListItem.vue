@@ -7,9 +7,11 @@
       <p class="request-list-item__text-description">{{this.request.description}}</p>
       <span class="request-list-item__text-date">{{this.request.created_at}}</span>
     </div>
-    <img class="request-list-item__photo-preview" src="" alt="">
+    <img class="request-list-item__photo-preview" :src=this.request.wall_photos[0] alt="">
     <button class="request-list-item__btn" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch
     </button>
+    <v-btn>side panel</v-btn>
+    <v-btn>popup</v-btn>
   </div>
 </template>
 
@@ -33,8 +35,6 @@
       if (this.userRole === 'artist') {
         this.isArtist = true
       }
-      document.getElementsByClassName('request-list-item__photo-preview')[this.index]
-        .src = this.request.wall_photos[0];
     },
     created() {
 

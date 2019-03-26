@@ -8,11 +8,16 @@
                     :request = loopedRequest
                     :index = index
                     :userRole = user.rights
-                    @click.native="openRequestTab(index)"
       >
-        <!--span is used to send index of current loopedRequest-->
-        <!--<span>{{getRequestIndex(index)}}</span>-->
       </request-item>
+      <!--<request-item class="request-list__request-item"-->
+                    <!--v-for="(loopedRequest, index) in requestList"-->
+                    <!--:request = loopedRequest-->
+                    <!--:index = index-->
+                    <!--:userRole = user.rights-->
+                    <!--@click.native="openRequestTab(index)"-->
+      <!--&gt;-->
+      <!--</request-item>-->
     </div>
 
   </v-app>
@@ -48,19 +53,6 @@
       if (this.requestList.length === 0) {
         getAllRequests();
       }
-
-      // const config = {
-      //   headers: {'Authorization': 'Bearer ' + this.token}
-      // };
-      // const API_URL = 'https://anyart.pythonanywhere.com';
-      // const url = `${API_URL}/workload/wall_photo_wrappers/`;
-      // axios.get(url, config)
-      //   .then(response => {
-      //     console.log(response);
-      //   })
-      //   .catch(err => {
-      //     console.log(err.data);
-      //   });
     },
     methods: {
       //to map component
@@ -68,12 +60,6 @@
         console.log(index);
         eventBus.$emit('openRequestTab', index);
       },
-
-      //gets request index from html template
-      // getRequestIndex(idx) {
-      //   console.log(idx);
-      //   this.requestIndex = idx;
-      // }
     }
   }
 </script>
@@ -92,6 +78,6 @@
     font-size: 18px;
     background: #ffffff;
     border-top: 1px solid #efefef;
-    cursor: pointer;
+    /*cursor: pointer;*/
   }
 </style>

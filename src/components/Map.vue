@@ -10,12 +10,12 @@
         :workloadId=this.propWorkloadId
         v-on:addMarker="addMarker"
         v-on:clearPosition="clearPosition"
-        v-bind:class="{opened: openedFormClassTrigger}">
+        v-bind:class="{opened: openedFormTriggerClass}">
       </common-form>
 
       <div
         class="map__form__shadow"
-        @click="openedFormClassTrigger = !openedFormClassTrigger"></div>
+        @click="openedFormTriggerClass = !openedFormTriggerClass"></div>
 
       <div class="container-fluid">
         <div class="row no-gutters">
@@ -23,12 +23,10 @@
           <user-header></user-header>
 
           <div class="col-12">
-            <!--<div class="row no-gutters">-->
-            <!--<div class="col-lg-8">-->
             <div class="map__search-form">
               <label>
                 <!-- it's map search form-->
-                <v-form>
+                <v-form v-if="mapSearchFormTriggerIf">
                   <v-text-field
                     class="map__search-form-input"
                     v-model="currentPlace.formatted_address"
@@ -56,7 +54,7 @@
               v-if="this.openRequestTab"
               :index="indexToOpenedReq"
               v-on:closeRequest="openRequestTab = false"
-              @click.native="openedFormClassTrigger = false"
+              @click.native="openedFormTriggerClass = false"
             >
             </request-tab>
 
@@ -65,16 +63,27 @@
               class="map__map"
               :center="mapCenter"
               :zoom="12"
+              @click="infoWindow.open = false"
             >
               <!--it's markerList-->
               <gmap-marker
                 :key="index"
-                v-for="(m, index) in requestList"
-                :position="m.location"
-                @click="mapCenter=m.position"
+                v-for="(req, index) in requestList"
+                :position="req.location"
+                :icon="computeStatusMarkerIcon(req)"
+                @click="openInfoWindow(req, index)"
               ></gmap-marker>
+
+              <gmap-info-window
+                :options="infoWindow.options"
+                :position="infoWindow.position"
+                :opened="infoWindow.open"
+                @closeclick="infoWindow.open=false">
+                <div class="map__info-window" v-html="infoWindow.template"></div>
+              </gmap-info-window>
             </gmap-map>
           </div>
+
 
           <v-navigation-drawer
             class="requestDrawer"
@@ -89,7 +98,7 @@
             ></request-list>
 
 
-            <div class="requestDrawerToggler" @click="requestDrawerTriggerIf = !requestDrawerTriggerIf"></div>
+            <div class="requestDrawerToggler" @click="ToggleRequestDrawer()"></div>
           </v-navigation-drawer>
         </div>
       </div>
@@ -105,7 +114,6 @@
   import RequestList from './map/RequestList'
   import RequestOpened from './map/RequestTab'
 
-
   export default {
     name: "Map",
     components: {
@@ -116,26 +124,43 @@
     },
     data() {
       return {
+
         mapCenter: {lat: 49.85, lng: 24.0166666667},
         requestList: [],
-        markerList: [],
-        // places: [],
 
         //place on map search form
-        currentPlace: {
+        currentPlace: {},
 
-        },
-
-        openedFormClassTrigger: false,
+        openedFormTriggerClass: false,
         currentFormType: 'request',
         destroyFormComponent: true,
-        openRequestTab: false,
+
+        mapSearchFormTriggerIf: false,
+
+        //prop goes to Common Form, for POST sketch request
         propWorkloadId: null,
 
-        //sends item index in request list
+        //sends item index in request list to request tab
+        // delete after rework
+        openRequestTab: false,
         indexToOpenedReq: null,
         requestDrawerTriggerIf: true,
-        addressValidation: false
+
+        addressValidation: false,
+        markerHoverRequest: null,
+
+        infoWindow: {
+          position: {lat: 0, lng: 0},
+          open: false,
+          template: '',
+          options: {
+            maxWidth: 300,
+            pixelOffset: {
+              width: 0,
+              height: -45
+            }
+          }
+        }
       };
     },
     mounted() {
@@ -151,7 +176,7 @@
         );
         this.autocomplete.addListener('place_changed', () => {
           this.currentPlace = this.autocomplete.getPlace();
-          if(this.currentPlace.formatted_address !== null) {
+          if (this.currentPlace.formatted_address !== null) {
             this.addressValidation = true;
           }
         });
@@ -162,7 +187,7 @@
         this.destroyFormComponent = false;
         this.currentFormType = 'sketch';
         this.propWorkloadId = workloadId;
-        this.openedFormClassTrigger = true;
+        this.openedFormTriggerClass = true;
       });
 
       //from RequestList
@@ -171,13 +196,15 @@
         this.openRequestTab = !this.openRequestTab;
       });
     },
+    computed: {
 
+    },
     methods: {
       //creates common-form component
       createForm() {
         this.destroyFormComponent = false;
         //"opened" animation doesnt works :c
-        this.openedFormClassTrigger = !this.openedFormClassTrigger;
+        this.openedFormTriggerClass = !this.openedFormTriggerClass;
       },
 
       // receives a place object via the autocomplete component
@@ -187,7 +214,7 @@
 
       //gets location from RequestTemplate, draws marker there
       addMarker(reqToAdd) {
-        this.openedFormClassTrigger = true;
+        this.openedFormTriggerClass = true;
         // this.requests.push(reqToAdd);
       },
 
@@ -199,20 +226,45 @@
             lng: position.coords.longitude
           };
         });
-      }
-      ,
+      },
 
       //clears current place field, when request is completed (to destroy ReqTemplate component)
       clearPosition() {
         this.currentPlace = false;
         this.destroyFormComponent = true;
+      },
+      ToggleRequestDrawer() {
+        this.mapSearchFormTriggerIf = this.requestDrawerTriggerIf;
+        this.requestDrawerTriggerIf = !this.requestDrawerTriggerIf;
+        this.infoWindow.open = false;
+      },
+      computeStatusMarkerIcon(req) {
+        req.status = 1;
+        switch (req.status) {
+          case 1: {
+            return {url: require('../assets/img/pin.png')};
+          }
+        }
+      },
+      openInfoWindow(marker) {
+        this.infoWindow.template =
+          '<div class="map__info-window__txt-wrap">' +
+          '<div class="map__info-window__address">default 42 Street in default City</div>' +
+          '<span class="map__info-window__status">Status: status</span>' +
+          '</div>' +
+          '<img  class="map__info-window__img" src=' + marker.wall_photos[0] + ' alt="">';
+        this.infoWindow.position = marker.location;
+
+        this.requestDrawerTriggerIf = false;
+        this.mapSearchFormTriggerIf = true;
+
+        this.infoWindow.open = true;
       }
-      ,
     }
   }
 </script>
 
-<style scoped>
+<style>
 
   .requestDrawer {
     /*width: 50% !important;*/
@@ -299,6 +351,33 @@
     height: 42px;
   }
 
+  .map__info-window {
+
+  }
+
+  .map__info-window__txt-wrap {
+    vertical-align: top;
+    width: 70%;
+    display: inline-block;
+  }
+
+  .map__info-window__address {
+    font-size: 14px;
+    font-family: "PT Sans Bold";
+  }
+
+  .map__info-window__status {
+    position: absolute;
+    bottom: 10px;
+    font-size: 12px;
+  }
+
+  .map__info-window__img {
+    float: right;
+    width: 70px;
+    height: 70px;
+  }
+
   .map__request-list {
     display: inline-block;
     vertical-align: top;
@@ -326,5 +405,10 @@
     /*background: #000;*/
     z-index: 80;
   }
+
+  .marker__hovered {
+    position: relative;
+  }
+
 
 </style>
