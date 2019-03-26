@@ -26,7 +26,7 @@
             <div class="map__search-form">
               <label>
                 <!-- it's map search form-->
-                <v-form v-if="mapSearchFormTriggerIf">
+                <v-form v-show="mapSearchFormTriggerShow">
                   <v-text-field
                     class="map__search-form-input"
                     v-model="currentPlace.formatted_address"
@@ -49,14 +49,14 @@
             <br>
 
 
-            <request-tab
-              class="map__request-open"
-              v-if="this.openRequestTab"
-              :index="indexToOpenedReq"
-              v-on:closeRequest="openRequestTab = false"
-              @click.native="openedFormTriggerClass = false"
-            >
-            </request-tab>
+            <!--<request-tab-->
+              <!--class="map__request-open"-->
+              <!--v-if="this.openRequestTab"-->
+              <!--:index="indexToOpenedReq"-->
+              <!--v-on:closeRequest="openRequestTab = false"-->
+              <!--@click.native="openedFormTriggerClass = false"-->
+            <!--&gt;-->
+            <!--</request-tab>-->
 
             <!--it's map-->
             <gmap-map
@@ -124,7 +124,6 @@
     },
     data() {
       return {
-
         mapCenter: {lat: 49.85, lng: 24.0166666667},
         requestList: [],
 
@@ -135,7 +134,7 @@
         currentFormType: 'request',
         destroyFormComponent: true,
 
-        mapSearchFormTriggerIf: false,
+        mapSearchFormTriggerShow: false,
 
         //prop goes to Common Form, for POST sketch request
         propWorkloadId: null,
@@ -234,7 +233,7 @@
         this.destroyFormComponent = true;
       },
       ToggleRequestDrawer() {
-        this.mapSearchFormTriggerIf = this.requestDrawerTriggerIf;
+        this.mapSearchFormTriggerShow = this.requestDrawerTriggerIf;
         this.requestDrawerTriggerIf = !this.requestDrawerTriggerIf;
         this.infoWindow.open = false;
       },
@@ -256,7 +255,7 @@
         this.infoWindow.position = marker.location;
 
         this.requestDrawerTriggerIf = false;
-        this.mapSearchFormTriggerIf = true;
+        this.mapSearchFormTriggerShow = true;
 
         this.infoWindow.open = true;
       }
@@ -348,7 +347,9 @@
 
   .map__search-form-button {
     width: 58px;
-    height: 42px;
+    height: 48px;
+    margin-top: 2px;
+    margin-left: 0;
   }
 
   .map__info-window {
