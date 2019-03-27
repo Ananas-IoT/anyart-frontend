@@ -6,7 +6,7 @@ import {store} from "./store/store"
 import * as VueGoogleMaps from 'vue2-google-maps'
 import Meta from 'vue-meta'
 import Vuetify from 'vuetify'
-// import 'vuetify/dist/vuetify.min.css'
+import {getGoogleAPIKey} from "../maps-api-key";
 
 import 'bootstrap'
 
@@ -22,7 +22,7 @@ Vue.use(Vuetify, {
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: "AIzaSyCfINKJQdlE9pU6Rb0r99QNmeZ9CR_q1jY",
+    key: getGoogleAPIKey(),
     libraries: "places"
   }
 });
@@ -45,3 +45,5 @@ new Vue({
   router: router,
   store: store
 });
+
+
