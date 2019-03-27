@@ -19,9 +19,17 @@ Vue.use(Vuetify, {
   }
 });
 
+var key;
+try {
+  var getGoogleAPIKey = require("../maps-api-key");
+  key = getGoogleAPIKey.getGoogleAPIKey();
+} catch (e) {
+  key = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
+}
+
 Vue.use(VueGoogleMaps, {
   load: {
-    key: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
+    key: key,
     libraries: "places"
   }
 });
