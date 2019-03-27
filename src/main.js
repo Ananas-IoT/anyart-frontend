@@ -6,7 +6,7 @@ import {store} from "./store/store"
 import * as VueGoogleMaps from 'vue2-google-maps'
 import Meta from 'vue-meta'
 import Vuetify from 'vuetify'
-import {getGoogleAPIKey} from "../maps-api-key";
+import {getGoogleAPIKey} from "../../maps-api-key";
 
 import 'bootstrap'
 
@@ -20,9 +20,14 @@ Vue.use(Vuetify, {
   }
 });
 
+var GOOGLE_MAPS_API_KEY = getGoogleAPIKey();
+if (GOOGLE_MAPS_API_KEY === null) {
+  GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+  GOOGLE_MAPS_API_KEY += "";
+}
 Vue.use(VueGoogleMaps, {
   load: {
-    key: getGoogleAPIKey(),
+    key: GOOGLE_MAPS_API_KEY,
     libraries: "places"
   }
 });
