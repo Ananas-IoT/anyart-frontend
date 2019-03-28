@@ -26,7 +26,7 @@
             <div class="map__search-form">
               <label>
                 <!-- it's map search form-->
-                <v-form v-show="mapSearchFormTriggerShow">
+                <v-form v-show="mapSearchFormTriggerShow && isAuthenticated">
                   <v-text-field
                     class="map__search-form-input"
                     v-model="currentPlace.formatted_address"
@@ -47,16 +47,6 @@
               <br/>
             </div>
             <br>
-
-
-            <!--<request-tab-->
-              <!--class="map__request-open"-->
-              <!--v-if="this.openRequestTab"-->
-              <!--:index="indexToOpenedReq"-->
-              <!--v-on:closeRequest="openRequestTab = false"-->
-              <!--@click.native="openedFormTriggerClass = false"-->
-            <!--&gt;-->
-            <!--</request-tab>-->
 
             <!--it's map-->
             <gmap-map
@@ -166,6 +156,9 @@
 
     },
     created() {
+      //hide search form if user isn't authenticated
+      this.isAuthenticated = this.$store.getters.isAuthenticated;
+
       this.requestList = this.$store.getters.getAllRequests;
 
       this.$gmapApiPromiseLazy().then(() => {
