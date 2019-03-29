@@ -8,7 +8,7 @@ const API_URL = 'https://anyart.pythonanywhere.com';
 var token = store.getters.getUserToken;
 
 var config = {
-  headers: {'Authorization': 'Bearer ' + token}
+  headers: {'Authorization': 'Bearer' + token}
 };
 
 export function sendSketch(sketch, workloadUrl) {
@@ -29,11 +29,13 @@ export function sendSketch(sketch, workloadUrl) {
   console.log('before post', url);
   axios.post(url, bodyFormData, config)
     .then(response => {
-      console.log('response', response);
-      getLastSketch(url, response.data.id);
+      console.log('post sketch success', response);
+      // getLastSketch(url, response.data.id);
+      eventBus.$emit('sendSuccess');
     })
     .catch(err => {
-      console.log('post error: ', err.response);
+      console.log('post sketch ERROR: ', err.response);
+      eventBus.$emit('sendSketchError', err);
     });
 }
 

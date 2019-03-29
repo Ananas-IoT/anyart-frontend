@@ -7,7 +7,10 @@
       <p class="request-list-item__text-description">{{this.request.description}}</p>
       <span class="request-list-item__text-date">{{this.request.created_at}}</span>
     </div>
-    <img class="request-list-item__photo-preview" :src=this.request.wall_photos[0] alt="" @click="openImage">
+    <div class="img-open-hover__wrap request-list-item__photo-preview"  @click="openImage">
+      <img class="img-open-hover__img" :src=this.request.wall_photos[0] alt="">
+      <span class="img-open-hover__span"></span>
+    </div>
     <button class="request-list-item__btn" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch
     </button>
     <v-btn>side panel</v-btn>

@@ -205,6 +205,54 @@ img {
 /*-----------*/
 
 
+/*------IMAGE OPEN HOVER-----*/
+.img-open-hover__wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.img-open-hover__img {
+  transition: 0.3s;
+}
+
+.img-open-hover__span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: none;
+  transition: 0.3s;
+}
+
+.img-open-hover__span:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  background: url('../../assets/img/searcher.png');
+  background-size: contain;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+  opacity: 0;
+}
+
+.img-open-hover__wrap:hover .img-open-hover__img {
+  transform: scale(1.2,1.2);
+}
+
+.img-open-hover__wrap:hover .img-open-hover__span {
+  background: rgba(0,0,0,0.6);
+}
+
+.img-open-hover__wrap:hover .img-open-hover__span:before {
+  opacity: 1;
+}
+/*-----------*/
+
+
 /*carousel custom arrows*/
 .partners-section .slick-next:before,
 .partners-section .slick-prev:before {

@@ -18,7 +18,7 @@ export function sendRequest(request) {
   const config = {
     headers: {
       'Content-Type': 'multipart/form-data',
-      'Authorization': 'Bearer  ' + token
+      'Authorization': 'Bearer' + token
     }
   };
 
@@ -26,7 +26,7 @@ export function sendRequest(request) {
   axios.post(url, bodyFormData, config)
     .then(response => {
       console.log('send request: ', response);
-      eventBus.$emit('sendRequestSuccess');
+      eventBus.$emit('sendSuccess');
       // getLastRequest(response.data.self);
     })
     .catch(err => {

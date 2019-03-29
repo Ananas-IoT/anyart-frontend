@@ -120,7 +120,7 @@
       }
     },
     created() {
-      eventBus.$on('sendRequestSuccess', () => {
+      eventBus.$on('sendSuccess', () => {
         this.uploadFormTriggerIf = false;
         this.successMessage = true;
         this.$emit('clearPosition');
@@ -141,7 +141,7 @@
         console.log(error.response);
         this.sendError = {
           boolean: true,
-          // text: error.response.data.non_field_errors[0],
+          text: error.response.data.detail,
         };
         setTimeout(() => {
           this.sendError = null
