@@ -16,18 +16,22 @@ export function sendRequest(request) {
   bodyFormData.append('wall_photo0', request.photo);
 
   const config = {
-    headers: {'Content-Type': 'multipart/form-data',
-      'Authorization': 'Bearer ' + token}
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Authorization': 'Bearer  ' + token
+    }
   };
 
   const url = `${API_URL}/workload/workloads/`;
   axios.post(url, bodyFormData, config)
     .then(response => {
       console.log('send request: ', response);
+      eventBus.$emit('sendRequestSuccess');
       // getLastRequest(response.data.self);
     })
     .catch(err => {
       console.log('send request error: ', err.response);
+      eventBus.$emit('sendRequestError', err);
     });
 }
 
@@ -55,6 +59,7 @@ export function getAllRequests() {
 function getLastRequest(request_id) {
   // console.log(request_id);
   getRequestById(request_id, callback);
+
   function callback(lastRequest) {
     // console.log(lastRequest);
     store.dispatch('addRequest', lastRequest);

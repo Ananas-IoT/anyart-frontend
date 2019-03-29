@@ -169,7 +169,6 @@
       }
     },
     created() {
-
       eventBus.$on('registerError', (error) => {
         console.log(error.response);
         this.registerError = {

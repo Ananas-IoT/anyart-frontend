@@ -19,7 +19,7 @@ export function getUserByToken(token, refresh) {
       let user = response.data;
       store.dispatch('setUser', user);
 
-      // to AppHeader.vue
+      // to AppHeader, Map
       eventBus.$emit('checkUser', user);
     })
     .catch(err => {

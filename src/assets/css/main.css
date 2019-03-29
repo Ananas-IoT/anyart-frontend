@@ -193,14 +193,17 @@ img {
 .application--wrap {
   min-height: auto;
 }
-
-.scaled-img {
-  position: fixed;
-  /*top: 100px;*/
-  /*right: 100px;*/
-  /*bottom: 100px;*/
-  /*left: 100px;*/
+/*------CUSTOM SCROLLBAR-----*/
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  background: #fefefe;
 }
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #e0e0e0;
+}
+/*-----------*/
+
 
 /*carousel custom arrows*/
 .partners-section .slick-next:before,

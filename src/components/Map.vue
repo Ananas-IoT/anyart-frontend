@@ -2,20 +2,18 @@
   <v-app>
     <div class="map-body">
 
-      <common-form
-        class="map__common-form"
-        v-if="!this.destroyFormComponent"
-        :type='this.currentFormType'
+      <opened-image ref="openImage"></opened-image>
+
+      <upload-form
+        class="map__upload-form"
+        ref="openUploadForm"
+        :type=this.currentFormType
         :requestAddress=this.currentPlace
         :workloadId=this.propWorkloadId
         v-on:addMarker="addMarker"
         v-on:clearPosition="clearPosition"
         v-bind:class="{opened: openedFormTriggerClass}">
-      </common-form>
-
-      <div
-        class="map__form__shadow"
-        @click="openedFormTriggerClass = !openedFormTriggerClass"></div>
+      </upload-form>
 
       <div class="container-fluid">
         <div class="row no-gutters">
@@ -83,12 +81,13 @@
             clipped
             app
           >
-            <request-list class="map__request-list"
+            <request-list class="map__request-list custom-scrollbar"
                           :requestList=this.requestList
             ></request-list>
 
 
-            <div class="requestDrawerToggler" @click="ToggleRequestDrawer()"></div>
+            <div class="requestDrawerToggler" @click="ToggleRequestDrawer()"
+                 v-bind:class="{'requestDrawerToggler__closed': !requestDrawerTriggerIf}"></div>
           </v-navigation-drawer>
         </div>
       </div>
@@ -100,17 +99,19 @@
 <script>
   import AppHeader from './AppHeader'
   import eventBus from '../eventBus'
-  import RequestTemplate from './map/CommonForm'
+  import UploadForm from './map/UploadForm'
   import RequestList from './map/RequestList'
   import RequestOpened from './map/RequestTab'
+  import OpenedImage from './map/OpenedImage'
 
   export default {
     name: "Map",
     components: {
       "user-header": AppHeader,
-      "common-form": RequestTemplate,
+      "upload-form": UploadForm,
       "request-list": RequestList,
-      "request-tab": RequestOpened
+      "request-tab": RequestOpened,
+      "opened-image": OpenedImage
     },
     data() {
       return {
@@ -122,11 +123,11 @@
 
         openedFormTriggerClass: false,
         currentFormType: 'request',
-        destroyFormComponent: true,
+        uploadFormTriggerIf: true,
 
         mapSearchFormTriggerShow: false,
 
-        //prop goes to Common Form, for POST sketch request
+        //prop goes to Upload Form, for POST sketch request
         propWorkloadId: null,
 
         //sends item index in request list to request tab
@@ -146,10 +147,11 @@
             maxWidth: 300,
             pixelOffset: {
               width: 0,
-              height: -45
+              height: -35
             }
           }
-        }
+        },
+        isAuthenticated: false
       };
     },
     mounted() {
@@ -174,9 +176,14 @@
         });
       });
 
+      eventBus.$on('checkUser', () => {
+        this.isAuthenticated = this.$store.getters.isAuthenticated;
+      });
+
       //from RequestListItem
       eventBus.$on('uploadSketch', (workloadId) => {
-        this.destroyFormComponent = false;
+        // this.uploadFormTriggerIf = true;
+        this.createForm();
         this.currentFormType = 'sketch';
         this.propWorkloadId = workloadId;
         this.openedFormTriggerClass = true;
@@ -187,16 +194,20 @@
         this.indexToOpenedReq = index;
         this.openRequestTab = !this.openRequestTab;
       });
-    },
-    computed: {
 
+      //triggers OpenedImage component, open images in large
+      eventBus.$on('openImage', (src) => {
+        this.$refs.openImage.openImage(src);
+      });
     },
+    computed: {},
     methods: {
-      //creates common-form component
+      //creates upload-form component
       createForm() {
-        this.destroyFormComponent = false;
+        this.$refs.openUploadForm.openUploadForm();
+        // this.uploadFormTriggerIf = true;
         //"opened" animation doesnt works :c
-        this.openedFormTriggerClass = !this.openedFormTriggerClass;
+        // this.openedFormTriggerClass = !this.openedFormTriggerClass;
       },
 
       // receives a place object via the autocomplete component
@@ -223,7 +234,7 @@
       //clears current place field, when request is completed (to destroy ReqTemplate component)
       clearPosition() {
         this.currentPlace = false;
-        this.destroyFormComponent = true;
+        this.uploadFormTriggerIf = true;
       },
       ToggleRequestDrawer() {
         this.mapSearchFormTriggerShow = this.requestDrawerTriggerIf;
@@ -259,11 +270,9 @@
 <style>
 
   .requestDrawer {
-    /*width: 50% !important;*/
     padding-top: 40px;
-    /*transform: translateX(-50%) !important;*/
     overflow: visible;
-    z-index: 90;
+    z-index: 10;
   }
 
   .requestDrawerToggler {
@@ -272,10 +281,28 @@
     right: -20px;
     width: 40px;
     height: 40px;
-    background: #000;
+    background: #eee;
+    border: 1px solid #000;
     border-radius: 50%;
     cursor: pointer;
     z-index: -1;
+  }
+
+  .requestDrawerToggler:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background: url("../assets/img/arrow_left.png") no-repeat center center;
+    background-size: contain;
+    transform: translate(-10%, -50%) rotate(180deg);
+    transition: 0.2s;
+  }
+
+  .requestDrawerToggler.requestDrawerToggler__closed:before {
+    transform: translate(-10%, -50%) rotate(0);
   }
 
   .map-body {
@@ -290,38 +317,6 @@
     width: 100%;
     height: calc(100vh - 78px);
     display: inline-block;
-  }
-
-  .map__common-form {
-    position: absolute;
-    top: 80px;
-    left: 50%;
-    transform: translate(-50%, -150vh);
-    transition: 0.3s;
-    opacity: 0;
-    z-index: 100;
-  }
-
-  .map__form__shadow {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 90;
-  }
-
-  .map__common-form.opened {
-    transform: translate(-50%, 10vh);
-    opacity: 1;
-  }
-
-  .map__common-form.opened + .map__form__shadow {
-    pointer-events: auto;
-    opacity: 1;
   }
 
   .map__search-form {
@@ -343,10 +338,6 @@
     height: 48px;
     margin-top: 2px;
     margin-left: 0;
-  }
-
-  .map__info-window {
-
   }
 
   .map__info-window__txt-wrap {
@@ -379,15 +370,6 @@
     height: 92vh;
     background: #fcfcfc;
     overflow-y: scroll;
-  }
-
-  .map__request-list::-webkit-scrollbar {
-    width: 4px;
-    background: #fefefe;
-  }
-
-  .map__request-list::-webkit-scrollbar-thumb {
-    background-color: #e0e0e0;
   }
 
   .map__request-open {
