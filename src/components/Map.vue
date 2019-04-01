@@ -281,11 +281,20 @@
     right: -20px;
     width: 40px;
     height: 40px;
-    background: #eee;
-    border: 1px solid #000;
+    background: #fff;
+    /*border: 0.1px solid #424242;*/
     border-radius: 50%;
+    transition: 0.3s;
     cursor: pointer;
     z-index: -1;
+  }
+
+  .requestDrawerToggler:hover:before {
+    transform: translate(-10%, -50%) rotate(0);
+  }
+
+  .requestDrawerToggler.requestDrawerToggler__closed:hover:before {
+    transform: translate(-10%, -50%) rotate(180deg);
   }
 
   .requestDrawerToggler:before {
@@ -298,7 +307,7 @@
     background: url("../assets/img/arrow_left.png") no-repeat center center;
     background-size: contain;
     transform: translate(-10%, -50%) rotate(180deg);
-    transition: 0.2s;
+    transition: 0.3s;
   }
 
   .requestDrawerToggler.requestDrawerToggler__closed:before {
@@ -385,6 +394,10 @@
   .marker__hovered {
     position: relative;
   }
+
+  /*.custom-scrollbar::-webkit-scrollbar-thumb {*/
+    /*background: rgba(25, 163, 164, 0.6);*/
+  /*}*/
 
 
 </style>

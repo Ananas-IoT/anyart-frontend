@@ -1,25 +1,18 @@
 <template>
   <v-app>
-
     <div class="request-list">
-      <h2 class="request-list__title">Here goes Request List!</h2>
-      <request-item class="request-list__request-item"
-                    v-for="(loopedRequest, index) in requestList"
-                    :request = loopedRequest
-                    :index = index
-                    :userRole = user.rights
-      >
-      </request-item>
-      <!--<request-item class="request-list__request-item"-->
-                    <!--v-for="(loopedRequest, index) in requestList"-->
-                    <!--:request = loopedRequest-->
-                    <!--:index = index-->
-                    <!--:userRole = user.rights-->
-                    <!--@click.native="openRequestTab(index)"-->
-      <!--&gt;-->
-      <!--</request-item>-->
+      <!--<div class="request-list__bg"></div>-->
+      <!--<div class="request-list__content">-->
+        <h2 class="request-list__title">Here goes Request List!</h2>
+        <request-item class="request-list__request-item"
+                      v-for="(loopedRequest, index) in requestList"
+                      :request = loopedRequest
+                      :index = index
+                      :userRole = user.rights
+        >
+        </request-item>
+      <!--</div>-->
     </div>
-
   </v-app>
 </template>
 
@@ -65,19 +58,58 @@
 </script>
 
 <style scoped>
+  .request-list {
+    position: relative;
+    height: 100vh;
+  }
+
+  /*.request-list__bg {*/
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*background: rgba(30, 163, 164, 0.5);*/
+  /*}*/
+
+  /*.request-list__content {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*z-index: 2;*/
+  /*}*/
+
   .request-list__title {
-    margin-top: 60px;
+    position: relative;
+    display: block;
+    width: fit-content;
+    padding: 0 140px;
+    margin: 60px auto 30px;
     font-size: 24px;
-    /*color: #7d42b9;*/
+  }
+
+  .request-list__title:before, .request-list__title:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 120px;
+    height: 2px;
+    background: #770d85;
+  }
+
+  .request-list__title:before {
+    left: 10px;
+  }
+
+  .request-list__title:after {
+    right: 10px;
   }
 
   .request-list__request-item {
-    width: 95%;
-    padding: 5px 20px;
-    margin: auto;
+    width: 100%;
+    /*margin: 5px 10px 0 5px;*/
     font-size: 18px;
-    background: #ffffff;
-    border-top: 1px solid #efefef;
-    /*cursor: pointer;*/
   }
 </style>

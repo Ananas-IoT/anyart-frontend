@@ -1,26 +1,34 @@
 <template>
-  <div class="request-list-item">
-    <div class="request-list-item__text">
-      <!--<h4 class="request-list-item__text-title">{{this.request.location.street_address}}</h4>-->
-      <h4 class="request-list-item__text-title">default 42 Street in default City</h4>
-      <!--<p class="request-list-item__text-description">{{this.request.description}}</p>-->
-      <p class="request-list-item__text-description">{{this.request.description}}</p>
-      <span class="request-list-item__text-date">{{this.request.created_at}}</span>
-    </div>
-    <div class="img-open-hover__wrap request-list-item__photo-preview"  @click="openImage">
-      <img class="img-open-hover__img" :src=this.request.wall_photos[0] alt="">
-      <span class="img-open-hover__span"></span>
-    </div>
-    <button class="request-list-item__btn" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch
-    </button>
-    <v-btn>side panel</v-btn>
-    <v-btn>popup</v-btn>
-  </div>
+  <v-app>
+    <v-card class="request-list-item">
+
+      <v-card-title class="request-list-item__title" ref="request-list-item__title">
+      </v-card-title>
+
+      <div class="img-open-hover__wrap request-list-item__photo-preview" @click="openImage">
+        <img class="img-open-hover__img" :src=this.request.wall_photos[0] alt="">
+        <span class="img-open-hover__span"></span>
+      </div>
+      <v-card-text class="request-list-item__text">
+        <h4 class="request-list-item__text-title">default 42 Street in default City</h4>
+        <div class="request-list-item__text-owner">owner: Owner</div>
+        <p class="request-list-item__text-description">{{this.request.description | textLength(100)}} </p>
+
+        <div class="request-list-item__add-info">
+          <div class="request-list-item__add-info__status">Status: status</div>
+          <div class="request-list-item__add-info__sketches">6</div>
+          <div class="request-list-item__add-info__date">01.01.1974</div>
+        </div>
+      </v-card-text>
+      <!--<button class="request-list-item__btn" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch-->
+      <!--</button>-->
+    </v-card>
+    <!--<v-divider></v-divider>-->
+  </v-app>
 </template>
 
 <script>
   import eventBus from '../../../eventBus'
-  // import {getImage} from "../../../api/mapRequests";
 
   export default {
     name: "RequestListItem",
@@ -38,11 +46,26 @@
       if (this.userRole === 'artist') {
         this.isArtist = true
       }
-    },
-    created() {
-
+      this.request.description += ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet asperiores consequuntur cumque, dolorum eligendi eveniet impedit inventore laborum maiores minus molestiae non, omnis quia, quidem quod temporibus veritatis vitae.';
+      this.setRandomColor();
     },
     methods: {
+      setRandomColor() {
+        // var colorArr = ['#770d85', '#7d42b9', '#1ea3a4', '#27b46b', '#80b317', '#ac3f3d'];
+        // var random = colorArr[Math.floor(Math.random() * colorArr.length)];
+
+        this.$refs['request-list-item__title'].style.background = this.getRandomColor();
+      },
+
+      getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      },
+
       //trigger common-form on Map component
       uploadSketch() {
         eventBus.$emit('uploadSketch', this.request.workload);
@@ -55,39 +78,100 @@
 </script>
 
 <style scoped>
+
   .request-list-item {
-    height: 200px;
-    background: #fcfcfc;
-  }
-
-  .request-list-item__text {
-    display: inline-block;
-    width: calc(100% - 190px);
-  }
-
-  .request-list-item__text-title {
-    margin: 10px 0;
-    font-family: "PT Sans Bold";
-  }
-
-  .request-list-item__text-description {
-    font-size: 13px;
-  }
-
-  .request-list-item__text-date {
-    font-size: 14px;
-    border-bottom: 0.5px solid #000;
+    min-height: 200px;
+    max-height: 300px;
+    /*padding: 5px 20px;*/
+    margin: 10px 5px 0;
+    /*background: rgba(30, 163, 164, 0.5);*/
   }
 
   .request-list-item__photo-preview {
     display: inline-block;
-    width: 180px;
-    height: 180px;
     margin: 5px 10px 0 0;
-    float: left;
-    border: 1px solid #770d85;
-    border-radius: 2px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow: hidden;
     cursor: pointer;
+  }
+
+  .request-list-item__photo-preview .img-open-hover__img {
+    display: block;
+    max-width: 180px;
+    max-height: 180px;
+  }
+
+  .request-list-item__title {
+    padding: 3px 10px;
+    /*background: #770d85;*/
+    /*background: rgba(25, 163, 164, 0.6);*/
+    /*background: rgba(119, 13, 133, 0.75);*/
+    border-bottom: 1px solid #eee;
+  }
+
+  .request-list-item__text-title {
+    font-size: 18px;
+    font-family: "PT Sans Bold";
+    /*color: #fff;*/
+  }
+
+  .request-list-item__text-owner {
+    margin: -5px 0 5px;
+    font-size: 14px;
+    color: #999;
+  }
+
+  .request-list-item__text {
+    vertical-align: top;
+    display: inline-block;
+    width: calc(100% - 200px);
+  }
+
+  .request-list-item__text-description {
+    max-height: 90px;
+    font-size: 16px;
+    overflow-y: hidden;
+  }
+
+  .request-list-item__add-info {
+    text-align: right;
+    position: absolute;
+    bottom: 10px;
+    /* ot baldy :/ */
+    width: 300px;
+    font-size: 14px;
+  }
+
+  .request-list-item__add-info__status {
+    display: inline-block;
+    float: left;
+  }
+
+  .request-list-item__add-info__sketches {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    font-family: "PT Sans BoldItalic";
+  }
+
+  .request-list-item__add-info__sketches:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background: url("../../../assets/img/pen.png") center center;
+    -webkit-background-size: contain;
+    background-size: contain;
+  }
+
+  .request-list-item__add-info__date {
+    display: inline-block;
+    margin-left: 70px;
+    font-size: 12px;
+    color: #696969;
   }
 
   .request-list-item__btn {

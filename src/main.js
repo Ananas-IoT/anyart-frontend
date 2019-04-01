@@ -46,6 +46,15 @@ export const router = new VueRouter({
   },
 });
 
+var filterTextLength = function (text, lenth, clamp) {
+  clamp = clamp || '...';
+  var node = document.createElement('div');
+  node.innerHTML = text;
+  var content = node.textContent;
+  return content.length > lenth ? content.slice(0, lenth) + clamp : content;
+};
+Vue.filter('textLength', filterTextLength);
+
 new Vue({
   el: '#app',
   render: h => h(App),

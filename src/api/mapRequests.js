@@ -45,7 +45,9 @@ export function getAllRequests() {
   const url = `${API_URL}/workload/wall_photo_wrappers/`;
   axios.get(url, config)
     .then(response => {
-      // console.log(response);
+      // response.data.sort(function (a, b) {
+      //  
+      // });
       for (let i = 0; i < response.data.count; i++) {
         store.dispatch('addRequest', response.data.results[i]);
       }

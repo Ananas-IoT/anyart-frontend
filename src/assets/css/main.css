@@ -245,6 +245,7 @@ img {
 
 .img-open-hover__wrap:hover .img-open-hover__span {
   background: rgba(0,0,0,0.6);
+  /*background: rgba(119,13,133,0.6);*/
 }
 
 .img-open-hover__wrap:hover .img-open-hover__span:before {
