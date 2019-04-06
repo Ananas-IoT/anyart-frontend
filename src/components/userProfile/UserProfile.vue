@@ -37,6 +37,7 @@
             <message
               class="user-profile__message-item"
               v-for="(message, index) in messageList"
+              :key=index
               :message=message
               @click.native="openMessage(index)"
             >

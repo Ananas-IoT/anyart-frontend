@@ -36,7 +36,7 @@ export function sendRequest(request) {
 }
 
 export function getAllRequests() {
-  console.log('getAllRequests started');
+  // console.log('getAllRequests started');
 
   const config = {
     headers: {}

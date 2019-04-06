@@ -31,14 +31,17 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 90vh;
-    height: 90vh;
+    /*width: 90vh;*/
+    /*height: 90vh;*/
     transform: translate(-50%, -50%);
     cursor: pointer;
   }
 
   .opened-img__img {
-    max-width: 100%;
-    max-height: 100%;
+    display: block;
+    min-width: 40vw;
+    min-height: 40vh;
+    max-width: 90vw;
+    max-height: 90vh;
   }
 </style>

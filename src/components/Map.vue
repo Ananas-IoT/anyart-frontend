@@ -59,14 +59,17 @@
                 v-for="(req, index) in requestList"
                 :position="req.location"
                 :icon="computeStatusMarkerIcon(req)"
-                @click="openInfoWindow(req, index)"
+                @mouseover="openInfoWindow(req, index)"
+                @mouseleave="closeInfoWindow()"
+                @click="openRequest"
               ></gmap-marker>
 
               <gmap-info-window
                 :options="infoWindow.options"
                 :position="infoWindow.position"
                 :opened="infoWindow.open"
-                @closeclick="infoWindow.open=false">
+                @closeclick="infoWindow.open=false"
+              >
                 <div class="map__info-window" v-html="infoWindow.template"></div>
               </gmap-info-window>
             </gmap-map>
@@ -86,7 +89,7 @@
             ></request-list>
 
 
-            <div class="requestDrawerToggler" @click="ToggleRequestDrawer()"
+            <div class="requestDrawerToggler" @click="toggleRequestDrawer"
                  v-bind:class="{'requestDrawerToggler__closed': !requestDrawerTriggerIf}"></div>
           </v-navigation-drawer>
         </div>
@@ -100,8 +103,7 @@
   import AppHeader from './AppHeader'
   import eventBus from '../eventBus'
   import UploadForm from './map/UploadForm'
-  import RequestList from './map/RequestList'
-  import RequestOpened from './map/RequestTab'
+  import RequestList from './map/listItems/RequestList'
   import OpenedImage from './map/OpenedImage'
 
   export default {
@@ -110,7 +112,6 @@
       "user-header": AppHeader,
       "upload-form": UploadForm,
       "request-list": RequestList,
-      "request-tab": RequestOpened,
       "opened-image": OpenedImage
     },
     data() {
@@ -189,12 +190,6 @@
         this.openedFormTriggerClass = true;
       });
 
-      //from RequestList
-      eventBus.$on('openRequestTab', (index) => {
-        this.indexToOpenedReq = index;
-        this.openRequestTab = !this.openRequestTab;
-      });
-
       //triggers OpenedImage component, open images in large
       eventBus.$on('openImage', (src) => {
         this.$refs.openImage.openImage(src);
@@ -205,9 +200,6 @@
       //creates upload-form component
       createForm() {
         this.$refs.openUploadForm.openUploadForm();
-        // this.uploadFormTriggerIf = true;
-        //"opened" animation doesnt works :c
-        // this.openedFormTriggerClass = !this.openedFormTriggerClass;
       },
 
       // receives a place object via the autocomplete component
@@ -236,7 +228,7 @@
         this.currentPlace = false;
         this.uploadFormTriggerIf = true;
       },
-      ToggleRequestDrawer() {
+      toggleRequestDrawer() {
         this.mapSearchFormTriggerShow = this.requestDrawerTriggerIf;
         this.requestDrawerTriggerIf = !this.requestDrawerTriggerIf;
         this.infoWindow.open = false;
@@ -249,7 +241,7 @@
           }
         }
       },
-      openInfoWindow(marker) {
+      openInfoWindow(marker, index) {
         this.infoWindow.template =
           '<div class="map__info-window__txt-wrap">' +
           '<div class="map__info-window__address">default 42 Street in default City</div>' +
@@ -258,10 +250,26 @@
           '<img  class="map__info-window__img" src=' + marker.wall_photos[0] + ' alt="">';
         this.infoWindow.position = marker.location;
 
+        this.infoWindow.openedRequest = marker;
+        this.infoWindow.openedRequestIndex = index;
+
         this.requestDrawerTriggerIf = false;
         this.mapSearchFormTriggerShow = true;
 
         this.infoWindow.open = true;
+
+      },
+
+      closeInfoWindow() {
+        alert('mouse leave');
+        this.infoWindow.open = false;
+      },
+
+      //to RequestList
+      openRequest() {
+        console.log('map open request');
+        eventBus.$emit('openRequest', this.infoWindow.openedRequest, this.infoWindow.openedRequestIndex);
+        this.toggleRequestDrawer();
       }
     }
   }

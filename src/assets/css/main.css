@@ -186,6 +186,10 @@ img {
   padding: 0;
 }
 
+.gm-style .gm-style-iw-c {
+  cursor: pointer;
+}
+
 .application {
   font-family: "PT Sans";
 }
@@ -209,6 +213,7 @@ img {
 .img-open-hover__wrap {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .img-open-hover__img {

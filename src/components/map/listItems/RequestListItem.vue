@@ -2,10 +2,10 @@
   <v-app>
     <v-card class="request-list-item">
 
-      <v-card-title class="request-list-item__title" ref="request-list-item__title">
+      <v-card-title class="request-list-item__header" ref="request-list-item__title">
       </v-card-title>
 
-      <div class="img-open-hover__wrap request-list-item__photo-preview" @click="openImage">
+      <div class="img-open-hover__wrap request-list-item__photo-preview" @click.stop="openImage">
         <img class="img-open-hover__img" :src=this.request.wall_photos[0] alt="">
         <span class="img-open-hover__span"></span>
       </div>
@@ -20,10 +20,7 @@
           <div class="request-list-item__add-info__date">01.01.1974</div>
         </div>
       </v-card-text>
-      <!--<button class="request-list-item__btn" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch-->
-      <!--</button>-->
     </v-card>
-    <!--<v-divider></v-divider>-->
   </v-app>
 </template>
 
@@ -33,9 +30,7 @@
   export default {
     name: "RequestListItem",
     props: {
-      request: {},
-      index: Number,
-      userRole: {}
+      request: {}
     },
     data() {
       return {
@@ -43,27 +38,17 @@
       }
     },
     mounted() {
-      if (this.userRole === 'artist') {
-        this.isArtist = true
-      }
-      this.request.description += ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet asperiores consequuntur cumque, dolorum eligendi eveniet impedit inventore laborum maiores minus molestiae non, omnis quia, quidem quod temporibus veritatis vitae.';
+      this.request.description = ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet asperiores consequuntur cumque, dolorum eligendi eveniet impedit inventore laborum maiores minus molestiae non, omnis quia, quidem quod temporibus veritatis vitae.';
       this.setRandomColor();
     },
     methods: {
       setRandomColor() {
-        // var colorArr = ['#770d85', '#7d42b9', '#1ea3a4', '#27b46b', '#80b317', '#ac3f3d'];
-        // var random = colorArr[Math.floor(Math.random() * colorArr.length)];
-
-        this.$refs['request-list-item__title'].style.background = this.getRandomColor();
-      },
-
-      getRandomColor() {
         var letters = '0123456789ABCDEF';
         var color = '#';
         for (var i = 0; i < 6; i++) {
           color += letters[Math.floor(Math.random() * 16)];
         }
-        return color;
+        this.$refs['request-list-item__title'].style.background = color;
       },
 
       //trigger common-form on Map component
@@ -85,6 +70,12 @@
     /*padding: 5px 20px;*/
     margin: 10px 5px 0;
     /*background: rgba(30, 163, 164, 0.5);*/
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  .request-list-item:hover {
+    background: #eee;
   }
 
   .request-list-item__photo-preview {
@@ -102,12 +93,19 @@
     max-height: 180px;
   }
 
-  .request-list-item__title {
+  .request-list-item__header {
     padding: 3px 10px;
     /*background: #770d85;*/
     /*background: rgba(25, 163, 164, 0.6);*/
     /*background: rgba(119, 13, 133, 0.75);*/
     border-bottom: 1px solid #eee;
+  }
+
+  .request-list-item__text {
+    vertical-align: top;
+    display: inline-block;
+    width: calc(100% - 200px);
+    padding-left: 0;
   }
 
   .request-list-item__text-title {
@@ -120,12 +118,6 @@
     margin: -5px 0 5px;
     font-size: 14px;
     color: #999;
-  }
-
-  .request-list-item__text {
-    vertical-align: top;
-    display: inline-block;
-    width: calc(100% - 200px);
   }
 
   .request-list-item__text-description {
