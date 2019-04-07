@@ -20,8 +20,10 @@
 
         <v-card-actions class="sketch-tab-item__vote-wrap">
           <v-btn
-            round
-          >VOTE</v-btn>
+            class="sketch-tab-item__vote-btn"
+            v-bind:class="{voted:isVoted}"
+            @click="vote()"
+          >23 votes</v-btn>
         </v-card-actions>
       </v-card>
     </div>
@@ -38,7 +40,8 @@
     },
     data() {
       return {
-        user: null
+        user: null,
+        isVoted: true
       }
     },
     mounted() {},
@@ -49,6 +52,10 @@
       //to Map component
       openImage() {
         eventBus.$emit('openImage', this.sketch.sketch_images[0]);
+      },
+
+      vote() {
+        this.isVoted = !this.isVoted;
       }
     }
   }
@@ -70,7 +77,7 @@
 
   .sketch-tab-item {
     min-height: 200px;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
     margin: 10px 5px 0;
     transition: 0.3s;
   }
@@ -106,7 +113,7 @@
     float: right;
     margin: 15px 0 0 15px;
     border: 1px solid #e0e0e0;
-    /*border-radius: 7px;*/
+    border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
   }
@@ -121,5 +128,14 @@
     position: absolute;
     bottom: 10px;
     left: 10px;
+  }
+
+  .sketch-tab-item__vote-btn {
+    /*font-size: 36px;*/
+  }
+
+  .sketch-tab-item__vote-btn.voted {
+    color: #fff;
+    background: #770d85 !important;
   }
 </style>

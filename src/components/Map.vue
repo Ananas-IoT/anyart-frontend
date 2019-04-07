@@ -253,9 +253,6 @@
         this.infoWindow.openedRequest = marker;
         this.infoWindow.openedRequestIndex = index;
 
-        this.requestDrawerTriggerIf = false;
-        this.mapSearchFormTriggerShow = true;
-
         this.infoWindow.open = true;
 
       },
@@ -267,9 +264,10 @@
 
       //to RequestList
       openRequest() {
-        console.log('map open request');
         eventBus.$emit('openRequest', this.infoWindow.openedRequest, this.infoWindow.openedRequestIndex);
-        this.toggleRequestDrawer();
+        if(!this.requestDrawerTriggerIf) {
+          this.toggleRequestDrawer();
+        }
       }
     }
   }

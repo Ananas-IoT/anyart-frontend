@@ -13,7 +13,7 @@
       <request-item
       :request = request
       :index = index
-      :userRole = "'artist'"
+      :userRole = "user.role"
       ></request-item>
     </div>
 
@@ -50,12 +50,29 @@
     data() {
       return {
         request: null,
-        sketchList: []
+        sketchList: [],
+        user: null
       }
     },
     watch: {
       index: function (newVal, oldVal) {
-        alert('Prop changed: '+ newVal+ ' | was: '+ oldVal);
+        this.loadRequestandSketches();
+      }
+    },
+    created() {
+      this.user = this.$store.getters.getUser;
+      this.loadRequestandSketches();
+    },
+    mounted() {
+
+    },
+    methods: {
+      //to RequestList component
+      closeRequest() {
+        eventBus.$emit('closeRequest');
+      },
+
+      loadRequestandSketches() {
         //get all requests from store
         var requestList = this.$store.getters.getAllRequests;
 
@@ -69,29 +86,6 @@
           self.sketchList = sketchList;
         }
       }
-    },
-    created() {
-      //get all requests from store
-      var requestList = this.$store.getters.getAllRequests;
-
-      //get current request from list
-      this.request = requestList[this.index];
-
-      // gets all sketches
-      getSketchesById(this.request.id, callback);
-      var self = this;
-      function callback(sketchList) {
-        self.sketchList = sketchList;
-      }
-    },
-    mounted() {
-
-    },
-    methods: {
-      //to RequestList component
-      closeRequest() {
-        eventBus.$emit('closeRequest');
-      },
     }
   }
 </script>

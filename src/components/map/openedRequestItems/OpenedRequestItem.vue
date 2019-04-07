@@ -11,6 +11,12 @@
         <div class="opened-request-item__add-info">
           <div class="opened-request-item__add-info__status">Status: status</div>
           <div class="opened-request-item__add-info__date">01.01.1974</div>
+          <v-btn
+            class="opened-request-item__btn"
+            v-if="userRole === 'artist'"
+            color="primary"
+            @click="uploadSketch"
+          >Upload sketch</v-btn>
         </div>
       </div>
 
@@ -131,6 +137,8 @@
 
   .opened-request-item__btn {
     display: block;
+    margin: 10px auto;
+    font: 14px "PT Sans Bold";
     cursor: pointer;
   }
 
