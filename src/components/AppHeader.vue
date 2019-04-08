@@ -32,8 +32,8 @@
         <div class="col-lg-2 d-none d-lg-block">
           <div class="user-block">
             <div v-if="this.isAuth" class="user-block__info">
-              <router-link to="/auth/register">{{userFullName}}</router-link>
-              <div>{{user.rights}}<router-link to="/user">User Profile</router-link></div>
+              <router-link class="user-block__name" to="/user">{{userFullName}}</router-link>
+              <div><router-link to="/auth/register">Log out</router-link></div>
             </div>
             <div v-else class="user-block__registration">
               <router-link to="/auth/register">Register</router-link>
@@ -260,6 +260,11 @@
     text-align: right;
     margin: 10px 10px 0;
     color: #fff;
+  }
+
+  .user-block__name {
+    font-size: 16px;
+    /*font-family: "PT Sans Bold";*/
   }
 
   .user-block__registration a {

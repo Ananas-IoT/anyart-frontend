@@ -1,13 +1,15 @@
 <template>
-  <div class="auth">
+  <v-app>
+  <div class="auth auth-wrap">
     <!--ROOT COMPONENT FOR OTHER AUTH COMPONENTS-->
     <router-view v-if="!isAuth"></router-view>
-    <div v-else>
-      <h3 class="auth__warning">Sorry, but you are registered</h3>
-      <button @click="logOut">Log out</button>
+    <v-card v-else class="auth__logout">
+      <h3 class="auth__warning">Are you really want to logout?</h3>
+      <v-btn class="auth__logout__btn" color="primary" @click="logOut">Log out</v-btn>
       <router-link class="auth__to-main" to="/">back to main page</router-link>
-    </div>
+    </v-card>
   </div>
+  </v-app>
 </template>
 
 <script>
@@ -19,7 +21,7 @@
     methods: {
       logOut: function () {
         this.$store.dispatch('clearUser');
-        localStorage.removeItem('user-token')
+        localStorage.removeItem('user-token');
       }
     },
     computed: {
@@ -34,17 +36,47 @@
 
   .auth {
     text-align: center;
-    font-size: 48px;
+    width: 100vw;
   }
 
-  .auth .auth__warning {
-    margin: 100px 0 20px;
+  .auth__logout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    min-height: 100px;
+    padding: 20px;
+    transform: translate(-50%, -50%);
+  }
+
+  .auth__warning {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: "PT Sans Bold";
+  }
+
+  .auth__logout__btn {
+    display: block;
+    margin: 20px auto 5px;
+    /*font-size: 20px;*/
   }
 
   .auth .auth__to-main {
+    position: relative;
     display: inline-block;
+    margin-top: 20px;
     font-size: 18px;
+    color: #000000;
     border-bottom: 1px #000 solid;
+  }
+
+  .auth .auth__to-main:before {
+    content: 'or';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    font-size: 16px;
   }
 
   /*  >>>  is for ingeritance of child components  */
