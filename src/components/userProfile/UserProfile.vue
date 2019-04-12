@@ -6,12 +6,12 @@
 
       <v-dialog
         class="user-profile__delete-dialog"
-        v-model="deleteDialogTriggerModel"
+        v-model="deleteDialog.triggerModel"
         width="300">
         <v-card>
           <v-card-title class="user-profile__delete-dialog__title">Attention!</v-card-title>
           <v-card-text  class="user-profile__delete-dialog__text">
-            Are you sure you want to delete the Request?
+            Are you sure you want to delete the <span class="user-profile__delete-dialog__type">{{this.deleteDialog.type}}</span>, index: {{this.deleteDialog.deleteIndex}}?
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
@@ -67,10 +67,11 @@
                   {{tabList[n - 1]}}
                 </v-tab>
 
+                <!--ARTIST TABS: REQUEST-->
                 <v-tab-item>
-                  <div class="user-profile__request-wrap">
+                  <div class="user-profile__tab-item-wrap">
                     <request-item
-                      class="user-profile__request-item"
+                      class="user-profile__tab-item"
                       v-for="(loopedRequest, index) in requestList"
                       :request=loopedRequest
                       :key=index
@@ -80,25 +81,26 @@
                   </div>
                 </v-tab-item>
 
-
+                <!--ARTIST TABS: SKETCH-->
                 <v-tab-item>
-                  <div class="user-profile__request-wrap">
-                    <request-item
-                      class="user-profile__request-item"
-                      v-for="(loopedRequest, index) in requestList"
-                      :request=loopedRequest
+                  <div class="user-profile__tab-item-wrap">
+                    <sketch-item
+                      class="user-profile__tab-item"
+                      v-for="(loopedSketch, index) in sketchList"
+                      :sketch=loopedSketch
                       :key=index
                       :index=index
-                      v-on:deleteRequest="openDeleteDialog"
-                    ></request-item>
+                      v-on:deleteSketch="openDeleteDialog"
+                    ></sketch-item>
                   </div>
                 </v-tab-item>
               </v-tabs>
 
-              <div class="user-profile__request-wrap"  v-if="user.rights === !'artist'">
+              <!--BASIC USER: REQUESTS-->
+              <div class="user-profile__tab-item-wrap" v-if="user.rights === !'artist'">
                 <h4 class="user-profile__header">My Requests:</h4>
                 <request-item
-                  class="user-profile__request-item"
+                  class="user-profile__tab-item"
                   v-for="(loopedRequest, index) in requestList"
                   :request=loopedRequest
                   :key=index
@@ -134,7 +136,9 @@
   import eventBus from '../../eventBus'
   // import RequestItem from '../map/listItems/RequestListItem'
   import RequestItem from './UserRequest'
+  import SketchItem from './UserSketch'
   import {getAllRequests} from '../../api/mapRequests'
+  import {getSketchesById} from "../../api/mapSketches"
 
   export default {
     name: "UserProfile",
@@ -142,18 +146,22 @@
       "app-header": Header,
       "message": Message,
       "message-opened": MessageOpened,
-      "request-item": RequestItem
+      "request-item": RequestItem,
+      "sketch-item": SketchItem
     },
     data() {
       return {
         user: null,
         requestList: [],
+        sketchList: [],
         messageList: [],
         openedMessageTriggerIf: false,
         openedMessage: {},
         openedMessageClassTrigger: false,
         tabList: ['My Requests', 'My Sketches'],
-        deleteDialogTriggerModel: false
+        deleteDialog: {
+          triggerModel: false
+        }
       }
     },
     created() {
@@ -166,6 +174,13 @@
       this.requestList = this.$store.getters.getAllRequests;
       if (this.requestList.length === 0) {
         getAllRequests();
+      }
+
+      // gets all sketches
+      getSketchesById(0, callback);
+      var self = this;
+      function callback(sketchList) {
+        self.sketchList = sketchList;
       }
 
       // this.messageList = this.$store.getters.getAllMessages;
@@ -190,8 +205,10 @@
         this.openedMessageTriggerIf = false;
         this.openedMessageClassTrigger = false;
       },
-      openDeleteDialog(index) {
-        this.deleteDialogTriggerModel = true;
+      openDeleteDialog(index, type) {
+        this.deleteDialog.triggerModel = true;
+        this.deleteDialog.type = type;
+        this.deleteDialog.deleteIndex = index;
       }
     }
   }
@@ -225,6 +242,10 @@
 
   .user-profile__delete-dialog__text {
     font-size: 16px;
+  }
+
+  .user-profile__delete-dialog__type {
+    text-transform: uppercase;
   }
 
   .user-profile__delete-dialog__btn {
@@ -310,7 +331,7 @@
     font-family: "PT Sans Bold";
   }
 
-  .user-profile__request-wrap {
+  .user-profile__tab-item-wrap {
     position: relative;
     width: 70%;
     margin: 20px auto 0;
