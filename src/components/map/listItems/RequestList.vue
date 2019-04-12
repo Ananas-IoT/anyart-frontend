@@ -63,7 +63,7 @@
       //from Map component
       eventBus.$on('openRequest', (reqToOpen, reqIndex) => {
         // this.openedRequestTriggerShow = false;
-        // console.log(this.openedRequestTriggerShow);
+        console.log('openReq');
         this.openRequest(reqToOpen, reqIndex);
       });
     },

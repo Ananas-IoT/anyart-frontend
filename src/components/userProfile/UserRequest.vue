@@ -1,0 +1,204 @@
+<template>
+  <v-app>
+    <v-card class="request-list-item">
+
+      <div class="request-list-item__actions">
+        <v-btn color="primary" to="/map" class="request-list-item__actions__btn">to map</v-btn>
+        <v-btn color="default" @click="deleteRequest" class="request-list-item__actions__btn">delete</v-btn>
+      </div>
+
+      <v-card-title class="request-list-item__header" ref="request-list-item__title">
+      </v-card-title>
+
+      <div class="request-list-item__photo-preview">
+        <img class="img-open-hover__img" :src=this.request.wall_photos[0] alt="">
+        <span class="img-open-hover__span"></span>
+      </div>
+      <v-card-text class="request-list-item__text">
+        <h4 class="request-list-item__text-title">default 42 Street in default City</h4>
+        <div class="request-list-item__text-owner">owner: Owner</div>
+        <p class="request-list-item__text-description">{{this.request.description | textLength(120)}} </p>
+
+      </v-card-text>
+      <div class="request-list-item__add-info">
+        <div class="request-list-item__add-info__status">Status: status</div>
+        <div class="request-list-item__add-info__sketches">6</div>
+        <div class="request-list-item__add-info__date">01.01.1974</div>
+      </div>
+    </v-card>
+  </v-app>
+</template>
+
+<script>
+  import eventBus from './../../eventBus'
+
+  export default {
+    name: "UserRequest",
+    props: {
+      request: {},
+      index: Number
+    },
+    mounted() {
+      this.request.description = ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet asperiores consequuntur cumque, dolorum eligendi eveniet impedit inventore laborum maiores minus molestiae non, omnis quia, quidem quod temporibus veritatis vitae.';
+      this.setRandomColor();
+    },
+    methods: {
+      setRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        this.$refs['request-list-item__title'].style.background = color;
+      },
+
+      //triggers delete request on userProfile component
+      deleteRequest() {
+        this.$emit('deleteRequest', this.index);
+      },
+
+      openRequest() {
+        this.$router.push('/map');
+      }
+    }
+  }
+
+</script>
+
+<style scoped>
+  .request-list-item {
+    position: relative;
+    min-height: 140px;
+    max-height: 180px;
+    padding-bottom: 10px;
+    margin: 10px 5px 0;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  .request-list-item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    /*border-radius: 4px;*/
+    z-index: 1;
+    transition: 0.3s;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .request-list-item:hover:before {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .request-list-item__actions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .request-list-item:hover .request-list-item__actions {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .request-list-item__photo-preview {
+    display: inline-block;
+    margin: 5px 10px 0 0;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .request-list-item__photo-preview .img-open-hover__img {
+    display: block;
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .request-list-item__header {
+    padding: 3px 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .request-list-item__text {
+    vertical-align: top;
+    display: inline-block;
+    width: calc(100% - 120px);
+    padding-left: 0;
+  }
+
+  .request-list-item__text-title {
+    font-size: 14px;
+    font-family: "PT Sans Bold";
+    /*color: #fff;*/
+  }
+
+  .request-list-item__text-owner {
+    margin: -5px 0 5px;
+    font-size: 12px;
+    color: #999;
+  }
+
+  .request-list-item__text-description {
+    max-height: 90px;
+    font-size: 13px;
+    overflow-y: hidden;
+  }
+
+  .request-list-item__add-info {
+    text-align: right;
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    /* ot baldy :/ */
+    width: 300px;
+    font-size: 14px;
+  }
+
+  .request-list-item__add-info__status {
+    display: inline-block;
+    float: left;
+  }
+
+  .request-list-item__add-info__sketches {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    font-family: "PT Sans BoldItalic";
+  }
+
+  .request-list-item__add-info__sketches:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background: url("../../assets/img/pen.png") center center;
+    -webkit-background-size: contain;
+    background-size: contain;
+  }
+
+  .request-list-item__add-info__date {
+    display: inline-block;
+    margin-left: 70px;
+    font-size: 12px;
+    color: #696969;
+  }
+
+  .request-list-item__btn {
+    display: block;
+    cursor: pointer;
+  }
+</style>
