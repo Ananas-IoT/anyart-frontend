@@ -10,8 +10,9 @@
         width="300">
         <v-card>
           <v-card-title class="user-profile__delete-dialog__title">Attention!</v-card-title>
-          <v-card-text  class="user-profile__delete-dialog__text">
-            Are you sure you want to delete the <span class="user-profile__delete-dialog__type">{{this.deleteDialog.type}}</span>, index: {{this.deleteDialog.deleteIndex}}?
+          <v-card-text class="user-profile__delete-dialog__text">
+            Are you sure you want to delete the <span class="user-profile__delete-dialog__type">{{this.deleteDialog.type}}</span>,
+            index: {{this.deleteDialog.deleteIndex}}?
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
@@ -19,18 +20,16 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-      <!--<message-opened-->
-      <!--class="user-profile__message-opened"-->
-      <!--v-if="this.openedMessageTriggerIf"-->
-      <!--:message=this.openedMessage-->
-      <!--v-bind:class="{'user-profile__opened-message__opened': this.openedMessageClassTrigger}"-->
-      <!--&gt;</message-opened>-->
 
-      <!--<div-->
-      <!--class="user-profile__message-opened__shadow"-->
-      <!--@click="closeMessage()"-->
-      <!--v-bind:class="{'user-profile__opened-message__opened': this.openedMessageClassTrigger}"-->
-      <!--&gt;</div>-->
+      <v-dialog
+        class="custom-scrollbar"
+        v-model="messageOpenedTriggerModel"
+        max-width="500">
+        <message-opened
+          class="user-profile__message-opened"
+          :message=this.openedMessage
+        ></message-opened>
+      </v-dialog>
 
       <div class="container">
         <div class="row justify-content-center">
@@ -110,16 +109,20 @@
               </div>
 
               <v-divider class="user-profile__divider"></v-divider>
-
-              <div class="user-profile__message-box">
-                <message
-                  class="user-profile__message-item"
-                  v-for="(message, index) in messageList"
-                  :key=index
-                  :message=message
-                  @click.native="openMessage(index)"
-                >
-                </message>
+              <div class="user-profile__message-wrap">
+                <h4 class="user-profile__header">My Messages:</h4>
+                <div class="inner-shadow">
+                  <div class="user-profile__message-box custom-scrollbar">
+                    <message
+                      class="user-profile__message-item"
+                      v-for="(message, index) in messageList"
+                      :key=index
+                      :message=message
+                      @click.native="openMessage(index)"
+                    >
+                    </message>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -155,9 +158,8 @@
         requestList: [],
         sketchList: [],
         messageList: [],
-        openedMessageTriggerIf: false,
+        messageOpenedTriggerModel: false,
         openedMessage: {},
-        openedMessageClassTrigger: false,
         tabList: ['My Requests', 'My Sketches'],
         deleteDialog: {
           triggerModel: false
@@ -179,6 +181,7 @@
       // gets all sketches
       getSketchesById(0, callback);
       var self = this;
+
       function callback(sketchList) {
         self.sketchList = sketchList;
       }
@@ -187,19 +190,20 @@
       this.messageList.push({
         title: 'default_title',
         subtitle: 'default_address',
-        body: 'lorem ipsum dolor sit amet'
+        body: 'lorem ipsum dolor sit amet',
+        type: 'success'
       });
       this.messageList.push({
         title: 'default_title',
         subtitle: 'default_address',
-        body: 'lorem ipsum dolor sit amet'
+        body: 'lorem ipsum dolor sit amet',
+        type: 'error'
       });
     },
     methods: {
       openMessage(mesIndex) {
-        this.openedMessageTriggerIf = true;
         this.openedMessage = this.messageList[mesIndex];
-        this.openedMessageClassTrigger = true;
+        this.messageOpenedTriggerModel = true;
       },
       closeMessage() {
         this.openedMessageTriggerIf = false;
@@ -260,31 +264,6 @@
     overflow-x: hidden;
   }
 
-  .user-profile__message-opened {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 100;
-  }
-
-  .user-profile__message-opened__shadow {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 90;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .user-profile__opened-message__opened.user-profile__message-opened__shadow {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
   .user-profile__info-wrap {
     text-align: center;
     margin: auto;
@@ -338,9 +317,10 @@
   }
 
   .user-profile__message-box {
+    position: relative;
     width: 100%;
     height: 300px;
-    margin-top: 20px;
+    margin: 20px 0 40px;
     border: 1px solid #eee;
     overflow-y: scroll;
   }
