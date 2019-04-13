@@ -8,7 +8,7 @@ const API_URL = 'https://anyart.pythonanywhere.com';
 var token = store.getters.getUserToken;
 
 var config = {
-  headers: {'Authorization': 'Bearer ' + token}
+  headers: {'Authorization': 'Bearer  ' + token}
 };
 
 export function sendSketch(sketch, workloadUrl) {

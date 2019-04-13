@@ -34,6 +34,7 @@
           <v-textarea
             label="Description"
             class="upload-form__description"
+            v-model="description"
             :rows="4"
             :rules="inputRules"
             solo
@@ -109,6 +110,8 @@
         //photo and description will be added
         sketch: {},
 
+        //description chooses req or sketch automatically
+        description: '',
         uploadFormTriggerIf: false,
         inputRules: [
           v => !!v || 'Field is required'
@@ -167,12 +170,13 @@
           lat: this.requestAddress.geometry.location.lat(),
           lng: this.requestAddress.geometry.location.lng()
         };
-
+        this.request.description = this.description;
         sendRequest(this.request);
         this.$emit('addMarker', this.request);
       },
 
       processSketch() {
+        this.sketch.description = this.description;
         sendSketch(this.sketch, this.workloadId);
         // this.$emit('clearPosition');
       },

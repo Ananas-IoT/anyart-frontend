@@ -48,11 +48,8 @@
       }
     },
     mounted() {
-      // if (this.userRights === 'artist') {
-      //   this.isArtist = true;
-      // }
-      this.request.description = ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet asperiores consequuntur cumque, dolorum eligendi eveniet impedit inventore laborum maiores minus molestiae non, omnis quia, quidem quod temporibus veritatis vitae.';
-    },
+
+      },
     methods: {
       //trigger common-form on Map component
       uploadSketch() {
