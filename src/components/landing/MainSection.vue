@@ -41,7 +41,8 @@
   }
 
   .main-section__wrap {
-    width: fit-content;
+    text-align: center;
+    width: auto;
     padding: 20px 40px;
     margin: 100px auto 0;
     border-radius: 5px;

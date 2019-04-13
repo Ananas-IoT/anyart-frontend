@@ -196,6 +196,14 @@ img {
 }
 
 /*------CUSTOM SCROLLBAR-----*/
+
+/*FOR FIREFOX*/
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #e0e0e0 #fefefe;
+}
+
+/*FOR CHROME AND OTHERS*/
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
   background: #fefefe;

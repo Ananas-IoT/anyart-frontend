@@ -136,6 +136,7 @@
   .header__logo .header__logo__black {
     position: absolute;
     top: 0;
+    left: 0;
     opacity: 0;
   }
 

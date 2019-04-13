@@ -83,10 +83,12 @@
 
   >>> .auth-wrap {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     padding-top: 100px;
     font-size: 18px;
-    background: url("../../assets/img/main_bg1.jpg");
+    background: url("../../assets/img/main_bg1.jpg") no-repeat;
+    background-size: cover;
+    overflow: hidden;
   }
 
   >>> .auth-wrap:before {
