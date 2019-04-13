@@ -13,7 +13,7 @@
       <request-item
       :request = request
       :index = index
-      :userRole = "user.role"
+      :userRights = user.rights
       ></request-item>
     </div>
 

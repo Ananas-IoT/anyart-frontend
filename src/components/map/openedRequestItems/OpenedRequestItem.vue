@@ -13,7 +13,7 @@
           <div class="opened-request-item__add-info__date">01.01.1974</div>
           <v-btn
             class="opened-request-item__btn"
-            v-if="userRole === 'artist'"
+            v-if="userRights === 'artist'"
             color="primary"
             @click="uploadSketch"
           >Upload sketch</v-btn>
@@ -39,18 +39,18 @@
     props: {
       request: {},
       index: Number,
-      userRole: String,
+      userRights: String,
       requestStyleColor: String
     },
     data() {
       return {
-        isArtist: true
+        isArtist: false
       }
     },
     mounted() {
-      if (this.userRole === 'artist') {
-        this.isArtist = true;
-      }
+      // if (this.userRights === 'artist') {
+      //   this.isArtist = true;
+      // }
       this.request.description = ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet asperiores consequuntur cumque, dolorum eligendi eveniet impedit inventore laborum maiores minus molestiae non, omnis quia, quidem quod temporibus veritatis vitae.';
     },
     methods: {

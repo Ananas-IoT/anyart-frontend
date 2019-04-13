@@ -59,7 +59,7 @@
     >
       <v-card>
         <v-card-title class="upload-form__success-message__title">Information!</v-card-title>
-        <v-card-text class="upload-form__success-message__text">Your request was successfully sent! We inform you that before appear on the map, your {{type}} should be approved! <br>
+        <v-card-text class="upload-form__success-message__text">Your {{this.type}} was successfully sent! We inform you that before appear on the map, your {{type}} should be approved! <br>
           If something will go wrong, we will inform you.</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
