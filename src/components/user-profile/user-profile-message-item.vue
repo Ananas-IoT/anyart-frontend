@@ -20,6 +20,7 @@
     name: "UserMessage",
     props: {
       message: {
+        type: Object,
         default: function () {
           return {
             title: 'default_ootitle',

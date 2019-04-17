@@ -1,11 +1,11 @@
 
-import LandingPage from './components/LandingPage'
-import Map from './components/Map'
-import Auth from './components/auth/Auth'
-import Register from './components/auth/Register'
-import RegisterGovernment from './components/auth/RegisterGovernment'
-import Login from './components/auth/Login'
-import UserProfile from './components/userProfile/UserProfile'
+import LandingPage from './components/the-landing-page'
+import Map from './components/the-map'
+import Auth from './components/auth/the-auth'
+import Register from './components/auth/auth-register'
+import RegisterGovernment from './components/auth/auth-reqiester-government'
+import Login from './components/auth/auth-login'
+import UserProfile from './components/user-profile/user-profile'
 
 export default [
 

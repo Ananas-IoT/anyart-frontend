@@ -26,8 +26,8 @@
 </template>
 
 <script>
-  import RequestItem from './RequestListItem'
-  import OpenedRequest from '../openedRequestItems/OpenedRequest'
+  import RequestItem from './request-list-item'
+  import OpenedRequest from '../opened-request-items/opened-request'
   import eventBus from '../../../eventBus'
   import {getAllRequests} from '../../../api/mapRequests'
 

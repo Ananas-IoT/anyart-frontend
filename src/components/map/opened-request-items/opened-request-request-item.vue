@@ -37,7 +37,7 @@
   export default {
     name: "OpenedRequestItem",
     props: {
-      request: {},
+      request: Object,
       index: Number,
       userRights: String,
       requestStyleColor: String

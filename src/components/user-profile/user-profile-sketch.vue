@@ -37,8 +37,14 @@
   export default {
     name: "UserSketchItem",
     props: {
-      sketch: {},
-      index: Number
+      sketch: {
+        type: Object,
+        required: true
+      },
+      index: {
+        type: Number,
+        required: true
+      },
     },
     data() {
       return {

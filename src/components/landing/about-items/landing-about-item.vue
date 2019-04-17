@@ -13,14 +13,23 @@
 </template>
 
 <script>
-  import AboutItemContacts from './AboutItemContacts'
+  import AboutItemContacts from './landing-about-item-contacts'
 
   export default {
     name: "AboutItem",
     components: {
       'about-item-contacts': AboutItemContacts,
     },
-    props: ["name", "position"],
+    props: {
+      name: {
+        type: String,
+        required: true
+      },
+      position: {
+        type: String,
+        required: true
+      }
+    },
     data() {
       return {
         photo: ''

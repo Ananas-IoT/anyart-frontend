@@ -3,7 +3,9 @@ import store from '../store/store'
 import {router} from '../main.js'
 import eventBus from '../eventBus'
 
-const API_URL = 'https://anyart.pythonanywhere.com';
+
+// const API_URL = 'https://anyart.pythonanywhere.com';
+const API_URL = 'http://35.234.78.240';
 
 var token = store.getters.getUserToken;
 

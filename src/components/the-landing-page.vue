@@ -4,17 +4,17 @@
   <!--<button class="main_mnu_button hidden-md hidden-lg"><i class="fa fa-bars"></i></button>-->
   <app-header v-bind:window = window></app-header>
 
-  <main-landing></main-landing>
+  <main-landing/>
 
   <howto-landing v-bind:window = window></howto-landing>
 
-  <about-landing></about-landing>
+  <about-landing/>
 
-  <gallery-landing></gallery-landing>
+  <gallery-landing/>
 
-  <partners-landing></partners-landing>
+  <partners-landing/>
 
-  <footer-landing></footer-landing>
+  <footer-landing/>
 
   </body>
 
@@ -22,18 +22,17 @@
 </template>
 
 <script>
-  import {getUserByToken} from '../api/auth'
   import jQuery from 'jquery'
-  import Header from './AppHeader'
-  import MainSection from './landing/MainSection'
-  import HowtoSection from './landing/HowtoSection'
-  import AboutSection from './landing/AboutSection'
-  import GallerySection from './landing/GallerySection'
-  import PartnersSection from './landing/PartnersSection'
-  import FooterSection from './landing/Footer'
+  import Header from './the-header'
+  import MainSection from './landing/landing-main-section'
+  import HowtoSection from './landing/landing-how-to-section'
+  import AboutSection from './landing/landing-about-section'
+  import GallerySection from './landing/landing-gallery-section'
+  import PartnersSection from './landing/landing-partners-section'
+  import FooterSection from './landing/landing-footer-section'
 
   export default {
-    name: "landingPage",
+    name: "landing Page",
     components: {
       "app-header": Header,
       "main-landing": MainSection,

@@ -36,7 +36,7 @@
   export default {
     name: "SketchTabItem",
     props: {
-      sketch: {}
+      sketch: Object
     },
     data() {
       return {

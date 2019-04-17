@@ -10,10 +10,15 @@
 </template>
 
 <script>
-    export default {
-        name: "HowtoWorkflowItem",
-      props: ["text"]
+  export default {
+    name: "HowtoWorkflowItem",
+    props: {
+      text: {
+        type: String,
+        required: true
+      }
     }
+  }
 </script>
 
 <style scoped>
@@ -24,6 +29,7 @@
     border-bottom: 2px dashed #e0e0e0;
     position: relative;
   }
+
   /*(перехід)*/
   .how-to-section__workflow-item:before {
     content: '';
@@ -91,7 +97,6 @@
   }
 
 
-
   /*MOVES RIGHT CIRCLE ELEMENTS*/
   .how-to-section__workflow-item__right:before {
     right: auto;
@@ -108,6 +113,7 @@
   .how-to-section__workflow-item-pic {
     margin: 60px 40px 0 0;
   }
+
   /**/
 
   /*DIFFERENT COLORS*/
@@ -164,6 +170,7 @@
     background-size: cover;
     border-color: #1ea3a4;
   }
+
   /**/
 
 
@@ -182,18 +189,19 @@
     margin-left: 20px;
     font-size: 24px;
   }
+
   /**/
 
 
   /*==========  Desktop First Method  ==========*/
 
   /* Large Devices, Wide Screens */
-  @media only screen and (max-width : 1200px) {
+  @media only screen and (max-width: 1200px) {
 
   }
 
   /* Medium Devices, Desktops */
-  @media only screen and (max-width : 992px) {
+  @media only screen and (max-width: 992px) {
     .how-to-section__workflow-item {
       height: 240px;
     }
@@ -252,7 +260,7 @@
   }
 
   /* Small Devices, Tablets */
-  @media only screen and (max-width : 768px) {
+  @media only screen and (max-width: 768px) {
     .how-to-section__workflow-item {
       height: 240px;
     }
@@ -294,7 +302,7 @@
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width : 567px) {
+  @media only screen and (max-width: 567px) {
 
     .how-to-section__workflow-item-pic {
       position: absolute;
@@ -302,24 +310,24 @@
     }
 
     .how-to-section__workflow-item:nth-child(1)
-    .how-to-section__workflow-item-pic{
+    .how-to-section__workflow-item-pic {
       height: 60%;
     }
   }
 
 
-  @media only screen and (max-width : 400px) {
+  @media only screen and (max-width: 400px) {
 
     .how-to-section__workflow-item:nth-child(1)
-    .how-to-section__workflow-item-pic{
+    .how-to-section__workflow-item-pic {
       height: 50%;
     }
   }
 
-  @media only screen and (max-width : 370px) {
+  @media only screen and (max-width: 370px) {
 
     .how-to-section__workflow-item:nth-child(1)
-    .how-to-section__workflow-item-pic{
+    .how-to-section__workflow-item-pic {
       height: 40%;
     }
   }

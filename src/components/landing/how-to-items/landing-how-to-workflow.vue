@@ -2,38 +2,39 @@
   <div class="how-to-section__workflow">
 
     <howto-workflow-item
-    :text = "'Виберіть місце та завантажте фото'"
+      :text="'Виберіть місце та завантажте фото'"
     ></howto-workflow-item>
 
     <howto-workflow-item
       class="how-to-section__workflow-item__right"
-      :text = "'Художник запропонує свій скетч'"
+      :text="'Художник запропонує свій скетч'"
     ></howto-workflow-item>
 
     <howto-workflow-item
-    :text = "'Голосуйте за найкращі з них'"
+      :text="'Голосуйте за найкращі з них'"
     ></howto-workflow-item>
 
     <howto-workflow-item
       class="how-to-section__workflow-item__right"
-      :text = "'Після затвердження художник приступить до роботи'"
+      :text="'Після затвердження художник приступить до роботи'"
     ></howto-workflow-item>
 
     <howto-workflow-item
-    :text = "'Насолоджуйтесь!'"
+      :text="'Насолоджуйтесь!'"
     ></howto-workflow-item>
 
   </div>
 </template>
 
 <script>
-  import HowtoWorkflowItem from './HowtoWorkflowItem'
-    export default {
-        name: "HowtoWorkflow",
-      components: {
-          'howto-workflow-item': HowtoWorkflowItem
-      }
+  import HowtoWorkflowItem from './landing-how-to-workflow-item'
+
+  export default {
+    name: "HowtoWorkflow",
+    components: {
+      'howto-workflow-item': HowtoWorkflowItem
     }
+  }
 </script>
 
 <style scoped>

@@ -29,8 +29,8 @@
 </template>
 
 <script>
-  import Workflow from './Howto/HowtoWorkflow'
-  import LandingButton from './LandingButton'
+  import Workflow from './how-to-items/landing-how-to-workflow'
+  import LandingButton from './landing-button'
 
   export default {
     name: "HowtoSection",
@@ -38,7 +38,9 @@
       'howto-workflow': Workflow,
       'button-landing': LandingButton
     },
-    props: ['window']
+    props: {
+      window: Object
+    }
   }
 </script>
 

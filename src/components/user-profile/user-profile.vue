@@ -133,13 +133,13 @@
 </template>
 
 <script>
-  import Header from '../AppHeader'
-  import Message from './UserMessage'
-  import MessageOpened from './UserMessageOpened'
+  import Header from '../the-header'
+  import Message from './user-profile-message-item'
+  import MessageOpened from './user-profile-message-item-opened'
   import eventBus from '../../eventBus'
-  // import RequestItem from '../map/listItems/RequestListItem'
-  import RequestItem from './UserRequest'
-  import SketchItem from './UserSketch'
+  // import RequestItem from '../map/list-items/RequestListItem'
+  import RequestItem from './user-profile-request'
+  import SketchItem from './user-profile-sketch'
   import {getAllRequests} from '../../api/mapRequests'
   import {getSketchesById} from "../../api/mapSketches"
 

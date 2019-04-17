@@ -30,7 +30,7 @@
   export default {
     name: "RequestListItem",
     props: {
-      request: {}
+      request: Object
     },
     data() {
       return {

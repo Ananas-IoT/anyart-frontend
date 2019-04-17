@@ -39,15 +39,13 @@
 </template>
 
 <script>
-  import FormButton from '../formComponents/FormButton';
   import {loginUser} from "../../api/auth";
-  import AppHeader from '../AppHeader';
+  import AppHeader from '../the-header';
   import eventBus from '../../eventBus';
 
   export default {
     name: "login",
     components: {
-      'form-button': FormButton,
       'app-header': AppHeader
     },
     data() {

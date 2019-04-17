@@ -8,7 +8,12 @@
 <script>
   export default {
     name: "AboutItemContacts",
-    props: ['name'],
+    props: {
+      name: {
+        type: String,
+        required: true
+      }
+    },
     data() {
       return {
         telegramLink: '',

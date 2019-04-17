@@ -34,8 +34,8 @@
 
 <script>
   import eventBus from '../../../eventBus';
-  import RequestItem from './OpenedRequestItem';
-  import SketchItem from './OpenedRequestSketch';
+  import RequestItem from './opened-request-request-item';
+  import SketchItem from './opened-request-sketch-item';
   import {getSketchesById} from "../../../api/mapSketches";
 
   export default {

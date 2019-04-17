@@ -72,18 +72,16 @@
 </template>
 
 <script>
-  import FormButton from '../formComponents/FormButton'
   import {sendRequest} from "../../api/mapRequests";
   import {sendSketch} from '../../api/mapSketches';
   import eventBus from '../../eventBus';
 
   export default {
-    name: "UploadForm",
+    name: "Upload Form",
     components: {
-      'form-button': FormButton
+
     },
     props: {
-
       //Request or Sketch form
       type: {
         type: String,

@@ -35,8 +35,14 @@
   export default {
     name: "UserRequest",
     props: {
-      request: {},
-      index: Number
+      request: {
+        type: Object,
+        required: true
+      },
+      index: {
+        type: Number,
+        required: true
+      }
     },
     mounted() {
       this.request.description = ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet asperiores consequuntur cumque, dolorum eligendi eveniet impedit inventore laborum maiores minus molestiae non, omnis quia, quidem quod temporibus veritatis vitae.';
@@ -52,7 +58,7 @@
         this.$refs['user-request-item__title'].style.background = color;
       },
 
-      //triggers delete request on userProfile component
+      //triggers delete request on user-profile component
       deleteRequest() {
         this.$emit('deleteRequest', this.index, 'request');
       },

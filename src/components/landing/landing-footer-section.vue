@@ -136,7 +136,7 @@
   }
 
   /* Small Devices, Tablets */
-  @media only screen and (max-width : 768px) {
+  @media only screen and (max-width: 768px) {
     .footer__social-wrap {
       margin-bottom: 40px;
     }
@@ -149,7 +149,7 @@
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width : 567px) {
+  @media only screen and (max-width: 567px) {
 
   }
 </style>

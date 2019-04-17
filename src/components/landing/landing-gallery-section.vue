@@ -9,65 +9,65 @@
 
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link"  href="https://instagram.com" target="_blank">
+                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
                   Instagram</a>
                 <img class="gallery-section__pic" src="../../assets/img/gallery-section/g1.jpg" alt="">
               </div>
             </div>
 
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="gallery-section__pic-wrap">
-                  <a class="gallery-section__pic-link"  href="https://instagram.com" target="_blank">
-                    Instagram</a>
-                  <img class="gallery-section__pic" src="../../assets/img/gallery-section/g5.jpg" alt=""></div>
-              </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="gallery-section__pic-wrap">
+                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                  Instagram</a>
+                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g5.jpg" alt=""></div>
+            </div>
 
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link"  href="https://instagram.com" target="_blank">
+                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
                   Instagram</a>
                 <img class="gallery-section__pic" src="../../assets/img/gallery-section/g2.jpg" alt=""></div>
             </div>
 
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="gallery-section__pic-wrap">
-                  <a class="gallery-section__pic-link"  href="https://instagram.com" target="_blank">
-                    Instagram</a>
-                  <img class="gallery-section__pic" src="../../assets/img/gallery-section/g6.jpg" alt=""></div>
-              </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="gallery-section__pic-wrap">
+                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                  Instagram</a>
+                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g6.jpg" alt=""></div>
+            </div>
 
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link"  href="https://instagram.com" target="_blank">
+                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
                   Instagram</a>
                 <img class="gallery-section__pic" src="../../assets/img/gallery-section/g3.jpg" alt=""></div>
             </div>
 
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="gallery-section__pic-wrap">
-                  <a class="gallery-section__pic-link"  href="https://instagram.com" target="_blank">
-                    Instagram</a>
-                  <img class="gallery-section__pic" src="../../assets/img/gallery-section/g7.jpg" alt=""></div>
-              </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="gallery-section__pic-wrap">
+                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                  Instagram</a>
+                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g7.jpg" alt=""></div>
+            </div>
 
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link"  href="https://instagram.com" target="_blank">
+                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
                   Instagram</a>
                 <img class="gallery-section__pic" src="../../assets/img/gallery-section/g4.jpg" alt=""></div>
             </div>
 
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="gallery-section__pic-wrap">
-                  <a class="gallery-section__pic-link"  href="https://instagram.com" target="_blank">
-                    Instagram</a>
-                  <img class="gallery-section__pic" src="../../assets/img/gallery-section/g8.jpg" alt=""></div>
-              </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="gallery-section__pic-wrap">
+                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                  Instagram</a>
+                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g8.jpg" alt=""></div>
             </div>
-
           </div>
+
         </div>
       </div>
+    </div>
     </div>
   </section>
 </template>
@@ -175,7 +175,7 @@
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width : 576px) {
+  @media only screen and (max-width: 576px) {
     .gallery-section {
       padding-bottom: 30px;
     }

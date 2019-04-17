@@ -100,11 +100,11 @@
 </template>
 
 <script>
-  import AppHeader from './AppHeader'
+  import AppHeader from './the-header'
   import eventBus from '../eventBus'
-  import UploadForm from './map/UploadForm'
-  import RequestList from './map/listItems/RequestList'
-  import OpenedImage from './map/OpenedImage'
+  import UploadForm from './map/upload-from'
+  import RequestList from './map/list-items/request-list'
+  import OpenedImage from './map/opened-image'
 
   export default {
     name: "Map",

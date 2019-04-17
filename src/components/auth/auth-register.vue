@@ -139,15 +139,13 @@
 </template>
 
 <script>
-  import FormButton from '../formComponents/FormButton';
   import {registerUser} from "../../api/auth";
   import eventBus from '../../eventBus';
-  import AppHeader from '../AppHeader';
+  import AppHeader from '../the-header';
 
   export default {
     name: "register",
     components: {
-      'form-button': FormButton,
       'app-header': AppHeader
     },
     data() {
