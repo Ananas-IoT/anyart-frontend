@@ -32,7 +32,7 @@
   import FooterSection from './landing/landing-footer-section'
 
   export default {
-    name: "landing Page",
+    name: "landingPage",
     components: {
       "app-header": Header,
       "main-landing": MainSection,
