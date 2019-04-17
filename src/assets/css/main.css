@@ -18,18 +18,6 @@
   opacity: 1;
 }
 
-html.js .loader {
-  background: none repeat scroll 0 0 #ffffff;
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-}
-
 body {
   min-width: 320px;
   position: relative;
@@ -75,83 +63,11 @@ ul, li {
   list-style: none;
 }
 
-.clearfix:after {
-  display: block;
-  content: "";
-  clear: both;
-}
-
-/* overlay at start */
-.mfp-fade.mfp-bg {
-  opacity: 0;
-
-  -webkit-transition: all 0.15s ease-out;
-  -moz-transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out;
-}
-
-/* overlay animate in */
-.mfp-fade.mfp-bg.mfp-ready {
-  opacity: 0.8;
-}
-
-/* overlay animate out */
-.mfp-fade.mfp-bg.mfp-removing {
-  opacity: 0;
-}
-
-/* content at start */
-.mfp-fade.mfp-wrap .mfp-content {
-  opacity: 0;
-
-  -webkit-transition: all 0.15s ease-out;
-  -moz-transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out;
-}
-
-/* content animate it */
-.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
-  opacity: 1;
-}
-
-/* content animate out */
-.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
-  opacity: 0;
-}
-
 .main_mnu_button {
   background-color: transparent;
   border: none;
   color: #000000;
   font-size: 36px;
-}
-
-.popup-form {
-  background-color: #fff;
-  border-radius: 3px;
-  padding: 25px;
-  position: relative;
-  margin: 0 auto;
-  max-width: 350px;
-  text-align: center;
-}
-
-.popup-form input, .popup-form textarea {
-  border: none;
-  border-bottom: 1px solid #BCBCBC;
-  text-indent: 15px;
-  font-size: 14px;
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 10px 0;
-}
-
-.popup-form h3 {
-  margin: 0;
-  text-transform: uppercase;
-  font-size: 24px;
-  line-height: 1.2;
-  margin-bottom: 15px;
 }
 
 .dib {
