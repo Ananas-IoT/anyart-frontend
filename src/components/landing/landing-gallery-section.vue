@@ -1,75 +1,79 @@
 <template>
-  <section id="gallery" class="gallery-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="gallery-section__title">Галерея:</h2>
-          <p class="gallery-section__description">Це лише деякі приклади робіт, з часом їх ставатиме ще більше!</p>
+  <v-app>
+    <section id="gallery" class="gallery-section">
+      <div class="content bg-transparent">
+        <div class="container">
           <div class="row">
+            <div class="col-lg-12">
+              <h2 class="gallery-section__title">Галерея:</h2>
+              <p class="gallery-section__description">Це деякі приклади красивих робіт, зроблених до нас.
+                З нашою допомогою їх ставатиме ще більше!</p>
+              <div class="row">
 
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
-                  Instagram</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g1.jpg" alt="">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <v-card class="gallery-section__pic-wrap">
+                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                      Instagram</a>
+                    <img class="gallery-section__pic" src="../../assets/img/gallery-section/g1.jpg" alt="">
+                  </v-card>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <v-card class="gallery-section__pic-wrap">
+                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                      Instagram</a>
+                    <img class="gallery-section__pic" src="../../assets/img/gallery-section/g5.jpg" alt=""></v-card>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <v-card class="gallery-section__pic-wrap">
+                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                      Instagram</a>
+                    <img class="gallery-section__pic" src="../../assets/img/gallery-section/g2.jpg" alt=""></v-card>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <v-card class="gallery-section__pic-wrap">
+                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                      Instagram</a>
+                    <img class="gallery-section__pic" src="../../assets/img/gallery-section/g6.jpg" alt=""></v-card>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <v-card class="gallery-section__pic-wrap">
+                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                      Instagram</a>
+                    <img class="gallery-section__pic" src="../../assets/img/gallery-section/g3.jpg" alt=""></v-card>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <v-card class="gallery-section__pic-wrap">
+                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                      Instagram</a>
+                    <img class="gallery-section__pic" src="../../assets/img/gallery-section/g7.jpg" alt=""></v-card>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <v-card class="gallery-section__pic-wrap">
+                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                      Instagram</a>
+                    <img class="gallery-section__pic" src="../../assets/img/gallery-section/g4.jpg" alt=""></v-card>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <v-card class="gallery-section__pic-wrap">
+                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                      Instagram</a>
+                    <img class="gallery-section__pic" src="../../assets/img/gallery-section/g8.jpg" alt=""></v-card>
+                </div>
               </div>
-            </div>
 
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
-                  Instagram</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g5.jpg" alt=""></div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
-                  Instagram</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g2.jpg" alt=""></div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
-                  Instagram</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g6.jpg" alt=""></div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
-                  Instagram</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g3.jpg" alt=""></div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
-                  Instagram</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g7.jpg" alt=""></div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
-                  Instagram</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g4.jpg" alt=""></div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="gallery-section__pic-wrap">
-                <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
-                  Instagram</a>
-                <img class="gallery-section__pic" src="../../assets/img/gallery-section/g8.jpg" alt=""></div>
             </div>
           </div>
-
         </div>
       </div>
-    </div>
-    </div>
-  </section>
+    </section>
+  </v-app>
 </template>
 
 <script>
@@ -81,20 +85,34 @@
 <style scoped>
 
   .gallery-section {
+    position: relative;
+  }
 
+  .gallery-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 100%;
+    background: url("../.././assets/img/paint-bg/3.png") no-repeat;
+    background-size: contain;
+    transform: translateY(-200px) scale(-1, -1);
+    /*transform: translate(-110%, 0) rotate(0);*/
   }
 
   .gallery-section__description {
     text-align: center;
     font-size: 20px;
-    color: #757575;
+    color: #000;
+    /*color: #757575;*/
   }
 
   .gallery-section__pic-wrap {
     width: 100%;
     height: 170px;
     margin-top: 30px;
-    border: 1px solid #7d42b9;
+    /*border: 1px solid #7d42b9;*/
     border-radius: 2px;
     position: relative;
     overflow: hidden;

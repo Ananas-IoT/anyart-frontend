@@ -77,7 +77,7 @@
   import eventBus from '../../eventBus';
 
   export default {
-    name: "Upload Form",
+    name: "UploadForm",
     components: {
 
     },
