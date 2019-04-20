@@ -33,7 +33,7 @@
   @import '../../assets/libs/slick/slick-theme.css';
 
   .partners-section {
-    background: #eee;
+    background: #fff;
   }
 
   .partners-section .partners-section__item {

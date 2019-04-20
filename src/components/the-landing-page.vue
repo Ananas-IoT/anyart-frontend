@@ -1,24 +1,46 @@
 <template>
+  <v-app>
 
-  <body>
-  <!--<button class="main_mnu_button hidden-md hidden-lg"><i class="fa fa-bars"></i></button>-->
-  <app-header v-bind:window = window></app-header>
+    <body>
 
-  <main-landing/>
+    <v-dialog v-model="dialogTriggerModel" width="400">
+      <v-card class="landing__dialog__wrap">
+        <v-card-title class="landing__dialog__title">Message</v-card-title>
+        <v-card-text class="landing__dialog__text">{{this.dialogMessage}}</v-card-text>
+        <v-divider></v-divider>
 
-  <howto-landing v-bind:window = window></howto-landing>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            flat
+            @click="closeMessageDialog"
+          >
+            Got it!
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
-  <about-landing/>
+    <app-header v-bind:window=window></app-header>
 
-  <gallery-landing/>
+    <main-landing/>
 
-  <partners-landing/>
+    <howto-landing v-bind:window=window></howto-landing>
 
-  <footer-landing/>
+    <about-landing/>
 
-  </body>
+    <gallery-landing/>
 
+    <contact-us-landing/>
 
+    <partners-landing/>
+
+    <footer-landing/>
+
+    </body>
+
+  </v-app>
 </template>
 
 <script>
@@ -29,7 +51,9 @@
   import AboutSection from './landing/landing-about-section'
   import GallerySection from './landing/landing-gallery-section'
   import PartnersSection from './landing/landing-partners-section'
+  import ContactUsSection from './landing/landing-contact-us'
   import FooterSection from './landing/landing-footer-section'
+  import eventBus from '../eventBus'
 
   export default {
     name: "landingPage",
@@ -40,10 +64,13 @@
       "about-landing": AboutSection,
       "gallery-landing": GallerySection,
       "partners-landing": PartnersSection,
+      "contact-us-landing": ContactUsSection,
       "footer-landing": FooterSection
     },
     data() {
       return {
+        dialogMessage: '',
+        dialogTriggerModel: false,
         window: {
           width: 0,
           height: 0
@@ -54,6 +81,15 @@
       //get resolution on start
       window.addEventListener('resize', this.handleResize);
       this.handleResize();
+
+      eventBus.$on('contactMessage', status => {
+        if (status === 'success') {
+          this.dialogMessage = 'Your message were sent! Thank you for your feedback!';
+        } else {
+          this.dialogMessage = 'Sorry, seems something went wrong with your message.' + '`<br>`' +
+            ' Try to send it again or write us manually: nsblnr@gmail.com';
+        }
+      });
     },
     mounted() {
       //nav changes color while scrolling
@@ -80,7 +116,7 @@
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
-        responsive:[
+        responsive: [
           {
             breakpoint: 768,
             settings: {
@@ -104,6 +140,11 @@
       handleResize() {
         this.window.width = window.innerWidth;
         this.window.height = window.innerHeight;
+      },
+
+      closeMessageDialog() {
+        this.dialogTriggerModel = false;
+        this.dialogMessage = '';
       }
     }
   }
@@ -112,4 +153,17 @@
 <style>
   @import '../../node_modules/bootstrap/dist/css/bootstrap-grid.css';
   @import "../assets/css/media.css";
+
+
+  .landing__dialog__wrap {
+    padding: 10px;
+  }
+
+  .landing__dialog__title {
+    font: 24px "PT Sans Bold";
+  }
+
+  .landing__dialog__text {
+    font-size: 18px;
+  }
 </style>

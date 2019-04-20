@@ -71,21 +71,6 @@
     background: #fff5f5;
   }
 
-  /*.about-section:before {*/
-    /*content: '';*/
-    /*position: absolute;*/
-    /*!*top: 50%;*!*/
-    /*!*left: 50%;*!*/
-    /*top: 60px;*/
-    /*left: 0;*/
-    /*width: 600px;*/
-    /*height: 100%;*/
-    /*background: url("../../assets/img/paint-bg/5.png") no-repeat;*/
-    /*background-size: contain;*/
-    /*opacity: 0.5;*/
-    /*!*transform: translate(-50%, -20%);*!*/
-  /*}*/
-
   .about-section__title {
     margin: 10px 0 40px;
   }

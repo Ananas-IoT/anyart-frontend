@@ -11,8 +11,8 @@
       teal
     >
       <v-card-title class="footer__social-wrap teal justify-center">
-        <div class="footer__logo"><img src="../../assets/img/logo_large_white.png" alt=""></div>
-        <v-spacer></v-spacer>
+        <!--<div class="footer__logo"><img src="../../assets/img/logo_large_white.png" alt=""></div>-->
+        <!--<v-spacer></v-spacer>-->
 
         <v-btn
           class="footer__social-item"
@@ -45,45 +45,11 @@
         </v-btn>
       </v-card-title>
 
-      <!--<v-card-title>-->
-        <!--<div class="footer__logo"><img src="../../assets/img/logo_large_white.png" alt=""></div>-->
-      <!--</v-card-title>-->
-
       <v-card-actions class="footer__copyright grey darken-3 justify-center no-gutters">
         &copy;2019 — <strong>AnyArt</strong>
       </v-card-actions>
     </v-card>
 
-    <!--<div class="container">-->
-    <!--<div class="row">-->
-    <!--<div class="col-md-6 order-sm-1 order-1">-->
-    <!--<div class="footer__logo"><img src="../../assets/img/logo_large_white.png" alt=""></div>-->
-    <!--<div class="footer__copyright">Copyright(c) Ананас</div>-->
-    <!--</div>-->
-    <!--<div class="col-md-6 order-sm-0 order-0">-->
-    <!--<div class="footer__social-wrap">-->
-    <!--<h3 class="footer__social-title">Слідкуйте за нашими новинами:</h3>-->
-    <!--<ul class="footer__social-list">-->
-    <!--<li class="footer__social-item">-->
-    <!--<a class="footer__social-item-link" href="https://gmail.com" target="_blank"><span>-->
-    <!--<img class="footer__social-item-img" :src="contactImages.mail" alt="">-->
-    <!--</span></a>-->
-    <!--</li>-->
-    <!--<li class="footer__social-item">-->
-    <!--<a class="footer__social-item-link" href="https://facebook.com" target="_blank"><span>-->
-    <!--<img class="footer__social-item-img" :src="contactImages.facebook" alt="">-->
-    <!--</span></a>-->
-    <!--</li>-->
-    <!--<li class="footer__social-item">-->
-    <!--<a class="footer__social-item-link" href="https://instagram.com" target="_blank"><span>-->
-    <!--<img class="footer__social-item-img" :src="contactImages.instagram" alt="">-->
-    <!--</span></a>-->
-    <!--</li>-->
-    <!--</ul>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
   </v-footer>
 </template>
 

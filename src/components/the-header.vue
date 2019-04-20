@@ -30,7 +30,7 @@
                 <router-link to="/#gallery" data-scroll-to="#gallery" @click="navOpened = false">Галерея</router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/#footer" data-scroll-to="#footer" @click="navOpened = false">Контакти</router-link>
+                <router-link to="/#contacts" data-scroll-to="#contacts" @click="navOpened = false">Контакти</router-link>
               </li>
               <li class="nav__item">
                 <router-link to="/map">Карта</router-link>
@@ -94,7 +94,7 @@
         if (this.window.width >= 1280) {
           return this.userFullName.length > 18 ? this.userFullName.slice(0, 18) + '...' : this.userFullName;
         } else if (this.window.width <= 480) {
-          return this.userFullName.length > 12 ? this.userFullName.slice(0, 12) + '...' : this.userFullName;
+          return this.userFullName.length > 10 ? this.userFullName.slice(0, 10) + '...' : this.userFullName;
         } else if (this.window.width < 768) {
           return this.userFullName.length > 18 ? this.userFullName.slice(0, 18) + '...' : this.userFullName;
         } else if (this.window.width < 992) {
@@ -377,7 +377,7 @@
     .nav__item a {
       text-align: left;
       width: 100%;
-      padding: 8px 0 8px 15px;
+      padding: 8px 0 8px 30px;
       font-size: 18px;
     }
 
@@ -393,7 +393,7 @@
   /* Extra Small Devices, Phones */
   @media only screen and (max-width: 480px) {
     .user-block {
-      right: 5px;
+      right: 15px;
     }
 
     .user-block__name {
