@@ -34,15 +34,15 @@
         <div class="row justify-center">
           <div class="col-md-3 about-item">
             <about-item
-              :name="'Данііл Логвінов'"
-              :position="'UX-designer, Front-End developer'"
+              :name="'Влад Бойчев'"
+              :position="'Front-End developer'"
             ></about-item>
           </div>
 
           <div class="col-md-3 about-item">
             <about-item
-              :name="'Михайло Гурський'"
-              :position="'Architect'"
+              :name="'Олег Гаврилюк'"
+              :position="'Mentor'"
             ></about-item>
           </div>
         </div>
@@ -114,7 +114,8 @@
     background: url("../../assets/img/paint-bg/6.png") no-repeat;
     background-size: contain;
     opacity: 0.7;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -55%);
+    pointer-events: none;
   }
 
   /* Small Devices, Tablets */

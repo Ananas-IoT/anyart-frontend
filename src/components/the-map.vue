@@ -51,6 +51,7 @@
               class="map__map"
               :center="mapCenter"
               :zoom="12"
+              :options="mapOptions"
               @click="infoWindow.open = false"
             >
               <!--it's markerList-->
@@ -152,7 +153,10 @@
             }
           }
         },
-        isAuthenticated: false
+        isAuthenticated: false,
+        mapOptions: {
+          disableDefaultUI: true
+        }
       };
     },
     mounted() {

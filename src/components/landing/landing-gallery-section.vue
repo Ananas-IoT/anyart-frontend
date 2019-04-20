@@ -98,7 +98,7 @@
     background: url("../.././assets/img/paint-bg/3.png") no-repeat;
     background-size: contain;
     transform: translateY(-200px) scale(-1, -1);
-    /*transform: translate(-110%, 0) rotate(0);*/
+    pointer-events: none;
   }
 
   .gallery-section__description {
