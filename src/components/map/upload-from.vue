@@ -103,10 +103,14 @@
     data() {
       return {
         //photo, description and position will be added
-        request: {},
+        request: {
+          images: []
+        },
 
         //photo and description will be added
-        sketch: {},
+        sketch: {
+          images: []
+        },
 
         //description chooses req or sketch automatically
         description: '',
@@ -191,9 +195,9 @@
         if (file) {
           reader.readAsDataURL(file);
           if (this.type === 'request') {
-            this.request.photo = file;
+            this.request.images.push(file);
           } else if (this.type === 'sketch') {
-            this.sketch.photo = file;
+            this.sketch.photo.push(file);
           }
           this.computePhotoPreviewShow();
         } else {
@@ -202,7 +206,7 @@
       },
 
       computePhotoPreviewShow() {
-        this.previewPhotoTriggerShow = this.sketch.photo !== undefined || this.request.photo !== undefined;
+        this.previewPhotoTriggerShow = this.sketch.images.length !== 0 || this.request.images.length !== 0;
       }
     },
   }

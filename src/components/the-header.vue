@@ -13,27 +13,38 @@
             <img class="header__menu__black" src="../assets/img/burger-menu-black.png" alt="">
           </a>
         </div>
-        <div class="col-lg-7 no-gutters">
+        <div class="col-lg-7 no-gutters order-2 order-lg-1">
           <nav class="nav" v-bind:class="{nav__opened: navOpened}">
             <ul class="nav__item-list">
               <li class="nav__item">
                 <router-link to="/" data-scroll-to="#main" @click="navOpened = false">Головна</router-link>
               </li>
-              <li class="nav__item"><router-link to="/#how-to" data-scroll-to="#how-to" @click="navOpened = false">Як це працює?</router-link></li>
-              <li class="nav__item"><router-link to="/#about" data-scroll-to="#about" @click="navOpened = false">Про нас</router-link></li>
-              <li class="nav__item"><router-link to="/#gallery" data-scroll-to="#gallery" @click="navOpened = false">Галерея</router-link></li>
-              <li class="nav__item"><router-link to="/#footer" data-scroll-to="#footer"@click="navOpened = false">Контакти</router-link></li>
+              <li class="nav__item">
+                <router-link to="/#how-to" data-scroll-to="#how-to" @click="navOpened = false">Як це працює?
+                </router-link>
+              </li>
+              <li class="nav__item">
+                <router-link to="/#about" data-scroll-to="#about" @click="navOpened = false">Про нас</router-link>
+              </li>
+              <li class="nav__item">
+                <router-link to="/#gallery" data-scroll-to="#gallery" @click="navOpened = false">Галерея</router-link>
+              </li>
+              <li class="nav__item">
+                <router-link to="/#footer" data-scroll-to="#footer" @click="navOpened = false">Контакти</router-link>
+              </li>
               <li class="nav__item">
                 <router-link to="/map" v-if="window.width >= 1280">Карта</router-link>
               </li>
             </ul>
           </nav>
         </div>
-        <div class="col-lg-2 d-none d-lg-block">
+        <div class="col-lg-2 order-1 order-lg-2">
           <div class="user-block">
             <div v-if="this.isAuth" class="user-block__info">
-              <router-link class="user-block__name" to="/user">{{userFullName}}</router-link>
-              <div><router-link to="/auth/register">Log out</router-link></div>
+              <router-link class="user-block__name" to="/user">{{computeFullName}}</router-link>
+              <div>
+                <router-link to="/auth/register">Log out</router-link>
+              </div>
             </div>
             <div v-else class="user-block__registration">
               <router-link to="/auth/register">Register</router-link>
@@ -57,7 +68,7 @@
         default: function () {
           return {
             width: 1920,
-            height:1080
+            height: 1080
           }
         }
       }
@@ -76,14 +87,28 @@
         this.checkUser();
       });
     },
+    computed: {
+      //cuts too long names
+      computeFullName() {
+        this.userFullName = this.user.first_name + ' ' + this.user.last_name;
+        if (this.window.width >= 1280) {
+          return this.userFullName.length > 18 ? this.userFullName.slice(0, 18) + '...' : this.userFullName;
+        } else if (this.window.width <= 480) {
+          return this.userFullName.length > 12 ? this.userFullName.slice(0, 12) + '...' : this.userFullName;
+        } else if (this.window.width < 768) {
+          return this.userFullName.length > 18 ? this.userFullName.slice(0, 18) + '...' : this.userFullName;
+        } else if (this.window.width < 992) {
+          return this.userFullName.length > 25 ? this.userFullName.slice(0, 25) + '...' : this.userFullName;
+        }
+      }
+    },
     methods: {
       checkUser() {
         this.isAuth = this.$store.getters.isAuthenticated;
         if (this.isAuth) {
           this.user = this.$store.getters.getUser;
         }
-        this.userFullName = this.user.first_name + ' ' + this.user.last_name;
-      },
+      }
     }
   }
 </script>
@@ -152,7 +177,7 @@
   .header__burger {
     position: absolute;
     top: 25px;
-    right: 20px;
+    left: 20px;
     width: 26px;
     height: 26px;
   }
@@ -323,6 +348,20 @@
     .nav__item a, .nav__item a:hover {
       color: #000;
     }
+
+    .user-block {
+      position: absolute;
+      top: -55px;
+      right: 20px;
+    }
+
+    .user-block__name {
+      font-size: 18px;
+    }
+
+    .user-block__registration a {
+      font-size: 18px;
+    }
   }
 
   /* Small Devices, Tablets */
@@ -341,10 +380,28 @@
       padding: 8px 0 8px 15px;
       font-size: 18px;
     }
+
+    .user-block__name {
+      font-size: 16px;
+    }
+
+    .user-block__registration a {
+      font-size: 16px;
+    }
   }
 
   /* Extra Small Devices, Phones */
   @media only screen and (max-width: 480px) {
+    .user-block {
+      right: 5px;
+    }
 
+    .user-block__name {
+      font-size: 15px;
+    }
+
+    .user-block__registration a {
+      font-size: 15px;
+    }
   }
 </style>

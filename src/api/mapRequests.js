@@ -11,11 +11,10 @@ export function sendRequest(request) {
   let token = store.getters.getUserToken;
 
   var bodyFormData = new FormData();
-  // bodyFormData.set('workload[requirements]', 'test');
   bodyFormData.set('description', request.description);
   bodyFormData.set('lat', "" + request.position.lat);
   bodyFormData.set('lng', "" + request.position.lng);
-  bodyFormData.append('wall_photo0', request.photo);
+  bodyFormData.append('images', request.images);
 
   const config = {
     headers: {

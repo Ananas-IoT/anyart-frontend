@@ -57,7 +57,7 @@
 <style scoped>
 
   .about-section__item-contacts a {
-    display: block;
+    display: inline-block;
     width: fit-content;
     margin: 5px auto 0;
     font-size: 14px;
