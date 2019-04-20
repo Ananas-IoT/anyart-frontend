@@ -1,14 +1,14 @@
 <template>
   <v-app>
-  <div class="auth auth-wrap">
-    <!--ROOT COMPONENT FOR OTHER AUTH COMPONENTS-->
-    <router-view v-if="!isAuth"></router-view>
-    <v-card v-else class="auth__logout">
-      <h3 class="auth__warning">Are you really want to logout?</h3>
-      <v-btn class="auth__logout__btn" color="primary" @click="logOut">Log out</v-btn>
-      <router-link class="auth__to-main" to="/">back to main page</router-link>
-    </v-card>
-  </div>
+    <div class="auth auth-wrap">
+      <!--ROOT COMPONENT FOR OTHER AUTH COMPONENTS-->
+      <router-view v-if="!isAuth"></router-view>
+      <v-card v-else class="auth__logout">
+        <h3 class="auth__warning">Are you really want to logout?</h3>
+        <v-btn class="auth__logout__btn" color="primary" @click="logOut">Log out</v-btn>
+        <router-link class="auth__to-main" to="/">back to main page</router-link>
+      </v-card>
+    </div>
   </v-app>
 </template>
 
@@ -84,7 +84,6 @@
   >>> .auth-wrap {
     position: relative;
     min-height: 100vh;
-    padding-top: 100px;
     font-size: 18px;
     background: url("../../assets/img/main_bg1.jpg") no-repeat;
     background-size: cover;
@@ -104,7 +103,7 @@
 
   >>> .stepper {
     width: 400px;
-    margin: auto;
+    margin: 200px auto 0;
     border-radius: 3px;
   }
 
@@ -125,16 +124,9 @@
     z-index: 100;
   }
 
-  /*>>> .form-wrap {*/
-  /*position: relative;*/
-  /*text-align: center;*/
-  /*width: 30%;*/
-  /*padding: 30px;*/
-  /*margin: 0 auto 0;*/
-  /*background: #fafafa;*/
-  /*border-radius: 5px;*/
-  /*border: 1px solid #eee;*/
-  /*}*/
+  >>> .form {
+    margin-top: 200px !important;
+  }
 
   >>> .form__title {
     text-align: center;
@@ -142,23 +134,22 @@
     font-size: 24px;
   }
 
-  /*>>> .form__input {*/
-    /*display: block;*/
-    /*width: 300px;*/
-    /*padding: 10px 15px;*/
-    /*margin: 10px auto;*/
-    /*border-radius: 5px;*/
-    /*border: none;*/
-    /*border: 1px solid #e0e0e0;*/
-    /*outline: none;*/
-  /*}*/
+  /*==========  Desktop First Method  ==========*/
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width: 480px) {
+    .auth__logout {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      min-height: 100px;
+      padding: 20px;
+      transform: translate(-50%, -50%);
+    }
 
-  /*>>> .form__input:focus {*/
-    /*border: 1px solid #770d85;*/
-  /*}*/
+    >>> .stepper {
+      width: 300px;
+    }
 
-  /*>>> .form__input__invalid {*/
-    /*border: 2px solid #ff0000 !important;*/
-  /*}*/
-
+  }
 </style>

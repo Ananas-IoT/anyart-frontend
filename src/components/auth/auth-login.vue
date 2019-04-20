@@ -99,4 +99,13 @@
     border: 1px solid #eee;
   }
 
+  /*==========  Desktop First Method  ==========*/
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 480px) {
+    .login__form {
+      width: 300px;
+      padding: 20px;
+      margin: 40px auto 0;
+    }
+  }
 </style>
