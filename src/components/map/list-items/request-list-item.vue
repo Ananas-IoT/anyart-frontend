@@ -170,4 +170,18 @@
     cursor: pointer;
   }
 
+  /*==========  Desktop First Method  ==========*/
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .request-list-item__add-info {
+      left: 20px;
+      right: 20px;
+      width: auto;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 480px) {
+
+  }
 </style>

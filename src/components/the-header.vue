@@ -33,7 +33,7 @@
                 <router-link to="/#footer" data-scroll-to="#footer" @click="navOpened = false">Контакти</router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/map" v-if="window.width >= 1280">Карта</router-link>
+                <router-link to="/map">Карта</router-link>
               </li>
             </ul>
           </nav>

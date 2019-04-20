@@ -14,12 +14,12 @@ export function sendRequest(request) {
   bodyFormData.set('description', request.description);
   bodyFormData.set('lat', "" + request.position.lat);
   bodyFormData.set('lng', "" + request.position.lng);
-  bodyFormData.append('images', request.images);
+  bodyFormData.append('images', request.images[0]);
 
   const config = {
     headers: {
       'Content-Type': 'multipart/form-data',
-      'Authorization': 'Bearer' + token
+      'Authorization': 'Bearer ' + token
     }
   };
 

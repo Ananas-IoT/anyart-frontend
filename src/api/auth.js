@@ -6,10 +6,13 @@ import eventBus from '../eventBus'
 // const API_URL = 'https://anyart.pythonanywhere.com';
 const API_URL = 'http://35.234.78.240';
 
+
 export function getUserByToken(token, refresh) {
 
   const config = {
-    headers: {'Authorization': 'Bearer ' + token}
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
   };
 
   const url = `${API_URL}/authorization/profile/`;
@@ -98,6 +101,6 @@ function refreshToken(refresh) {
       console.log('refresh token: ', response);
       getUserByToken(response.data.access);
     }).catch(error => {
-      console.log('refresh token ERROR', error.response);
+    console.log('refresh token ERROR', error.response);
   });
 }

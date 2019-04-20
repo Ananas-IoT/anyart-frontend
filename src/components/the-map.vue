@@ -24,7 +24,7 @@
             <div class="map__search-form">
               <label>
                 <!-- it's map search form-->
-                <v-form v-show="mapSearchFormTriggerShow && isAuthenticated">
+                <v-form v-show="mapSearchFormTriggerShow && isAuthenticated && !requestDrawerTriggerIf">
                   <v-text-field
                     class="map__search-form-input"
                     v-model="currentPlace.formatted_address"
@@ -80,7 +80,7 @@
           <v-navigation-drawer
             class="requestDrawer"
             v-model="requestDrawerTriggerIf"
-            :width="550"
+            :width="computeDrawerWidth"
             absolute
             clipped
             app
@@ -151,11 +151,15 @@
               width: 0,
               height: -35
             }
-          }
+          },
         },
         isAuthenticated: false,
         mapOptions: {
           disableDefaultUI: true
+        },
+        window: {
+          width: 0,
+          height: 0
         }
       };
     },
@@ -163,6 +167,10 @@
 
     },
     created() {
+      //get resolution on start
+      window.addEventListener('resize', this.handleResize);
+      this.handleResize();
+
       //hide search form if user isn't authenticated
       this.isAuthenticated = this.$store.getters.isAuthenticated;
 
@@ -199,7 +207,18 @@
         this.$refs.openImage.openImage(src);
       });
     },
-    computed: {},
+    destroyed() {
+      window.removeEventListener('resize', this.handleResize);
+    },
+    computed: {
+      computeDrawerWidth() {
+        if(this.window.width >= 768) {
+          return 550;
+        } else {
+          return this.window.width;
+        }
+      }
+    },
     methods: {
       //creates upload-form component
       createForm() {
@@ -272,6 +291,12 @@
         if(!this.requestDrawerTriggerIf) {
           this.toggleRequestDrawer();
         }
+      },
+
+      //window width
+      handleResize() {
+        this.window.width = window.innerWidth;
+        this.window.height = window.innerHeight;
       }
     }
   }
@@ -334,7 +359,7 @@
 
   .map__map {
     width: 100%;
-    height: calc(100vh - 78px);
+    height: calc(100vh - 68px);
     display: inline-block;
   }
 
@@ -386,7 +411,7 @@
     display: inline-block;
     vertical-align: top;
     width: 100%;
-    height: 92vh;
+    height: 100%;
     background: #fcfcfc;
     overflow-y: scroll;
   }
@@ -405,9 +430,30 @@
     position: relative;
   }
 
-  /*.custom-scrollbar::-webkit-scrollbar-thumb {*/
-    /*background: rgba(25, 163, 164, 0.6);*/
-  /*}*/
+  /*==========  Desktop First Method  ==========*/
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .map__search-form {
+      position: absolute;
+      top: 32px;
+      left: 10%;
+      right: 10%;
+      /*transform: translateX(-50%);*/
+      z-index: 50;
+    }
 
+    .map__search-form-input {
+      width: calc(100% - 100px);
+    }
 
+    .map__search-form-button {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 480px) {
+
+  }
 </style>

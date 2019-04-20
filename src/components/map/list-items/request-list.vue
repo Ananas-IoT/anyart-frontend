@@ -114,4 +114,21 @@
     width: 100%;
     font-size: 18px;
   }
+
+  /*==========  Desktop First Method  ==========*/
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .request-list__title {
+      padding: 0 20px;
+    }
+
+    .request-list__title:before, .request-list__title:after {
+      display: none;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 480px) {
+
+  }
 </style>

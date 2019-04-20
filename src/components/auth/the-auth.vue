@@ -103,7 +103,7 @@
 
   >>> .stepper {
     width: 400px;
-    margin: 200px auto 0;
+    margin: 200px auto 100px;
     border-radius: 3px;
   }
 

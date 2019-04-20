@@ -197,7 +197,7 @@
           if (this.type === 'request') {
             this.request.images.push(file);
           } else if (this.type === 'sketch') {
-            this.sketch.photo.push(file);
+            this.sketch.images.push(file);
           }
           this.computePhotoPreviewShow();
         } else {

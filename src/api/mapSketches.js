@@ -17,14 +17,14 @@ export function sendSketch(sketch, workloadUrl) {
   console.log('sketch itself: ', sketch);
   var bodyFormData = new FormData();
   bodyFormData.set('sketch_description', sketch.description);
-  bodyFormData.append('sketch_photo0', sketch.photo);
+  bodyFormData.append('images', sketch.images[0]);
 
   // config['Content-Type'] = 'multipart/form-data';
 
   const config = {
     headers: {
       'Content-Type': 'multipart/form-data',
-      'Authorization': 'Bearer' + token
+      'Authorization': 'Bearer ' + token
     }
   };
   var url = workloadUrl+'sketches/';
