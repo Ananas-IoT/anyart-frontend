@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="user-profile__info__user-pic elevation-3">
-                  <img class="u ser-profile__user-pic__img" src="../../assets/img/landing-about-section/about-socials/about-photo-sources/about_photo1.jpg" alt="">
+                  <img class="u ser-profile__user-pic__img" src="../../assets/img/landing-about-section/about-photo-sources/about_photo1.jpg" alt="">
                 </div>
               </div>
 

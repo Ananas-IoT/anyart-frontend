@@ -70,7 +70,7 @@
           this.photo = require('../../../assets/img/landing-about-section/about-photo/about_photo4.png');
           this.links.telegram = 'https://t.me/thunderosee';
           this.links.facebook = 'https://facebook.com/dlohvinov';
-          this.links.gmail = 'mailto: nsblnr@gmail.com';
+          this.links.gmail = 'mailto: vladyslav.boychev@gmail.com';
           break;
         case 'Олег Гаврилюк':
           this.photo = require('../../../assets/img/landing-about-section/about-photo/about_photo5.png');
