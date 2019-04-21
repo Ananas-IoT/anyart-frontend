@@ -10,44 +10,50 @@
       flat
       teal
     >
-      <v-card-title class="footer__social-wrap teal justify-center">
+      <v-card-title class="footer__social-wrap justify-center">
         <!--<div class="footer__logo"><img src="../../assets/img/logo_large_white.png" alt=""></div>-->
-        <!--<v-spacer></v-spacer>-->
+        <div class="footer__copyright">
+          &copy;2019 — <strong>AnyArt</strong>
+        </div>
+
+        <v-spacer></v-spacer>
+
+        <div class="footer__social-follow">Follow us!</div>
 
         <v-btn
           class="footer__social-item"
           href="https://facebook.com"
           target="_blank"
-          dark
-          icon
-        >
-          <img class="footer__social-item-img" :src="contactImages.mail" alt="">
-        </v-btn>
-
-        <v-btn
-          class="footer__social-item"
-          href="https://gmail.com"
-          target="_blank"
-          dark
           icon
         >
           <img class="footer__social-item-img" :src="contactImages.facebook" alt="">
+          <!--<span>on Facebook</span>-->
         </v-btn>
+
+        <!--<v-btn-->
+          <!--class="footer__social-item"-->
+          <!--href="https://gmail.com"-->
+          <!--target="_blank"-->
+          <!--dark-->
+          <!--icon-->
+        <!--&gt;-->
+          <!--<img class="footer__social-item-img" :src="contactImages.facebook" alt="">-->
+        <!--</v-btn>-->
 
         <v-btn
           class="footer__social-item"
           href="https://instagram.com"
           target="_blank"
-          dark
           icon
         >
           <img class="footer__social-item-img" :src="contactImages.instagram" alt="">
+          <!--<span>on Facebook</span>-->
         </v-btn>
       </v-card-title>
 
-      <v-card-actions class="footer__copyright grey darken-3 justify-center no-gutters">
-        &copy;2019 — <strong>AnyArt</strong>
-      </v-card-actions>
+      <!--<v-card-actions class="footer__copyright grey darken-3 justify-center no-gutters">-->
+        <!--&copy;2019 — <strong>AnyArt</strong>-->
+      <!--</v-card-actions>-->
     </v-card>
 
   </v-footer>
@@ -59,7 +65,7 @@
     data() {
       return {
         contactImages: {
-          mail: require('../../assets/img/footer/mail.png'),
+          // mail: require('../../assets/img/footer/mail.png'),
           facebook: require('../../assets/img/footer/facebook.png'),
           instagram: require('../../assets/img/footer/instagram.png')
         },
@@ -81,6 +87,13 @@
 
   .footer__social-wrap {
     padding: 10px 20px 5px;
+    background: #d67d8e;
+  }
+
+  .footer__social-follow {
+    margin-right: 30px;
+    color: #fff;
+    font: 18px "PT Sans BoldItalic";
   }
   /*.footer__social-title {*/
     /*margin: 10px 0 0;*/

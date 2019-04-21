@@ -10,7 +10,7 @@ const API_URL = 'http://35.234.78.240';
 var token = store.getters.getUserToken;
 
 var config = {
-  headers: {'Authorization': 'Bearer  ' + token}
+  headers: {'Authorization': 'Bearer ' + token}
 };
 
 export function sendSketch(sketch, workloadUrl) {

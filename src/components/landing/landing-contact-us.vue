@@ -15,7 +15,7 @@
                   <v-text-field
                     class="contact-us__message-author"
                     label="How can we contact you?"
-                    v-model="message.author"
+                    v-model="message.contact"
                     solo
                   >
 
@@ -23,7 +23,7 @@
                   <v-textarea
                     class="contact-us-section__message-body"
                     label="Your text.."
-                    v-model="message.description"
+                    v-model="message.body"
                     :rows="5"
                     :rules="inputRules"
                     solo
@@ -57,8 +57,8 @@
     data() {
       return {
         message: {
-          author: null,
-          description: ''
+          contact: null,
+          body: ''
         },
         validation: false,
         inputRules: [
@@ -69,17 +69,18 @@
     },
     methods: {
       processMessage() {
-        sendMessage(this.message, clearInputsAtSuccess());
+        var self = this;
         function clearInputsAtSuccess(error) {
-          if (this.args === 0) {
-            this.author = '';
-            this.description = '';
-            eventBus.$emit('contactMessage');
+          if (arguments.length === 0) {
+            self.message.contact = '';
+            self.message.body = '';
+            eventBus.$emit('contactMessage', 'success');
           } else {
-            this.errorMessage = error;
+            self.errorMessage = error;
             eventBus.$emit('contactMessage', error);
           }
         }
+        sendMessage(this.message, clearInputsAtSuccess);
       }
     }
   }

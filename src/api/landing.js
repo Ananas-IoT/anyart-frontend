@@ -7,7 +7,7 @@ export function sendMessage(message, callback) {
     headers: {}
   };
 
-  const url = `${API_URL}/`;
+  const url = `${API_URL}/authorization/feedback/`;
   axios.post(url, message, config)
     .then(response => {
       callback();
