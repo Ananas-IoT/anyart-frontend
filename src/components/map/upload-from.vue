@@ -179,6 +179,7 @@
 
       processSketch() {
         this.sketch.description = this.description;
+        // console.log('workload id:', this.workloadId);
         sendSketch(this.sketch, this.workloadId);
         // this.$emit('clearPosition');
       },

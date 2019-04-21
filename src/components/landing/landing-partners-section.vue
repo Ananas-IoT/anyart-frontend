@@ -74,11 +74,11 @@
   }
 
   .partners-section__item {
+    position: relative;
     width: 300px;
     padding: 20px;
-    margin: 10px 20px;
+    margin: 70px 20px;
     background: #eee;
-    /*background: #d67d8e;*/
     border-radius: 3px;
     opacity: 0.9;
     transition: 0.3s;
