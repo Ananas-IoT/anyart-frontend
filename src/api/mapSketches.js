@@ -24,7 +24,7 @@ export function sendSketch(sketch, workloadUrl) {
   const config = {
     headers: {
       'Content-Type': 'multipart/form-data',
-      'Authorization': 'Bearer ' + token
+      'Authorization': 'Bearer' + token
     }
   };
   var url = workloadUrl+'sketches/';
@@ -41,11 +41,12 @@ export function sendSketch(sketch, workloadUrl) {
     });
 }
 
-export function getSketchesById(req_id, callback) {
-  const url = `${API_URL}/workload/workloads/` + req_id + `/sketches/`;
+export function getSketchesById(workload, callback) {
+  const url = workload + `sketches/`;
+  console.log('getSketchesById url:', url);
   axios.get(url)
     .then(response => {
-      // console.log('getSketchesById:', response.data.results);
+      console.log('getSketchesById:', response.data.results);
       callback(response.data.results);
     })
     .catch(err => {

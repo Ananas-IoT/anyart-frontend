@@ -111,8 +111,9 @@
   }
 
   .contact-us-section__description {
-    width: 80%;
-    margin: 0 auto 30px;
+    text-align: left;
+    width: 50%;
+    margin: 0 0 30px 30px;
     font-size: 18px;
   }
 

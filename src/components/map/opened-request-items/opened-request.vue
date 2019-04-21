@@ -80,7 +80,8 @@
         this.request = requestList[this.index];
 
         // gets all sketches
-        getSketchesById(this.request.id, callback);
+        getSketchesById(this.request.workload, callback);
+        // console.log('get sketches started');
         var self = this;
         function callback(sketchList) {
           self.sketchList = sketchList;
