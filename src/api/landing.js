@@ -1,9 +1,9 @@
 import axios from 'axios'
 import store from "../store/store";
 
-const API_URL = 'http://35.234.78.240';
+const API_URL = 'htt://35.234.78.240';
 
-export function sendMessage(message, callback) {
+export function sendMessage(message) {
   var config = {
     headers: {}
   };
@@ -18,9 +18,9 @@ export function sendMessage(message, callback) {
   const url = `${API_URL}/authorization/feedback/`;
   axios.post(url, message, config)
     .then(response => {
-      callback();
+      // callback();
     })
     .catch(error => {
-      callback(error);
+      // callback(error);
     });
 }

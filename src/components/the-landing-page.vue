@@ -82,15 +82,14 @@
       window.addEventListener('resize', this.handleResize);
       this.handleResize();
 
-      eventBus.$on('contactMessage', status => {
+      eventBus.$on('contactMessage', (status) => {
         if (status === 'success') {
           this.dialogMessage = 'Your message were sent! Thank you for your feedback!';
-          this.dialogTriggerModel = true;
         } else {
           this.dialogMessage = 'Sorry, seems something went wrong with your message.' + '`<br>`' +
             ' Try to send it again or write us manually: nsblnr@gmail.com';
-          this.dialogTriggerModel = true;
         }
+        this.dialogTriggerModel = true;
       });
     },
     mounted() {

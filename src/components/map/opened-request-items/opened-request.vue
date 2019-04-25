@@ -82,10 +82,7 @@
         // gets all sketches
         getSketchesById(this.request.workload, callback);
         // console.log('get sketches started');
-        var self = this;
-        function callback(sketchList) {
-          self.sketchList = sketchList;
-        }
+        let callback = (sketchList) => this.sketchList = sketchList;
       }
     }
   }

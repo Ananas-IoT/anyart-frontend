@@ -153,18 +153,14 @@
         }, 3000);
       });
     },
-    computed: {},
+    computed: {
+      chooseProcess() {
+        return this.type === 'sketch' ? this.processSketch() : this.processRequest();
+      }
+    },
     methods: {
       openUploadForm() {
         this.uploadFormTriggerIf = true;
-      },
-
-      chooseProcess() {
-        if (this.type === 'request') {
-          this.processRequest();
-        } else if (this.type === 'sketch') {
-          this.processSketch();
-        }
       },
 
       processRequest() {

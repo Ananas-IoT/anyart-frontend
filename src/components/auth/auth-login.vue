@@ -65,10 +65,8 @@
     created() {
 
       eventBus.$on('loginError', (error) => {
-        // console.log(error.response.data.non_field_errors[0]);
         this.loginError = {
           boolean: true,
-          // text: "an error occured!",
           text: error.response.data.non_field_errors[0],
         };
         setTimeout(() => {
@@ -79,8 +77,6 @@
     computed: {},
     methods: {
       login: function () {
-        // this.user.username = this.user.email;
-        // delete this.user.email;
         loginUser(this.user);
       },
     }

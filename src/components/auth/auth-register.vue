@@ -180,11 +180,7 @@
     },
     computed: {
       roleDescription() {
-        if (this.user.rights === 'basic') {
-          return this.descriptionList.basic;
-        } else if (this.user.rights === 'artist') {
-          return this.descriptionList.artist;
-        }
+        return this.user.rights === 'artist' ? this.descriptionList.artist : this.descriptionList.basic;
       }
     },
     methods: {

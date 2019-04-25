@@ -69,18 +69,19 @@
     },
     methods: {
       processMessage() {
-        var self = this;
-        function clearInputsAtSuccess(error) {
-          if (arguments.length === 0) {
+        return new Promise((resolve, reject) => {
+          sendMessage(this.message);
+        }).then(
+          response => {
             self.message.contact = '';
             self.message.body = '';
             eventBus.$emit('contactMessage', 'success');
-          } else {
+          },
+          error => {
             self.errorMessage = error;
             eventBus.$emit('contactMessage', error);
           }
-        }
-        sendMessage(this.message, clearInputsAtSuccess);
+        );
       }
     }
   }
