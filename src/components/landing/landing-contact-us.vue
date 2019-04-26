@@ -31,6 +31,7 @@
 
                   </v-textarea>
                   <v-btn
+                    class="contact-us-section__message-button"
                     color="primary"
                     :disabled="!validation"
                     @click="processMessage"
@@ -136,5 +137,66 @@
   .contact-us-section__email-link {
     color: #000;
     border-bottom: 1px solid #000;
+  }
+
+  /*==========  Desktop First Method  ==========*/
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width : 1200px) {}
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width : 992px) {
+    .contact-us-section:before {
+      opacity: 0.4;
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .contact-us-section__description {
+      width: 80%;
+      margin: auto;
+    }
+
+    .contact-us-section:before {
+      top: 200px;
+      right: 0;
+      width: 750px;
+      height: 100%;
+      opacity: 0.4;
+    }
+
+    .contact-us-section__email-wrap {
+      bottom: -40px;
+      right: 30px;
+      background: #d67d8e;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 576px) {
+    .contact-us-section__description {
+      width: 90%;
+      margin: 0 auto 30px;
+    }
+
+    .contact-us-section:before {
+      top: 250px;
+      width: 450px;
+      opacity: 0.5;
+    }
+
+    .contact-us-section__message-button {
+      width: 100%;
+      padding: 0;
+      margin: 0 0 10px;
+    }
+
+    .contact-us-section__email-wrap {
+      bottom: -55px;
+      right: 50%;
+      background: #d67d8e;
+      transform: translateX(50%);
+    }
   }
 </style>
