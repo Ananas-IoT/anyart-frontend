@@ -10,40 +10,38 @@
       flat
       teal
     >
-      <v-card-title class="footer__social-wrap justify-center">
-        <!--<div class="footer__logo"><img src="../../assets/img/logo_large_white.png" alt=""></div>-->
+      <v-card-text class="footer__wrap justify-center">
+
+        <div class="footer__social-wrap">
+          <div class="footer__social-follow">Follow us!</div>
+          <div class="footer__social-item-wrap">
+            <a
+              class="footer__social-item"
+              href="https://facebook.com"
+              target="_blank">
+              <div class="footer-social-item-img-wrap">
+                <img class="footer__social-item-img" :src="contactImages.facebook" alt="">
+              </div>
+              <span class="footer__social-item-text d-none d-sm-inline-block">on Facebook</span>
+            </a>
+          </div>
+          <div class="footer__social-item-wrap">
+            <a
+              class="footer__social-item footer__social-item__instagram"
+              href="https://instagram.com"
+              target="_blank">
+              <div class="footer-social-item-img-wrap">
+                <img class="footer__social-item-img" :src="contactImages.instagram" alt="">
+              </div>
+              <span class="footer__social-item-text d-none d-sm-inline-block">on Instagram</span>
+            </a>
+          </div>
+        </div>
+
         <div class="footer__copyright">
           &copy;2019 — <strong>AnyArt</strong>
         </div>
-
-        <v-spacer></v-spacer>
-
-        <div class="footer__social-follow">Follow us!</div>
-
-        <div class="footer__social-item-wrap">
-          <a
-            class="footer__social-item"
-            href="https://facebook.com"
-            target="_blank">
-            <div class="footer-social-item-img-wrap">
-              <img class="footer__social-item-img" :src="contactImages.facebook" alt="">
-            </div>
-            <span class="footer__social-item-text">on Facebook</span>
-          </a>
-        </div>
-
-        <div class="footer__social-item-wrap">
-          <a
-            class="footer__social-item footer__social-item__instagram"
-            href="https://instagram.com"
-            target="_blank">
-            <div class="footer-social-item-img-wrap">
-            <img class="footer__social-item-img" :src="contactImages.instagram" alt="">
-            </div>
-            <span class="footer__social-item-text">on Instagram</span>
-          </a>
-        </div>
-      </v-card-title>
+      </v-card-text>
     </v-card>
 
   </v-footer>
@@ -74,18 +72,26 @@
     height: 52px;
   }
 
-  .footer__social-wrap {
-    padding: 10px 20px 5px;
+  .footer__wrap {
+    height: 58px;
     background: #d67d8e;
   }
 
+  .footer__social-wrap {
+    display: inline-block;
+  }
+
   .footer__social-follow {
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 5px;
     margin-right: 20px;
     color: #fff;
-    font: 18px "PT Sans BoldItalic";
+    font: 18px "PT Sans Bold";
   }
 
   .footer__social-item-wrap {
+    display: inline-block;
     margin: 0 7px;
   }
 
@@ -133,24 +139,40 @@
   }
 
   .footer__copyright {
+    float: right;
+    display: inline-block;
+    margin-top: 5px;
     color: #fff;
   }
 
   /* Small Devices, Tablets */
   @media only screen and (max-width: 768px) {
-    .footer__social-wrap {
-      margin-bottom: 40px;
-    }
-
-    .footer__social-title {
-      margin-top: 0;
-      font-family: "PT Sans Regular";
-    }
 
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width: 567px) {
+  @media only screen and (max-width: 576px) {
+    /*.footer__wrap {*/
+      /*text-align: center;*/
+      /*height: auto;*/
+    /*}*/
 
+    .footer__social-follow {
+      font-size: 16px;
+      margin-right: 0;
+      /*display: block;*/
+      /*margin-bottom: 15px;*/
+    }
+
+    .footer__social-item-wrap {
+      /*!*display: block;*!*/
+      /*display: inline-block;*/
+      margin: 0 0 0 5px;
+    }
+
+    /*.footer__copyright {*/
+      /*float: none;*/
+      /*display: block;*/
+    /*}*/
   }
 </style>

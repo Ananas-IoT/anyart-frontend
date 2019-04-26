@@ -107,6 +107,10 @@
       width: 500px;
       height: 250px;
     }
+
+    .partners-section__item {
+      margin: 20px;
+    }
   }
 
   /* Extra Small Devices, Phones */
@@ -114,6 +118,10 @@
     .partners-section:before {
       width: 600px;
       height: 300px;
+    }
+
+    .partners-section__title {
+      margin-bottom: 20px;
     }
   }
 
