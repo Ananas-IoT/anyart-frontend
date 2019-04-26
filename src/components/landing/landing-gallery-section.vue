@@ -11,6 +11,7 @@
               <div class="row">
 
                 <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="gallery-section__xs-pic-bg d-sm-none"></div>
                   <v-card class="gallery-section__pic-wrap">
                     <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
                       Instagram</a>
@@ -26,6 +27,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="gallery-section__xs-pic-bg gallery-section__xs-pic-bg__left d-sm-none"></div>
                   <v-card class="gallery-section__pic-wrap">
                     <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
                       Instagram</a>
@@ -40,6 +42,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="gallery-section__xs-pic-bg d-sm-none"></div>
                   <v-card class="gallery-section__pic-wrap">
                     <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
                       Instagram</a>
@@ -54,6 +57,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="gallery-section__xs-pic-bg gallery-section__xs-pic-bg__left d-sm-none"></div>
                   <v-card class="gallery-section__pic-wrap">
                     <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
                       Instagram</a>
@@ -94,7 +98,7 @@
     top: 0;
     right: 0;
     width: 500px;
-    height: 100%;
+    height: 800px;
     background: url("../.././assets/img/paint-bg/3.png") no-repeat;
     background-size: contain;
     transform: translateY(-200px) scale(-1, -1);
@@ -117,9 +121,11 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    z-index: 10;
   }
 
   .gallery-section__pic {
+    vertical-align: top;
     width: 100%;
     height: 100%;
     transition: 0.3s;
@@ -192,20 +198,63 @@
     transform: scale(1.2, 1.2);
   }
 
+
+  /*==========  Desktop First Method  ==========*/
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width : 1200px) {}
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width : 992px) {
+    .gallery-section:before {
+      transform: translateY(-70px) scale(-1, -1);
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .gallery-section:before {
+      transform: translateY(-100px) scale(-1, -1);
+    }
+  }
+
   /* Extra Small Devices, Phones */
   @media only screen and (max-width: 576px) {
     .gallery-section {
       padding-bottom: 30px;
     }
 
-    .gallery-section__pic-wrap {
-      width: 80%;
-      height: 80%;
-      margin: 0 auto;
+    .gallery-section:before {
+      display: none;
     }
 
-    .gallery-selection__pic-link {
-      font-size: 14px;
+    .gallery-section__pic-wrap {
+      position: relative;
+      width: 80%;
+      height: auto;
+      margin: 20px auto;
+    }
+
+    .gallery-section__xs-pic-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 400px;
+      background: url("../.././assets/img/paint-bg/3.png") no-repeat;
+      background-size: contain;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .gallery-section__xs-pic-bg__left {
+      transform: translateY(-100px) scale(-1, -1);
+      z-index: 0;
+    }
+
+    .gallery-section__pic-link {
+      padding: 10px 15px;
+      font-size: 22px;
     }
   }
 </style>

@@ -168,7 +168,7 @@
     }
 
     .about-section__item-pic {
-      width: 240px;
+      width: 300px;
       margin: auto;
     }
   }
@@ -178,6 +178,10 @@
     .about-section__item {
       padding: 0;
       margin: 10px auto;
+    }
+
+    .about-section__item-pic {
+      width: 240px;
     }
 
     .about-section__item-name {
