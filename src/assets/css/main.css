@@ -223,6 +223,10 @@ img {
   top: 50%;
   transform: rotate(180deg);
 }
+
+.partners-section .slick-dots {
+  bottom: 0;
+}
 /**/
 
 /*FADE IN ANIMATIONS*/

@@ -44,7 +44,7 @@
   import slick from '../../assets/libs/slick/slick.min'
 
   export default {
-    name: "PartnersSection"
+    name: "PartnersSection",
   }
 </script>
 
@@ -88,9 +88,33 @@
     background: #fff;
   }
 
-  /*.partners .slick-next, .partners .slick-prev {*/
-  /*width: 32px; height: 32px;*/
-  /*opacity: 0;*/
-  /*}*/
+
+  /*==========  Desktop First Method  ==========*/
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width : 1200px) {}
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width : 992px) {
+    .partners-section:before {
+      width: 600px;
+      height: 300px;
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .partners-section:before {
+      width: 500px;
+      height: 250px;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 576px) {
+    .partners-section:before {
+      width: 600px;
+      height: 300px;
+    }
+  }
 
 </style>

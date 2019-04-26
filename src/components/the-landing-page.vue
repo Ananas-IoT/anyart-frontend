@@ -115,6 +115,7 @@
       //slick partners
       jQuery('.partners-section .carousel').slick({
         infinite: true,
+        dots: true,
         slidesToShow: 4,
         slidesToScroll: 1,
         responsive: [
@@ -125,12 +126,11 @@
             }
           },
           {
-            breakpoint: 568,
+            breakpoint: 576,
             settings: {
               slidesToShow: 1
             }
           }
-
         ]
       });
     },
