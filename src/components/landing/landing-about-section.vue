@@ -3,28 +3,28 @@
     <div class="content bg-transparent">
       <div class="container">
         <div class="row justify-center">
-          <div class="col-lg-12">
+          <div class="col-12">
             <h2 class="about-section__title">А тепер трохи про нас:</h2>
             <p class="about-section__description">Ми раді вітати вас на нашому веб-сайті! Цей проект — ініціатива
               невеликої команди
               ентузіастів. Наша мрія — зробити Львів краще для всіх нас: жителів міста та туристів!</p>
           </div>
 
-          <div class="col-md-3 about-item">
+          <div class="col-md-4 col-lg-3 about-item">
             <about-item
               :name="'Анна Манько'"
               :position="'Product Owner, Back-End Developer'"
             ></about-item>
           </div>
 
-          <div class="col-md-3 about-item">
+          <div class="col-md-4 col-lg-3 about-item">
             <about-item
               :name="'Данііл Логвінов'"
               :position="'UX-designer, Front-End developer'"
             ></about-item>
           </div>
 
-          <div class="col-md-3 about-item">
+          <div class="col-md-4 col-lg-3 about-item">
             <about-item
               :name="'Михайло Гурський'"
               :position="'Architect'"
@@ -32,14 +32,14 @@
           </div>
         </div>
         <div class="row justify-center">
-          <div class="col-md-3 about-item">
+          <div class="col-md-4 col-lg-3 about-item">
             <about-item
               :name="'Влад Бойчев'"
               :position="'Front-End developer'"
             ></about-item>
           </div>
 
-          <div class="col-md-3 about-item">
+          <div class="col-md-4 col-lg-3 about-item">
             <about-item
               :name="'Олег Гаврилюк'"
               :position="'Mentor'"
@@ -92,8 +92,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    /*top: 60px;*/
-    /*right: 0;*/
     width: 300px;
     height: 100%;
     background: url("../../assets/img/paint-bg/6.png") no-repeat;
@@ -103,6 +101,18 @@
     pointer-events: none;
   }
 
+  /*==========  Desktop First Method  ==========*/
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width : 1200px) {}
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width : 992px) {
+    .about-item:before {
+      width: 250px;
+      transform: translate(-50%, -53%);
+    }
+  }
   /* Small Devices, Tablets */
   @media only screen and (max-width: 768px) {
     .about-section__description {
@@ -110,6 +120,18 @@
       font-size: 20px;
     }
 
+    .about-item:before {
+      width: 420px;
+      transform: translate(-50%, -49%);
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 480px) {
+    .about-item:before {
+      width: 310px;
+      transform: translate(-50%, -55%);
+    }
   }
 
 </style>

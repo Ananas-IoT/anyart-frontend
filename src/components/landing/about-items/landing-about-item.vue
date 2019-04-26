@@ -156,70 +156,42 @@
   /*==========  Desktop First Method  ==========*/
   /* Medium Devices, Desktops */
   @media only screen and (max-width: 992px) {
-    .about-section__item {
-      height: 350px;
-    }
-
     .about-section__item-name {
-      font-size: 20px;
-    }
-
-    .about-section__item-contacts {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+      font-size: 18px;
     }
   }
 
   /* Small Devices, Tablets */
   @media only screen and (max-width: 768px) {
     .about-section__item {
-      height: 260px;
-      width: 60%;
-      padding-top: 80px;
-      margin: 140px auto 0;
+      margin: 40px auto;
     }
 
     .about-section__item-pic {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
+      width: 240px;
+      margin: auto;
     }
-
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width: 567px) {
+  @media only screen and (max-width: 480px) {
     .about-section__item {
-      height: 185px;
-      padding-top: 40px;
-    }
-
-    .about-section__item-pic {
-      width: 160px;
-    }
-
-    .about-section__item-position {
-      font-size: 12px;
+      padding: 0;
+      margin: 10px auto;
     }
 
     .about-section__item-name {
-      font-size: 18px;
+      font-size: 20px;
     }
 
+    .about-section__item-position {
+      font-size: 16px;
+    }
 
     .about-section__item-contacts__contact {
-      font-size: 14px;
-      margin: 0 auto;
-    }
-
-    .about-section__item-contacts__contact-img {
-      width: 15px;
-      height: 15px;
-      margin-right: 5px;
+      width: 24px;
+      height: 24px;
+      margin: 5px auto 0;
     }
   }
 
