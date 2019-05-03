@@ -14,7 +14,8 @@
           <h4 class="sketch-tab-item__text-title">Artist username</h4>
           <!--<p class="sketch-tab-item__text-description">{{this.sketch.sketch_description}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem culpa dicta eaque hic in, ipsam laborum molestiae nemo, omnis placeat provident quae quidem reprehenderit tempora tenetur totam ullam voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid asperiores culpa, cum cupiditate delectus dolorem eos expedita facilis iure laborum non, numquam officia possimus quae quam, saepe similique velit?</p>-->
 
-          <p class="sketch-tab-item__text-description">Меня зовут Даниил и я готов приступить к работе через неделю. Мне понадобится краска, и стена. Принимаю ваши денежные пожертвования (нужно 300 гривен). Номер: 88005553535</p>
+          <p class="sketch-tab-item__text-description">Меня зовут Даниил и я готов приступить к работе через неделю. Мне
+            понадобится краска, и стена. Принимаю ваши денежные пожертвования (нужно 300 гривен). Номер: 88005553535</p>
           <span class="sketch-tab-item__text-date">01.01.1974</span>
         </v-card-text>
 
@@ -22,8 +23,10 @@
           <v-btn
             class="sketch-tab-item__vote-btn"
             v-bind:class="{voted:isVoted}"
+            loading=voteLoadingAnimation
             @click="vote()"
-          >23 votes</v-btn>
+          >23 votes
+          </v-btn>
         </v-card-actions>
       </v-card>
     </div>
@@ -32,6 +35,7 @@
 
 <script>
   import eventBus from '../../../eventBus';
+  import {voteForSketch} from "../../../api/mapSketches";
 
   export default {
     name: "SketchTabItem",
@@ -41,10 +45,12 @@
     data() {
       return {
         user: null,
-        isVoted: true
+        isVoted: true,
+        voteLoadingAnimation: false
       }
     },
-    mounted() {},
+    mounted() {
+    },
     created() {
 
     },
@@ -55,7 +61,20 @@
       },
 
       vote() {
-        this.isVoted = !this.isVoted;
+        return new Promise((resolve, reject) => {
+          voteForSketch(this.sketch.id);
+          this.voteLoadingAnimation = true;
+        }).then(
+          response => {
+
+            this.voteLoadingAnimation = false;
+            this.isVoted = true;
+          },
+          error => {
+
+            this.voteLoadingAnimation = false;
+          }
+        );
       }
     }
   }

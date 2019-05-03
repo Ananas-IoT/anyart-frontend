@@ -1,9 +1,10 @@
 import axios from 'axios'
 import store from "../store/store";
 
-const API_URL = 'htt://35.234.78.240';
+const API_URL = 'https://anyart.pythonanywhere.com';
+// const API_URL = 'htt://35.234.78.240';
 
-export function sendMessage(message) {
+export function sendMessage(message, resolve, reject) {
   var config = {
     headers: {}
   };
@@ -18,9 +19,9 @@ export function sendMessage(message) {
   const url = `${API_URL}/authorization/feedback/`;
   axios.post(url, message, config)
     .then(response => {
-      // callback();
+      resolve(response);
     })
     .catch(error => {
-      // callback(error);
+      reject(error);
     });
 }

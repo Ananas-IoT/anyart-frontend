@@ -51,8 +51,8 @@
         case 'Анна Манько':
           this.photo = require('../../../assets/img/landing-about-section/about-photo/about_photo2.png');
           this.links.telegram = 'https://t.me/scrubele';
-          this.links.facebook = 'https://facebook.com/dlohvinov';
-          this.links.gmail = 'mailto: nsblnr@gmail.com';
+          this.links.facebook = 'https://www.facebook.com/scrubele';
+          this.links.gmail = 'mailto: nmankoania@gmail.com';
           break;
         case 'Данііл Логвінов':
           this.photo = require('../../../assets/img/landing-about-section/about-photo/about_photo1.png');
@@ -63,13 +63,13 @@
         case 'Михайло Гурський':
           this.photo = require('../../../assets/img/landing-about-section/about-photo/about_photo3.png');
           this.links.telegram = 'https://t.me/gur_man';
-          this.links.facebook = 'https://facebook.com/dlohvinov';
-          this.links.gmail = 'mailto: nsblnr@gmail.com';
+          this.links.facebook = 'https://www.facebook.com/profile.php?id=100009328216711';
+          this.links.gmail = 'mailto: gursky.michael1999@gmail.com';
           break;
         case 'Влад Бойчев':
           this.photo = require('../../../assets/img/landing-about-section/about-photo/about_photo4.png');
           this.links.telegram = 'https://t.me/thunderosee';
-          this.links.facebook = 'https://facebook.com/dlohvinov';
+          this.links.facebook = 'https://www.facebook.com/profile.php?id=100010439778619';
           this.links.gmail = 'mailto: vladyslav.boychev@gmail.com';
           break;
         case 'Олег Гаврилюк':

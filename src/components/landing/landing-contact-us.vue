@@ -71,7 +71,7 @@
     methods: {
       processMessage() {
         return new Promise((resolve, reject) => {
-          sendMessage(this.message);
+          sendMessage(this.message, resolve, reject);
         }).then(
           response => {
             self.message.contact = '';

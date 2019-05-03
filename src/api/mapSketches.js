@@ -1,16 +1,15 @@
 import axios from 'axios';
 import store from '../store/store'
-import {router} from '../main.js'
 import eventBus from '../eventBus'
 
 
-// const API_URL = 'https://anyart.pythonanywhere.com';
-const API_URL = 'http://35.234.78.240';
+const API_URL = 'https://anyart.pythonanywhere.com';
+// const API_URL = 'http://35.234.78.240';
 
 var token = store.getters.getUserToken;
 
 var config = {
-  headers: {'Authorization': 'Bearer ' + token}
+  headers: {'Authorization': 'Bearer  ' + token}
 };
 
 export function sendSketch(sketch, workloadUrl) {
@@ -27,7 +26,7 @@ export function sendSketch(sketch, workloadUrl) {
       'Authorization': 'Bearer' + token
     }
   };
-  var url = workloadUrl+'sketches/';
+  var url = workloadUrl + 'sketches/';
   console.log('before post', url);
   axios.post(url, bodyFormData, config)
     .then(response => {
@@ -52,6 +51,16 @@ export function getSketchesById(workload, callback) {
     .catch(err => {
       console.log('getSketchesById ERROR:', err.response);
       // console.log(config.headers.Authorization);
+    });
+}
+
+export function voteForSketch(sketchId, resolve, reject) {
+  axios.patch(url)
+    .then(response => {
+      resolve();
+    })
+    .catch(error => {
+      reject();
     });
 }
 

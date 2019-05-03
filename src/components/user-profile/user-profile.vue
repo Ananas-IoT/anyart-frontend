@@ -140,8 +140,8 @@
   // import RequestItem from '../map/list-items/RequestListItem'
   import RequestItem from './user-profile-request'
   import SketchItem from './user-profile-sketch'
-  import {getAllRequests} from '../../api/mapRequests'
-  import {getSketchesById} from "../../api/mapSketches"
+  import {getMySketches} from '../../api/userProfile'
+  import {getMyRequests} from "../../api/userProfile"
 
   export default {
     name: "UserProfile",
@@ -155,8 +155,8 @@
     data() {
       return {
         user: null,
-        requestList: [],
-        sketchList: [],
+        requestList: new Set(),
+        sketchList: new Set(),
         messageList: [],
         messageOpenedTriggerModel: false,
         openedMessage: {},
@@ -169,22 +169,20 @@
     created() {
       this.user = this.$store.getters.getUser;
       eventBus.$on('checkUser', () => {
-        // this.checkUser();
         this.user = this.$store.getters.getUser;
       });
 
-      this.requestList = this.$store.getters.getAllRequests;
-      if (this.requestList.length === 0) {
-        getAllRequests();
-      }
+      // this.requestList = this.$store.getters.getAllRequests;
+      // if (this.requestList.length === 0) {
+      //   getMySketches();
+      // }
+      this.requestList = getMyRequests();
+      // this.SketchList = getMySketches();
 
       // gets all sketches
-      getSketchesById(0, callback);
-      var self = this;
+      // let callback = (sketchList) => {this.sketchList = sketchList};
+      // getMySketches(0, callback);
 
-      function callback(sketchList) {
-        self.sketchList = sketchList;
-      }
 
       // this.messageList = this.$store.getters.getAllMessages;
       this.messageList.push({

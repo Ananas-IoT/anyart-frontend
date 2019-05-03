@@ -154,9 +154,7 @@
       });
     },
     computed: {
-      chooseProcess() {
-        return this.type === 'sketch' ? this.processSketch() : this.processRequest();
-      }
+
     },
     methods: {
       openUploadForm() {
@@ -178,6 +176,10 @@
         // console.log('workload id:', this.workloadId);
         sendSketch(this.sketch, this.workloadId);
         // this.$emit('clearPosition');
+      },
+
+      chooseProcess() {
+        return this.type === 'sketch' ? this.processSketch() : this.processRequest();
       },
 
       processPhoto() {

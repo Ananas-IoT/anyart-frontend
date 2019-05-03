@@ -75,14 +75,12 @@
       loadRequestandSketches() {
         //get all requests from store
         var requestList = this.$store.getters.getAllRequests;
-
         //get current request from list
         this.request = requestList[this.index];
 
         // gets all sketches
+        let callback = (sketchList) => {this.sketchList = sketchList};
         getSketchesById(this.request.workload, callback);
-        // console.log('get sketches started');
-        let callback = (sketchList) => this.sketchList = sketchList;
       }
     }
   }
