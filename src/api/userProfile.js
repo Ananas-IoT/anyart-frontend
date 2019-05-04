@@ -4,37 +4,39 @@ import eventBus from '../eventBus'
 
 const API_URL = 'https://anyart.pythonanywhere.com';
 
-var token = store.getters.getUserToken;
+// var token = store.getters.getUserToken;
+// var config = {
+//   headers: {'Authorization': 'Bearer ' + token}
+// };
 
-var config = {
-  headers: {'Authorization': 'Bearer  ' + token}
-};
-
-export function getMyRequests() {
-  const config = {
-    headers: {}
+export function getMyRequests(resolve, reject) {
+  let token = store.getters.getUserToken;
+  let config = {
+    headers: {'Authorization': 'Bearer ' + token}
   };
-
-  const url = `${API_URL}/workload/wall_photo_wrappers?my=1`;
+  const url = `${API_URL}/workload/wall_photo_wrappers/?my=1`;
   axios.get(url, config)
     .then(response => {
-      return response.data.results;
+      resolve(response.data.results);
     })
     .catch(err => {
-      console.log(err.data);
+      console.log('getMyRequests ERROR:', err.response);
     });
 }
 
-export function getMySketches() {
-  const url = workload + `sketches/`;
-  console.log('getSketchesById url:', url);
-  axios.get(url)
+export function getMySketches(resolve, reject) {
+  let token = store.getters.getUserToken;
+  let config = {
+    headers: {'Authorization': 'Bearer ' + token}
+  };
+  const url = `${API_URL}/workload/sketches/?my=1`;
+  // console.log('getSketchesById url:', url);
+  axios.get(url, config)
     .then(response => {
-      console.log('getSketchesById:', response.data.results);
-      callback(response.data.results);
+      resolve(response.data.results);
     })
     .catch(err => {
-      console.log('getSketchesById ERROR:', err.response);
+      console.log('getMySketches ERROR:', err.response);
       // console.log(config.headers.Authorization);
     });
 }

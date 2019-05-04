@@ -55,11 +55,18 @@ export function getSketchesById(workload, callback) {
 }
 
 export function voteForSketch(sketchId, resolve, reject) {
-  axios.patch(url)
+  var config = {
+    headers: {'Authorization': 'Bearer  ' + token}
+  };
+  const url = `${API_URL}/approval/sketches/`+ sketchId +`/votes/`;
+  let data = {vote: 1};
+  axios.post(url, data, config)
     .then(response => {
+      console.log(response);
       resolve();
     })
     .catch(error => {
+      console.log(error.response);
       reject();
     });
 }

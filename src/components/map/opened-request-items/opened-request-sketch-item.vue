@@ -24,8 +24,9 @@
             class="sketch-tab-item__vote-btn"
             v-bind:class="{voted:isVoted}"
             :loading = voteLoadingAnimation
+            :disabled="!this.user"
             @click="vote()"
-          >23 votes
+          >{{this.sketch.sketch_votes}} votes
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -46,13 +47,13 @@
       return {
         user: null,
         isVoted: true,
-        voteLoadingAnimation: true
+        voteLoadingAnimation: false
       }
     },
-    mounted() {
-    },
     created() {
-
+      this.user = this.$store.getters.getUser;
+    },
+    mounted() {
     },
     methods: {
       //to Map component
@@ -62,11 +63,11 @@
 
       vote() {
         return new Promise((resolve, reject) => {
-          voteForSketch(this.sketch.id);
+          voteForSketch(this.sketch.id, resolve, reject);
           this.voteLoadingAnimation = true;
         }).then(
           response => {
-
+            this.sketch.sketch_votes++;
             this.voteLoadingAnimation = false;
             this.isVoted = true;
           },

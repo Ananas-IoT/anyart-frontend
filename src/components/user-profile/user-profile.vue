@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="user-profile__info__user-pic elevation-3">
-                  <img class="u ser-profile__user-pic__img" src="../../assets/img/landing-about-section/about-photo-sources/about_photo1.jpg" alt="">
+                  <img class="u ser-profile__user-pic__img" src="../../assets/img/empty-photo.jpg" alt="">
                 </div>
               </div>
 
@@ -155,8 +155,8 @@
     data() {
       return {
         user: null,
-        requestList: new Set(),
-        sketchList: new Set(),
+        requestList: [],
+        sketchList: [],
         messageList: [],
         messageOpenedTriggerModel: false,
         openedMessage: {},
@@ -172,19 +172,9 @@
         this.user = this.$store.getters.getUser;
       });
 
-      // this.requestList = this.$store.getters.getAllRequests;
-      // if (this.requestList.length === 0) {
-      //   getMySketches();
-      // }
-      this.requestList = getMyRequests();
-      // this.SketchList = getMySketches();
+      this.getRequests();
+      this.getSketches();
 
-      // gets all sketches
-      // let callback = (sketchList) => {this.sketchList = sketchList};
-      // getMySketches(0, callback);
-
-
-      // this.messageList = this.$store.getters.getAllMessages;
       this.messageList.push({
         title: 'default_title',
         subtitle: 'default_address',
@@ -199,6 +189,24 @@
       });
     },
     methods: {
+      getRequests() {
+        return new Promise((resolve, reject) => {
+          getMyRequests(resolve, reject);
+        }).then(
+          response => {
+            this.requestList = response;
+          }
+        );
+      },
+      getSketches() {
+        return new Promise((resolve, reject) => {
+          getMySketches(resolve, reject);
+        }).then(
+          response => {
+            this.sketchList = response;
+          }
+        );
+      },
       openMessage(mesIndex) {
         this.openedMessage = this.messageList[mesIndex];
         this.messageOpenedTriggerModel = true;
@@ -211,7 +219,7 @@
         this.deleteDialog.triggerModel = true;
         this.deleteDialog.type = type;
         this.deleteDialog.deleteIndex = index;
-      }
+      },
     }
   }
 </script>

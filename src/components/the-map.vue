@@ -468,7 +468,7 @@
     }
 
     .map__search-form-input {
-      
+
     }
 
     .map__search-form-button {
