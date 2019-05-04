@@ -5,27 +5,24 @@ import eventBus from '../eventBus'
 
 const API_URL = 'https://anyart.pythonanywhere.com';
 // const API_URL = 'http://35.234.78.240';
-
-var token = store.getters.getUserToken;
-
-var config = {
-  headers: {'Authorization': 'Bearer  ' + token}
-};
+//
+// var token = store.getters.getUserToken;
+// var config = {
+//   headers: {'Authorization': 'Bearer ' + token}
+// };
 
 export function sendSketch(sketch, workloadUrl) {
+  var token = store.getters.getUserToken;
+  var config = {
+    headers: {'Authorization': 'Bearer ' + token}
+  };
   console.log('sketch itself: ', sketch);
   var bodyFormData = new FormData();
   bodyFormData.set('sketch_description', sketch.description);
   bodyFormData.append('images', sketch.images[0]);
 
-  // config['Content-Type'] = 'multipart/form-data';
+  config.headers['Content-type'] = 'multipart/form-data';
 
-  const config = {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      'Authorization': 'Bearer ' + token
-    }
-  };
   var url = workloadUrl + 'sketches/';
   console.log('before post', url);
   axios.post(url, bodyFormData, config)
@@ -41,6 +38,10 @@ export function sendSketch(sketch, workloadUrl) {
 }
 
 export function getSketchesById(workload, callback) {
+  var token = store.getters.getUserToken;
+  var config = {
+    headers: {'Authorization': 'Bearer ' + token}
+  };
   const url = workload + `sketches/`;
   console.log('getSketchesById url:', url);
   axios.get(url)
@@ -55,10 +56,11 @@ export function getSketchesById(workload, callback) {
 }
 
 export function voteForSketch(sketchId, resolve, reject) {
+  var token = store.getters.getUserToken;
   var config = {
-    headers: {'Authorization': 'Bearer  ' + token}
+    headers: {'Authorization': 'Bearer ' + token}
   };
-  const url = `${API_URL}/approval/sketches/`+ sketchId +`/votes/`;
+  const url = `${API_URL}/approval/sketches/` + sketchId + `/votes/`;
   let data = {vote: 1};
   axios.post(url, data, config)
     .then(response => {
@@ -72,6 +74,10 @@ export function voteForSketch(sketchId, resolve, reject) {
 }
 
 function getLastSketch(workloadUrl, sketch_id) {
+  var token = store.getters.getUserToken;
+  var config = {
+    headers: {'Authorization': 'Bearer ' + token}
+  };
   var url = workloadUrl + sketch_id;
   axios.get(url, config)
     .then(response => {
