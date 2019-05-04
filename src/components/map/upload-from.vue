@@ -76,7 +76,6 @@
 <script>
   import {sendRequest} from "../../api/mapRequests";
   import {sendSketch} from '../../api/mapSketches';
-  import eventBus from '../../eventBus';
 
   export default {
     name: "UploadForm",
