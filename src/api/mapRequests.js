@@ -7,7 +7,7 @@ import eventBus from '../eventBus'
 const API_URL = 'https://anyart.pythonanywhere.com';
 // const API_URL = 'http://35.234.78.240';
 
-export function sendRequest(request) {
+export function sendRequest(request, resolve, reject) {
   let token = store.getters.getUserToken;
 
   var bodyFormData = new FormData();
@@ -27,12 +27,12 @@ export function sendRequest(request) {
   axios.post(url, bodyFormData, config)
     .then(response => {
       console.log('send request: ', response);
-      eventBus.$emit('sendSuccess');
+      resolve();
       // getLastRequest(response.data.self);
     })
     .catch(err => {
       console.log('send request error: ', err.response);
-      eventBus.$emit('sendRequestError', err);
+      reject(err);
     });
 }
 

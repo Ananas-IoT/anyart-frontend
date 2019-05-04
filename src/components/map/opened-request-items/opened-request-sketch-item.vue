@@ -22,8 +22,8 @@
           <v-btn
             class="sketch-tab-item__vote-btn"
             v-bind:class="{voted:isVoted}"
-            :loading = voteLoadingAnimation
-            :disabled="!this.user"
+            :loading = voteLoadingTriggerAnimation
+            :disabled="!this.user.username"
             @click="vote()"
           >{{this.sketch.sketch_votes}} votes
           </v-btn>
@@ -46,7 +46,7 @@
       return {
         user: null,
         isVoted: false,
-        voteLoadingAnimation: false
+        voteLoadingTriggerAnimation: false
       }
     },
     created() {
@@ -66,15 +66,15 @@
       vote() {
         return new Promise((resolve, reject) => {
           voteForSketch(this.sketch.id, this.sketch.vote_id, resolve, reject);
-          this.voteLoadingAnimation = true;
+          this.voteLoadingTriggerAnimation = true;
         }).then(
           response => {
             this.isVoted = !this.isVoted;
             this.isVoted ? this.sketch.sketch_votes++ : this.sketch.sketch_votes--;
-            this.voteLoadingAnimation = false;
+            this.voteLoadingTriggerAnimation = false;
           },
           error => {
-            this.voteLoadingAnimation = false;
+            this.voteLoadingTriggerAnimation = false;
           }
         );
       }

@@ -19,7 +19,7 @@
         <v-form v-model="validation">
 
           <div class="upload-form__img-preview-wrap">
-            <img class="upload-form__img-preview" ref="photoPreview" v-show="previewPhotoTriggerShow"
+            <img class="upload-form__img-preview" ref="photoPreview" v-show="computePhotoPreviewShow"
                  alt="photo preview..">
             <label class="upload-form__img-preview-label" for="files">Select Image</label>
             <input
@@ -47,6 +47,7 @@
         <v-btn
           class="upload-form__btn"
           color="primary"
+          :loading="sendLoadingTriggerAnimation"
           :disabled="!validation"
           @click="chooseProcess"
         >Send
@@ -64,7 +65,8 @@
           If something will go wrong, we will inform you.</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green" flat @click="successMessage = false">Ok, I understood</v-btn>
+          <v-btn
+            color="green" flat @click="successMessage = false">Ok, I understood</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -115,46 +117,22 @@
         //description chooses req or sketch automatically
         description: '',
         uploadFormTriggerIf: false,
+        sendLoadingTriggerAnimation: false,
         inputRules: [
           v => !!v || 'Field is required'
         ],
         validation: false,
-        previewPhotoTriggerShow: false,
         sendError: null,
         successMessage: false
       }
     },
     created() {
-      eventBus.$on('sendSuccess', () => {
-        this.uploadFormTriggerIf = false;
-        this.successMessage = true;
-        this.$emit('clearPosition');
-      });
 
-      eventBus.$on('sendRequestError', (error) => {
-        console.log(error.response);
-        this.sendError = {
-          boolean: true,
-          text: error.response.data.detail,
-        };
-        setTimeout(() => {
-          this.sendError = null;
-        }, 3000);
-      });
-
-      eventBus.$on('sendSketchError', (error) => {
-        console.log(error.response);
-        this.sendError = {
-          boolean: true,
-          text: error.response.data.detail,
-        };
-        setTimeout(() => {
-          this.sendError = null
-        }, 3000);
-      });
     },
     computed: {
-
+      computePhotoPreviewShow() {
+        return this.sketch.images.length !== 0 || this.request.images.length !== 0;
+      }
     },
     methods: {
       openUploadForm() {
@@ -162,20 +140,60 @@
       },
 
       processRequest() {
-        this.request.position = {
-          lat: this.requestAddress.geometry.location.lat(),
-          lng: this.requestAddress.geometry.location.lng()
-        };
-        this.request.description = this.description;
-        sendRequest(this.request);
-        this.$emit('addMarker', this.request);
+        return new Promise((resolve, reject) => {
+          this.sendLoadingTriggerAnimation = true;
+          this.request.position = {
+            lat: this.requestAddress.geometry.location.lat(),
+            lng: this.requestAddress.geometry.location.lng()
+          };
+          this.request.description = this.description;
+          sendRequest(this.request, resolve, reject);
+          this.$emit('addMarker', this.request);
+        }).then(
+          response => {
+            this.sendLoadingTriggerAnimation = false;
+            this.uploadFormTriggerIf = false;
+            this.successMessage = true;
+            this.$emit('clearPosition');
+            },
+          error => {
+            this.sendLoadingTriggerAnimation = false;
+            console.log(error.response);
+            this.sendError = {
+              boolean: true,
+              text: error.response || "Unknown error occured",
+            };
+            setTimeout(() => {
+              this.sendError = null;
+            }, 3000);
+          }
+        );
       },
 
       processSketch() {
-        this.sketch.description = this.description;
-        // console.log('workload id:', this.workloadId);
-        sendSketch(this.sketch, this.workloadId);
-        // this.$emit('clearPosition');
+        return new Promise((resolve, reject) => {
+          this.sendLoadingTriggerAnimation = true;
+          this.sketch.description = this.description;
+          sendSketch(this.sketch, this.workloadId, resolve, reject);
+        }).then(
+          response => {
+            this.sendLoadingTriggerAnimation = false;
+            this.uploadFormTriggerIf = false;
+            this.successMessage = true;
+            this.$emit('clearPosition');
+          },
+          error => {
+            this.sendLoadingTriggerAnimation = false;
+            console.log(error.response);
+            this.sendError = {
+              boolean: true,
+              text: error.response || "Unknown error occured",
+            };
+            setTimeout(() => {
+              this.sendError = null
+            }, 3000);
+          }
+        );
       },
 
       chooseProcess() {
@@ -198,15 +216,10 @@
           } else if (this.type === 'sketch') {
             this.sketch.images.push(file);
           }
-          this.computePhotoPreviewShow();
         } else {
           preview.src = '';
         }
       },
-
-      computePhotoPreviewShow() {
-        this.previewPhotoTriggerShow = this.sketch.images.length !== 0 || this.request.images.length !== 0;
-      }
     },
   }
 </script>

@@ -11,10 +11,10 @@ const API_URL = 'https://anyart.pythonanywhere.com';
 //   headers: {'Authorization': 'Bearer ' + token}
 // };
 
-export function sendSketch(sketch, workloadUrl) {
+export function sendSketch(sketch, workloadUrl, resolve, reject) {
   var token = store.getters.getUserToken;
   var config = {
-    headers: {'Authorization': 'Bearer ' + token}
+    headers: {'Authorization': 'Bearer а' + token}
   };
   console.log('sketch itself: ', sketch);
   var bodyFormData = new FormData();
@@ -28,12 +28,11 @@ export function sendSketch(sketch, workloadUrl) {
   axios.post(url, bodyFormData, config)
     .then(response => {
       console.log('post sketch success', response);
-      // getLastSketch(url, response.data.id);
-      eventBus.$emit('sendSuccess');
+      resolve();
     })
     .catch(err => {
       console.log('post sketch ERROR: ', err.response);
-      eventBus.$emit('sendSketchError', err);
+      reject(err);
     });
 }
 
