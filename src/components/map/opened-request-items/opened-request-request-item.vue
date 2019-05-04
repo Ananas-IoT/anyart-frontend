@@ -10,7 +10,7 @@
 
         <div class="opened-request-item__add-info">
           <div class="opened-request-item__add-info__status">Status: status</div>
-          <div class="opened-request-item__add-info__date">01.01.1974</div>
+          <div class="opened-request-item__add-info__date">{{this.request.date}}</div>
           <v-btn
             class="opened-request-item__btn"
             v-if="userRights === 'artist'"
@@ -22,7 +22,7 @@
 
 
       <div class="opened-request-item__text">
-        <div class="opened-request-item__text-owner">owner: Owner</div>
+        <div class="opened-request-item__text-owner">owner: {{this.request.owner.username}}</div>
         <p class="opened-request-item__text-description">{{this.request.description}} </p>
       </div>
       <!--<button class="request-list-item__btn" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch-->
@@ -47,9 +47,12 @@
         isArtist: false
       }
     },
+    created() {
+      this.request.date = new Date(this.request.created_at).toLocaleDateString();
+    },
     mounted() {
 
-      },
+    },
     methods: {
       //trigger common-form on Map component
       uploadSketch() {
@@ -61,7 +64,7 @@
         eventBus.$emit('openImage', this.request.wall_photos[0]);
       }
     }
-  }
+  };
 </script>
 
 <style scoped>

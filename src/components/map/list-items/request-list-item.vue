@@ -17,7 +17,7 @@
         <div class="request-list-item__add-info">
           <div class="request-list-item__add-info__status">Status: status</div>
           <div class="request-list-item__add-info__sketches">6</div>
-          <div class="request-list-item__add-info__date">01.01.1974</div>
+          <div class="request-list-item__add-info__date">{{this.request.date}}</div>
         </div>
       </v-card-text>
     </v-card>
@@ -36,6 +36,9 @@
       return {
         isArtist: true
       }
+    },
+    created(){
+      this.request.date = new Date(this.request.created_at).toLocaleDateString();
     },
     mounted() {
       this.setRandomColor();
