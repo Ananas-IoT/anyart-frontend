@@ -44,4 +44,33 @@
     max-width: 90vw;
     max-height: 90vh;
   }
+
+  /*==========  Desktop First Method  ==========*/
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width : 1200px) {
+    .opened-img__img {
+      min-width: 60vw;
+    }
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width : 992px) {
+    .opened-img__img {
+      min-width: 70vw;
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+    .opened-img__img {
+      min-width: 80vw;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 480px) {
+    .opened-img__img {
+      min-width: 90vw;
+    }
+  }
 </style>

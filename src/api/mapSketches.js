@@ -55,22 +55,35 @@ export function getSketchesById(workload, callback) {
     });
 }
 
-export function voteForSketch(sketchId, resolve, reject) {
+export function voteForSketch(sketchId, voteId, resolve, reject) {
   var token = store.getters.getUserToken;
   var config = {
     headers: {'Authorization': 'Bearer ' + token}
   };
-  const url = `${API_URL}/approval/sketches/` + sketchId + `/votes/`;
-  let data = {vote: 1};
-  axios.post(url, data, config)
-    .then(response => {
-      console.log(response);
-      resolve();
-    })
-    .catch(error => {
-      console.log(error.response);
-      reject();
-    });
+  var url = `${API_URL}/approval/sketches/` + sketchId + `/votes/`;
+  if(voteId) {
+    url += voteId;
+    axios.delete(url, config)
+      .then(response => {
+        console.log(response);
+        resolve();
+      })
+      .catch(error => {
+        console.log(error.response);
+        reject();
+      });
+  } else {
+    let data = {vote: 1};
+    axios.post(url, data, config)
+      .then(response => {
+        console.log(response);
+        resolve();
+      })
+      .catch(error => {
+        console.log(error.response);
+        reject();
+      });
+  }
 }
 
 function getLastSketch(workloadUrl, sketch_id) {

@@ -256,7 +256,7 @@
 
     .gallery-section__pic-link {
       padding: 10px 15px;
-      font-size: 22px;
+      font-size: 18px;
     }
   }
 </style>
