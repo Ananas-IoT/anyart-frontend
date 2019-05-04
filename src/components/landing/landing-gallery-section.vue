@@ -178,11 +178,13 @@
 
   .gallery-section__pic-link:before {
     content: '';
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
     background: #fff;
     transform: translateY(-100%);
     transition: 0.3s;

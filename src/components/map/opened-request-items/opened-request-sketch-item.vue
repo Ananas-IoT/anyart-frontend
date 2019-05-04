@@ -23,7 +23,7 @@
           <v-btn
             class="sketch-tab-item__vote-btn"
             v-bind:class="{voted:isVoted}"
-            loading=voteLoadingAnimation
+            :loading = voteLoadingAnimation
             @click="vote()"
           >23 votes
           </v-btn>
@@ -46,7 +46,7 @@
       return {
         user: null,
         isVoted: true,
-        voteLoadingAnimation: false
+        voteLoadingAnimation: true
       }
     },
     mounted() {

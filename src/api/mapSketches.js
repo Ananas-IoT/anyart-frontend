@@ -23,7 +23,7 @@ export function sendSketch(sketch, workloadUrl) {
   const config = {
     headers: {
       'Content-Type': 'multipart/form-data',
-      'Authorization': 'Bearer' + token
+      'Authorization': 'Bearer ' + token
     }
   };
   var url = workloadUrl + 'sketches/';

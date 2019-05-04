@@ -81,6 +81,10 @@
             class="requestDrawer"
             v-model="requestDrawerTriggerIf"
             :width="computeDrawerWidth"
+            v-touch="{
+              left: () => toggleRequestDrawer(),
+              right: () => toggleRequestDrawer()
+            }"
             absolute
             clipped
             app
@@ -212,7 +216,7 @@
     },
     computed: {
       computeDrawerWidth() {
-        if(this.window.width >= 768) {
+        if (this.window.width >= 768) {
           return 550;
         } else {
           return this.window.width;
@@ -288,7 +292,7 @@
       //to RequestList
       openRequest() {
         eventBus.$emit('openRequest', this.infoWindow.openedRequest, this.infoWindow.openedRequestIndex);
-        if(!this.requestDrawerTriggerIf) {
+        if (!this.requestDrawerTriggerIf) {
           this.toggleRequestDrawer();
         }
       },
@@ -432,7 +436,7 @@
 
   /*==========  Desktop First Method  ==========*/
   /* Small Devices, Tablets */
-  @media only screen and (max-width : 768px) {
+  @media only screen and (max-width: 768px) {
     .map__search-form {
       position: absolute;
       top: 32px;
@@ -453,7 +457,22 @@
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width : 480px) {
+  @media only screen and (max-width: 480px) {
+    .map__search-form {
+      position: absolute;
+      top: 32px;
+      left: 10%;
+      right: 10%;
+      /*transform: translateX(-50%);*/
+      z-index: 50;
+    }
 
+    .map__search-form-input {
+      
+    }
+
+    .map__search-form-button {
+
+    }
   }
 </style>

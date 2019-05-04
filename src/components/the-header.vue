@@ -315,8 +315,8 @@
   /* Large Devices, Wide Screens */
   @media only screen and (max-width: 1200px) {
     .nav__item a {
-      width: 103px;
-      font-size: 16px;
+      width: 96px;
+      font-size: 15px;
     }
   }
 
