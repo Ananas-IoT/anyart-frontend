@@ -61,12 +61,15 @@
     >
       <v-card>
         <v-card-title class="upload-form__success-message__title">Information!</v-card-title>
-        <v-card-text class="upload-form__success-message__text">Your {{this.type}} was successfully sent! We inform you that before appear on the map, your {{type}} should be approved! <br>
-          If something will go wrong, we will inform you.</v-card-text>
+        <v-card-text class="upload-form__success-message__text">Your {{this.type}} was successfully sent! We inform you
+          that before appear on the map, your {{type}} should be approved! <br>
+          If something will go wrong, we will inform you.
+        </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="green" flat @click="successMessage = false">Ok, I understood</v-btn>
+            color="green" flat @click="successMessage = false">Ok, I understood
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -79,9 +82,7 @@
 
   export default {
     name: "UploadForm",
-    components: {
-
-    },
+    components: {},
     props: {
       //Request or Sketch form
       type: {
@@ -135,29 +136,30 @@
     },
     methods: {
       openUploadForm() {
+        Object.assign(this.$data, this.resetData());
         this.uploadFormTriggerIf = true;
       },
 
       processRequest() {
         return new Promise((resolve, reject) => {
           this.sendLoadingTriggerAnimation = true;
+
           this.request.position = {
             lat: this.requestAddress.geometry.location.lat(),
             lng: this.requestAddress.geometry.location.lng()
           };
           this.request.description = this.description;
           sendRequest(this.request, resolve, reject);
-          this.$emit('addMarker', this.request);
         }).then(
           response => {
             this.sendLoadingTriggerAnimation = false;
             this.uploadFormTriggerIf = false;
             this.successMessage = true;
             this.$emit('clearPosition');
-            },
+          },
           error => {
             this.sendLoadingTriggerAnimation = false;
-            console.log(error.response);
+
             this.sendError = {
               boolean: true,
               text: error.response || "Unknown error occured",
@@ -172,6 +174,7 @@
       processSketch() {
         return new Promise((resolve, reject) => {
           this.sendLoadingTriggerAnimation = true;
+
           this.sketch.description = this.description;
           sendSketch(this.sketch, this.workloadId, resolve, reject);
         }).then(
@@ -183,7 +186,7 @@
           },
           error => {
             this.sendLoadingTriggerAnimation = false;
-            console.log(error.response);
+
             this.sendError = {
               boolean: true,
               text: error.response || "Unknown error occured",
@@ -219,6 +222,20 @@
           preview.src = '';
         }
       },
+      resetData() {
+        return {
+          request: {
+            images: []
+          },
+          sketch: {
+            images: []
+          },
+          description: '',
+          uploadFormTriggerIf: false,
+          sendLoadingTriggerAnimation: false,
+          validation: false,
+        }
+      }
     },
   }
 </script>

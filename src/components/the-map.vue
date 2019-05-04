@@ -10,7 +10,6 @@
         :type=this.currentFormType
         :requestAddress=this.currentPlace
         :workloadId=this.propWorkloadId
-        v-on:addMarker="addMarker"
         v-on:clearPosition="clearPosition"
         v-bind:class="{opened: openedFormTriggerClass}">
       </upload-form>
@@ -129,7 +128,7 @@
 
         openedFormTriggerClass: false,
         currentFormType: 'request',
-        uploadFormTriggerIf: true,
+        // uploadFormTriggerIf: true,
 
         mapSearchFormTriggerShow: false,
 
@@ -234,12 +233,6 @@
         this.currentPlace = place;
       },
 
-      //gets location from RequestTemplate, draws marker there
-      addMarker(reqToAdd) {
-        this.openedFormTriggerClass = true;
-        // this.requests.push(reqToAdd);
-      },
-
       //get user location
       geolocate() {
         navigator.geolocation.getCurrentPosition(position => {
@@ -252,8 +245,8 @@
 
       //clears current place field, when request is completed (to destroy ReqTemplate component)
       clearPosition() {
-        this.currentPlace = false;
-        this.uploadFormTriggerIf = true;
+        this.currentPlace.formatted_address = '';
+        // this.uploadFormTriggerIf = true;
       },
       toggleRequestDrawer() {
         this.mapSearchFormTriggerShow = this.requestDrawerTriggerIf;
@@ -296,6 +289,7 @@
           this.toggleRequestDrawer();
         }
       },
+
 
       //window width
       handleResize() {

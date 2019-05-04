@@ -1,6 +1,5 @@
 import axios from 'axios';
 import store from '../store/store'
-import eventBus from '../eventBus'
 
 
 const API_URL = 'https://anyart.pythonanywhere.com';
