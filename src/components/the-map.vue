@@ -311,23 +311,16 @@
   .requestDrawerToggler {
     position: absolute;
     top: 30%;
-    right: -20px;
+    right: -50px;
     width: 40px;
     height: 40px;
+    /*padding-left: 40px;*/
     background: #fff;
     /*border: 0.1px solid #424242;*/
     border-radius: 50%;
     transition: 0.3s;
     cursor: pointer;
     z-index: -1;
-  }
-
-  .requestDrawerToggler:hover:before {
-    transform: translate(-10%, -50%) rotate(0);
-  }
-
-  .requestDrawerToggler.requestDrawerToggler__closed:hover:before {
-    transform: translate(-10%, -50%) rotate(180deg);
   }
 
   .requestDrawerToggler:before {
@@ -343,8 +336,30 @@
     transition: 0.3s;
   }
 
+  .requestDrawerToggler:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40px;
+    bottom: 0;
+    width: 60px;
+    /*height: 40px;*/
+    background: #fff;
+    /*transform: translate(-10%, -50%) rotate(180deg);*/
+    transition: 0.3s;
+    z-index: -1;
+  }
+
   .requestDrawerToggler.requestDrawerToggler__closed:before {
     transform: translate(-10%, -50%) rotate(0);
+  }
+
+  .requestDrawerToggler:hover:before {
+    transform: translate(-10%, -50%) rotate(0);
+  }
+
+  .requestDrawerToggler.requestDrawerToggler__closed:hover:before {
+    transform: translate(-10%, -50%) rotate(180deg);
   }
 
   .map-body {

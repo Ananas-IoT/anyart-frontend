@@ -3,12 +3,13 @@ import store from '../store/store'
 
 
 const API_URL = 'https://anyart.pythonanywhere.com';
+
 // const API_URL = 'http://35.234.78.240';
 
 
 function createConfigWithToken() {
   let token = store.getters.getUserToken;
-  return {
+  if (token) return {
     headers: {'Authorization': 'Bearer ' + token}
   };
 }
@@ -40,9 +41,9 @@ export function getSketchesById(workload, callback) {
 
   const url = workload + `sketches/`;
   console.log('getSketchesById url:', url);
-  axios.get(url)
+  axios.get(url, config)
     .then(response => {
-      // console.log('getSketchesById:', response.data.results);
+      console.log('getSketchesById:', response.data.results);
       callback(response.data.results);
     })
     .catch(err => {
@@ -55,7 +56,7 @@ export function voteForSketch(sketchId, voteId, resolve, reject) {
   let config = createConfigWithToken();
 
   let url = `${API_URL}/approval/sketches/` + sketchId + `/votes/`;
-  if(voteId) {
+  if (voteId) {
     url += voteId;
     axios.delete(url, config)
       .then(response => {
