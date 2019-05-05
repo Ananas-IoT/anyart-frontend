@@ -69,6 +69,7 @@
           this.voteLoadingTriggerAnimation = true;
         }).then(
           response => {
+            this.sketch.vote_id = response;
             this.isVoted = !this.isVoted;
             this.isVoted ? this.sketch.sketch_votes++ : this.sketch.sketch_votes--;
             this.voteLoadingTriggerAnimation = false;

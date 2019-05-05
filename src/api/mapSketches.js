@@ -60,8 +60,8 @@ export function voteForSketch(sketchId, voteId, resolve, reject) {
     url += voteId;
     axios.delete(url, config)
       .then(response => {
-        console.log(response);
-        resolve();
+        // console.log(response);
+        resolve(0);
       })
       .catch(error => {
         console.log(error.response);
@@ -72,7 +72,7 @@ export function voteForSketch(sketchId, voteId, resolve, reject) {
     axios.post(url, data, config)
       .then(response => {
         console.log(response);
-        resolve();
+        resolve(response.data.id);
       })
       .catch(error => {
         console.log(error.response);
