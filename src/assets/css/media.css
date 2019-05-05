@@ -12,20 +12,17 @@
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-	h2 {
-    font-size: 36px;
-  }
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 576px) {
+
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
-  section {
-    padding: 40px 0;
-  }
 
-  h2 {
-    font-size: 32px;
-  }
 }
 
 

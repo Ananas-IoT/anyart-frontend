@@ -23,7 +23,8 @@
             <div class="map__search-form">
               <label>
                 <!-- it's map search form-->
-                <v-form v-show="mapSearchFormTriggerShow && isAuthenticated && !requestDrawerTriggerIf">
+                <!--<v-form v-show="mapSearchFormTriggerShow && isAuthenticated && !requestDrawerTriggerIf">-->
+                <v-form v-show="mapSearchFormTriggerShow && isAuthenticated">
                   <v-text-field
                     class="map__search-form-input"
                     v-model="currentPlace.formatted_address"
@@ -130,7 +131,7 @@
         currentFormType: 'request',
         // uploadFormTriggerIf: true,
 
-        mapSearchFormTriggerShow: false,
+        mapSearchFormTriggerShow: true,
 
         //prop goes to Upload Form, for POST sketch request
         propWorkloadId: null,
@@ -167,13 +168,18 @@
       };
     },
     mounted() {
-
+      // console.log(this.window.width);
+      // console.log(window.innerWidth);
+      if (this.window.width <= 576) {
+        // console.log(this.window.width);
+        this.toggleRequestDrawer();
+      }
     },
+
     created() {
       //get resolution on start
       window.addEventListener('resize', this.handleResize);
       this.handleResize();
-
       //hide search form if user isn't authenticated
       this.isAuthenticated = this.$store.getters.isAuthenticated;
 
@@ -249,7 +255,7 @@
         // this.uploadFormTriggerIf = true;
       },
       toggleRequestDrawer() {
-        this.mapSearchFormTriggerShow = this.requestDrawerTriggerIf;
+        if(this.window.width <= 576) this.mapSearchFormTriggerShow = this.requestDrawerTriggerIf;
         this.requestDrawerTriggerIf = !this.requestDrawerTriggerIf;
         this.infoWindow.open = false;
       },
@@ -476,6 +482,29 @@
 
   /* Extra Small Devices, Phones */
   @media only screen and (max-width: 576px) {
+
+    .map__search-form {
+      position: absolute;
+      top: 32px;
+      right: 5px;
+      left: 5px;
+      /*width: 100%;*/
+      z-index: 50;
+    }
+
+    .map__search-form-input {
+      width: calc(100% - 72px);
+    }
+
+    .map__search-form .map__search-form-input .v-input__control {
+      min-height: 36px;
+    }
+
+    .map__search-form-button {
+      min-width: 60px;
+      height: 36px;
+    }
+
     .requestDrawerToggler {
       top: 140px;
       right: -60px;

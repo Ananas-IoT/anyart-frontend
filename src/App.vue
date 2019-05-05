@@ -50,6 +50,7 @@
   @import './../node_modules/bootstrap/dist/css/bootstrap-grid.css';
   @import "./assets/css/fonts.css";
   @import "./assets/css/main.css";
+  @import "./assets/css/media.css";
 
   .app__small-resolution {
     position: fixed;
