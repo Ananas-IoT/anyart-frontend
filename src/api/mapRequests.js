@@ -37,17 +37,17 @@ export function sendRequest(request, resolve, reject) {
     });
 }
 
-export function getAllRequests() {
-
-  const url = `${API_URL}/workload/wall_photo_wrappers/`;
+export function getAllRequests(next) {
+  var url;
+  if(next) url = next;
+  else url = `${API_URL}/workload/wall_photo_wrappers/`;
   axios.get(url)
     .then(response => {
-      // response.data.sort(function (a, b) {
-      //  
-      // });
-      for (let i = 0; i < response.data.count; i++) {
-        store.dispatch('addRequest', response.data.results[i]);
-      }
+      console.log(response.data);
+      response.data.results.forEach(function (item, idx) {
+        store.dispatch('addRequest', item);
+      });
+      if(response.data.next) getAllRequests(response.data.next);
     })
     .catch(err => {
       console.log(err.data);

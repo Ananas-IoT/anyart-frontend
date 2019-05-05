@@ -42,7 +42,7 @@ export function getSketchesById(workload, callback) {
   console.log('getSketchesById url:', url);
   axios.get(url)
     .then(response => {
-      console.log('getSketchesById:', response.data.results);
+      // console.log('getSketchesById:', response.data.results);
       callback(response.data.results);
     })
     .catch(err => {
