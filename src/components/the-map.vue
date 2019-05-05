@@ -168,12 +168,7 @@
       };
     },
     mounted() {
-      // console.log(this.window.width);
-      // console.log(window.innerWidth);
-      if (this.window.width <= 576) {
-        // console.log(this.window.width);
-        this.toggleRequestDrawer();
-      }
+      setTimeout(() => {if (this.window.width <= 576) this.toggleRequestDrawer()}, 400);
     },
 
     created() {
@@ -506,7 +501,7 @@
     }
 
     .requestDrawerToggler {
-      top: 140px;
+      top: 120px;
       right: -60px;
       width: 40px;
       height: 40px;
@@ -521,7 +516,7 @@
     }
 
     .requestDrawerToggler:after {
-      left: -25px;
+      left: -23px;
       width: 40px;
     }
 
