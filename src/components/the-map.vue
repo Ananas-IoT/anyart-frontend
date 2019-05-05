@@ -312,11 +312,9 @@
     position: absolute;
     top: 30%;
     right: -50px;
-    width: 40px;
-    height: 40px;
-    /*padding-left: 40px;*/
-    background: #fff;
-    /*border: 0.1px solid #424242;*/
+    width: 30px;
+    height: 30px;
+    background: #f598a9;
     border-radius: 50%;
     transition: 0.3s;
     cursor: pointer;
@@ -332,7 +330,7 @@
     height: 16px;
     background: url("../assets/img/arrow_left.png") no-repeat center center;
     background-size: contain;
-    transform: translate(-10%, -50%) rotate(180deg);
+    transform: translate(-50%, -50%) rotate(180deg);
     transition: 0.3s;
   }
 
@@ -340,26 +338,37 @@
     content: '';
     position: absolute;
     top: 0;
-    left: -40px;
+    left: -45px;
     bottom: 0;
     width: 60px;
-    /*height: 40px;*/
-    background: #fff;
+    background: #f598a9;
     /*transform: translate(-10%, -50%) rotate(180deg);*/
     transition: 0.3s;
     z-index: -1;
   }
 
+  .requestDrawerToggler:hover {
+    transform: translateX(-15px);
+  }
+
+  .requestDrawerToggler.requestDrawerToggler__closed {
+    transform: translateX(-15px);
+  }
+
+  .requestDrawerToggler.requestDrawerToggler__closed:hover {
+    transform: translateX(0);
+  }
+
   .requestDrawerToggler.requestDrawerToggler__closed:before {
-    transform: translate(-10%, -50%) rotate(0);
+    transform: translate(-50%, -50%) rotate(0);
   }
 
   .requestDrawerToggler:hover:before {
-    transform: translate(-10%, -50%) rotate(0);
+    transform: translate(-50%, -50%) rotate(0);
   }
 
   .requestDrawerToggler.requestDrawerToggler__closed:hover:before {
-    transform: translate(-10%, -50%) rotate(180deg);
+    transform: translate(-50%, -50%) rotate(180deg);
   }
 
   .map-body {
@@ -466,22 +475,45 @@
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width: 480px) {
-    .map__search-form {
-      position: absolute;
-      top: 32px;
-      left: 10%;
-      right: 10%;
-      /*transform: translateX(-50%);*/
-      z-index: 50;
+  @media only screen and (max-width: 576px) {
+    .requestDrawerToggler {
+      top: 140px;
+      right: -60px;
+      width: 40px;
+      height: 40px;
+      transform: scale(-1, 1) translateX(84px);
+      z-index: 10;
     }
 
-    .map__search-form-input {
-
+    .requestDrawerToggler:before {
+      width: 16px;
+      height: 16px;
+      transform: translate(-50%, -50%) rotate(0);
     }
 
-    .map__search-form-button {
+    .requestDrawerToggler:after {
+      left: -25px;
+      width: 40px;
+    }
 
+    .requestDrawerToggler:hover {
+      transform: scale(-1, 1) translateX(84px);
+    }
+
+    .requestDrawerToggler.requestDrawerToggler__closed {
+      transform: scale(1, 1) translateX(-10px)!important;
+    }
+
+    .requestDrawerToggler.requestDrawerToggler__closed:before {
+      transform: translate(-50%, -50%) rotate(0);
+    }
+
+    .requestDrawerToggler:hover:before {
+      transform: translate(-50%, -50%) rotate(0);
+    }
+
+    .requestDrawerToggler.requestDrawerToggler__closed:hover:before {
+      transform: translate(-50%, -50%) rotate(0);
     }
   }
 </style>

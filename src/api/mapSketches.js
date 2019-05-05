@@ -71,7 +71,7 @@ export function voteForSketch(sketchId, voteId, resolve, reject) {
     let data = {vote: 1};
     axios.post(url, data, config)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         resolve(response.data.id);
       })
       .catch(error => {

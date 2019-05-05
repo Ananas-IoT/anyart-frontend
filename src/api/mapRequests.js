@@ -43,7 +43,7 @@ export function getAllRequests(next) {
   else url = `${API_URL}/workload/wall_photo_wrappers/`;
   axios.get(url)
     .then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       response.data.results.forEach(function (item, idx) {
         store.dispatch('addRequest', item);
       });

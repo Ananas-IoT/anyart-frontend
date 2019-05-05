@@ -16,7 +16,7 @@
 
         <div class="request-list-item__add-info">
           <div class="request-list-item__add-info__status">Status: status</div>
-          <div class="request-list-item__add-info__sketches">6</div>
+          <div class="request-list-item__add-info__sketches">{{this.request.sketch_count}}</div>
           <div class="request-list-item__add-info__date">{{this.request.date}}</div>
         </div>
       </v-card-text>
