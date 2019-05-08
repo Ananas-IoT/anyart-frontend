@@ -38,7 +38,7 @@ export function sendSketch(sketch, workloadUrl, resolve, reject) {
 
 export function getSketchesById(workload, callback) {
   let config = createConfigWithToken();
-
+  // console.log('getSketchesById config:', config);
   const url = workload + `sketches/`;
   console.log('getSketchesById url:', url);
   axios.get(url, config)

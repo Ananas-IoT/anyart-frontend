@@ -39,7 +39,7 @@
                 </v-form>
               </v-card>
               <v-card class="contact-us-section__email-wrap elevation-6">
-                <v-card-text>Або напишіть нам напряму: <a class="contact-us-section__email-link" href="mailto: nsblnr@gmail.com">nsblnr@gmail.com</a></v-card-text>
+                <v-card-text>Або напишіть нам напряму: <a class="contact-us-section__email-link" href="mailto: ananas-iot@gmail.com">ananas-iot@gmail.com</a></v-card-text>
               </v-card>
             </div>
           </div>

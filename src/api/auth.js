@@ -102,5 +102,10 @@ function refreshToken(refresh) {
       getUserByToken(response.data.access);
     }).catch(error => {
     console.log('refresh token ERROR', error.response);
+
+    localStorage.removeItem('user-token');
+    localStorage.removeItem('token-refresh');
+    // store.dispatch('setUserToken', token);
+
   });
 }
