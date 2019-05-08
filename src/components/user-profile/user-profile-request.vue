@@ -3,7 +3,7 @@
     <v-card class="user-request-item">
 
       <div class="user-request-item__actions">
-        <v-btn color="primary" to="/map" class="user-request-item__actions__btn">to map</v-btn>
+        <v-btn color="primary" @click="openRequest" class="user-request-item__actions__btn">to map</v-btn>
         <v-btn color="default" @click="deleteRequest" class="user-request-item__actions__btn">delete</v-btn>
       </div>
 
@@ -64,7 +64,7 @@
       },
 
       openRequest() {
-        this.$router.push('/map');
+        this.$router.push({name: "openRequest", params: {requestIdx: this.index}});
       }
     }
   }

@@ -40,7 +40,7 @@ export function getSketchesById(workload, callback) {
   let config = createConfigWithToken();
   // console.log('getSketchesById config:', config);
   const url = workload + `sketches/`;
-  console.log('getSketchesById url:', url);
+  // console.log('getSketchesById url:', url);
   axios.get(url, config)
     .then(response => {
       console.log('getSketchesById:', response.data.results);

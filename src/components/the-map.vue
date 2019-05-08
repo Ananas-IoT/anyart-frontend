@@ -19,6 +19,26 @@
 
           <user-header></user-header>
 
+
+          <v-navigation-drawer
+            class="requestDrawer"
+            v-model="requestDrawerTriggerIf"
+            :width="computeDrawerWidth"
+            v-touch="{
+              left: () => toggleRequestDrawer(),
+              right: () => toggleRequestDrawer()
+            }"
+            absolute
+            clipped
+            app
+          >
+            <request-list class="map__request-list custom-scrollbar"></request-list>
+
+
+            <div class="requestDrawerToggler" @click="toggleRequestDrawer"
+                 v-bind:class="{'requestDrawerToggler__closed': !requestDrawerTriggerIf}"></div>
+          </v-navigation-drawer>
+
           <div class="col-12">
             <div class="map__search-form">
               <label>
@@ -75,28 +95,6 @@
               </gmap-info-window>
             </gmap-map>
           </div>
-
-
-          <v-navigation-drawer
-            class="requestDrawer"
-            v-model="requestDrawerTriggerIf"
-            :width="computeDrawerWidth"
-            v-touch="{
-              left: () => toggleRequestDrawer(),
-              right: () => toggleRequestDrawer()
-            }"
-            absolute
-            clipped
-            app
-          >
-            <request-list class="map__request-list custom-scrollbar"
-                          :requestList=this.requestList
-            ></request-list>
-
-
-            <div class="requestDrawerToggler" @click="toggleRequestDrawer"
-                 v-bind:class="{'requestDrawerToggler__closed': !requestDrawerTriggerIf}"></div>
-          </v-navigation-drawer>
         </div>
       </div>
     </div>
@@ -122,28 +120,21 @@
     data() {
       return {
         mapCenter: {lat: 49.85, lng: 24.0166666667},
-        requestList: [],
 
         //place on map search form
         currentPlace: {},
 
         openedFormTriggerClass: false,
         currentFormType: 'request',
-        // uploadFormTriggerIf: true,
 
         mapSearchFormTriggerShow: true,
 
         //prop goes to Upload Form, for POST sketch request
         propWorkloadId: null,
 
-        //sends item index in request list to request tab
-        // delete after rework
-        openRequestTab: false,
-        indexToOpenedReq: null,
         requestDrawerTriggerIf: true,
 
         addressValidation: false,
-        markerHoverRequest: null,
 
         infoWindow: {
           position: {lat: 0, lng: 0},
@@ -199,7 +190,6 @@
 
       //from RequestListItem
       eventBus.$on('uploadSketch', (workloadId) => {
-        // this.uploadFormTriggerIf = true;
         this.createForm();
         this.currentFormType = 'sketch';
         this.propWorkloadId = workloadId;
@@ -229,31 +219,17 @@
         this.$refs.openUploadForm.openUploadForm();
       },
 
-      // receives a place object via the autocomplete component
-      setPlace(place) {
-        this.currentPlace = place;
-      },
-
-      //get user location
-      geolocate() {
-        navigator.geolocation.getCurrentPosition(position => {
-          this.mapCenter = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-        });
-      },
-
-      //clears current place field, when request is completed (to destroy ReqTemplate component)
+      //clears current place field, when request is completed
       clearPosition() {
         this.currentPlace.formatted_address = '';
-        // this.uploadFormTriggerIf = true;
       },
+
       toggleRequestDrawer() {
         if(this.window.width <= 576) this.mapSearchFormTriggerShow = this.requestDrawerTriggerIf;
         this.requestDrawerTriggerIf = !this.requestDrawerTriggerIf;
         this.infoWindow.open = false;
       },
+
       computeStatusMarkerIcon(req) {
         req.status = 1;
         switch (req.status) {
@@ -262,6 +238,7 @@
           }
         }
       },
+
       openInfoWindow(marker, index) {
         this.infoWindow.template =
           '<div class="map__info-window__txt-wrap">' +
@@ -278,19 +255,13 @@
 
       },
 
-      closeInfoWindow() {
-        alert('mouse leave');
-        this.infoWindow.open = false;
-      },
-
       //to RequestList
       openRequest() {
-        eventBus.$emit('openRequest', this.infoWindow.openedRequest, this.infoWindow.openedRequestIndex);
+        this.$router.push({name: "openRequest", params: {requestIdx: this.infoWindow.openedRequestIndex}});
         if (!this.requestDrawerTriggerIf) {
           this.toggleRequestDrawer();
         }
       },
-
 
       //window width
       handleResize() {

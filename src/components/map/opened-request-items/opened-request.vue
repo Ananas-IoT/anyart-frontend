@@ -44,18 +44,18 @@
       'request-item': RequestItem,
       'sketch-item': SketchItem
     },
-    props: {
-      index: Number
-    },
+    props: {},
     data() {
       return {
         request: null,
         sketchList: [],
-        user: null
+        user: null,
+        index: this.$route.params.requestIdx
       }
     },
     watch: {
-      index: function (newVal, oldVal) {
+      '$route.params.requestIdx': function () {
+        this.index = this.$route.params.requestIdx;
         this.loadRequestandSketches();
       }
     },
@@ -63,20 +63,18 @@
       this.user = this.$store.getters.getUser;
       this.loadRequestandSketches();
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       //to RequestList component
       closeRequest() {
-        eventBus.$emit('closeRequest');
+        this.$router.push("/map");
       },
 
       loadRequestandSketches() {
         //get all requests from store
         var requestList = this.$store.getters.getAllRequests;
         //get current request from list
-        this.request = requestList[this.index];
+        this.request = requestList[+this.index];
 
         // gets all sketches
         let callback = (sketchList) => {this.sketchList = sketchList};

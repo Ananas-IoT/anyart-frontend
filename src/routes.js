@@ -1,4 +1,3 @@
-
 import LandingPage from './components/the-landing-page'
 import Map from './components/the-map'
 import Auth from './components/auth/the-auth'
@@ -9,10 +8,22 @@ import UserProfile from './components/user-profile/user-profile'
 
 export default [
 
-  {path:'/', component: LandingPage},
-  {path:'/map', component: Map},
+  {path: '/', component: LandingPage},
+  {
+    path: '/map',
+    name: 'map',
+    component: Map,
+    children: [
+      {
+        path: 'request=:requestIdx',
+        name: 'openRequest',
+        component: Map
+      },
+    ]
+  },
   {path: '/user', component: UserProfile},
-  {path:'/auth', component: Auth, children: [
+  {
+    path: '/auth', component: Auth, children: [
       {
         path: 'register', component: Register
       },
@@ -22,5 +33,6 @@ export default [
       {
         path: 'government', component: RegisterGovernment
       }
-    ]}
+    ]
+  }
 ]

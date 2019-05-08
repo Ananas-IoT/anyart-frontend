@@ -7,6 +7,10 @@ const getters = {
   getAllRequests(state) {
     return state.requestList;
   },
+  getRequestById(state, id) {
+    console.log(state.requestList);
+    return state.requestList.find(item => id === item.id);
+  },
   getAllSketches(state) {
     return state.sketchList;
   },

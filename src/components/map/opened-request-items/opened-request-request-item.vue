@@ -25,8 +25,6 @@
         <div class="opened-request-item__text-owner">owner: {{this.request.owner.username}}</div>
         <p class="opened-request-item__text-description">{{this.request.description}} </p>
       </div>
-      <!--<button class="request-list-item__btn" v-if="isArtist" type="button" @click.stop="uploadSketch">Upload sketch-->
-      <!--</button>-->
     </div>
   </v-app>
 </template>
@@ -38,12 +36,12 @@
     name: "OpenedRequestItem",
     props: {
       request: Object,
-      index: Number,
       userRights: String,
       requestStyleColor: String
     },
     data() {
       return {
+        index: this.$route.params.requestIdx,
         isArtist: false
       }
     },

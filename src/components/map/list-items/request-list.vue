@@ -10,14 +10,13 @@
                       v-for="(loopedRequest, index) in requestList"
                       :request=loopedRequest
                       :key=index
-                      @click.native="openRequest(loopedRequest, index)"
+                      @click.native="openRequest(index)"
         >
         </request-item>
       </div>
       <div class="opened-request">
         <opened-request
           v-if="openedRequestTriggerShow"
-          :index=openedRequestIndex
         >
         </opened-request>
       </div>
@@ -42,13 +41,18 @@
       return {
         requestList: [],
         user: null,
-        requestIndex: null,
         openedRequestTriggerShow: false,
-        openedRequest: null,
-        openedRequestIndex: null
+      }
+    },
+    watch: {
+      '$route.params.requestIdx': function () {
+        if(this.$route.params.requestIdx === undefined) this.openedRequestTriggerShow = false;
+        else this.openedRequestTriggerShow = true;
       }
     },
     created() {
+      if(this.$route.params.requestIdx !== undefined) this.openedRequestTriggerShow = true;
+
       this.user = this.$store.getters.getUser;
       this.requestList = this.$store.getters.getAllRequests;
       if (this.requestList.length === 0) {
@@ -59,19 +63,10 @@
       eventBus.$on('closeRequest', () => {
         this.openedRequestTriggerShow = false;
       });
-
-      //from Map component
-      eventBus.$on('openRequest', (reqToOpen, reqIndex) => {
-        // this.openedRequestTriggerShow = false;
-        // console.log('openReq');
-        this.openRequest(reqToOpen, reqIndex);
-      });
     },
     methods: {
-      openRequest(request, index) {
-        this.openedRequest = request;
-        this.openedRequestIndex = index;
-        this.openedRequestTriggerShow = true;
+      openRequest(index) {
+        this.$router.push({name: "openRequest", params: {requestIdx: index}});
       },
     }
   }
