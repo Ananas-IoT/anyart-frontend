@@ -1,9 +1,13 @@
 <template>
   <v-app>
     <div class="how-to__workflow-item-wrap">
-      <v-card class="how-to__workflow-item elevation-8">
-        <v-card-text class="how-to__workflow-item__text-wrap elevation-5"><p class="how-to__workflow-item__text">
-          {{this.text}}</p></v-card-text>
+      <v-card class="how-to__workflow-item">
+        <v-card-title class="how-to__workflow-item__text__title">{{this.text.title}}</v-card-title>
+      </v-card>
+      <v-card class="how-to__workflow-item-text elevation-8">
+        <v-card-text class="how-to__workflow-item__text__body elevation-8">
+          {{this.text.body}}
+        </v-card-text>
       </v-card>
     </div>
   </v-app>
@@ -14,7 +18,7 @@
     name: "HowtoWorkflowItem",
     props: {
       text: {
-        type: String,
+        type: Object,
         required: true
       }
     }
@@ -23,17 +27,18 @@
 
 <style scoped>
 
+  .how-to__workflow-item-wrap {
+    background: #fff5f5;
+  }
+
   .how-to__workflow-item {
     display: inline-block;
     position: relative;
-    width: 360px;
-    min-height: 160px;
-    margin: 120px 0;
-    background: #eee;
-  }
-
-  .how-to__workflow-item__right {
-    text-align: right;
+    width: 300px;
+    min-height: 80px;
+    margin: 30px 0 40px 40px;
+    background: transparent;
+    box-shadow: none;
   }
 
   .how-to__workflow-item:before {
@@ -41,116 +46,108 @@
     position: absolute;
     top: 50%;
     right: 0;
-    width: 300px;
-    height: 300px;
-    background: url("../../../assets/img/how-to-section/how-to-workflow/new-black/camera.png");
+    width: 140px;
+    height: 140px;
+    /*width: 160px;*/
+    /*height: 160px;*/
+    background: url("../../../assets/img/how-to-section/howto-item1.png");
     background-size: contain;
-    transform: translate(400px, -65%);
+    transform: translate(160px, -57%);
   }
 
-  .how-to__workflow-item__right .how-to__workflow-item:before {
-    right: auto;
-    left: 0;
-    transform: translate(-400px, -65%);
-  }
-
-  .how-to__workflow-item__text-wrap {
-    text-align: center;
+  .how-to__workflow-item:after {
+    content: '1';
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: #FF7043;
-    transform: translate(-10px, -10px);
-  }
-
-  .how-to__workflow-item__right .how-to__workflow-item__text-wrap {
-    transform: translate(10px, -10px);
-  }
-
-  .how-to__workflow-item__text {
-    position: relative;
     top: 50%;
-    font-size: 24px;
+    right: 0;
+    font-size: 42px;
     font-family: "PT Sans Bold";
+    transform: translate(100px, -65%);
+  }
+
+  .how-to__workflow-item__text__title {
+    font-size: 26px;
+    /*font-family: "Helvetica ultralight";*/
+    font-family: "PT Sans Bold";
+    color: #FF7043;
+  }
+
+  .how-to__workflow-item-text {
+    float: right;
+    text-align: left;
+    width: 300px;
+    margin-top: 20px;
+    font-size: 14px;
+    background: #eee;
+  }
+
+  .how-to__workflow-item__text__body {
+    font-size: 16px;
     color: #fff;
-    transform: translateY(-50%);
+    background: #ff916f;
+    transform: translate(-10px, -15px);
   }
 
-  .application:nth-child(2) .how-to__workflow-item__text-wrap {
-    background: #FFCA28;
+  .application:nth-child(2) .how-to__workflow-item__text__title {
+    color: #FFCA28;
   }
 
-  .application:nth-child(3) .how-to__workflow-item__text-wrap {
-    background: #66BB6A;
+  .application:nth-child(3) .how-to__workflow-item__text__title {
+    color: #66BB6A;
   }
 
-  .application:nth-child(4) .how-to__workflow-item__text-wrap {
-    background: #29B6F6;
+  .application:nth-child(4) .how-to__workflow-item__text__title {
+    color: #29B6F6;
   }
 
-  .application:nth-child(5) .how-to__workflow-item__text-wrap {
-    background: #5C6BC0;
+  .application:nth-child(5) .how-to__workflow-item__text__title {
+    color: #5C6BC0;
   }
 
-  .application:nth-child(6) .how-to__workflow-item__text-wrap {
-    background: #EC407A;
+  .application:nth-child(6) .how-to__workflow-item__text__title {
+    color: #EC407A;
   }
 
-  /*.application:nth-child(2) .how-to__workflow-item:before {*/
-    /*background: url("../../../assets/img/how-to-section/how-to-workflow/new-black/libra1.png");*/
-    /*background-size: contain;*/
-  /*}*/
-
-  /*.application:nth-child(3) .how-to__workflow-item:before {*/
-    /*background: url("../../../assets/img/how-to-section/how-to-workflow/new-black/sketch.png");*/
-    /*background-size: contain;*/
-  /*}*/
-
-  /*.application:nth-child(4) .how-to__workflow-item:before {*/
-    /*background: url("../../../assets/img/how-to-section/how-to-workflow/new-black/libra1.png");*/
-    /*background-size: contain;*/
-  /*}*/
-
-  /*.application:nth-child(5) .how-to__workflow-item:before {*/
-    /*background: url("../../../assets/img/how-to-section/how-to-workflow/new-black/vote.png");*/
-    /*background-size: contain;*/
-  /*}*/
-
-  /*.application:nth-child(6) .how-to__workflow-item:before {*/
-    /*background: url("../../../assets/img/how-to-section/how-to-workflow/new-black/heart.png");*/
-    /*background-size: contain;*/
-  /*}*/
-
-  .application:nth-child(1) .how-to__workflow-item:before {
-    background: url("../../../assets/img/how-to-section/how-to-workflow/new-color/camera.png");
-    background-size: contain;
+  .application:nth-child(2) .how-to__workflow-item__text__body {
+    margin-top: -20px;
+    background: #f3c94a;
   }
 
-  .application:nth-child(2) .how-to__workflow-item:before {
-    background: url("../../../assets/img/how-to-section/how-to-workflow/new-color/libra1.png");
-    background-size: contain;
+  .application:nth-child(3) .how-to__workflow-item__text__body {
+    margin-top: 20px;
+    background: #78b87b;
   }
 
-  .application:nth-child(3) .how-to__workflow-item:before {
-    background: url("../../../assets/img/how-to-section/how-to-workflow/new-color/sketch.png");
-    background-size: contain;
+  .application:nth-child(4) .how-to__workflow-item__text__body {
+    background: #4dbff3;
   }
 
-  .application:nth-child(4) .how-to__workflow-item:before {
-    background: url("../../../assets/img/how-to-section/how-to-workflow/new-color/libra1.png");
-    background-size: contain;
+  .application:nth-child(5) .how-to__workflow-item__text__body {
+    background: #6e7abe;
   }
 
-  .application:nth-child(5) .how-to__workflow-item:before {
-    background: url("../../../assets/img/how-to-section/how-to-workflow/new-color/vote.png");
-    background-size: contain;
+  .application:nth-child(6) .how-to__workflow-item__text__body {
+    background: #e95a8a;
   }
 
-  .application:nth-child(6) .how-to__workflow-item:before {
-    background: url("../../../assets/img/how-to-section/how-to-workflow/new-color/heart.png");
-    background-size: contain;
+  .application:nth-child(2) .how-to__workflow-item:after {
+    content: '2';
+  }
+
+  .application:nth-child(3) .how-to__workflow-item:after {
+    content: '3';
+  }
+
+  .application:nth-child(4) .how-to__workflow-item:after {
+    content: '4';
+  }
+
+  .application:nth-child(5) .how-to__workflow-item:after {
+    content: '5';
+  }
+
+  .application:nth-child(6) .how-to__workflow-item:after {
+    content: '6';
   }
 
 </style>

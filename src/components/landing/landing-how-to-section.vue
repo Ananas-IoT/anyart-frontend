@@ -47,7 +47,7 @@
 <style scoped>
 
   .how-to-section {
-
+    background: #fff5f5;
   }
 
   .how-to-section__description {
