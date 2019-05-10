@@ -68,7 +68,7 @@
     position: relative;
     padding-top: 60px;
     /*background: #fbfbfb;*/
-    /*background: #fff5f5;*/
+    background: #fff5f5;
   }
 
   .about-section__title {
