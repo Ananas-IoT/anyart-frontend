@@ -1,11 +1,10 @@
 <template>
-  <button class="landing__button">{{this.text}}</button>
+  <button class="landing__button"><slot></slot></button>
 </template>
 
 <script>
   export default {
     name: "LandingButton",
-    props: ["text"]
   }
 </script>
 
@@ -19,16 +18,19 @@
     font-size: 16px;
     background: transparent;
     border: none;
-    border: 2px solid #770d85;
+    border: 1px solid #770d85;
+    border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
     overflow: hidden;
     position: relative;
+    z-index: 1;
   }
 
   .landing__button:hover {
     color: #fff;
     font-weight: bold;
+    border: transparent;
   }
 
   .landing__button:before {
@@ -39,7 +41,7 @@
     width: 100%;
     height: 300%;
     transform: translateY(-100%);
-    background: #9f4ea9 linear-gradient(to bottom, #9f4ea9 33.3%, #1ea3a4 33.3%, #1ea3a4 66.6%, #67ec02 66.6%);
+    background: #9f4ea9 linear-gradient(to bottom, #5C6BC0 33.3%, #29B6F6 33.3%, #FFCA28 66.6%, #FF7043 66.6%);
     transition: 0.3s ease-in-out;
     pointer-events: none;
     z-index: -1;

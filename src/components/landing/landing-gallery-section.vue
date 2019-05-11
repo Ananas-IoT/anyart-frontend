@@ -6,7 +6,7 @@
           <div class="row">
             <div class="col-lg-12">
               <h2 class="gallery-section__title">Галерея:</h2>
-              <p class="gallery-section__description">Це деякі приклади красивих робіт, зроблених до нас.
+              <p class="gallery-section__description">Це лише деякі приклади робіт, зроблених до нас.
                 З нашою допомогою їх ставатиме ще більше!</p>
               <div class="row">
 

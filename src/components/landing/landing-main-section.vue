@@ -14,8 +14,12 @@
 </template>
 
 <script>
+  import LandingButton from './landing-button';
     export default {
-        name: "MainSection"
+        name: "MainSection",
+      components:{
+          'landing-button': LandingButton
+      }
     }
 </script>
 

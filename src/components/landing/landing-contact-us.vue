@@ -6,7 +6,7 @@
           <div class="row">
             <div class="col-12">
               <h2 class="contact-us-section__title">Напишіть нам!</h2>
-              <p class="contact-us-section__description">Якщо у вас є якісь пропозиції,
+              <p class="contact-us-section__description">Якщо у вас є пропозиції,
                 ідеї чи думки щодо покращення сервісу, напишіть нам та допоможіть зробити наш проект кращим!</p>
             </div>
             <div class="col-md-8">

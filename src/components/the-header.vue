@@ -17,20 +17,20 @@
           <nav class="nav" v-bind:class="{nav__opened: navOpened}">
             <ul class="nav__item-list">
               <li class="nav__item">
-                <router-link to="/" data-scroll-to="#main" @click="navOpened = false">Головна</router-link>
+                <router-link to="/" data-scroll-to="#main" @click.native="closeNav">Головна</router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/#how-to" data-scroll-to="#how-to" @click="navOpened = false">Як це працює?
+                <router-link to="/#how-to" data-scroll-to="#how-to" @click.native="closeNav">Як це працює?
                 </router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/#about" data-scroll-to="#about" @click="navOpened = false">Про нас</router-link>
+                <router-link to="/#about" data-scroll-to="#about" @click.native="closeNav">Про нас</router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/#gallery" data-scroll-to="#gallery" @click="navOpened = false">Галерея</router-link>
+                <router-link to="/#gallery" data-scroll-to="#gallery" @click="closeNav">Галерея</router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/#contacts" data-scroll-to="#contacts" @click="navOpened = false">Контакти</router-link>
+                <router-link to="/#contacts" data-scroll-to="#contacts" @click.native="closeNav">Контакти</router-link>
               </li>
               <li class="nav__item">
                 <router-link to="/map">Карта</router-link>
@@ -108,6 +108,9 @@
         if (this.isAuth) {
           this.user = this.$store.getters.getUser;
         }
+      },
+      closeNav() {
+        this.navOpened = false;
       }
     }
   }
