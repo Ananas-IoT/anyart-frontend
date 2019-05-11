@@ -50,7 +50,7 @@
 </template>
 
 <script>
-  import HowtoWorkflowItem from './landing-how-to-workflow-item1'
+  import HowtoWorkflowItem from './landing-how-to-workflow-item'
 
   export default {
     name: "HowtoWorkflow",
@@ -82,7 +82,37 @@
     z-index: 1;
   }
 
-  .how-to__workflow-item__right {
-    /*text-align: right;*/
+  /*==========  Desktop First Method  ==========*/
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width : 1200px) {
+    .how-to-section__workflow {
+      width: 100%;
+    }
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width : 992px) {
+
+    .how-to-section__workflow:before {
+      left: 0;
+      transform: translate(145px, 0) scale(-1, 1);
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px) {
+
+    .how-to-section__workflow:before {
+      display: none;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 576px) {
+
+    .how-to-section__workflow {
+      margin-top: 20px;
+    }
   }
 </style>

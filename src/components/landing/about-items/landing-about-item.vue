@@ -49,7 +49,7 @@
     created() {
       switch (this.name) {
         case 'Анна Манько':
-          this.photo = require('../../../assets/img/landing-about-section/about-photo/about_photo2.png');
+          this.photo = require('../../../assets/img/landing-about-section/about-photo/about_photo21.png');
           this.links.telegram = 'https://t.me/scrubele';
           this.links.facebook = 'https://www.facebook.com/scrubele';
           this.links.gmail = 'mailto: nmankoania@gmail.com';

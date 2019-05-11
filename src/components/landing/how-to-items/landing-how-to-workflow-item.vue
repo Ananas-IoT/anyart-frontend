@@ -1,12 +1,14 @@
 <template>
-  <div class="how-to-section__workflow-item">
-    <div class="how-to-section__workflow-circle">
-      <div class="how-to-section__workflow-add-circle">
-        <p class="how-to-section__workflow-item-description">{{this.text}}</p>
-      </div>
+  <v-app>
+    <div class="how-to__workflow-item">
+      <v-card class="how-to__workflow-item__title">{{this.text.title}}</v-card>
+      <v-card class="how-to__workflow-item__text-wrap elevation-8">
+        <v-card-text class="how-to__workflow-item__text elevation-8">
+          {{this.text.body}}
+        </v-card-text>
+      </v-card>
     </div>
-    <div class="how-to-section__workflow-item-pic"></div>
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -14,7 +16,7 @@
     name: "HowtoWorkflowItem",
     props: {
       text: {
-        type: String,
+        type: Object,
         required: true
       }
     }
@@ -22,314 +24,199 @@
 </script>
 
 <style scoped>
-  .how-to-section__workflow-item {
-    width: 80%;
-    height: 310px;
-    margin: auto;
-    border-bottom: 2px dashed #e0e0e0;
-    position: relative;
+
+  .how-to__workflow-item {
+    background: #fff5f5;
   }
 
-  /*(перехід)*/
-  .how-to-section__workflow-item:before {
+  .how-to__workflow-item__title {
+    display: inline-block;
+    position: relative;
+    width: 300px;
+    min-height: 80px;
+    margin: 40px 0 57px 40px;
+    font-size: 26px;
+    /*font-family: "Helvetica ultralight";*/
+    font-family: "PT Sans Bold";
+    color: #FF7043;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .how-to__workflow-item__title:before {
     content: '';
-    width: 130px;
-    height: 300px;
     position: absolute;
     top: 50%;
-    right: -160px;
-    background: url("../../../assets/img/how-to-section/how-to-workflow/old/workflow-next.png") no-repeat;
+    right: 0;
+    width: 140px;
+    height: 140px;
+    /*width: 160px;*/
+    /*height: 160px;*/
+    background: url("../../../assets/img/how-to-section/howto-item1.png");
     background-size: contain;
-    transform: rotate(180deg);
+    transform: translate(160px, -57%);
   }
 
-  /*dashed border before first item*/
-  .how-to-section__workflow-item:first-child {
-    border-top: 2px dashed #e0e0e0;
-  }
-
-  /*disables last item (перехід) */
-  .how-to-section__workflow-item:last-child:before {
-    display: none;
-  }
-
-  .how-to-section__workflow-circle {
-    display: inline-block;
-    width: 240px;
-    height: 240px;
-    margin-top: 30px;
-    /*background: #61afe4;*/
-    background: #770d85;
-    border-radius: 50%;
-    position: relative;
-  }
-
-  .how-to-section__workflow-add-circle {
-    content: '';
-    width: 220px;
-    height: 220px;
+  .how-to__workflow-item__title:after {
+    content: '1';
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #eee;
-    border-radius: 50%;
+    right: 0;
+    font-size: 42px;
+    font-family: "PT Sans Bold";
+    color: #000;
+    transform: translate(100px, -65%);
   }
 
-  .how-to-section__workflow-item-description {
-    text-align: center;
-    width: 160px;
-    margin: 20% auto 0;
-    font: 28px "PT Sans Italic";
-  }
-
-  .how-to-section__workflow-item-pic {
-    display: inline-block;
-    width: 60%;
-    height: 206px;
-    background: url("../../../assets/img/how-to-section/how-to-workflow/old/workflow_1.jpg") center center no-repeat;
-    /*background-size: cover;*/
-    -webkit-background-size: contain;
-    background-size: contain;
-    margin-left: 40px;
-    margin-bottom: 10px;
-    border: 1px solid #770d85;
-  }
-
-
-  /*MOVES RIGHT CIRCLE ELEMENTS*/
-  .how-to__workflow-item__right:before {
-    right: auto;
-    left: -160px;
-    transform: rotate(0);
-  }
-
-  .how-to__workflow-item__right
-  .how-to-section__workflow-circle {
+  .how-to__workflow-item__text-wrap {
     float: right;
-  }
-
-  .how-to__workflow-item__right
-  .how-to-section__workflow-item-pic {
-    margin: 60px 40px 0 0;
-  }
-
-  /**/
-
-  /*DIFFERENT COLORS*/
-  .how-to-section__workflow-item:nth-child(2)
-  .how-to-section__workflow-circle {
-    background: #7d42b9;
-  }
-
-  .how-to-section__workflow-item:nth-child(3)
-  .how-to-section__workflow-circle {
-    background: #27b46b;
-  }
-
-  .how-to-section__workflow-item:nth-child(4)
-  .how-to-section__workflow-circle {
-    background: #80b317;
-  }
-
-  .how-to-section__workflow-item:nth-child(5)
-  .how-to-section__workflow-circle {
-    background: #1ea3a4;
-  }
-
-
-  .how-to-section__workflow-item:nth-child(2)
-  .how-to-section__workflow-item-pic {
-    background-image: url("../../../assets/img/how-to-section/how-to-workflow/old/workflow_2.jpg");
-    /*-webkit-background-size: contain;*/
-    /*background-size: contain;*/
-    border-color: #7d42b9;
-  }
-
-  .how-to-section__workflow-item:nth-child(3)
-  .how-to-section__workflow-item-pic {
-    width: 360px;
-    height: 200px;
-    background-image: url("../../../assets/img/how-to-section/how-to-workflow/old/workflow_3.jpg");
-    background-size: contain;
-    border-color: #27b46b;
-  }
-
-  .how-to-section__workflow-item:nth-child(4)
-  .how-to-section__workflow-item-pic {
-    float: right;
-    width: 360px;
-    height: 200px;
-    background-image: url("../../../assets/img/how-to-section/how-to-workflow/old/workflow_4.jpg");
-    border-color: #80b317;
-  }
-
-  .how-to-section__workflow-item:nth-child(5)
-  .how-to-section__workflow-item-pic {
-    background-image: url("../../../assets/img/main_1.jpg");
-    background-size: cover;
-    border-color: #1ea3a4;
-  }
-
-  /**/
-
-
-  /*SIZE CORRECTIONS*/
-  .how-to-section__workflow .how-to-section__workflow-item:nth-child(1) p,
-  .how-to-section__workflow .how-to-section__workflow-item:nth-child(4) p {
+    text-align: left;
+    width: 300px;
     margin-top: 20px;
+    font-size: 14px;
+    background: #eee;
   }
 
-  .how-to-section__workflow .how-to-section__workflow-item:nth-child(2) p {
-    font-size: 28px;
+  .how-to__workflow-item__text {
+    font-size: 16px;
+    color: #1d0e0d;
+    background: #fcb39c;
+    transform: translate(-10px, -15px);
+    /*border-radius: 10px !important;*/
   }
 
-  .how-to-section__workflow .how-to-section__workflow-item:nth-child(5) p {
-    margin-top: 80px;
-    margin-left: 20px;
-    font-size: 24px;
+  .application:nth-child(2) .how-to__workflow-item__title {
+    color: #FFCA28;
   }
 
-  /**/
+  .application:nth-child(3) .how-to__workflow-item__title {
+    color: #66BB6A;
+  }
 
+  .application:nth-child(4) .how-to__workflow-item__title {
+    color: #29B6F6;
+  }
+
+  .application:nth-child(5) .how-to__workflow-item__title {
+    color: #EC407A;
+  }
+
+  .application:nth-child(6) .how-to__workflow-item__title {
+    color: #5C6BC0;
+  }
+
+  .application:nth-child(2) .how-to__workflow-item__text {
+    /*margin-top: -20px;*/
+    color: #1e0f0e;
+    background: #f2d88b;
+  }
+
+  .application:nth-child(3) .how-to__workflow-item__text {
+    margin-top: 20px;
+    color: #0e1e0e;
+    background: #99c89b;
+  }
+
+  .application:nth-child(4) .how-to__workflow-item__text {
+    color: #08131e;
+    background: #a9daf0;
+  }
+
+  .application:nth-child(5) .how-to__workflow-item__text {
+    color: #1e0e0e;
+    background: #e79db6;
+  }
+
+  .application:nth-child(6) .how-to__workflow-item__text {
+    color: #0e0e1e;
+    background: #b9c0e8;
+  }
+
+  .application:nth-child(2) .how-to__workflow-item__title:after {
+    content: '2';
+  }
+
+  .application:nth-child(3) .how-to__workflow-item__title:after {
+    content: '3';
+  }
+
+  .application:nth-child(4) .how-to__workflow-item__title:after {
+    content: '4';
+  }
+
+  .application:nth-child(5) .how-to__workflow-item__title:after {
+    content: '5';
+  }
+
+  .application:nth-child(6) .how-to__workflow-item__title:after {
+    content: '6';
+  }
 
   /*==========  Desktop First Method  ==========*/
 
   /* Large Devices, Wide Screens */
   @media only screen and (max-width: 1200px) {
 
+    .how-to__workflow-item__title:before {
+      transform: translate(190px, -57%);
+    }
+
+    .how-to__workflow-item__title:after {
+      transform: translate(130px, -65%);
+    }
   }
 
   /* Medium Devices, Desktops */
   @media only screen and (max-width: 992px) {
-    .how-to-section__workflow-item {
-      height: 240px;
-    }
 
-    .how-to-section__workflow-circle {
-      width: 170px;
-      height: 170px;
-    }
-
-    .how-to-section__workflow-add-circle {
+    .how-to__workflow-item__title {
       width: 160px;
-      height: 160px;
+      margin: 40px 0 55px 20px;
+      font-size: 20px;
     }
 
-    .how-to-section__workflow-item-description {
-      font-size: 20px !important;
+    .how-to__workflow-item__title:before {
+      transform: translate(170px, -57%);
     }
 
-    .how-to-section__workflow
-    .how-to-section__workflow-item:nth-child(1) p {
-      margin-top: 40px;
-    }
-
-    .how-to-section__workflow-item-pic {
-      width: 60%;
-      height: 130px;
-      background: url("../../../assets/img/how-to-section/how-to-workflow/old/workflow_1.jpg") center center no-repeat;
-      /*background-size: cover;*/
-      -webkit-background-size: contain;
-      background-size: contain;
-      margin-left: 40px;
-      margin-bottom: 10px;
-      border: 1px solid #770d85;
-    }
-
-
-    .how-to-section__workflow-item:nth-child(3)
-    .how-to-section__workflow-item-pic {
-      width: 240px;
-      height: 140px;
-      /*margin-left: 0;*/
-    }
-
-    .how-to-section__workflow-item:nth-child(4)
-    .how-to-section__workflow-item-pic {
-      width: 240px;
-      height: 140px;
-      margin-top: 50px;
-      /*margin-right: 0;*/
-    }
-
-    .how-to-section__workflow
-    .how-to-section__workflow-item:nth-child(5) p {
-      margin: 70px 0 0;
+    .how-to__workflow-item__title:after {
+      transform: translate(110px, -65%);
     }
   }
 
   /* Small Devices, Tablets */
   @media only screen and (max-width: 768px) {
-    .how-to-section__workflow-item {
-      height: 240px;
+
+    .how-to__workflow-item__title {
+      width: 170px;
+      margin: 15px 0 30px 10px;
     }
 
-    .how-to-section__workflow-circle {
-      display: block;
-      width: 100%;
-      height: auto;
-      background: none;
-      border-radius: 0;
-    }
-
-    .how-to-section__workflow-add-circle {
-      width: 100%;
-      height: auto;
-      background: none;
-      border-radius: 0;
-    }
-
-    .how-to-section__workflow-add-circle p {
-      width: 100%;
-      margin-top: 15px !important;
-    }
-
-    /*(перехід)*/
-    .how-to-section__workflow-item:before {
+    .how-to__workflow-item__title:before {
       display: none;
     }
 
-    .how-to-section__workflow-item-pic {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 80% !important;
-      display: block;
-      margin: 0 auto !important;
-      transform: translate(-50%, -30%);
+    .how-to__workflow-item__title:after {
+      display: none;
     }
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width: 567px) {
+  @media only screen and (max-width: 576px) {
 
-    .how-to-section__workflow-item-pic {
-      position: absolute;
-      width: 100% !important;
+    .how-to__workflow-item__title {
+      text-align: center;
+      display: block;
+      width: auto;
+      min-height: auto;
+      margin: 10px auto 30px;
     }
 
-    .how-to-section__workflow-item:nth-child(1)
-    .how-to-section__workflow-item-pic {
-      height: 60%;
-    }
-  }
-
-
-  @media only screen and (max-width: 400px) {
-
-    .how-to-section__workflow-item:nth-child(1)
-    .how-to-section__workflow-item-pic {
-      height: 50%;
+    .how-to__workflow-item__text-wrap {
+      float: none;
+      width: 240px;
+      margin: 0 auto 20px;
+      transform: translateX(5px);
     }
   }
-
-  @media only screen and (max-width: 370px) {
-
-    .how-to-section__workflow-item:nth-child(1)
-    .how-to-section__workflow-item-pic {
-      height: 40%;
-    }
-  }
-
 </style>
