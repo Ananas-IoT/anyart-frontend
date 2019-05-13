@@ -63,7 +63,8 @@
 <style scoped>
   .how-to-section__workflow {
     position: relative;
-    width: 80%;
+    /*width: 80%;*/
+    width: 900px;
     margin: 100px auto 0;
   }
 
@@ -71,13 +72,14 @@
     content: '';
     position: absolute;
     top: -35px;
-    left: 50%;
+    left: 300px;
     width: 240px;
     height: 1100px;
     background: url("../../../assets/img/how-to-section/howto-link.png") no-repeat;
     -webkit-background-size: contain;
     background-size: contain;
-    transform: translate(-60%, 0) scale(-1, 1);
+    /*transform: translate(-60%, 0) scale(-1, 1);*/
+    transform: scale(-1, 1);
     pointer-events: none;
     z-index: 1;
   }
@@ -88,6 +90,11 @@
   @media only screen and (max-width : 1200px) {
     .how-to-section__workflow {
       width: 100%;
+    }
+
+    .how-to-section__workflow:before {
+      left: 330px;
+      /*transform: translate(-60%, 0) scale(-1, 1);*/
     }
   }
 

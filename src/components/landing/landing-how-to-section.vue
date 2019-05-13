@@ -51,7 +51,6 @@
 <style scoped>
 
   .how-to-section {
-    width: 90%;
     margin: auto;
     background: #fff5f5;
   }
@@ -114,7 +113,8 @@
   /* Large Devices, Wide Screens */
   @media only screen and (max-width: 1200px) {
     .how-to-section {
-      width: 95%;
+      /*width: 95%;*/
+      padding: 0 40px;
     }
   }
 
@@ -122,10 +122,11 @@
   @media only screen and (max-width: 992px) {
     .how-to-section {
       /*width: 100%;*/
+      padding: 0;
     }
 
     .how-to-section__description {
-      width: 100%;
+      /*width: 100%;*/
     }
 
     /*.how-to-section__list {*/
