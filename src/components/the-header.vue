@@ -212,7 +212,7 @@
     width: 110px;
     padding: 20px 0 23px;
     font-size: 17px;
-    font-family: "PT Sans";
+    font-family: "PT Sans Regular";
     transition: 0.3s;
     position: relative;
     cursor: pointer;
