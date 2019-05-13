@@ -132,7 +132,7 @@
   import {registerUser} from "../../api/auth";
   import eventBus from '../../eventBus';
   import AppHeader from '../the-header';
-  import {serverErrorsMixin} from '../../mixins/serverErrorsMixin'
+  import {serverErrorsMixin} from '../../mixins/serverErrorsMixin';
 
   export default {
     name: "register",

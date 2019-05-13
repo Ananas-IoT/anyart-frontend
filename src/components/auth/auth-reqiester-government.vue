@@ -142,12 +142,14 @@
   import {registerUser} from "../../api/auth";
   import AppHeader from '../the-header';
   import eventBus from '../../eventBus';
+  import {serverErrorsMixin} from '../../mixins/serverErrorsMixin';
 
   export default {
     name: "registerGovernment",
     components: {
       'app-header': AppHeader
     },
+    mixins: [serverErrorsMixin],
     data() {
       return {
         stepperCurrent: 0,

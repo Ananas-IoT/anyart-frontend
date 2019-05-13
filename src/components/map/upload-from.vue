@@ -8,11 +8,11 @@
       <v-card class="upload-form">
         <v-alert
           class="alert"
-          v-if="sendError"
+          v-if="this.error"
           :value="true"
           type="error"
         >
-          {{sendError.text}}
+          {{this.error}}
         </v-alert>
 
         <v-card-title class="upload-form__title">{{this.type}} form</v-card-title>
@@ -79,10 +79,12 @@
 <script>
   import {sendRequest} from "../../api/mapRequests";
   import {sendSketch} from '../../api/mapSketches';
+  import {serverErrorsMixin} from '../../mixins/serverErrorsMixin';
 
   export default {
     name: "UploadForm",
     components: {},
+    mixins: [serverErrorsMixin],
     props: {
       //Request or Sketch form
       type: {
@@ -122,7 +124,6 @@
           v => !!v || 'Field is required'
         ],
         validation: false,
-        sendError: null,
         successMessage: false
       }
     },
@@ -159,14 +160,7 @@
           },
           error => {
             this.sendLoadingTriggerAnimation = false;
-
-            this.sendError = {
-              boolean: true,
-              text: error.response || "Unknown error occured",
-            };
-            setTimeout(() => {
-              this.sendError = null;
-            }, 3000);
+            this.statusCodeHumanify(error);
           }
         );
       },
