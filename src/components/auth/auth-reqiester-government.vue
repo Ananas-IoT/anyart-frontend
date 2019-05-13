@@ -10,10 +10,10 @@
 
         <v-alert
           class="alert"
-          v-if="govError"
+          v-if="this.error"
           :value="true"
           type="error"
-        >{{govError.text}}
+        >{{this.error}}
         </v-alert>
 
         <v-stepper-header class="stepper-header">
@@ -160,27 +160,19 @@
           v => !!v || 'Field is required'
         ],
         rightsList: ['Art expert', 'Administration', 'OSBB'],
-        govError: null
       }
     },
-    created() {
-      eventBus.$on('registerError', (error) => {
-        console.log(error.response);
-        this.govError = {
-          boolean: true,
-          // text: error.response.data.non_field_errors[0]
-          text: 'an error occured'
-        };
-        setTimeout(() => {
-          this.govError = null
-        }, 3000);
-      });
-    },
+    created() {},
     computed: {},
     methods: {
       addNewUser() {
-        console.log(this.user);
-        registerUser(this.user);
+        return new Promise((resolve, reject) => {
+          registerUser(this.user, resolve, reject);
+        })
+          .then(response => {
+          }, error => {
+            this.statusCodeHumanify(error);
+          });
       },
       backToStep(stepToBack) {
         if (this.stepperCurrent > stepToBack) {

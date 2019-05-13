@@ -32,7 +32,7 @@ export function getUserByToken(token, refresh) {
     });
 }
 
-export function registerUser(user) {
+export function registerUser(user, resolve, reject) {
 
   const config = {
     headers: {}
@@ -55,11 +55,11 @@ export function registerUser(user) {
       router.push("/");
     })
     .catch(error => {
-      eventBus.$emit('registerError', error);
+      reject(error);
     })
 }
 
-export function loginUser(user) {
+export function loginUser(user, resolve, reject) {
 
   const config = {
     headers: {}
@@ -83,7 +83,7 @@ export function loginUser(user) {
       router.push("/")
     })
     .catch(error => {
-      eventBus.$emit('loginError', error);
+      reject(error);
     });
 
 }

@@ -7,23 +7,13 @@
         v-model="stepperCurrent"
         :alt-labels="true">
 
-
-        <!--<v-alert-->
-          <!--class="alert register__alert"-->
-          <!--v-if="registerResponse"-->
-          <!--:value="true"-->
-          <!--type="success"-->
-        <!--&gt;-->
-          <!--{{registerResponse.text}}-->
-        <!--</v-alert>-->
-
         <v-alert
           class="alert"
-          v-if="registerError"
+          v-if="this.error"
           :value="true"
           type="error"
         >
-          {{registerError.text}}
+          {{this.error}}
         </v-alert>
 
         <v-stepper-header
@@ -142,12 +132,14 @@
   import {registerUser} from "../../api/auth";
   import eventBus from '../../eventBus';
   import AppHeader from '../the-header';
+  import {serverErrorsMixin} from '../../mixins/serverErrorsMixin'
 
   export default {
     name: "register",
     components: {
       'app-header': AppHeader
     },
+    mixins: [serverErrorsMixin],
     data() {
       return {
         stepperCurrent: 0,
@@ -163,33 +155,28 @@
           v => !!v || 'Field is required'
         ],
         // registerResponse: null,
-        registerError: null
+        // registerError: null
       }
     },
-    created() {
-      eventBus.$on('registerError', (error) => {
-        console.log(error.response);
-        this.registerError = {
-          boolean: true,
-          text: error.response.data.non_field_errors[0],
-        };
-        setTimeout(() => {
-          this.registerError = null
-        }, 3000);
-      });
-    },
+    created() {},
     computed: {
       roleDescription() {
         return this.user.rights === 'artist' ? this.descriptionList.artist : this.descriptionList.basic;
       }
     },
     methods: {
-      becomeArtist: function () {
+      becomeArtist() {
         this.user.rights = 'artist';
       },
 
-      addNewUser: function () {
-        registerUser(this.user);
+      addNewUser() {
+        return new Promise((resolve, reject) => {
+          registerUser(this.user, resolve, reject);
+        })
+          .then(response => {
+          }, error => {
+            this.statusCodeHumanify(error);
+          });
       },
 
       backToStep(stepToBack) {

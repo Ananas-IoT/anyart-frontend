@@ -6,11 +6,11 @@
 
         <v-alert
           class="alert"
-          v-if="loginError"
+          v-if="this.error"
           :value="true"
           type="error"
         >
-          {{loginError.text}}
+          {{this.error}}
         </v-alert>
         <h2 class="form__title">Login: </h2>
         <v-text-field
@@ -42,12 +42,14 @@
   import {loginUser} from "../../api/auth";
   import AppHeader from '../the-header';
   import eventBus from '../../eventBus';
+  import {serverErrorsMixin} from '../../mixins/serverErrorsMixin'
 
   export default {
     name: "login",
     components: {
       'app-header': AppHeader
     },
+    mixins: [serverErrorsMixin],
     data() {
       return {
         user: {
@@ -57,27 +59,20 @@
         validation: false,
         inputRules: [
           v => !!v || 'Field is required'
-        ],
-        loginResponse: null,
-        loginError: null
+        ]
       }
     },
-    created() {
-
-      eventBus.$on('loginError', (error) => {
-        this.loginError = {
-          boolean: true,
-          text: error.response.data.non_field_errors[0],
-        };
-        setTimeout(() => {
-          this.loginError = null
-        }, 3000);
-      });
-    },
+    created() {},
     computed: {},
     methods: {
-      login: function () {
-        loginUser(this.user);
+      login() {
+        return new Promise((resolve, reject) => {
+          loginUser(this.user, resolve, reject);
+        })
+          .then(response => {
+          }, error => {
+            this.statusCodeHumanify(error);
+          });
       },
     }
   }
