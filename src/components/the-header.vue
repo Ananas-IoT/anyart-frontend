@@ -17,23 +17,50 @@
           <nav class="nav" v-bind:class="{nav__opened: navOpened}">
             <ul class="nav__item-list">
               <li class="nav__item">
-                <router-link to="/" data-scroll-to="#main" @click.native="closeNav">Головна</router-link>
+                <router-link
+                  to="/"
+                  data-scroll-to="#main"
+                  @click.native="closeNav"
+                  v-text="$ml.get('header-nav-main')"
+                ></router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/#how-to" data-scroll-to="#how-to" @click.native="closeNav">Як це працює?
-                </router-link>
+                <router-link
+                  to="/#how-to"
+                  data-scroll-to="#how-to"
+                  @click.native="closeNav"
+                  v-text="$ml.get('header-nav-how-to')"
+                ></router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/#about" data-scroll-to="#about" @click.native="closeNav">Про нас</router-link>
+                <router-link
+                  to="/#about"
+                  data-scroll-to="#about"
+                  @click.native="closeNav"
+                  v-text="$ml.get('header-nav-about-us')"
+                ></router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/#gallery" data-scroll-to="#gallery" @click="closeNav">Галерея</router-link>
+                <router-link
+                  to="/#gallery"
+                  data-scroll-to="#gallery"
+                  @click="closeNav"
+                  v-text="$ml.get('header-nav-gallery')"
+                ></router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/#contacts" data-scroll-to="#contacts" @click.native="closeNav">Контакти</router-link>
+                <router-link
+                  to="/#contacts"
+                  data-scroll-to="#contacts"
+                  @click.native="closeNav"
+                  v-text="$ml.get('header-nav-contacts')"
+                ></router-link>
               </li>
               <li class="nav__item">
-                <router-link to="/map">Карта</router-link>
+                <router-link
+                  to="/map"
+                  v-text="$ml.get('header-nav-map')"
+                ></router-link>
               </li>
             </ul>
           </nav>
@@ -43,12 +70,20 @@
             <div v-if="this.isAuth" class="user-block__info">
               <router-link class="user-block__name" to="/user">{{computeFullName}}</router-link>
               <div>
-                <router-link to="/auth/register">Log out</router-link>
+                <router-link
+                  to="/auth/register"
+                  v-text="$ml.get('header-auth-logout')"></router-link>
               </div>
             </div>
             <div v-else class="user-block__registration">
-              <router-link to="/auth/register">Register</router-link>
-              <router-link to="/auth/login">or Login</router-link>
+              <router-link
+                to="/auth/register"
+                v-text="$ml.get('header-auth-register')">
+              </router-link>
+              <router-link
+                to="/auth/login"
+                v-text="$ml.get('header-auth-login')"
+              ></router-link>
             </div>
           </div>
         </div>
@@ -58,7 +93,8 @@
 </template>
 
 <script>
-  import eventBus from '../eventBus'
+  import eventBus from '../eventBus';
+  import {MLBuilder} from 'vue-multilanguage';
 
   export default {
     name: "Header",
@@ -318,8 +354,8 @@
   /* Large Devices, Wide Screens */
   @media only screen and (max-width: 1200px) {
     .nav__item a {
-      width: 96px;
-      font-size: 15px;
+      width: 90px;
+      font-size: 14px;
     }
   }
 

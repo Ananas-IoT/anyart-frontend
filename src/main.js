@@ -6,6 +6,7 @@ import {store} from "./store/store"
 import * as VueGoogleMaps from 'vue2-google-maps'
 import Meta from 'vue-meta'
 import Vuetify from 'vuetify'
+import './ml'
 
 import 'bootstrap'
 

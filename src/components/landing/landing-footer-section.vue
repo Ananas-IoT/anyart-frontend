@@ -13,7 +13,7 @@
       <v-card-text class="footer__wrap justify-center">
 
         <div class="footer__social-wrap">
-          <div class="footer__social-follow">Follow us!</div>
+          <div class="footer__social-follow"  v-text="$ml.get('landing-footer-follow')"></div>
           <div class="footer__social-item-wrap">
             <a
               class="footer__social-item"
@@ -22,18 +22,18 @@
               <div class="footer-social-item-img-wrap">
                 <img class="footer__social-item-img" :src="contactImages.facebook" alt="">
               </div>
-              <span class="footer__social-item-text d-none d-sm-inline-block">on Facebook</span>
+              <span class="footer__social-item-text d-none d-sm-inline-block">Facebook</span>
             </a>
           </div>
           <div class="footer__social-item-wrap">
             <a
               class="footer__social-item footer__social-item__instagram"
-              href="https://instagram.com"
+              href="https://instagram.com/anyart_lviv"
               target="_blank">
               <div class="footer-social-item-img-wrap">
                 <img class="footer__social-item-img" :src="contactImages.instagram" alt="">
               </div>
-              <span class="footer__social-item-text d-none d-sm-inline-block">on Instagram</span>
+              <span class="footer__social-item-text d-none d-sm-inline-block">Instagram</span>
             </a>
           </div>
         </div>
@@ -152,27 +152,33 @@
 
   /* Extra Small Devices, Phones */
   @media only screen and (max-width: 576px) {
-    /*.footer__wrap {*/
-      /*text-align: center;*/
-      /*height: auto;*/
-    /*}*/
 
     .footer__social-follow {
       font-size: 16px;
       margin-right: 0;
-      /*display: block;*/
-      /*margin-bottom: 15px;*/
     }
 
     .footer__social-item-wrap {
-      /*!*display: block;*!*/
-      /*display: inline-block;*/
       margin: 0 0 0 5px;
     }
+  }
 
-    /*.footer__copyright {*/
-      /*float: none;*/
-      /*display: block;*/
-    /*}*/
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width: 480px) {
+    .footer__wrap {
+      text-align: center;
+      height: auto;
+    }
+
+    .footer__social-follow {
+      font-size: 16px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer__copyright {
+      float: none;
+      display: block;
+    }
   }
 </style>

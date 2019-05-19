@@ -5,7 +5,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              <h2 class="partners-section__title">Наші партнери:</h2>
+              <h2 class="partners-section__title"  v-text="$ml.get('landing-partners-title')"></h2>
               <div class="carousel">
                 <div class="partners-section__item elevation-5">
                   <img src="../../assets/img/partners/lcc.png" alt="">

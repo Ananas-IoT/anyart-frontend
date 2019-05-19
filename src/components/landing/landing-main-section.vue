@@ -5,7 +5,7 @@
         <div class="col-lg-12">
           <div class="main-section__wrap">
             <h1 class="main-section__title"><b>Any</b>Art</h1>
-            <p class="main-section__subtitle">Colorize your routine!</p>
+            <p class="main-section__subtitle" v-text="$ml.get('landing-main-subtitle')"></p>
           </div>
         </div>
       </div>
@@ -15,12 +15,14 @@
 
 <script>
   import LandingButton from './landing-button';
-    export default {
-        name: "MainSection",
-      components:{
-          'landing-button': LandingButton
-      }
+  import {MLBuilder} from 'vue-multilanguage';
+
+  export default {
+    name: "MainSection",
+    components: {
+      'landing-button': LandingButton
     }
+  }
 </script>
 
 <style scoped>
@@ -75,17 +77,17 @@
   /*==========  Desktop First Method  ==========*/
 
   /* Large Devices, Wide Screens */
-  @media only screen and (max-width : 1200px) {
+  @media only screen and (max-width: 1200px) {
 
   }
 
   /* Medium Devices, Desktops */
-  @media only screen and (max-width : 992px) {
+  @media only screen and (max-width: 992px) {
 
   }
 
   /* Small Devices, Tablets */
-  @media only screen and (max-width : 768px) {
+  @media only screen and (max-width: 768px) {
     .main-section__wrap {
       margin-top: 100px;
     }
@@ -100,7 +102,7 @@
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width : 480px) {
+  @media only screen and (max-width: 480px) {
 
     .main-section__title {
       font-size: 80px;

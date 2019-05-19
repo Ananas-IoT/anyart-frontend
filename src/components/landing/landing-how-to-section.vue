@@ -3,8 +3,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          <h2 class="how-to-section__title">Як це працює?</h2>
-          <p class="how-to-section__description">Правила дуже прості. Просто виконайте декілька простих кроків: </p>
+          <h2 class="how-to-section__title" v-text="$ml.get('landing-how-to-title')"></h2>
+          <p class="how-to-section__description" v-text="$ml.get('landing-how-to-description')"></p>
+
           <!--<ul class="how-to-section__list">-->
           <!--<li class="how-to-section__item">Виберіть місце на карті, завантажте фото та опишіть проблему</li>-->
           <!--<li class="how-to-section__item">Художник може обрати вашу стіну і запропонувати свій скетч</li>-->
@@ -13,13 +14,13 @@
           <!--<li class="how-to-section__item">.. Насолоджуйтесь :)</li>-->
           <!--</ul>-->
 
-
           <howto-workflow></howto-workflow>
 
           <button-landing
             class="how-to-section__btn"
             @click.native="goToMap"
-          >Перейти до карти!
+            v-text="this.$ml.get('landing-how-to-button')"
+          >
           </button-landing>
         </div>
       </div>

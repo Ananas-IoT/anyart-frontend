@@ -5,16 +5,15 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <h2 class="contact-us-section__title">Напишіть нам!</h2>
-              <p class="contact-us-section__description">Якщо у вас є пропозиції,
-                ідеї чи думки щодо покращення сервісу, напишіть нам та допоможіть зробити наш проект кращим!</p>
+              <h2 class="contact-us-section__title" v-text="$ml.get('landing-contact-us-title')"></h2>
+              <p class="contact-us-section__description" v-text="$ml.get('landing-contact-us-subtitle')"></p>
             </div>
             <div class="col-md-8">
               <v-card class="contact-us-section__from-wrap bg-transparent">
                 <v-form class="contact-us-section__form" v-model="validation">
                   <v-text-field
                     class="contact-us__message-author"
-                    label="How can we contact you?"
+                    :label="$ml.get('landing-contact-us-form-contact')"
                     v-model="message.contact"
                     solo
                   >
@@ -22,7 +21,7 @@
                   </v-text-field>
                   <v-textarea
                     class="contact-us-section__message-body"
-                    label="Your text.."
+                    :label="$ml.get('landing-contact-us-form-body')"
                     v-model="message.body"
                     :rows="5"
                     :rules="inputRules"
@@ -35,11 +34,17 @@
                     color="primary"
                     :disabled="!validation"
                     @click="processMessage"
-                  >Send</v-btn>
+                    v-text="$ml.get('landing-contact-us-form-button')"
+                  ></v-btn>
                 </v-form>
               </v-card>
               <v-card class="contact-us-section__email-wrap elevation-6">
-                <v-card-text>Або напишіть нам напряму: <a class="contact-us-section__email-link" href="mailto: ananas-iot@gmail.com">ananas-iot@gmail.com</a></v-card-text>
+                <v-card-text>
+                  {{this.$ml.get('landing-contact-us-mail')}}
+                  <a class="contact-us-section__email-link" href="mailto: ananas-iot@gmail.com">
+                    ananas-iot@gmail.com
+                  </a>
+                </v-card-text>
               </v-card>
             </div>
           </div>

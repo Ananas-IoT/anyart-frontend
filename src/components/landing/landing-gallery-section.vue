@@ -5,15 +5,14 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              <h2 class="gallery-section__title">Галерея:</h2>
-              <p class="gallery-section__description">Це лише деякі приклади робіт, зроблених до нас.
-                З нашою допомогою їх ставатиме ще більше!</p>
+              <h2 class="gallery-section__title" v-text="$ml.get('landing-gallery-title')"></h2>
+              <p class="gallery-section__description" v-text="$ml.get('landing-gallery-subtitle')"></p>
               <div class="row">
 
                 <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="gallery-section__xs-pic-bg d-sm-none"></div>
                   <v-card class="gallery-section__pic-wrap">
-                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                    <a class="gallery-section__pic-link" href="https://instagram.com/anyart_lviv" target="_blank">
                       Instagram</a>
                     <img class="gallery-section__pic" src="../../assets/img/gallery-section/g1.jpg" alt="">
                   </v-card>
@@ -21,7 +20,7 @@
 
                 <div class="col-lg-3 col-md-4 col-sm-6">
                   <v-card class="gallery-section__pic-wrap">
-                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                    <a class="gallery-section__pic-link" href="https://instagram.com/anyart_lviv" target="_blank">
                       Instagram</a>
                     <img class="gallery-section__pic" src="../../assets/img/gallery-section/g5.jpg" alt=""></v-card>
                 </div>
@@ -29,14 +28,14 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="gallery-section__xs-pic-bg gallery-section__xs-pic-bg__left d-sm-none"></div>
                   <v-card class="gallery-section__pic-wrap">
-                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                    <a class="gallery-section__pic-link" href="https://instagram.com/anyart_lviv" target="_blank">
                       Instagram</a>
                     <img class="gallery-section__pic" src="../../assets/img/gallery-section/g2.jpg" alt=""></v-card>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-sm-6">
                   <v-card class="gallery-section__pic-wrap">
-                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                    <a class="gallery-section__pic-link" href="https://instagram.com/anyart_lviv" target="_blank">
                       Instagram</a>
                     <img class="gallery-section__pic" src="../../assets/img/gallery-section/g6.jpg" alt=""></v-card>
                 </div>
@@ -44,14 +43,14 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="gallery-section__xs-pic-bg d-sm-none"></div>
                   <v-card class="gallery-section__pic-wrap">
-                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                    <a class="gallery-section__pic-link" href="https://instagram.com/anyart_lviv" target="_blank">
                       Instagram</a>
                     <img class="gallery-section__pic" src="../../assets/img/gallery-section/g3.jpg" alt=""></v-card>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-sm-6">
                   <v-card class="gallery-section__pic-wrap">
-                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                    <a class="gallery-section__pic-link" href="https://instagram.com/anyart_lviv" target="_blank">
                       Instagram</a>
                     <img class="gallery-section__pic" src="../../assets/img/gallery-section/g7.jpg" alt=""></v-card>
                 </div>
@@ -59,14 +58,14 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="gallery-section__xs-pic-bg gallery-section__xs-pic-bg__left d-sm-none"></div>
                   <v-card class="gallery-section__pic-wrap">
-                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                    <a class="gallery-section__pic-link" href="https://instagram.com/anyart_lviv" target="_blank">
                       Instagram</a>
                     <img class="gallery-section__pic" src="../../assets/img/gallery-section/g4.jpg" alt=""></v-card>
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-sm-6">
                   <v-card class="gallery-section__pic-wrap">
-                    <a class="gallery-section__pic-link" href="https://instagram.com" target="_blank">
+                    <a class="gallery-section__pic-link" href="https://instagram.com/anyart_lviv" target="_blank">
                       Instagram</a>
                     <img class="gallery-section__pic" src="../../assets/img/gallery-section/g8.jpg" alt=""></v-card>
                 </div>

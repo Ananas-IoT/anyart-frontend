@@ -5,7 +5,7 @@
 
     <v-dialog v-model="dialogTriggerModel" width="400">
       <v-card class="landing__dialog__wrap">
-        <v-card-title class="landing__dialog__title">Message</v-card-title>
+        <v-card-title class="landing__dialog__title" v-text="$ml.get('landing-contact-us-message-title')"></v-card-title>
         <v-card-text class="landing__dialog__text">{{this.dialogMessage}}</v-card-text>
         <v-divider></v-divider>
 
@@ -84,10 +84,9 @@
 
       eventBus.$on('contactMessage', (status) => {
         if (status === 'success') {
-          this.dialogMessage = 'Your message were sent! Thank you for your feedback!';
+          this.dialogMessage = this.$ml.get('landing-contact-us-message-success');
         } else {
-          this.dialogMessage = 'Sorry, seems something went wrong with your message.' + '`<br>`' +
-            ' Try to send it again or write us manually: nsblnr@gmail.com';
+          this.dialogMessage = this.$ml.get('landing-contact-us-message-error');
         }
         this.dialogTriggerModel = true;
       });

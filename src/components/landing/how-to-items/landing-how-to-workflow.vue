@@ -2,55 +2,21 @@
   <div class="how-to-section__workflow">
 
     <howto-workflow-item
-      :text="{
-        title: 'Виберіть місце та завантажте фото',
-        body: 'У пошуковій стрічці на карті знайдіть місце, завантажте до нього фото та напишіть коментар'
+      v-for="index in 6"
+      :key=index
+      :text= "{
+        title: $ml.get('landing-how-to-workflow')[index-1],
+        body: $ml.get('landing-how-to-workflow-body')[index-1]
       }"
-    ></howto-workflow-item>
-
-    <howto-workflow-item
-      class="how-to__workflow-item__right"
-      :text="{
-        title: 'Місце затверджує влада',
-        body: 'Після цього представники влади мають перевірити, чи можна малювати на стіні, яку ви запропонували'
-      }"
-    ></howto-workflow-item>
-
-    <howto-workflow-item
-      :text="{
-        title: 'Художник запропонує свій скетч',
-        body: 'Художник може обрати вашу стіну і завантажити до неї свій скетч'
-      }"
-    ></howto-workflow-item>
-
-    <howto-workflow-item
-      class="how-to__workflow-item__right"
-      :text="{
-        title: 'Він отримає дозвіл від влади',
-        body: 'Після цього представники влади перевірять скетч та дадуть дозвіл на малювання'
-      }"
-    ></howto-workflow-item>
-
-    <howto-workflow-item
-      :text="{
-        title: 'Голосуйте за найкращі зі скетчів',
-        body: 'Лише ви обираєте, який скетч є найкращим для цього місця!'
-      }"
-    ></howto-workflow-item>
-
-    <howto-workflow-item
-      class="how-to__workflow-item__right"
-      :text="{
-        title: 'Насолоджуйтесь!',
-        body: 'Без коментарів :)'
-      }"
+      v-bind:class="{'how-to__workflow-item__right': index%2 === 0}"
     ></howto-workflow-item>
 
   </div>
 </template>
 
 <script>
-  import HowtoWorkflowItem from './landing-how-to-workflow-item'
+  import HowtoWorkflowItem from './landing-how-to-workflow-item';
+  import {MLBuilder} from 'vue-multilanguage';
 
   export default {
     name: "HowtoWorkflow",
@@ -87,7 +53,7 @@
   /*==========  Desktop First Method  ==========*/
 
   /* Large Devices, Wide Screens */
-  @media only screen and (max-width : 1200px) {
+  @media only screen and (max-width: 1200px) {
     .how-to-section__workflow {
       width: 100%;
     }
@@ -99,7 +65,7 @@
   }
 
   /* Medium Devices, Desktops */
-  @media only screen and (max-width : 992px) {
+  @media only screen and (max-width: 992px) {
 
     .how-to-section__workflow:before {
       left: 0;
@@ -108,7 +74,7 @@
   }
 
   /* Small Devices, Tablets */
-  @media only screen and (max-width : 768px) {
+  @media only screen and (max-width: 768px) {
 
     .how-to-section__workflow:before {
       display: none;
@@ -116,7 +82,7 @@
   }
 
   /* Extra Small Devices, Phones */
-  @media only screen and (max-width : 576px) {
+  @media only screen and (max-width: 576px) {
 
     .how-to-section__workflow {
       margin-top: 20px;

@@ -4,45 +4,43 @@
       <div class="container">
         <div class="row justify-center">
           <div class="col-12">
-            <h2 class="about-section__title">А тепер трохи про нас:</h2>
-            <p class="about-section__description">Ми раді вітати вас на нашому веб-сайті! Цей проект — ініціатива
-              невеликої команди
-              ентузіастів. Наша мрія — зробити Львів краще для всіх нас: жителів міста та туристів!</p>
+            <h2 class="about-section__title" v-text="$ml.get('landing-about-us-title')"></h2>
+            <p class="about-section__description" v-text="$ml.get('landing-about-us-subtitle')"></p>
           </div>
 
           <div class="col-md-4 col-lg-3 about-item">
             <about-item
-              :name="'Анна Манько'"
-              :position="'Product Owner, Back-End Developer'"
+              :name="$ml.get('landing-about-us-name')[0]"
+              :position="$ml.get('landing-about-us-position')[0]"
             ></about-item>
           </div>
 
           <div class="col-md-4 col-lg-3 about-item">
             <about-item
-              :name="'Данііл Логвінов'"
-              :position="'UX-designer, Front-End developer'"
+              :name="$ml.get('landing-about-us-name')[1]"
+              :position="$ml.get('landing-about-us-position')[1]"
             ></about-item>
           </div>
 
           <div class="col-md-4 col-lg-3 about-item">
             <about-item
-              :name="'Михайло Гурський'"
-              :position="'Architect'"
+              :name="$ml.get('landing-about-us-name')[2]"
+              :position="$ml.get('landing-about-us-position')[2]"
             ></about-item>
           </div>
         </div>
         <div class="row justify-center">
           <div class="col-md-4 col-lg-3 about-item">
             <about-item
-              :name="'Влад Бойчев'"
-              :position="'Front-End developer'"
+              :name="$ml.get('landing-about-us-name')[3]"
+              :position="$ml.get('landing-about-us-position')[3]"
             ></about-item>
           </div>
 
           <div class="col-md-4 col-lg-3 about-item">
             <about-item
-              :name="'Олег Гаврилюк'"
-              :position="'Mentor'"
+              :name="$ml.get('landing-about-us-name')[4]"
+              :position="$ml.get('landing-about-us-position')[4]"
             ></about-item>
           </div>
         </div>
