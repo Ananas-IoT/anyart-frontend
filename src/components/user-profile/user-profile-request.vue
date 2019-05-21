@@ -3,8 +3,18 @@
     <v-card class="user-request-item">
 
       <div class="user-request-item__actions">
-        <v-btn color="primary" @click="openRequest" class="user-request-item__actions__btn">to map</v-btn>
-        <v-btn color="default" @click="deleteRequest" class="user-request-item__actions__btn">delete</v-btn>
+        <v-btn
+          color="primary"
+          @click="openRequest"
+          class="user-request-item__actions__btn"
+          v-text="$ml.get('user-profile-request-actions')[0]"
+        ></v-btn>
+        <v-btn
+          color="default"
+          @click="deleteRequest"
+          class="user-request-item__actions__btn"
+          v-text="$ml.get('user-profile-request-actions')[1]"
+        ></v-btn>
       </div>
 
       <v-card-title class="user-request-item__header" ref="user-request-item__title">
@@ -16,13 +26,13 @@
       </div>
       <v-card-text class="user-request-item__text">
         <h4 class="user-request-item__text-title">default 42 Street in default City</h4>
-        <div class="user-request-item__text-owner">owner: Owner</div>
+        <div class="user-request-item__text-owner">{{$ml.get('request-list-owner')}}{{this.request.owner.username}}</div>
         <p class="user-request-item__text-description">{{this.request.description | textLength(120)}} </p>
 
       </v-card-text>
       <div class="user-request-item__add-info">
-        <div class="user-request-item__add-info__status">Status: status</div>
-        <div class="user-request-item__add-info__sketches">6</div>
+        <div class="user-request-item__add-info__status">{{$ml.get('request-list-status')}}status</div>
+        <div class="user-request-item__add-info__sketches">{{this.request.sketch_count}}</div>
         <div class="user-request-item__add-info__date">01.01.1974</div>
       </div>
     </v-card>
@@ -45,8 +55,7 @@
       }
     },
     mounted() {
-      this.request.description = ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet asperiores consequuntur cumque, dolorum eligendi eveniet impedit inventore laborum maiores minus molestiae non, omnis quia, quidem quod temporibus veritatis vitae.';
-      this.setRandomColor();
+     this.setRandomColor();
     },
     methods: {
       setRandomColor() {

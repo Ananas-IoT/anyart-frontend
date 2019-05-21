@@ -126,16 +126,16 @@
     computed: {
       //cuts too long names
       computeFullName() {
-        this.userFullName = this.user.first_name + ' ' + this.user.last_name;
-        if (this.window.width >= 1280) {
-          return this.userFullName.length > 18 ? this.userFullName.slice(0, 18) + '...' : this.userFullName;
-        } else if (this.window.width <= 480) {
+        if (this.window.width <= 480) {
           return this.userFullName.length > 10 ? this.userFullName.slice(0, 10) + '...' : this.userFullName;
         } else if (this.window.width < 768) {
           return this.userFullName.length > 18 ? this.userFullName.slice(0, 18) + '...' : this.userFullName;
         } else if (this.window.width < 992) {
           return this.userFullName.length > 25 ? this.userFullName.slice(0, 25) + '...' : this.userFullName;
+        } else if (this.window.width <= 1280) {
+          return this.userFullName.length > 18 ? this.userFullName.slice(0, 18) + '...' : this.userFullName;
         }
+        return this.userFullName = this.user.first_name + ' ' + this.user.last_name;
       }
     },
     methods: {

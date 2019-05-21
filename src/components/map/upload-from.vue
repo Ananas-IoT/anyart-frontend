@@ -15,13 +15,13 @@
           {{this.error}}
         </v-alert>
 
-        <v-card-title class="upload-form__title">{{this.type}} form</v-card-title>
+        <v-card-title class="upload-form__title">{{this.computeFormTitle}}</v-card-title>
         <v-form v-model="validation">
 
           <div class="upload-form__img-preview-wrap">
             <img class="upload-form__img-preview" ref="photoPreview" v-show="computePhotoPreviewShow"
                  alt="photo preview..">
-            <label class="upload-form__img-preview-label" for="files">Select Image</label>
+            <label class="upload-form__img-preview-label" for="files">{{$ml.get('upload-form-select-image')}}</label>
             <input
               class="upload-form__img-preview-input"
               id="files"
@@ -32,7 +32,7 @@
           </div>
 
           <v-textarea
-            label="Description"
+            :label="$ml.get('upload-form-description')"
             class="upload-form__description"
             v-model="description"
             :rows="4"
@@ -50,7 +50,7 @@
           :loading="sendLoadingTriggerAnimation"
           :disabled="!validation"
           @click="chooseProcess"
-        >Send
+        > {{this.$ml.get('upload-form-button')}}
         </v-btn>
       </v-card>
     </v-dialog>
@@ -60,15 +60,14 @@
       persistent
     >
       <v-card>
-        <v-card-title class="upload-form__success-message__title">Information!</v-card-title>
-        <v-card-text class="upload-form__success-message__text">Your {{this.type}} was successfully sent! We inform you
-          that before appear on the map, your {{type}} should be approved! <br>
-          If something will go wrong, we will inform you.
+        <v-card-title class="upload-form__success-message__title" v-text="$ml.get('upload-form-message-title')"></v-card-title>
+        <v-card-text class="upload-form__success-message__text">{{this.computeMessageText}} <br>
+          {{this.$ml.get('upload-form-message-text')['end']}}
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="green" flat @click="successMessage = false">Ok, I understood
+            color="green" flat @click="successMessage = false" v-text="$ml.get('upload-form-message-button')">
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -133,6 +132,12 @@
     computed: {
       computePhotoPreviewShow() {
         return this.sketch.images.length !== 0 || this.request.images.length !== 0;
+      },
+      computeFormTitle() {
+        return this.$ml.get('upload-form-title')[this.type];
+      },
+      computeMessageText() {
+        return this.$ml.get('upload-form-message-text')[this.type];
       }
     },
     methods: {
@@ -310,6 +315,7 @@
   }
 
   .upload-form__success-message__text {
+    text-align: justify;
     font-size: 16px;
     padding-bottom: 0;
   }

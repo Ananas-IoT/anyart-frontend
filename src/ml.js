@@ -116,6 +116,55 @@ export default new MLCreate({
       'landing-partners-title': 'Наші партнери: ',
             // ===============FOOTER=================
       'landing-footer-follow': 'Слідкуйте за нами: ',
+      // ===============LANDING=================
+
+      // ===============MAP===================
+      'map-search-input': 'Введіть адресу',
+      'map-search-button': 'Додати',
+            // ===============UPLOAD-FORM===================
+      'upload-form-title': {
+        'request': 'Запит форма',
+        'sketch': 'Скетч форма'
+      },
+      'upload-form-select-image': 'Вибрати зображення',
+      'upload-form-description': 'Опис..',
+      'upload-form-button': 'Відправити',
+      'upload-form-message-title': 'Інформуємо!',
+      'upload-form-message-text': {
+        'request': 'Ваш запит був успішно відправлений! Ми попереджаємо, що перед тим як опинитись на карті, ваш' +
+          'запит переглянуть і дозволять',
+        'sketch': 'Ваш скетч був успішно відправлений! Ми попереджаємо, що перед тим як опинитись на карті, ваш' +
+          'скетч переглянуть і дозволять',
+        'end': 'Якщо щось піде не так, ми вас проінформуємо!',
+      },
+      'upload-form-message-button': 'Добре, я зрозумів',
+
+            // ===============UPLOAD-FORM===================
+      'request-list-title': 'Список Запитів: ',
+      'request-list-owner': 'власник: ',
+      'request-list-status': 'Статус: ',
+      'opened-request-upload-sketch': 'Завантажити скетч',
+      'opened-request-sketch-artist': 'Художник: ',
+      'opened-request-sketch-votes': [' Голос', ' Голосів'],
+      // ===============MAP===================
+
+      // ===============USER-PROFILE===================
+      'user-profile-title': 'Мій профіль',
+      'user-profile-user-rights': {
+        'basic': 'Звичайний користувач',
+        'artist': 'Художник'
+      },
+      'user-profile-requests': 'Мої Запити',
+      'user-profile-sketches': 'Мої Скетчі',
+      'user-profile-messages': 'Мої Повідомення: ',
+      'user-profile-delete-title': 'Увага!',
+      'user-profile-delete-text': {
+        'request': 'Ви впевнені, що хочете видалити цей запит?',
+        'sketch': 'Ви впевнені, що хочете видалити цей скетч?'
+      },
+      'user-profile-delete-button': 'Так, видаляйте!',
+      'user-profile-request-actions': ['До карти', 'Видалити']
+      // ===============USER-PROFILE===================
 
     }),
 

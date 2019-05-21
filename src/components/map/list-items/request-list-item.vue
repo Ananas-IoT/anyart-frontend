@@ -11,11 +11,11 @@
       </div>
       <v-card-text class="request-list-item__text">
         <h4 class="request-list-item__text-title">default 42 Street in default City</h4>
-        <div class="request-list-item__text-owner">owner: {{this.request.owner.username}}</div>
+        <div class="request-list-item__text-owner">{{$ml.get('request-list-owner')}}{{this.request.owner.username}}</div>
         <p class="request-list-item__text-description">{{this.request.description | textLength(100)}} </p>
 
         <div class="request-list-item__add-info">
-          <div class="request-list-item__add-info__status">Status: status</div>
+          <div class="request-list-item__add-info__status">{{$ml.get('request-list-status')}}status</div>
           <div class="request-list-item__add-info__sketches">{{this.request.sketch_count}}</div>
           <div class="request-list-item__add-info__date">{{this.request.date}}</div>
         </div>

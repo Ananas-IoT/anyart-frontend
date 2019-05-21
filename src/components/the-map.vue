@@ -43,10 +43,10 @@
             <div class="map__search-form">
               <label>
                 <!-- it's map search form-->
-                <!--<v-form v-show="mapSearchFormTriggerShow && isAuthenticated && !requestDrawerTriggerIf">-->
                 <v-form v-show="mapSearchFormTriggerShow && isAuthenticated">
                   <v-text-field
                     class="map__search-form-input"
+                    :placeholder="$ml.get('map-search-input')"
                     v-model="currentPlace.formatted_address"
                     ref="autocomplete"
                     solo
@@ -57,8 +57,8 @@
                     @click="createForm"
                     color="primary"
                     :disabled="!addressValidation"
+                    v-text="$ml.get('map-search-button')"
                   >
-                    Add
                   </v-btn>
                 </v-form>
               </label>
@@ -225,7 +225,7 @@
       },
 
       toggleRequestDrawer() {
-        if(this.window.width <= 576) this.mapSearchFormTriggerShow = this.requestDrawerTriggerIf;
+        // if(this.window.width <= 576) this.mapSearchFormTriggerShow = this.requestDrawerTriggerIf;
         this.requestDrawerTriggerIf = !this.requestDrawerTriggerIf;
         this.infoWindow.open = false;
       },

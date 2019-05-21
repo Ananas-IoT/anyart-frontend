@@ -9,14 +9,19 @@
         v-model="deleteDialog.triggerModel"
         width="300">
         <v-card>
-          <v-card-title class="user-profile__delete-dialog__title">Attention!</v-card-title>
+          <v-card-title class="user-profile__delete-dialog__title" v-text="$ml.get('user-profile-delete-title')"></v-card-title>
           <v-card-text class="user-profile__delete-dialog__text">
-            Are you sure you want to delete the <span class="user-profile__delete-dialog__type">{{this.deleteDialog.type}}</span>,
+            {{$ml.get('user-profile-delete-text')[this.deleteDialog.type]}}
             index: {{this.deleteDialog.deleteIndex}}?
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
-            <v-btn class="user-profile__delete-dialog__btn" color="error" @click="">Yes, delete it!</v-btn>
+            <v-btn
+              class="user-profile__delete-dialog__btn"
+              color="error"
+              @click=""
+              v-text="$ml.get('user-profile-delete-button')"
+            ></v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -37,13 +42,14 @@
             <div class="user-profile__content elevation-3 user-profile__bg-wrap custom-scrollbar">
 
               <div class="user-profile__info-wrap">
-                <h4 class="user-profile__header">My Profile:</h4>
+                <h4 class="user-profile__header" v-text="$ml.get('user-profile-title')"></h4>
                 <div class="user-profile__info__txt">
                   <div class="user-profile__info user-profile__info__username">{{this.user.username}}</div>
                   <div class="user-profile__info user-profile__info__full-name">{{this.user.first_name + " " +
                     this.user.last_name}}
                   </div>
-                  <div class="user-profile__info user-profile__info__rights">{{this.user.rights}}</div>
+                  <div class="user-profile__info user-profile__info__rights"
+                       v-text="$ml.get('user-profile-user-rights')[this.user.rights]"></div>
                 </div>
 
                 <div class="user-profile__info__user-pic elevation-3">
@@ -97,7 +103,7 @@
 
               <!--BASIC USER: REQUESTS-->
               <div class="user-profile__tab-item-wrap" v-if="user.rights === !'artist'">
-                <h4 class="user-profile__header">My Requests:</h4>
+                <h4 class="user-profile__header" v-text="$ml.get('user-profile-requests')"></h4>
                 <request-item
                   class="user-profile__tab-item"
                   v-for="(loopedRequest, index) in requestList"
@@ -110,7 +116,7 @@
 
               <v-divider class="user-profile__divider"></v-divider>
               <div class="user-profile__message-wrap">
-                <h4 class="user-profile__header">My Messages:</h4>
+                <h4 class="user-profile__header" v-text="$ml.get('user-profile-messages')"></h4>
                 <div class="inner-shadow">
                   <div class="user-profile__message-box custom-scrollbar">
                     <message
@@ -160,7 +166,7 @@
         messageList: [],
         messageOpenedTriggerModel: false,
         openedMessage: {},
-        tabList: ['My Requests', 'My Sketches'],
+        tabList: [this.$ml.get('user-profile-requests'), this.$ml.get('user-profile-sketches')],
         deleteDialog: {
           triggerModel: false
         }

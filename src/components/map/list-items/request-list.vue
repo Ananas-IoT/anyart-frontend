@@ -5,7 +5,7 @@
         class="request-list"
         v-show="!openedRequestTriggerShow"
       >
-        <h2 class="request-list__title">Here goes Request List!</h2>
+        <h2 class="request-list__title" v-text="$ml.get('request-list-title')" ></h2>
         <request-item class="request-list__request-item"
                       v-for="(loopedRequest, index) in requestList"
                       :request=loopedRequest

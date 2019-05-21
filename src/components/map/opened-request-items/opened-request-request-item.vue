@@ -9,20 +9,20 @@
         </div>
 
         <div class="opened-request-item__add-info">
-          <div class="opened-request-item__add-info__status">Status: status</div>
+          <div class="opened-request-item__add-info__status">{{$ml.get('request-list-status')}}status</div>
           <div class="opened-request-item__add-info__date">{{this.request.date}}</div>
           <v-btn
             class="opened-request-item__btn"
             v-if="userRights === 'artist'"
             color="primary"
             @click="uploadSketch"
-          >Upload sketch</v-btn>
+          >{{$ml.get('opened-request-upload-sketch')}}</v-btn>
         </div>
       </div>
 
 
       <div class="opened-request-item__text">
-        <div class="opened-request-item__text-owner">owner: {{this.request.owner.username}}</div>
+        <div class="opened-request-item__text-owner">{{$ml.get('request-list-owner')}}{{this.request.owner.username}}</div>
         <p class="opened-request-item__text-description">{{this.request.description}} </p>
       </div>
     </div>

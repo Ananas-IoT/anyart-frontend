@@ -5,8 +5,18 @@
       <v-card class="user-sketch-item">
 
         <div class="user-sketch-item__actions">
-          <v-btn color="primary" to="/map" class="user-sketch-item__actions__btn">to map</v-btn>
-          <v-btn color="default" @click="deleteSketch" class="user-sketch-item__actions__btn">delete</v-btn>
+          <v-btn
+            color="primary"
+            @click=""
+            class="user-sketch-item__actions__btn"
+            v-text="$ml.get('user-profile-request-actions')[0]"
+          ></v-btn>
+          <v-btn
+            color="default"
+            @click=""
+            class="user-sketch-item__actions__btn"
+            v-text="$ml.get('user-profile-request-actions')[1]"
+          ></v-btn>
         </div>
 
         <v-card-text class="user-sketch-item__text">
@@ -16,15 +26,14 @@
             <span class="img-open-hover__span"></span>
           </div>
 
-          <h4 class="user-sketch-item__text-title">Artist username</h4>
+          <h4 class="user-sketch-item__text-title">{{this.sketch.owner.username}}</h4>
           <!--<p class="sketch-tab-item__text-description">{{this.sketch.sketch_description}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem culpa dicta eaque hic in, ipsam laborum molestiae nemo, omnis placeat provident quae quidem reprehenderit tempora tenetur totam ullam voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid asperiores culpa, cum cupiditate delectus dolorem eos expedita facilis iure laborum non, numquam officia possimus quae quam, saepe similique velit?</p>-->
 
-          <p class="user-sketch-item__text-description">{{this.sketch.description  | textLength(160)}}</p>
+          <p class="user-sketch-item__text-description">{{this.sketch.sketch_description | textLength(160)}}</p>
         </v-card-text>
 
         <div class="user-sketch-item__add-info">
-          <div class="user-sketch-item__add-info__status">Status: status</div>
-          <div class="user-sketch-item__add-info__votes">6</div>
+          <div class="user-sketch-item__add-info__votes">{{this.sketch.sketch_votes}}{{this.computeVotesNum}}</div>
           <div class="user-sketch-item__add-info__date">01.01.1974</div>
         </div>
       </v-card>
@@ -52,9 +61,11 @@
         isVoted: true
       }
     },
-    mounted() {},
-    created() {
-      this.sketch.description = "Меня зовут Даниил и я готов приступить к работе через неделю. Мне понадобится краска, и стена. Принимаю ваши денежные пожертвования (нужно 300 гривен). Номер: 88005553535";
+    computed: {
+      computeVotesNum() {
+        if (this.sketch.sketch_votes === 1) return this.$ml.get('opened-request-sketch-votes')[0];
+        return this.$ml.get('opened-request-sketch-votes')[1];
+      }
     },
     methods: {
       deleteSketch() {
@@ -176,13 +187,6 @@
     display: inline-block;
     padding-left: 36px;
     font-family: "PT Sans BoldItalic";
-  }
-
-  .user-sketch-item__add-info__votes:before {
-    content: 'votes: ';
-    position: absolute;
-    top: 0;
-    left: 0;
   }
 
   .user-sketch-item__add-info__date {

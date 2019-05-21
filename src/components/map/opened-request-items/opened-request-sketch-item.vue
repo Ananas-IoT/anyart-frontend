@@ -11,8 +11,8 @@
             <span class="img-open-hover__span"></span>
           </div>
 
-          <h4 class="sketch-tab-item__text-title">Artist: {{this.sketch.owner.username}}</h4>
-          <!--<p class="sketch-tab-item__text-description">{{this.sketch.sketch_description}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem culpa dicta eaque hic in, ipsam laborum molestiae nemo, omnis placeat provident quae quidem reprehenderit tempora tenetur totam ullam voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid asperiores culpa, cum cupiditate delectus dolorem eos expedita facilis iure laborum non, numquam officia possimus quae quam, saepe similique velit?</p>-->
+          <h4 class="sketch-tab-item__text-title">
+            {{$ml.get('opened-request-sketch-artist')}}{{this.sketch.owner.username}}</h4>
 
           <p class="sketch-tab-item__text-description">{{this.sketch.sketch_description}}</p>
             <span class="sketch-tab-item__text-date">{{this.sketch.date}}</span>
@@ -25,7 +25,7 @@
             :loading = voteLoadingTriggerAnimation
             :disabled="!this.user.username"
             @click="vote()"
-          >{{this.sketch.sketch_votes}} votes
+          >{{this.sketch.sketch_votes}}{{this.computeVotesNum}}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -56,6 +56,12 @@
     },
     mounted() {
 
+    },
+    computed: {
+      computeVotesNum() {
+        if (this.sketch.sketch_votes === 1) return this.$ml.get('opened-request-sketch-votes')[0];
+        return this.$ml.get('opened-request-sketch-votes')[1];
+      }
     },
     methods: {
       //to Map component
