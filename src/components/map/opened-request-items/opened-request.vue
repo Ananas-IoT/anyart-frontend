@@ -11,9 +11,10 @@
     <!--request itself-->
     <div class="request-opened__request">
       <request-item
-      :request = request
-      :index = index
-      :userRights = user.rights
+        v-if="request"
+        :request=request
+        :index=index
+        :userRights=user.rights
       ></request-item>
     </div>
 
@@ -23,9 +24,10 @@
     <div class="request-opened__sketch-list">
       <sketch-item
         class="request-opened__sketch-item"
+        v-if="sketchList"
         v-for="(loopedSketch, index) in sketchList"
-        :sketch = loopedSketch
-        :key = index
+        :sketch=loopedSketch
+        :key=index
       >
       </sketch-item>
     </div>
@@ -63,7 +65,11 @@
       this.user = this.$store.getters.getUser;
       this.loadRequestandSketches();
     },
-    mounted() {},
+    mounted() {
+      eventBus.$on('checkRequests', () => {
+        this.loadRequestandSketches();
+      });
+    },
     methods: {
       //to RequestList component
       closeRequest() {
@@ -77,7 +83,9 @@
         this.request = requestList[+this.index];
 
         // gets all sketches
-        let callback = (sketchList) => {this.sketchList = sketchList};
+        let callback = (sketchList) => {
+          this.sketchList = sketchList
+        };
         getSketchesById(this.request.workload, callback);
       }
     }

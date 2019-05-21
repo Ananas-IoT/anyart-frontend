@@ -24,10 +24,7 @@
             class="requestDrawer"
             v-model="requestDrawerTriggerIf"
             :width="computeDrawerWidth"
-            v-touch="{
-              left: () => toggleRequestDrawer(),
-              right: () => toggleRequestDrawer()
-            }"
+            disable-route-watcher
             absolute
             clipped
             app
@@ -158,8 +155,17 @@
         }
       };
     },
+    watch: {
+      'requestDrawerTriggerIf': function () {
+        if (this.window.width <= 576) this.mapSearchFormTriggerShow = !this.requestDrawerTriggerIf;
+      }
+    },
     mounted() {
-      setTimeout(() => {if (this.window.width <= 576) this.toggleRequestDrawer()}, 400);
+      setTimeout(() => {
+        if (this.window.width <= 576) {
+          this.mapSearchFormTriggerShow = false;
+        }
+      }, 400);
     },
 
     created() {
@@ -225,8 +231,10 @@
       },
 
       toggleRequestDrawer() {
-        // if(this.window.width <= 576) this.mapSearchFormTriggerShow = this.requestDrawerTriggerIf;
         this.requestDrawerTriggerIf = !this.requestDrawerTriggerIf;
+        // console.log(this.window.width);
+        if (this.window.width <= 576) this.mapSearchFormTriggerShow = !this.requestDrawerTriggerIf;
+        // this.mapSearchFormTriggerShow = !this.requestDrawerTriggerIf;
         this.infoWindow.open = false;
       },
 
@@ -472,7 +480,7 @@
     }
 
     .requestDrawerToggler {
-      top: 120px;
+      top: 140px;
       right: -60px;
       width: 40px;
       height: 40px;
@@ -496,7 +504,7 @@
     }
 
     .requestDrawerToggler.requestDrawerToggler__closed {
-      transform: scale(1, 1) translateX(-10px)!important;
+      transform: scale(1, 1) translateX(-10px) !important;
     }
 
     .requestDrawerToggler.requestDrawerToggler__closed:before {

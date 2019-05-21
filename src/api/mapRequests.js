@@ -48,6 +48,7 @@ export function getAllRequests(next) {
         store.dispatch('addRequest', item);
       });
       if(response.data.next) getAllRequests(response.data.next);
+      else eventBus.$emit('checkRequests');
     })
     .catch(err => {
       console.log(err.data);

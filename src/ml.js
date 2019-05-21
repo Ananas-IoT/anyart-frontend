@@ -58,7 +58,7 @@ export default new MLCreate({
       'landing-main-subtitle': 'Розфарбуй свої будні!',
             // ===============HOW-TO=================
       'landing-how-to-title': 'Як це працює?',
-      'landing-how-to-description': 'Правила дуже прості. Просто виконайте декілька простих кроків: ',
+      'landing-how-to-description': 'Правила дуже прості. Виконайте декілька нескладних кроків: ',
       'landing-how-to-workflow': [
         'Виберіть місце та завантажте фото',
         'Місце затверджує влада',
@@ -81,7 +81,7 @@ export default new MLCreate({
             // ===============ABOUT-US=================
       'landing-about-us-title': 'А тепер трохи про нас:',
       'landing-about-us-subtitle': 'Ми раді вітати вас на нашому сайті!' +
-        ' Наша мрія — зробити Львів краще для всіх нас',
+        ' Наша мета — зробити Львів краще для всіх нас',
       'landing-about-us-name': [
         'Анна Манько',
         'Данііл Логвінов',
@@ -99,7 +99,7 @@ export default new MLCreate({
             // ===============GALLERY=================
       'landing-gallery-title': 'Галерея:',
       'landing-gallery-subtitle': 'Це лише деякі приклади робіт, зроблених до нас.' +
-      'З нашою допомогою їх ставатиме ще більше!',
+      ' З нашою допомогою їх ставатиме ще більше!',
             // ===============CONTACT-US=================
       'landing-contact-us-message-title': 'Повідомлення!',
       'landing-contact-us-message-success': 'Дякуємо за відгук! :)',
@@ -107,7 +107,7 @@ export default new MLCreate({
         " або зв'яжіться з нами напряму: anyart-iot@gmail.com",
       'landing-contact-us-title': 'Напишіть нам!',
       'landing-contact-us-subtitle': 'Якщо у вас є пропозиції,' +
-      'ідеї чи думки щодо покращення сервісу, напишіть нам та допоможіть зробити наш проект кращим!',
+      'ідеї чи думки щодо покращення сервісу, напишіть нам. Це зробить наш проект кращим!',
       'landing-contact-us-form-contact': "Як нам з вами зв'язатися?",
       'landing-contact-us-form-body': 'Ваш текст..',
       'landing-contact-us-form-button': 'Відправити',
