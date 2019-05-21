@@ -9,19 +9,19 @@ export const serverErrorsMixin = {
       console.log(error.response);
       switch (error.response.status) {
         case 400:
-          this.error = "Здається, щось не так з вашим запитом. Спробуйте ще раз або зверніться до програміста";
+          this.error = this.$ml.get('error-messages')['400'];
           break;
         case 401:
-          this.error =  "Трапилась помилка з вашим аккаунтом. Будь-ласка, спробуйте перезайти";
+          this.error = this.$ml.get('error-messages')['401'];
           break;
         case 403:
-          this.error =  "Здається, трапилась помилка доступу. Будь-ласка, зверніться до програміста";
+          this.error = this.$ml.get('error-messages')['403'];
           break;
         case 500:
-          this.error =  "Здається, щось не так з нашим сервером. Будь-ласка, зверніться до програміста";
+          this.error = this.$ml.get('error-messages')['500'];
           break;
         default:
-          this.error =  "Виникла невідома помилка :("
+          this.error = this.$ml.get('error-messages')['default'];
       }
       setTimeout(() => {
         this.error = null

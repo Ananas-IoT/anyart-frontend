@@ -4,9 +4,9 @@
       <!--ROOT COMPONENT FOR OTHER AUTH COMPONENTS-->
       <router-view v-if="!isAuth"></router-view>
       <v-card v-else class="auth__logout">
-        <h3 class="auth__warning">Are you really want to logout?</h3>
-        <v-btn class="auth__logout__btn" color="primary" @click="logOut">Log out</v-btn>
-        <router-link class="auth__to-main" to="/">back to main page</router-link>
+        <h3 class="auth__warning" v-text="$ml.get('auth-logout-warning')"></h3>
+        <v-btn class="auth__logout__btn" color="primary" @click="logOut" v-text="$ml.get('auth-logout')"></v-btn>
+        <router-link class="auth__to-main" to="/" v-text="$ml.get('auth-to-main')"></router-link>
       </v-card>
     </div>
   </v-app>
@@ -108,8 +108,13 @@
   }
 
   >>> .stepper-step {
+    text-align: center;
     font-size: 14px;
     cursor: pointer;
+  }
+
+  >>> .v-stepper__label {
+    text-align: center;
   }
 
   >>> .stepper-items__card {

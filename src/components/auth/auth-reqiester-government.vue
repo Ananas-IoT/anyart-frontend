@@ -18,21 +18,26 @@
 
         <v-stepper-header class="stepper-header">
           <v-stepper-step
-            class="stepper-step" :complete="stepperCurrent > 1" step="1" @click="backToStep(1)"
-          >
-            Account setup
+            class="stepper-step"
+            :complete="stepperCurrent > 1"
+            step="1"
+            @click="backToStep(1)"
+          >{{this.$ml.get('auth-register-stepper')[0]}}
           </v-stepper-step>
           <v-divider></v-divider>
           <v-stepper-step
-            class="stepper-step" :complete="stepperCurrent > 2" step="2" @click="backToStep(2)"
-          >
-            Personal details
+            class="stepper-step"
+            :complete="stepperCurrent > 2"
+            step="2"
+            @click="backToStep(2)"
+          >{{this.$ml.get('auth-register-stepper')[1]}}
           </v-stepper-step>
           <v-divider></v-divider>
           <v-stepper-step
-            class="stepper-step" :complete="stepperCurrent > 3" step="3"
-          >
-            Social profile
+            class="stepper-step"
+            :complete="stepperCurrent > 3"
+            step="3"
+          >{{this.$ml.get('auth-register-stepper')[2]}}
           </v-stepper-step>
         </v-stepper-header>
 
@@ -47,19 +52,19 @@
             >
               <v-form v-model="validation">
                 <v-text-field
-                  label="Email"
+                  :label="$ml.get('auth-email')"
                   v-model="user.email"
                   :rules="inputRules"
                   autofocus
                 ></v-text-field>
                 <v-text-field
-                  label="Password"
+                  :label="$ml.get('auth-password')"
                   v-model="user.password"
                   :rules="inputRules"
                   type="password"
                 ></v-text-field>
                 <v-text-field
-                  label="Confirm password"
+                  :label="$ml.get('auth-confirm-password')"
                   type="password"
                 ></v-text-field>
               </v-form>
@@ -68,7 +73,7 @@
               color="primary"
               @click="stepperCurrent = 2; validation = false"
               :disabled="!validation"
-            >Continue
+            >{{$ml.get('auth-register-stepper')[3]}}
             </v-btn>
           </v-stepper-content>
 
@@ -93,7 +98,7 @@
               color="primary"
               @click="stepperCurrent = 3"
               :disabled="!validation"
-            >Continue
+            >{{$ml.get('auth-register-stepper')[3]}}
             </v-btn>
           </v-stepper-content>
 
@@ -111,13 +116,13 @@
                 >
                 </v-text-field>
                 <v-text-field
-                  label="First name"
+                  :label="$ml.get('auth-first-name')"
                   v-model="user.first_name"
                   :rules="inputRules"
                 >
                 </v-text-field>
                 <v-text-field
-                  label="Last name"
+                  :label="$ml.get('auth-last-name')"
                   v-model="user.last_name"
                   :rules="inputRules"
                 >
@@ -128,8 +133,8 @@
               color="primary"
               @click="addNewUser"
               :disabled="!validation"
-            >Create account
-            </v-btn>
+              v-text="$ml.get('auth-register-title')"
+            ></v-btn>
           </v-stepper-content>
 
         </v-stepper-items>

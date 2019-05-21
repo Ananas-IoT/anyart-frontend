@@ -68,7 +68,7 @@
         },
         validation: false,
         inputRules: [
-          v => !!v || 'Field is required'
+          v => !!v || this.$ml.get('required-field')
         ],
         errorMessage: ''
       }

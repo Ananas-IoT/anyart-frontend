@@ -72,17 +72,17 @@
               <div>
                 <router-link
                   to="/auth/register"
-                  v-text="$ml.get('header-auth-logout')"></router-link>
+                  v-text="$ml.get('auth-logout')"></router-link>
               </div>
             </div>
             <div v-else class="user-block__registration">
               <router-link
                 to="/auth/register"
-                v-text="$ml.get('header-auth-register')">
+                v-text="$ml.get('auth-register')">
               </router-link>
               <router-link
                 to="/auth/login"
-                v-text="$ml.get('header-auth-login')"
+                v-text="$ml.get('auth-login')"
               ></router-link>
             </div>
           </div>

@@ -12,16 +12,16 @@
         >
           {{this.error}}
         </v-alert>
-        <h2 class="form__title">Login: </h2>
+        <h2 class="form__title" v-text="$ml.get('auth-login')"></h2>
         <v-text-field
-          label="Username"
+          :label="this.$ml.get('auth-username')"
           v-model="user.username"
           :rules="inputRules"
           autofocus
         >
         </v-text-field>
         <v-text-field
-          label="Password"
+          :label="this.$ml.get('auth-password')"
           v-model="user.password"
           :rules="inputRules"
           type="password"
@@ -31,7 +31,8 @@
           color="primary"
           @click="login"
           :disabled="!validation"
-        >Login
+          v-text="$ml.get('auth-login')"
+          >
         </v-btn>
       </v-form>
     </div>
@@ -58,7 +59,7 @@
         },
         validation: false,
         inputRules: [
-          v => !!v || 'Field is required'
+          v => !!v || this.$ml.get('required-field')
         ]
       }
     },
