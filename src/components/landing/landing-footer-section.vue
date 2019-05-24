@@ -42,8 +42,8 @@
           &copy;2019 — <strong>AnyArt</strong>
         </div>
         <div class="footer__language">
-          <span @click="$ml.change('ukrainian')"><img class="footer__language__img" src="../../assets/img/footer/flag-ua.png" alt=""></span>
-          <span @click="$ml.change('english')"><img class="footer__language__img" src="../../assets/img/footer/flag-uk.png" alt=""></span>
+          <span @click="changeLanguage('ukrainian')"><img class="footer__language__img" src="../../assets/img/footer/flag-ua.png" alt=""></span>
+          <span @click="changeLanguage('english')"><img class="footer__language__img" src="../../assets/img/footer/flag-uk.png" alt=""></span>
         </div>
       </v-card-text>
     </v-card>
@@ -60,6 +60,14 @@
           facebook: require('../../assets/img/footer/fb-color.png'),
           instagram: require('../../assets/img/footer/instagram-color.png')
         },
+      }
+    },
+    methods: {
+      changeLanguage(lang) {
+        this.$ml.change(lang);
+
+        //caching user prefered language
+        localStorage.setItem('language', lang);
       }
     }
   }

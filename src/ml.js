@@ -185,7 +185,7 @@ export default new MLCreate({
 
       // ===============HEADER=================
       'header-nav-main': 'Main',
-      'header-nav-how-to': 'How it works?',
+      'header-nav-how-to': 'How it works',
       'header-nav-about-us': 'About us',
       'header-nav-gallery': 'Gallery',
       'header-nav-contacts': 'Contacts',
@@ -221,7 +221,7 @@ export default new MLCreate({
       // ===============MAIN=================
       'landing-main-subtitle': 'Colorize your routine!',
       // ===============HOW-TO=================
-      'landing-how-to-title': 'How it works?',
+      'landing-how-to-title': 'How does it work?',
       'landing-how-to-description': 'Rules are simple. Just complete some steps: ',
       'landing-how-to-workflow': [
         'Pick a place and upload a wall photo',
@@ -261,7 +261,7 @@ export default new MLCreate({
       ],
       // ===============GALLERY=================
       'landing-gallery-title': 'Gallery:',
-      'landing-gallery-subtitle': 'Some examples of great street art, which created before us.' +
+      'landing-gallery-subtitle': 'Some examples of great street art, that was created before us.' +
         ' It will be more, with our help!',
       // ===============CONTACT-US=================
       'landing-contact-us-message-title': 'Information!',
@@ -270,7 +270,7 @@ export default new MLCreate({
         " or contact us: anyart-iot@gmail.com",
       'landing-contact-us-title': 'Lets be in touch!',
       'landing-contact-us-subtitle': 'If you have some propositions or' +
-        ' ideas which can improve our service, contact us. Your message will help us develop a better platform!',
+        ' ideas which can improve our service, contact us. Your message will help us to develop a better platform!',
       'landing-contact-us-form-contact': "How can we contact you?",
       'landing-contact-us-form-body': 'Your text..',
       'landing-contact-us-form-button': 'Send',

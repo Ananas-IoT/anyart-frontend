@@ -35,6 +35,9 @@
         this.user = getUserByToken(token, refresh);
       }
 
+      //restoring user prev session language
+      let language = localStorage.getItem('language');
+      if(language) this.$ml.change(language);
     },
     destroyed() {
       window.removeEventListener('resize', this.handleResize);
