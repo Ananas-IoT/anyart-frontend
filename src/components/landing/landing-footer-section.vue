@@ -41,6 +41,10 @@
         <div class="footer__copyright">
           &copy;2019 — <strong>AnyArt</strong>
         </div>
+        <div class="footer__language">
+          <span @click="$ml.change('ukrainian')"><img class="footer__language__img" src="../../assets/img/footer/flag-ua.png" alt=""></span>
+          <span @click="$ml.change('english')"><img class="footer__language__img" src="../../assets/img/footer/flag-uk.png" alt=""></span>
+        </div>
       </v-card-text>
     </v-card>
 
@@ -73,7 +77,8 @@
   }
 
   .footer__wrap {
-    height: 58px;
+    height: auto;
+    padding-bottom: 0;
     background: #d67d8e;
   }
 
@@ -143,6 +148,17 @@
     display: inline-block;
     margin-top: 5px;
     color: #fff;
+  }
+
+  .footer__language {
+    text-align: center;
+  }
+
+  .footer__language__img {
+    width: 32px;
+    height: 32px;
+    margin: 0 2px;
+    cursor: pointer;
   }
 
   /* Small Devices, Tablets */

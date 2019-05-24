@@ -3,6 +3,10 @@ import { MLInstaller, MLCreate, MLanguage } from 'vue-multilanguage'
 
 Vue.use(MLInstaller);
 
+//https://www.npmjs.com/package/vue-multilanguage
+
+
+
 export default new MLCreate({
   initial: 'ukrainian',
   // initial: 'english',
@@ -47,8 +51,8 @@ export default new MLCreate({
       'auth-first-name': "Ім'я",
       'auth-last-name': 'Прізвище',
       'auth-register-role-description': [
-        'Як звичайний користувач, ви зможете завантажувати запити і голосувати за скетчі',
-        'Ви матимете всі можливості звичайного користувача плюс можливість завантажувати скетчі'
+        'Як користувач, ви зможете завантажувати запити і голосувати за скетчі',
+        'Ви матимете всі можливості користувача плюс можливість завантажувати скетчі'
       ],
       'auth-register-artist-button': 'Я хочу бути художником!',
       // ===============AUTH=================
@@ -151,7 +155,7 @@ export default new MLCreate({
       // ===============USER-PROFILE===================
       'user-profile-title': 'Мій профіль',
       'user-profile-user-rights': {
-        'basic': 'Звичайний користувач',
+        'basic': 'користувач',
         'artist': 'Художник'
       },
       'user-profile-requests': 'Мої Запити',
@@ -169,40 +173,162 @@ export default new MLCreate({
     }),
 
     new MLanguage('english').create({
+      // ===============ERROR CODES=================
+      'error-messages' : {
+        '400': "Something is wrong with your request. Try again or inform the developer!",
+        '401': "An error occured with your account. Please, try to relogin",
+        '403': "An access error occured. Please, inform the developer!",
+        '500': "Something is wrong with our server. Please, inform the developer.",
+        'default': "An unknown error occured :("
+      },
+      // ===============ERROR CODES=================
+
       // ===============HEADER=================
       'header-nav-main': 'Main',
-      'header-nav-how-to': 'How it works',
+      'header-nav-how-to': 'How it works?',
       'header-nav-about-us': 'About us',
       'header-nav-gallery': 'Gallery',
       'header-nav-contacts': 'Contacts',
       'header-nav-map': 'Map',
-      'header-auth-logout': 'Log out',
-      'header-auth-register': 'Register',
-      'header-auth-login': 'Login',
       // ===============HEADER=================
 
-      // ===============LANDING=================
-      'landing-main-subtitle': 'Colorize your routine!',
+      // ===============AUTH=================
+      'required-field': "Field is required!",
+      'auth-logout': 'Logout',
+      'auth-register': 'Register',
+      'auth-login': 'Login',
+      'auth-logout-warning': 'Are you sure want to logout?',
+      'auth-to-main': 'Back to main',
+      'auth-username': 'username',
+      'auth-password': 'password',
+      'auth-register-stepper': [
+        'General information', 'Personal', 'Social profile', 'Continue'
+      ],
+      'auth-register-title': 'Create an account: ',
+      'auth-register-subtitle': 'To add requests and vote for sketches',
+      'auth-email': 'email',
+      'auth-confirm-password': 'Confirm password',
+      'auth-first-name': "First Name",
+      'auth-last-name': 'Last Name',
+      'auth-register-role-description': [
+        'As a user, you can upload requests and vote for sketches!',
+        'The User functions, plus sketch upload'
+      ],
+      'auth-register-artist-button': 'I want to be artist!',
+      // ===============AUTH=================
 
-      'landing-how-to-title': '',
-      'landing-how-to-description': '',
-      'landing-how-to-workflow-photo': '',
-      'landing-how-to-workflow-govern1': '',
-      'landing-how-to-workflow-sketch': '',
-      'landing-how-to-workflow-govern2': '',
-      'landing-how-to-workflow-voting': '',
-      'landing-how-to-workflow-enjoy': '',
-      'landing-how-to-button': '',
+      // ===============LANDING=================
+      // ===============MAIN=================
+      'landing-main-subtitle': 'Colorize your routine!',
+      // ===============HOW-TO=================
+      'landing-how-to-title': 'How it works?',
+      'landing-how-to-description': 'Rules are simple. Just complete some steps: ',
+      'landing-how-to-workflow': [
+        'Pick a place and upload a wall photo',
+        'Government approves the place',
+        'Artist suggests his sketches',
+        'Government approves the sketch',
+        'Vote for best sketches!',
+        'Enjoy!',
+      ],
+      'landing-how-to-workflow-body': [
+        'Find a place in search bar, upload a wall photo' +
+        ' and add a comment to it!',
+        'Then government should check, if this place is allowed to draw',
+        'Artist may choose your request and attach his sketch to it',
+        'Then government checks the sketch and licenses a drawing',
+        'You vote for best solutions with other users!',
+        'No comments :)',
+      ],
+      'landing-how-to-button': 'Go to map!',
+      // ===============ABOUT-US=================
+      'landing-about-us-title': 'About us:',
+      'landing-about-us-subtitle': 'We are happy to see you on our site!' +
+        ' Our purpose is to make Lviv a better place for all of us',
+      'landing-about-us-name': [
+        "Ann Man'ko",
+        'Daniil Lohvinov',
+        'Mike Gursky',
+        'Vlad Boychev',
+        'Oleh Gavrilyuk'
+      ],
+      'landing-about-us-position': [
+        'Product Owner, Back-End developer',
+        'UX-дизайнер, Front-End developer',
+        'System Architect',
+        'Marketing, Front-End developer',
+        'Mentor'
+      ],
+      // ===============GALLERY=================
+      'landing-gallery-title': 'Gallery:',
+      'landing-gallery-subtitle': 'Some examples of great street art, which created before us.' +
+        ' It will be more, with our help!',
+      // ===============CONTACT-US=================
+      'landing-contact-us-message-title': 'Information!',
+      'landing-contact-us-message-success': 'Thanks for your feedback! :)',
+      'landing-contact-us-message-error': "Something got wrong :(. Please try again," +
+        " or contact us: anyart-iot@gmail.com",
+      'landing-contact-us-title': 'Lets be in touch!',
+      'landing-contact-us-subtitle': 'If you have some propositions or' +
+        ' ideas which can improve our service, contact us. Your message will help us develop a better platform!',
+      'landing-contact-us-form-contact': "How can we contact you?",
+      'landing-contact-us-form-body': 'Your text..',
+      'landing-contact-us-form-button': 'Send',
+      'landing-contact-us-mail': 'Or write us here: ',
+      // ===============PARTNERS=================
+      'landing-partners-title': 'Our partners: ',
+      // ===============FOOTER=================
+      'landing-footer-follow': 'Follow us: ',
+      // ===============LANDING=================
+
+      // ===============MAP===================
+      'map-search-input': 'Address..',
+      'map-search-button': 'Add',
+      // ===============UPLOAD-FORM===================
+      'upload-form-title': {
+        'request': 'Request form',
+        'sketch': 'Sketch form'
+      },
+      'upload-form-select-image': 'Choose an image',
+      'upload-form-description': 'Description..',
+      'upload-form-button': 'Send',
+      'upload-form-message-title': 'Information!',
+      'upload-form-message-text': {
+        'request': 'Your request was successfully send! We notify you, before appear on the map, your' +
+          ' request should be approved',
+        'sketch': 'Your sketch was successfully send! We notify you, attachment to request, your' +
+          ' request should be approved',
+        'end': 'If something goes wrong, we will inform you!',
+      },
+      'upload-form-message-button': 'Ok, got it!',
+
+      // ===============UPLOAD-FORM===================
+      'request-list-title': 'Request List: ',
+      'request-list-owner': 'owner: ',
+      'request-list-status': 'Status: ',
+      'opened-request-upload-sketch': 'Upload sketch',
+      'opened-request-sketch-artist': 'Artist: ',
+      'opened-request-sketch-votes': [' vote', ' votes'],
+      // ===============MAP===================
+
+      // ===============USER-PROFILE===================
+      'user-profile-title': 'My profile',
+      'user-profile-user-rights': {
+        'basic': 'User',
+        'artist': 'Artist'
+      },
+      'user-profile-requests': 'My requests',
+      'user-profile-sketches': 'My sketches',
+      'user-profile-messages': 'My messages: ',
+      'user-profile-delete-title': 'Warning!',
+      'user-profile-delete-text': {
+        'request': 'Are you sure you want to delete this request?',
+        'sketch': 'Are you sure you want to delete this sketch?'
+      },
+      'user-profile-delete-button': 'Yes, delete it!',
+      'user-profile-request-actions': ['To map', 'Delete']
+      // ===============USER-PROFILE===================
+
     })
   ]
 })
-
-//import {MLBuilder} from 'vue-multilanguage';
-
-//v-text="$ml.with('VueJS').get('title')"
-
-// computed: {
-//   mlmyMessage () {
-//     return new MLBuilder('msg').with('f', this.friends).with('l', 406)
-//   }
-// }

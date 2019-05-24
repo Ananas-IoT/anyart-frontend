@@ -41,7 +41,8 @@
               <v-card class="contact-us-section__email-wrap elevation-6">
                 <v-card-text>
                   {{this.$ml.get('landing-contact-us-mail')}}
-                  <a class="contact-us-section__email-link" href="mailto: ananas-iot@gmail.com">
+                  <br>
+                  <a class="contact-us-section__email-link db" href="mailto: ananas-iot@gmail.com">
                     ananas-iot@gmail.com
                   </a>
                 </v-card-text>
