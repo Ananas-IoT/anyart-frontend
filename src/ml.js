@@ -268,7 +268,7 @@ export default new MLCreate({
       'landing-contact-us-message-success': 'Thanks for your feedback! :)',
       'landing-contact-us-message-error': "Something got wrong :(. Please try again," +
         " or contact us: anyart-iot@gmail.com",
-      'landing-contact-us-title': 'Lets be in touch!',
+      'landing-contact-us-title': 'Let's be in touch!',
       'landing-contact-us-subtitle': 'If you have some propositions or' +
         ' ideas which can improve our service, contact us. Your message will help us to develop a better platform!',
       'landing-contact-us-form-contact': "How can we contact you?",
